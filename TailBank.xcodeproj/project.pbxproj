@@ -10,7 +10,13 @@
 		724AB0F729927C45000616A7 /* AddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724AB0F629927C45000616A7 /* AddAccount.swift */; };
 		724AB100299281B4000616A7 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724AB0FF299281B4000616A7 /* AccountModel.swift */; };
 		724AB14E29928352000616A7 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724AB14529928352000616A7 /* Data.framework */; };
-		724AB15329928352000616A7 /* DataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724AB15229928352000616A7 /* DataTests.swift */; };
+		724AB15329928352000616A7 /* RemoteAddAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724AB15229928352000616A7 /* RemoteAddAccountTests.swift */; };
+		724AB16529928F5F000616A7 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 725291CD2991B27B00AC9C35 /* Domain.framework */; };
+		724AB16629928F5F000616A7 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 725291CD2991B27B00AC9C35 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		724AB1712992A48B000616A7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724AB1702992A48B000616A7 /* Model.swift */; };
+		72B818782992B11B0007C070 /* HttpPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B818772992B11B0007C070 /* HttpPostClient.swift */; };
+		72B8187D2992B14A0007C070 /* RemoteAddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B8187C2992B14A0007C070 /* RemoteAddAccount.swift */; };
+		72B818872992B2650007C070 /* HttpClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B818862992B2650007C070 /* HttpClientSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -21,7 +27,28 @@
 			remoteGlobalIDString = 724AB14429928352000616A7;
 			remoteInfo = Data;
 		};
+		724AB16729928F5F000616A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 725291972991B0CB00AC9C35 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 725291CC2991B27B00AC9C35;
+			remoteInfo = Domain;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		724AB16929928F5F000616A7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				724AB16629928F5F000616A7 /* Domain.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		724AB0F629927C45000616A7 /* AddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccount.swift; sourceTree = "<group>"; };
@@ -29,10 +56,14 @@
 		724AB14529928352000616A7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		724AB14829928352000616A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		724AB14D29928352000616A7 /* DataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		724AB15229928352000616A7 /* DataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTests.swift; sourceTree = "<group>"; };
+		724AB15229928352000616A7 /* RemoteAddAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccountTests.swift; sourceTree = "<group>"; };
 		724AB15429928352000616A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		724AB1702992A48B000616A7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		725291CD2991B27B00AC9C35 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		725291D02991B27B00AC9C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72B818772992B11B0007C070 /* HttpPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPostClient.swift; sourceTree = "<group>"; };
+		72B8187C2992B14A0007C070 /* RemoteAddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccount.swift; sourceTree = "<group>"; };
+		72B818862992B2650007C070 /* HttpClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				724AB16529928F5F000616A7 /* Domain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				724AB0FF299281B4000616A7 /* AccountModel.swift */,
+				724AB1702992A48B000616A7 /* Model.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -87,6 +120,8 @@
 		724AB14629928352000616A7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				72B8187B2992B13C0007C070 /* UseCases */,
+				72B818762992B0EA0007C070 /* Http */,
 				724AB14829928352000616A7 /* Info.plist */,
 			);
 			path = Data;
@@ -95,7 +130,8 @@
 		724AB15129928352000616A7 /* DataTests */ = {
 			isa = PBXGroup;
 			children = (
-				724AB15229928352000616A7 /* DataTests.swift */,
+				72B818842992B2460007C070 /* UseCases */,
+				72B818852992B2530007C070 /* Http */,
 				724AB15429928352000616A7 /* Info.plist */,
 			);
 			path = DataTests;
@@ -132,6 +168,38 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
+		72B818762992B0EA0007C070 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				72B818772992B11B0007C070 /* HttpPostClient.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		72B8187B2992B13C0007C070 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				72B8187C2992B14A0007C070 /* RemoteAddAccount.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		72B818842992B2460007C070 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				724AB15229928352000616A7 /* RemoteAddAccountTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		72B818852992B2530007C070 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				72B818862992B2650007C070 /* HttpClientSpy.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -160,10 +228,12 @@
 				724AB14129928352000616A7 /* Sources */,
 				724AB14229928352000616A7 /* Frameworks */,
 				724AB14329928352000616A7 /* Resources */,
+				724AB16929928F5F000616A7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				724AB16829928F5F000616A7 /* PBXTargetDependency */,
 			);
 			name = Data;
 			productName = Data;
@@ -217,6 +287,7 @@
 				TargetAttributes = {
 					724AB14429928352000616A7 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					724AB14C29928352000616A7 = {
 						CreatedOnToolsVersion = 12.4;
@@ -276,6 +347,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72B818782992B11B0007C070 /* HttpPostClient.swift in Sources */,
+				72B8187D2992B14A0007C070 /* RemoteAddAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +356,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				724AB15329928352000616A7 /* DataTests.swift in Sources */,
+				724AB15329928352000616A7 /* RemoteAddAccountTests.swift in Sources */,
+				72B818872992B2650007C070 /* HttpClientSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				724AB1712992A48B000616A7 /* Model.swift in Sources */,
 				724AB0F729927C45000616A7 /* AddAccount.swift in Sources */,
 				724AB100299281B4000616A7 /* AccountModel.swift in Sources */,
 			);
@@ -304,12 +379,18 @@
 			target = 724AB14429928352000616A7 /* Data */;
 			targetProxy = 724AB14F29928352000616A7 /* PBXContainerItemProxy */;
 		};
+		724AB16829928F5F000616A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 725291CC2991B27B00AC9C35 /* Domain */;
+			targetProxy = 724AB16729928F5F000616A7 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		724AB15729928352000616A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -327,6 +408,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.coDandoPraTodoMundo.Data;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -334,6 +416,7 @@
 		724AB15829928352000616A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -358,6 +441,7 @@
 		724AB15A29928352000616A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = GAQ2W7K69R;
@@ -376,6 +460,7 @@
 		724AB15B29928352000616A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = GAQ2W7K69R;
