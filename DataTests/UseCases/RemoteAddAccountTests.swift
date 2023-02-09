@@ -53,20 +53,12 @@ class RemoteAddAccountTests: XCTestCase {
 }
 
 extension RemoteAddAccountTests {
-    func makeUrl() -> URL {
-        return URL(string: "any_url.com")!
-    }
-    
     func makeAddAccountModel() -> AddAccountModel {
         return AddAccountModel(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_passwordConfirmation")
     }
     
     func makeAccountModel() -> AccountModel {
-        return AccountModel(id: "any_id", name: "any_name", email: "any_email", password: "any_password")
-    }
-    
-    func makeInvalidData() -> Data {
-        return Data("invalid_data".utf8)
+        return AccountModel(accessToken: "any_token")
     }
     
     func makeSut(url: URL = URL(string: "any_url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteAddAccount, httpClientSpy: HttpClientSpy) {

@@ -1,8 +1,6 @@
 import XCTest
-import Infra
 
-
-class InfraTests: XCTestCase {
+class SignUpPreseterTests: XCTestCase {
     func test_() {
         
     }
