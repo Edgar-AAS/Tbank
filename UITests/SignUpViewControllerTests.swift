@@ -1,6 +1,6 @@
 import XCTest
 
-class SignUpPreseterTests: XCTestCase {
+class SignUpViewControllerTests: XCTestCase {
     func test_() {
         
     }

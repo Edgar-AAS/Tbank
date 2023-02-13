@@ -34,6 +34,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>UI.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>UseCasesIntegrationTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -43,6 +48,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>721DA0EE29945C6900CB38E3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>721DA10C299550C900CB38E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
