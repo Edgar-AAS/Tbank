@@ -145,10 +145,6 @@ class SignUpViewModelTests: XCTestCase {
 }
 
 extension SignUpViewModelTests {
-    func makeSignUpRequest() -> SignUpRequest {
-        return SignUpRequest(name: "any_name", email: "valid_email@gmail.com", password: "any_password", passwordConfirmation: "any_password")
-    }
-    
     func makeAlertViewModel(message: String) -> AlertViewModel {
         return AlertViewModel(title: "Falha na validação", message: message)
     }
