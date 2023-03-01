@@ -4,7 +4,7 @@ import UIKit
 public class SignUpView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = UIColor(hexString: "BEF0CB")
         setupView()
     }
     
@@ -17,6 +17,14 @@ public class SignUpView: UIView {
         return image
     }()
     
+    lazy var createAccountLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Criar conta"
+        label.font = UIFont.boldSystemFont(ofSize: 48)
+        label.textColor = UIColor.black
+        return label
+    }()
+    
     lazy var loadingIndicator: UIActivityIndicatorView = {
         let loadingView = UIActivityIndicatorView()
         loadingView.hidesWhenStopped = true
@@ -27,10 +35,10 @@ public class SignUpView: UIView {
     
     lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .systemGreen
-        button.tintColor = .white
-        button.setTitle("CADASTRAR", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.backgroundColor = UIColor(hexString: "68B984")
+        button.tintColor = .black
+        button.setTitle("Cadastrar", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         button.layer.cornerRadius = 10
         return button
     }()
@@ -44,6 +52,7 @@ public class SignUpView: UIView {
 extension SignUpView: CodeView {
     func buildViewHierarchy() {
         addSubview(appImage)
+        addSubview(createAccountLabel)
         addSubview(nameTextField)
         addSubview(emailTextField)
         addSubview(passwordTextField)
@@ -63,8 +72,16 @@ extension SignUpView: CodeView {
         appImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         appImage.size(size: .init(width: 128, height: 128))
         
-        nameTextField.fillConstraints(
+        createAccountLabel.fillConstraints(
             top: appImage.bottomAnchor,
+            leading: leadingAnchor,
+            trailing: trailingAnchor,
+            bottom: nil,
+            padding: .init(top: 16, left: 16, bottom: 0, right: 16)
+        )
+        
+        nameTextField.fillConstraints(
+            top: createAccountLabel.bottomAnchor,
             leading: leadingAnchor,
             trailing: trailingAnchor,
             bottom: nil,
@@ -104,7 +121,7 @@ extension SignUpView: CodeView {
             leading: leadingAnchor,
             trailing: trailingAnchor,
             bottom: nil,
-            padding: .init(top: 16, left: 16, bottom: 0, right: 16),
+            padding: .init(top: 16, left: 64, bottom: 0, right: 64),
             size: .init(width: 0, height: 56)
         )
         

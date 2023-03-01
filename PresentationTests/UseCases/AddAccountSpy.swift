@@ -3,9 +3,9 @@ import Domain
 
 class AddAccountSpy: AddAccount {
     private(set) var addAccountModel: AddAccountModel?
-    private(set) var emit: ((Result<AccountModel, DomainError>) -> Void)?
+    private(set) var emit: ((AddAccount.Result) -> Void)?
     
-    func add(addAccountModel: AddAccountModel, completion: @escaping (Result<AccountModel, DomainError>) -> Void) {
+    func add(addAccountModel: AddAccountModel, completion: @escaping (AddAccount.Result) -> Void) {
         self.addAccountModel = addAccountModel
         self.emit = completion
     }
@@ -15,6 +15,7 @@ class AddAccountSpy: AddAccount {
     }
 
     func completeWithFailure(_ failure: DomainError) {
-        self.emit?(.failure(.unexpected))
+        self.emit?(.failure(failure))
     }
 }
+    

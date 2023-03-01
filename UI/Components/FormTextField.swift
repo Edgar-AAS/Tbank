@@ -13,11 +13,11 @@ class FormTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupFormTextField() {
+    private func setupFormTextField() {
         placeholder = textExample
-        layer.cornerRadius = 5
-        layer.borderColor = UIColor.systemGreen.cgColor
+        layer.cornerRadius = 10
+        layer.borderColor = UIColor(hexString: "68B984").cgColor
         layer.borderWidth = 1
-        backgroundColor = .systemGray6
+        backgroundColor = .white
     }
 }

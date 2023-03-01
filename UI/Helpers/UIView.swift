@@ -40,7 +40,6 @@ extension UIView {
                         padding: padding)
     }
     
-    
     func superviewCenter(size: CGSize = .zero) {
         translatesAutoresizingMaskIntoConstraints = false
 

@@ -1,5 +1,5 @@
 import Foundation
-import Presentation
+import Validation
 
 class EmailValidatorSpy: EmailValidator {
     var isValid = true
@@ -8,5 +8,9 @@ class EmailValidatorSpy: EmailValidator {
     func isValid(email: String) -> Bool {
         self.email = email
         return isValid
+    }
+    
+    func simulateInvalidEmail() {
+        isValid = false
     }
 }

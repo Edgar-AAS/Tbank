@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>Core.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 		<key>Data.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -63,6 +68,11 @@
 			<true/>
 		</dict>
 		<key>721DA10C299550C900CB38E3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>72410828299BD7F500129804</key>
 		<dict>
 			<key>primary</key>
 			<true/>
