@@ -11,6 +11,6 @@ class ValidationSpy: Validation {
     }
     
     func simulateError() {
-        errorMessage = "Error"
+        errorMessage = "Erro"
     }
 }

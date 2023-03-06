@@ -5,7 +5,7 @@ import Data
 class RemoteAddAccountTests: XCTestCase {
     func test_add_should_call_httpClient_with_correct_url() {
         let url = makeUrl()
-        let (sut, httpClientSpy) = makeSut()
+        let (sut, httpClientSpy) = makeSut(url: url)
         sut.add(addAccountModel: makeAddAccountModel()) { _ in }
         XCTAssertEqual(httpClientSpy.urls, [url])
     }
@@ -48,8 +48,8 @@ class RemoteAddAccountTests: XCTestCase {
         })
     }
     
-    func test_should_not_complete_if_sut_has_been_deallocated() {
-        let httpClientSpy = HttpClientSpy()
+    func test_add_should_not_complete_if_sut_has_been_deallocated() {
+        let httpClientSpy = HttpPostClientSpy()
         var sut: RemoteAddAccount? = RemoteAddAccount(url: makeUrl(), httpClient: httpClientSpy)
         var result: AddAccount.Result?
         sut?.add(addAccountModel: makeAddAccountModel()) { result = $0 }
@@ -63,14 +63,10 @@ extension RemoteAddAccountTests {
     func makeAddAccountModel() -> AddAccountModel {
         return AddAccountModel(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_passwordConfirmation")
     }
-    
-    func makeAccountModel() -> AccountModel {
-        return AccountModel(accessToken: "any_token")
-    }
-    
-    func makeSut(url: URL = URL(string: "any_url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteAddAccount, httpClientSpy: HttpClientSpy) {
+
+    func makeSut(url: URL = URL(string: "any_url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteAddAccount, httpClientSpy: HttpPostClientSpy) {
         let url = URL(string: "any_url.com")!
-        let httpClientSpy = HttpClientSpy()
+        let httpClientSpy = HttpPostClientSpy()
         let sut = RemoteAddAccount(url: url, httpClient: httpClientSpy)
         checkMemoryLeak(for: sut, file: file, line: line)
         checkMemoryLeak(for: httpClientSpy, file: file, line: line)

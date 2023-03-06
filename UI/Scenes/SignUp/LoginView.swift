@@ -57,6 +57,7 @@ extension LoginView: CodeView {
         addSubview(emailTextField)
         addSubview(passwordTextField)
         addSubview(loginButton)
+        addSubview(loadingIndicator)
     }
     
     func setupConstrains() {
@@ -102,5 +103,36 @@ extension LoginView: CodeView {
             padding: .init(top: 32, left: 32, bottom: 0, right: 32),
             size: .init(width: 0, height: 50)
         )
+        
+        loadingIndicator.fillConstraints(
+            top: loginButton.bottomAnchor,
+            leading: nil,
+            trailing: nil,
+            bottom: nil,
+            padding: .init(top: 32, left: 0, bottom: 0, right: 0),
+            size: .init(width: 64, height: 64)
+        )
+        
+        loadingIndicator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+    }
+    
+    func setupAdditionalConfiguration() {
+        configureTextFieldsOrder()
+        setupKeyboardTypes()
+    }
+    
+    private func setupKeyboardTypes() {
+        emailTextField.keyboardType = .emailAddress
+        passwordTextField.keyboardType = .asciiCapable
+    }
+    
+    private func configureTextFieldsOrder() {
+        emailTextField.tag = 1
+        passwordTextField.tag = 2
+    }
+    
+    func setupDelegateTextFields(delegate: UITextFieldDelegate) {
+        emailTextField.delegate = delegate
+        passwordTextField.delegate = delegate
     }
 }

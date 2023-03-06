@@ -2,7 +2,7 @@ import Foundation
 import Data
 import Domain
 
-class HttpClientSpy: HttpPostClient {
+class HttpPostClientSpy: HttpPostClient {
     private(set) var urls = [URL]()
     private(set) var data: Data?
     private(set) var completion: ((Result<Data?, HttpError>) -> (Void))?

@@ -10,7 +10,7 @@ public final class RequiredFieldsValidation: Validation, Equatable {
         self.fieldLabel = fieldLabel
     }
     
-    //se o fieldName tiver valor e nao for vazio return nil else return errorMessage
+    //se o fieldName tiver valor e nao for vazio return nil, else return errorMessage
    public func validate(data: [String : Any]?) -> String? {
         guard let fieldName = data?[fieldName] as? String, !fieldName.isEmpty else { return "O campo \(fieldLabel) é obrigatório" }
         return nil

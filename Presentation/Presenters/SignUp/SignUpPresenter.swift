@@ -1,14 +1,14 @@
 import Foundation
 import Domain
 
-public final class SignUpViewModel {
+public final class SignUpPresenter {
     private let alertView: AlertView
     private let addAccount: AddAccount
     private let loadingView: LoadingView
     private let validation: Validation
     
-    //minha viewmodel tem uma duas referencias forte da minha controller
-    //e minha controller de um referencia da minha viewModel
+    //meu presenter tem uma duas referencias forte da minha controller
+    //e minha controller de um referencia do meu presenter
     
     public init(alertView: AlertView, addAccount: AddAccount, loadingView: LoadingView, validation: Validation) {
         self.alertView = alertView
@@ -17,7 +17,7 @@ public final class SignUpViewModel {
         self.validation = validation
     }
     
-    public func signUp(viewModel: SignUpRequest) {
+    public func signUp(viewModel: SignUpRequest) {	
         if let message = validation.validate(data: viewModel.toJson()) {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: message))
         } else {
