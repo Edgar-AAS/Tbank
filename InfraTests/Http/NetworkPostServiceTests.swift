@@ -64,11 +64,11 @@ extension NetworkPostServiceTests {
         wait(for: [exp], timeout: 1)
     }
     
-    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> NetworkPostService {
+    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> RemotePostService {
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [UrlProtocolStub.self]
         let session = URLSession(configuration: configuration)
-        let sut = NetworkPostService(session: session)
+        let sut = RemotePostService(session: session)
         checkMemoryLeak(for: sut, file: file, line: line)
         return sut
     }

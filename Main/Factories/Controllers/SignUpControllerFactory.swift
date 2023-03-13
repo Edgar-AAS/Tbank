@@ -8,8 +8,8 @@ import Infra
 public func makeSignUpController(addAccount: AddAccount) -> SignUpViewController {
     let controller = SignUpViewController()
     let validationComposite = ValidationComposite(validations: makeSignUpValidations())
-    let viewModel = SignUpPresenter(alertView: WeakVarProxy(controller), addAccount: addAccount, loadingView: WeakVarProxy(controller), validation: validationComposite)
-    controller.signUp = viewModel.signUp
+    let presenter = SignUpPresenter(alertView: WeakVarProxy(controller), addAccount: addAccount, loadingView: WeakVarProxy(controller), validation: validationComposite)
+    controller.signUp = presenter.signUp
     return controller
 }
 

@@ -4,7 +4,7 @@ import UIKit
 public class LoginView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(hexString: "BEF0CB")
+        backgroundColor = UIColor(hexString: "1A1A2E")
         setupView()
     }
     
@@ -16,7 +16,7 @@ public class LoginView: UIView {
         let label = UILabel()
         label.text = "Login"
         label.font = UIFont.boldSystemFont(ofSize: 48)
-        label.textColor = UIColor.black
+        label.textColor = UIColor.white
         return label
     }()
     
@@ -24,7 +24,7 @@ public class LoginView: UIView {
         let label = UILabel()
         label.text = "Acesse sua conta com e email e senha"
         label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.textColor = UIColor.black
+        label.textColor = UIColor.white
         return label
     }()
     
@@ -38,8 +38,8 @@ public class LoginView: UIView {
     
     lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(hexString: "68B984")
-        button.tintColor = .black
+        button.backgroundColor = UIColor(hexString: "F99417")
+        button.tintColor = .white
         button.setTitle("Entrar", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         button.layer.cornerRadius = 10

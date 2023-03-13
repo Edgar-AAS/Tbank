@@ -1,15 +1,20 @@
 import Foundation
 import Data
 
-public class NetworkGetService: HttpGetClient {
+public class RemotePostService: HttpPostClient {
     private let session: URLSession
     
     public init(session: URLSession = .shared) {
         self.session = session
     }
     
-    public func get(to url: URL, completion: @escaping (Result<Data?, HttpError>) -> (Void)) {
-        session.dataTask(with: url) { (data, response, error) in
+    public func post(to url: URL, with data: Data?, completion: @escaping (Result<Data?, HttpError>) -> Void) {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = data
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        session.dataTask(with: request) { (data, response, error) in
             if error == nil {
                 guard let response = (response as? HTTPURLResponse) else { return
                     completion(.failure(.noConnectivity))
@@ -38,4 +43,4 @@ public class NetworkGetService: HttpGetClient {
             }
         }.resume()
     }
-}
+} 

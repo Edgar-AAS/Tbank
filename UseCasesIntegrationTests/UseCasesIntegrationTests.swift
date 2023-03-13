@@ -5,7 +5,7 @@ import Domain
 
 class UseCasesIntegrationTests: XCTestCase {
     func test_add_account() {
-        let networkPostService = NetworkPostService()
+        let networkPostService = RemotePostService()
         let url = URL(string: "https://63e255d8109336b6cb054df8.mockapi.io/api/v1/users")!
         let sut = RemoteAddAccount(url: url, httpClient: networkPostService)
         let addAccountModel = AddAccountModel(name: "Pocoio", email: "\(UUID().uuidString)@gmail.com", password: "123123", passwordConfirmation: "123123")

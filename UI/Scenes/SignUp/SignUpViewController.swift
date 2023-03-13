@@ -77,6 +77,7 @@ extension SignUpViewController: UITextFieldDelegate {
 //DispatchQueue conhcece meu controller e meu controller conhece o DispatchQueue
 //Duas referencias fortes = retain cycle
 //Design Pattern Decorator para nao precisar usar dispatch main em tudo <-
+
 extension SignUpViewController: LoadingView {
     public func isLoading(viewModel: LoadingViewModel) {
         //manipulando a interface de usuario em background//

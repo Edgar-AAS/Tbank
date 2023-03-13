@@ -1,6 +1,6 @@
 import Foundation
 import Infra
 
-func makeNetworkPostClient() -> NetworkPostService {
-    return NetworkPostService()
+func makeNetworkPostClient() -> RemotePostService {
+    return RemotePostService()
 }

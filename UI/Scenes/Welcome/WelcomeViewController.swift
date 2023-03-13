@@ -1,13 +1,12 @@
 import UIKit
 
 public final class WelcomeViewController: UIViewController {
-    
     lazy var customView: WelcomeView? = {
         return view as? WelcomeView
     }()
     
     public var login: (() -> Void)?
-    public var register: (() -> Void)?
+    public var signUp: (() -> Void)?
     
     public override func loadView() {
         super.loadView()
@@ -29,6 +28,6 @@ public final class WelcomeViewController: UIViewController {
     }
     
     @objc func registerButtonTapped() {
-        register?()
+        signUp?()
     }
 }

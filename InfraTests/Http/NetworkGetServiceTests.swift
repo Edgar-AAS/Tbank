@@ -42,11 +42,11 @@ class NetworkGetServiceTests: XCTestCase {
 }
 
 extension NetworkGetServiceTests {
-    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> NetworkGetService {
+    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> RemoteGetService {
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [UrlProtocolStub.self]
         let session = URLSession(configuration: configuration)
-        let sut = NetworkGetService(session: session)
+        let sut = RemoteGetService(session: session)
         checkMemoryLeak(for: sut, file: file, line: line)
         return sut
     }

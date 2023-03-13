@@ -16,8 +16,8 @@ class FormTextField: UITextField {
     private func setupFormTextField() {
         placeholder = textExample
         layer.cornerRadius = 10
-        layer.borderColor = UIColor(hexString: "68B984").cgColor
+        layer.borderColor = UIColor.orange.cgColor
         layer.borderWidth = 1
-        backgroundColor = .white
+        backgroundColor = UIColor(hexString: "404258")
     }
 }
