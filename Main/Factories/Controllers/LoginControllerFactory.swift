@@ -1,14 +1,19 @@
 import Foundation
 import Domain
-import UI
 import Validation
 import Presentation
 import Infra
 
 public func makeLoginViewController(authentication: Authentication) -> LoginViewController {
     let controller = LoginViewController()
+    let destinationController = makeHomeViewController()
     let validationComposite = ValidationComposite(validations: makeLoginValidations())
-    let presenter = LoginPresenter(validation: validationComposite, alertView: WeakVarProxy(controller), authentication: authentication, loadingView: WeakVarProxy(controller))
+    let router = LoginRouter(viewController: controller, destinationController: destinationController)
+    let presenter = LoginPresenter(validation: validationComposite,
+                                   alertView: WeakVarProxy(controller),
+                                   authentication: authentication,
+                                   loadingView: WeakVarProxy(controller),
+                                   router: router)
     controller.login = presenter.login
     return controller
 }
@@ -20,3 +25,5 @@ public func makeLoginValidations() -> [Validation] {
         RequiredFieldsValidation(fieldName: "password", fieldLabel: "Senha")
     ]
 }
+
+

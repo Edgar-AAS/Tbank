@@ -1,7 +1,7 @@
 import XCTest
 import Main
-import UI
 import Validation
+import Presentation
 
 class LoginControllerFactoryTests: XCTestCase {
     func test_signUp_compose_with_correct_validations() {

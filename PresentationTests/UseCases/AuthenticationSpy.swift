@@ -10,7 +10,7 @@ class AuthenticationSpy: Authentication {
         self.emit = completion
     }
     
-    func completeWithSuccess(_ success: [LoginModel]) {
+    func completeWithSuccess(_ success: AccountModel) {
         self.emit?(.success(success))
     }
 

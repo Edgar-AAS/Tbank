@@ -29,12 +29,6 @@ func makeAccountModel() -> AccountModel {
     return AccountModel(accessToken: "any_token")
 }
 
-func makeLoginModels() -> [LoginModel] {
-    return [LoginModel(email: "any_email@gmail.com", password: "123"),
-            LoginModel(email: "any_email@gmail.com", password: "123"),
-            LoginModel(email: "any_email@gmail.com", password: "123")]
-}
-
 func makeAuthenticationModel() -> AuthenticationModel {
     return AuthenticationModel(email: "any_email@gmail.com", password: "any_password")
 }

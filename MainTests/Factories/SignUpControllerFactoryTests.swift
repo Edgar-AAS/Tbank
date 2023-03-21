@@ -1,6 +1,6 @@
 import XCTest
 import Main
-import UI
+import Presentation
 import Validation
 
 class SignUpControllerFactoryTests: XCTestCase {

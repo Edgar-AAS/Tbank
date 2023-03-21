@@ -1,16 +1,17 @@
 import Foundation
 
-public struct User: Model {
-    let username: String
-    let totalBalance: Double
-    let cards: [Card]
-    let userImageUrl: String
-    let balanceIsHidden: Bool
-    let mainServices: [MainService]
-    let bankBranch: String
-    let accountNumber: String
-    let bankNumber: String
-    let corporateName: String
+public struct UserModel: Model {
+    public let username: String
+    public let totalBalance: Double
+    public let cards: [Card]
+    public let userImageUrl: String
+    public let balanceIsHidden: Bool
+    public let isNotifying: Bool
+    public let mainServices: [MainService]
+    public let bankBranch: String
+    public let accountNumber: String
+    public let bankNumber: String
+    public let corporateName: String
     
     public init(
         username: String,
@@ -22,7 +23,8 @@ public struct User: Model {
         bankBranch: String,
         accountNumber: String,
         bankNumber: String,
-        corporateName: String
+        corporateName: String,
+        isNotifying: Bool
     ) {
         self.username = username
         self.totalBalance = totalBalance
@@ -34,17 +36,18 @@ public struct User: Model {
         self.accountNumber = accountNumber
         self.bankNumber = bankNumber
         self.corporateName = accountNumber
+        self.isNotifying = isNotifying
     }
 }
 
 public struct Card: Model {
-    let isVirtual: Bool
-    let balance: Double
-    let cardFlag: Int
-    let cardNumber: String
-    let cardExpirationData: String
-    let cardFunction: String
-    let cvc: String
+    public let isVirtual: Bool
+    public let balance: Double
+    public let cardFlag: Int
+    public let cardNumber: String
+    public let cardExpirationData: String
+    public let cardFunction: String
+    public let cvc: String
     
     public init(
         isVirtual: Bool,
@@ -66,9 +69,9 @@ public struct Card: Model {
 }
 
 public struct MainService: Model {
-    let serviceIconUrl: String
-    let serviceName: String
-    let serviceTag: Int
+    public let serviceIconUrl: String
+    public let serviceName: String
+    public let serviceTag: Int
     
     public init(
         serviceIconUrl: String,

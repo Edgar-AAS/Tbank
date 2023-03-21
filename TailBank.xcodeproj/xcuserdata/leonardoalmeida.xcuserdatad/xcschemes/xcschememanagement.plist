@@ -44,11 +44,6 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>UI.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
-		</dict>
 		<key>UseCasesIntegrationTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>

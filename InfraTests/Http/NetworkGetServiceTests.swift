@@ -41,12 +41,23 @@ class NetworkGetServiceTests: XCTestCase {
     }
 }
 
+//testes validos:
+//1) se tiver dado em cache qual o comportamento da API
+//2) se tiver dado em cache qual o comportamento da API
+
+
+//B)testar classe de cache
+//testar se os dados passados no cache e igual aos recebidos
+//testar se os dados de entrada e saida nao sao nulos, caso seja passado algum dado
+//procurar por testes de cache na internet
+
+
 extension NetworkGetServiceTests {
     func makeSut(file: StaticString = #filePath, line: UInt = #line) -> RemoteGetService {
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [UrlProtocolStub.self]
         let session = URLSession(configuration: configuration)
-        let sut = RemoteGetService(session: session)
+        let sut = RemoteGetService(session: session, cacheManager: CacheManagerSpy())
         checkMemoryLeak(for: sut, file: file, line: line)
         return sut
     }

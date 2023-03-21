@@ -1,0 +1,85 @@
+[
+  {
+    "username": "Simao Bacamarte",
+    "totalBalance": 61106.31,
+    "userImageUrl": "any_url.com",
+    "balanceIsHidden": true,
+    "isNotifying": false,
+    "bankBranch": "0008",
+    "bankAccountNumber": "34587698-9",
+    "bankNumber": "0212",
+    "corporateName": "IT Soluções bancárias S.A",
+    "cards": [
+        {
+        "isVirtual": true,
+        "balance": 32523.12,
+        "cardFlag": "Mastercard",
+        "cardTag": 1,
+        "cardBrandImageUrl": "any_url.com",
+        "cardNumber": "3847890945671246",
+        "cardExpirationDate": "2030-02-12 22:34:26",
+        "cardFunction": "Débito e crédito",
+        "cvc": "932"
+        },
+        {
+        "isVirtual": false,
+        "balance": 6016.39,
+        "cardFlag": "Mastercard",
+        "cardTag": 2,
+        "cardBrandImageUrl": "any_url.com",
+        "cardNumber": "1847840945271243",
+        "cardExpirationDate": "2032-07-15 06:34:22",
+        "cardFunction": "Débito e crédito",
+        "cvc": "122"
+        },
+        {
+        "isVirtual": false,
+        "balance": 22567,
+        "cardFlag": "Mastercard",
+        "cardTag": 3,
+        "cardBrandImageUrl": "any_url.com",
+        "cardNumber": "2437123714284184",
+        "cardExpirationDate": "2031-10-27 11:24:17",
+        "cardFunction": "Débito",
+        "cvc": "315"
+        }
+    ],
+    "mainServices": [
+        {
+         "serviceIconUrl": "any_url.com",
+         "serviceName": "Área Pix",
+         "serviceTag": 1
+        },
+        {
+         "serviceIconUrl": "any_url.com",
+         "serviceName": "Pagar",
+         "serviceTag": 2
+        },
+        {
+         "serviceIconUrl": "any_url.com",
+         "serviceName": "Depositar",
+         "serviceTag": 3
+        },
+        {
+         "serviceIconUrl": "any_url.com",
+         "serviceName": "Recarga de celular",
+         "serviceTag": 4
+        },
+        {
+         "serviceIconUrl": "any_url.com",
+         "serviceName": "Cobrar",
+         "serviceTag": 5
+        },
+        {
+         "serviceIconUrl": "any_url.com",
+         "serviceName": "Transferir internac.",
+         "serviceTag": 6
+        },
+        {
+         "serviceIconUrl": "any_url.com",
+         "serviceName": "Investir",
+         "serviceTag": 7
+        }
+    ]
+  }
+]
