@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "2FD7770A-4825-40BF-AFF9-40943755252B"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2263C741-4F63-4DEE-83BC-D83DEAF8298C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Infra/Http/Remote/RemoteGetService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "get(to:objectCacheKey:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7651B40A-3475-4D2F-AC01-00E66F32BF85"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Infra/Http/Remote/RemoteGetService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "get(to:objectCacheKey:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7651B40A-3475-4D2F-AC01-00E66F32BF85 - aea4c4486461b402"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Infra.RemoteGetService.get(to: Foundation.URL, objectCacheKey: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;Swift.Optional&lt;Foundation.Data&gt;, Data.HttpError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Infra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardoalmeida/Documents/TailBankProject/TailBank/Infra/Http/Remote/RemoteGetService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "913">
+               </Location>
+               <Location
+                  uuid = "7651B40A-3475-4D2F-AC01-00E66F32BF85 - aea4c4486461b402"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Infra.RemoteGetService.get(to: Foundation.URL, objectCacheKey: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;Swift.Optional&lt;Foundation.Data&gt;, Data.HttpError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Infra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardoalmeida/Documents/TailBankProject/TailBank/Infra/Http/Remote/RemoteGetService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "949">
+               </Location>
+               <Location
+                  uuid = "7651B40A-3475-4D2F-AC01-00E66F32BF85 - aea4c4486461b402"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Infra.RemoteGetService.get(to: Foundation.URL, objectCacheKey: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;Swift.Optional&lt;Foundation.Data&gt;, Data.HttpError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Infra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardoalmeida/Documents/TailBankProject/TailBank/Infra/Http/Remote/RemoteGetService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "1035">
+               </Location>
+               <Location
+                  uuid = "7651B40A-3475-4D2F-AC01-00E66F32BF85 - aea4c4486461b402"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Infra.RemoteGetService.get(to: Foundation.URL, objectCacheKey: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;Swift.Optional&lt;Foundation.Data&gt;, Data.HttpError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Infra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardoalmeida/Documents/TailBankProject/TailBank/Infra/Http/Remote/RemoteGetService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "1686">
+               </Location>
+               <Location
+                  uuid = "7651B40A-3475-4D2F-AC01-00E66F32BF85 - aea4c4486461b402"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Infra.RemoteGetService.get(to: Foundation.URL, objectCacheKey: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;Swift.Optional&lt;Foundation.Data&gt;, Data.HttpError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Infra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardoalmeida/Documents/TailBankProject/TailBank/Infra/Http/Remote/RemoteGetService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "1770">
+               </Location>
+               <Location
+                  uuid = "7651B40A-3475-4D2F-AC01-00E66F32BF85 - aea4c4486461b402"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Infra.RemoteGetService.get(to: Foundation.URL, objectCacheKey: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;Swift.Optional&lt;Foundation.Data&gt;, Data.HttpError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Infra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardoalmeida/Documents/TailBankProject/TailBank/Infra/Http/Remote/RemoteGetService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "1854">
+               </Location>
+               <Location
+                  uuid = "7651B40A-3475-4D2F-AC01-00E66F32BF85 - aea4c4486461b402"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Infra.RemoteGetService.get(to: Foundation.URL, objectCacheKey: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;Swift.Optional&lt;Foundation.Data&gt;, Data.HttpError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Infra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardoalmeida/Documents/TailBankProject/TailBank/Infra/Http/Remote/RemoteGetService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "2098">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
