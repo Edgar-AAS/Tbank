@@ -3,16 +3,17 @@ import Data
 
 public class LoginRouter {
     private weak var viewController: UIViewController?
-    private let destinationController: UIViewController
+    public let destinationController: UIViewController
+    private let navigationController: UINavigationController?
     
-    public init(viewController: UIViewController?, destinationController: UIViewController) {
-        self.viewController = viewController
+    public init(navigationController: UINavigationController?, destinationController: UIViewController) {
         self.destinationController = destinationController
+        self.navigationController = navigationController
     }
 }
 
 extension LoginRouter: PresenterToRouterLoginProtocol {
     public func goToHome() {
-        viewController?.navigationController?.pushViewController(destinationController, animated: true)
+        navigationController?.pushViewController(destinationController, animated: true)
     }
 }   

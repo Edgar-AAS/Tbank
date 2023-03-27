@@ -4,7 +4,9 @@ import Data
 public final class CacheManager: CacheType {
     public let cache = NSCache<NSString, AnyObject>()
     
-    public init() {}
+    public init() {
+        cache.countLimit = 10
+    }
     
     public func createCachedObject(_ object: AnyObject, forKey key: String) {
         cache.setObject(object, forKey: key as NSString)

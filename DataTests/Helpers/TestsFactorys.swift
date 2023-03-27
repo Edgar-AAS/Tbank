@@ -5,6 +5,10 @@ func makeUrl() -> URL {
     return URL(string: "any_url.com")!
 }
 
+func makeObjectCacheKey() -> String? {
+    return "anyChacheKey"
+}
+
 func makeInvalidData() -> Data {
     return Data("invalid_data".utf8)
 }
@@ -31,4 +35,21 @@ func makeAccountModel() -> AccountModel {
 
 func makeAuthenticationModel() -> AuthenticationModel {
     return AuthenticationModel(email: "any_email@gmail.com", password: "any_password")
+}
+
+func makeUserModel() -> UserModel {
+    return [UserModelElement(
+        username: "Edgar",
+        totalBalance: 3500.00,
+        userImageURL: "",
+        balanceIsHidden: true,
+        isNotifying: false
+        , bankBranch: "",
+        bankAccountNumber: "",
+        bankNumber: "",
+        corporateName: "",
+        cards: [],
+        mainServices: [],
+        resources: []
+    )]
 }

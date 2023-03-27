@@ -1,72 +1,62 @@
 import Foundation
 
-public struct UserModel: Model {
+public typealias UserModel = [UserModelElement]
+
+// MARK: - UserModelElement
+public struct UserModelElement: Model {
     public let username: String
     public let totalBalance: Double
+    public let userImageURL: String
+    public let balanceIsHidden, isNotifying: Bool
+    public let bankBranch, bankAccountNumber, bankNumber, corporateName: String
     public let cards: [Card]
-    public let userImageUrl: String
-    public let balanceIsHidden: Bool
-    public let isNotifying: Bool
     public let mainServices: [MainService]
-    public let bankBranch: String
-    public let bankAccountNumber: String
-    public let bankNumber: String
-    public let corporateName: String
-    
-    public init(
-        username: String,
-        totalBalance: Double,
-        cards: [Card],
-        userImageUrl: String,
-        balanceIsHidden: Bool,
-        mainServices: [MainService],
-        bankBranch: String,
-        bankAccountNumber: String,
-        bankNumber: String,
-        corporateName: String,
-        isNotifying: Bool
-    ) {
+    public let resources: [Resource]
+
+    enum CodingKeys: String, CodingKey {
+        case username, totalBalance
+        case userImageURL = "userImageUrl"
+        case balanceIsHidden, isNotifying, bankBranch, bankAccountNumber, bankNumber, corporateName, cards, mainServices
+        case resources = "resources:"
+    }
+
+    public init(username: String, totalBalance: Double, userImageURL: String, balanceIsHidden: Bool, isNotifying: Bool, bankBranch: String, bankAccountNumber: String, bankNumber: String, corporateName: String, cards: [Card], mainServices: [MainService], resources: [Resource]) {
         self.username = username
         self.totalBalance = totalBalance
-        self.cards = cards
-        self.userImageUrl = userImageUrl
-        self.mainServices = mainServices
-        self.bankBranch = bankBranch
+        self.userImageURL = userImageURL
         self.balanceIsHidden = balanceIsHidden
+        self.isNotifying = isNotifying
+        self.bankBranch = bankBranch
         self.bankAccountNumber = bankAccountNumber
         self.bankNumber = bankNumber
         self.corporateName = corporateName
-        self.isNotifying = isNotifying
+        self.cards = cards
+        self.mainServices = mainServices
+        self.resources = resources
     }
 }
 
+// MARK: - Card
 public struct Card: Model {
     public let isVirtual: Bool
     public let balance: Double
     public let cardFlag: String
-    public let cardBrandImageUrl: String
     public let cardTag: Int
-    public let cardNumber: String
-    public let cardExpirationDate: String
-    public let cardFunction: String
+    public let cardBrandImageURL, cardNumber, cardExpirationDate, cardFunction: String
     public let cvc: String
-    
-    public init(
-        isVirtual: Bool,
-        balance: Double,
-        cardFlag: String,
-        cardTag: Int,
-        cardBrandImageUrl: String,
-        cardNumber: String,
-        cardExpirationDate: String,
-        cardFunction: String,
-        cvc: String
-    ) {
+
+    enum CodingKeys: String, CodingKey {
+        case isVirtual, balance, cardFlag, cardTag
+        case cardBrandImageURL = "cardBrandImageUrl"
+        case cardNumber, cardExpirationDate, cardFunction, cvc
+    }
+
+    public init(isVirtual: Bool, balance: Double, cardFlag: String, cardTag: Int, cardBrandImageURL: String, cardNumber: String, cardExpirationDate: String, cardFunction: String, cvc: String) {
         self.isVirtual = isVirtual
         self.balance = balance
         self.cardFlag = cardFlag
         self.cardTag = cardTag
-        self.cardBrandImageUrl = cardBrandImageUrl
+        self.cardBrandImageURL = cardBrandImageURL
         self.cardNumber = cardNumber
         self.cardExpirationDate = cardExpirationDate
         self.cardFunction = cardFunction
@@ -74,18 +64,34 @@ public struct Card: Model {
     }
 }
 
+// MARK: - MainService
 public struct MainService: Model {
-    public let serviceIconUrl: String
-    public let serviceName: String
+    public let serviceIconURL, serviceName: String
     public let serviceTag: Int
-    
-    public init(
-        serviceIconUrl: String,
-        serviceName: String,
-        serviceTag: Int
-    ) {
-        self.serviceIconUrl = serviceIconUrl
+
+    enum CodingKeys: String, CodingKey {
+        case serviceIconURL = "serviceIconUrl"
+        case serviceName, serviceTag
+    }
+
+    public init(serviceIconURL: String, serviceName: String, serviceTag: Int) {
+        self.serviceIconURL = serviceIconURL
         self.serviceName = serviceName
         self.serviceTag = serviceTag
+    }
+}
+
+// MARK: - Resources
+public struct Resource: Model {
+    public let applogoURL, resourceDescription: String
+
+    enum CodingKeys: String, CodingKey {
+        case applogoURL = "applogoUrl"
+        case resourceDescription
+    }
+
+    public init(applogoURL: String, resourceDescription: String) {
+        self.applogoURL = applogoURL
+        self.resourceDescription = resourceDescription
     }
 }

@@ -3,21 +3,21 @@ import Domain
 import Data
 
 class RemoteFetchUserDataTests: XCTestCase {
-    func test_fetchUserData_should_call_httpGetClient_with_correct_url() {
+    func test_fetch_should_call_httpGetClient_with_correct_url() {
         let url = makeUrl()
         let (sut, httpGetClientSpy) = makeSut()
         sut.fetch(completion: { _ in })
         XCTAssertEqual(httpGetClientSpy.urls, [url])
     }
     
-    func test_fetchUserData_should_completes_with_unexpected_if_httpGetClient_completes_with_noConnectvity() {
+    func test_fetch_should_completes_with_unexpected_if_httpGetClient_completes_with_noConnectvity() {
         let (sut, httpClientSpy) = makeSut()
         expect(sut, completeWith: .failure(.unexpected)) {
             httpClientSpy.completeWithError(.noConnectivity)
         }
     }
     
-    func test_fetchUserData_should_completes_with_data_if_httpGetClient_completes_with_valid_data() {
+    func test_fetch_should_completes_with_data_if_httpGetClient_completes_with_valid_data() {
         let (sut, httpClientSpy) = makeSut()
         let userModel = makeUserModel()
         expect(sut, completeWith: .success(userModel), when: {
@@ -26,14 +26,14 @@ class RemoteFetchUserDataTests: XCTestCase {
         })
     }
     
-    func test_fetchUserData_should_complete_with_error_if_httpGetClient_completes_with_invalid_data() {
+    func test_fetch_should_complete_with_error_if_httpGetClient_completes_with_invalid_data() {
         let (sut, httpClientSpy) = makeSut()
         expect(sut, completeWith: .failure(.unexpected)) {
             httpClientSpy.completeWithData(makeInvalidData())
         }
     }
     
-    func test_fetchUserDat_should_not_complete_if_sut_has_been_deallocated() {
+    func test_fetch_should_not_complete_if_sut_has_been_deallocated() {
         let httpClientSpy = HttpGetClientSpy()
         var sut: RemoteFetchUserData? = RemoteFetchUserData(url: makeUrl(), httpGetClient: httpClientSpy)
         var result: FetchUserDataResources.Result?
@@ -43,12 +43,20 @@ class RemoteFetchUserDataTests: XCTestCase {
         XCTAssertNil(result)
     }
     
-    func makeSut(url: URL = URL(string: "any_url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteFetchUserData, httpClientSpy: HttpGetClientSpy) {
+    func test_fetch_should_call_httpClient_with_correct_cacheKey() {
+        let objectCacheKey = makeObjectCacheKey()
+        let (sut, httpClientSpy) = makeSut(objectCacheKey: objectCacheKey)
+        sut.fetch() { _ in }
+        XCTAssertEqual(httpClientSpy.objectCacheKeyReceived, objectCacheKey)
+    }
+    
+    func makeSut(url: URL = URL(string: "any_url.com")!, objectCacheKey: String? = nil, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteFetchUserData, httpClientSpy: HttpGetClientSpy) {
         let url = makeUrl()
+        let objectCacheKey = makeObjectCacheKey()
         let httpClientSpy = HttpGetClientSpy()
-        let sut = RemoteFetchUserData(url: url, httpGetClient: httpClientSpy)
+        let sut = RemoteFetchUserData(url: url, httpGetClient: httpClientSpy, objectCacheKey: objectCacheKey)
         checkMemoryLeak(for: sut, file: file, line: line)
-        checkMemoryLeak(for: httpClientSpy, file: file, line: line)
+        checkMemoryLeak(for: httpClientSpy, file: file, line: line) //http client retendo
         return (sut, httpClientSpy)
     }
     
@@ -64,21 +72,5 @@ class RemoteFetchUserDataTests: XCTestCase {
         }
         action()
         wait(for: [exp], timeout: 1)
-    }
-    
-    func makeUserModel() -> UserModel {
-        return UserModel(
-            username: "Edgar",
-            totalBalance: 3500.00,
-            cards: [],
-            userImageUrl: "",
-            balanceIsHidden: false
-            , mainServices: [],
-            bankBranch: "",
-            accountNumber: "",
-            bankNumber: "",
-            corporateName: "",
-            isNotifying: false
-        )
     }
 }

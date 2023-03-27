@@ -64,6 +64,12 @@ final class MyCardCell: UICollectionViewCell {
         label.textColor = .white
         return label
     }()
+    
+    func setupCell(with cardModel: CardModel) {
+        balanceCardLabel.text = cardModel.balance
+        cardNumberLabel.text = cardModel.cardNumber
+        cardExpirationLabel.text = cardModel.cardExpirationDate
+    }
 }
 
 extension MyCardCell: CodeView {

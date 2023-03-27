@@ -1,11 +1,10 @@
 import UIKit
 
-
 public protocol PersonHeaderDelegateProtocol: AnyObject {
     func profileButtonDidTapped()
 }
 
-final class PersonHeader: UIView {
+public final class PersonHeader: UIView {
     static let reuseIdentifier = String(describing: PersonHeader.self)
     
     override init(frame: CGRect) {
@@ -61,6 +60,10 @@ final class PersonHeader: UIView {
         view.backgroundColor = UIColor(hexString: "2D2173")
         return view
     }()
+    
+    func updateHeaderDisplay(viewModel: ProfileViewModel) {
+        userNameLabel.text = viewModel.username
+    }
         
     private var headerViewHeight = NSLayoutConstraint()
     private var headerViewBottom = NSLayoutConstraint()

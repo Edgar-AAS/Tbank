@@ -13,8 +13,4 @@ public struct LoginRequest: Model {
     public func toAuthenticationModel() -> AuthenticationModel {
         return AuthenticationModel(email: email!, password: password!)
     }
-    
-//    public static func == (lhs: LoginRequest, rhs: LoginModel) -> Bool {
-//        return lhs.email == rhs.password && lhs.email == rhs.password
-//    }
 }

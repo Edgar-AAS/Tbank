@@ -1,4 +1,5 @@
 import Foundation
+import Domain
 import Data
 
 public protocol ViewToPresenterHomeProtocol: AnyObject {
@@ -8,5 +9,5 @@ public protocol ViewToPresenterHomeProtocol: AnyObject {
 //botar talvez em dois protocolos
 
 public protocol PresenterToRouterHomeProtocol {
-    func goToProfile()
+    func goToProfile(userModel: UserModelElement)
 }

@@ -4,6 +4,8 @@ final class CardCell: UITableViewCell, UICollectionViewDelegate {
     static let reuseIdentifier = String(describing: CardCell.self)
     var collectionView: UICollectionView!
     
+    var cards = [CardModel]()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCollectionView()
@@ -47,15 +49,21 @@ final class CardCell: UITableViewCell, UICollectionViewDelegate {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         collectionView.register(MyCardCell.self, forCellWithReuseIdentifier: MyCardCell.reuseIdentifier)
     }
+    
+    func setupCell(with viewModel: CardsViewViewModel?) {
+        guard let viewModel = viewModel else { return }
+        self.cards = viewModel.cards
+    }
 }
 
 extension CardCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return cards.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCardCell.reuseIdentifier, for: indexPath) as? MyCardCell
+        cell?.setupCell(with: cards[indexPath.row])
         cell?.backgroundColor = .purple
         return cell ?? UICollectionViewCell()
     }

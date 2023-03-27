@@ -19,7 +19,7 @@ class ProfileHeader: UIView {
     weak var delegate: ProfileHeaderDelegateProtocol?
     
     lazy var userPhotoImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "person"))
+        let imageView = UIImageView(image: UIImage(systemName: "camera"))
         imageView.backgroundColor = .orange
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
@@ -31,50 +31,36 @@ class ProfileHeader: UIView {
         let label = UILabel()
         label.text = "@edgar.almd"
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = UIColor.black
+        label.backgroundColor = .red
+        label.textAlignment = .center
         return label
     }()
     
     lazy var userNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "@edgar.almd"
-        label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = UIColor.black
+        label.text = "Edgar Arlindo"
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textAlignment = .center
         return label
     }()
     
-    lazy var bankBranch: UILabel = {
+    lazy var bankBranchAndAccountNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "Agência: 0001"
-        label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = UIColor.black
+        label.text = "Agência: \("0002")" + " | " + "Conta: \("12345678-9")"
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textAlignment = .center
         return label
     }()
     
-    lazy var accountNumberLabel: UILabel = {
+    var string: (banNumber: String, accountNuber: String)?
+    
+    lazy var bankNumberAndCorporateNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Conta 87654321-9"
-        label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = UIColor.black
+        label.text = "Banco: \("029")" + " - " + "TBank S.A"
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textAlignment = .center
         return label
     }()
-    
-    lazy var bankNumberLabel: UILabel = {
-        let label = UILabel()
-        label.text = "380"
-        label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = UIColor.black
-        return label
-    }()
-    
-    lazy var corporateName: UILabel = {
-        let label = UILabel()
-        label.text = "Tail Bank Serviços S.A"
-        label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = UIColor.black
-        return label
-    }()
-    
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -98,6 +84,10 @@ extension ProfileHeader {
 extension ProfileHeader: CodeView {
     func buildViewHierarchy() {
         addSubview(userPhotoImageView)
+        addSubview(shortEmailLabel)
+        addSubview(userNameLabel)
+        addSubview(bankBranchAndAccountNumberLabel)
+        addSubview(bankNumberAndCorporateNameLabel)
     }
     
     func setupConstrains() {
@@ -110,6 +100,38 @@ extension ProfileHeader: CodeView {
             size: .init(width: 120, height: 120)
         )
         userPhotoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
+        shortEmailLabel.fillConstraints(
+            top: userPhotoImageView.bottomAnchor,
+            leading: leadingAnchor,
+            trailing: trailingAnchor,
+            bottom: nil,
+            padding: .init(top: 16, left: 16, bottom: 0, right: 16)
+        )
+        
+        userNameLabel.fillConstraints(
+            top: shortEmailLabel.bottomAnchor,
+            leading: leadingAnchor,
+            trailing: trailingAnchor,
+            bottom: nil,
+            padding: .init(top: 8, left: 16, bottom: 0, right: 16)
+        )
+        
+        bankBranchAndAccountNumberLabel.fillConstraints(
+            top: userNameLabel.bottomAnchor,
+            leading: leadingAnchor,
+            trailing: trailingAnchor,
+            bottom: nil,
+            padding: .init(top: 16, left: 16, bottom: 0, right: 16)
+        )
+        
+        bankNumberAndCorporateNameLabel.fillConstraints(
+            top: bankBranchAndAccountNumberLabel.bottomAnchor,
+            leading: leadingAnchor,
+            trailing: trailingAnchor,
+            bottom: nil,
+            padding: .init(top: 2, left: 16, bottom: 0, right: 16)
+        )
     }
     
     func setupAdditionalConfiguration() {

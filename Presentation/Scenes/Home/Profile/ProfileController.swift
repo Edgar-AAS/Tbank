@@ -2,10 +2,21 @@ import UIKit
 
 public final class ProfileController: UITableViewController  {
     var header: ProfileHeader?
-
+    
+    public override init(style: UITableView.Style) {
+        super.init(style: style)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.reuseIdentifier)
         header = ProfileHeader(self)
+        let path = getDocumentsDirectory().appendingPathComponent("userImage")
+        header?.userPhotoImageView.image = UIImage(contentsOfFile: path.path)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +51,11 @@ public final class ProfileController: UITableViewController  {
         present(imagePicker, animated: true)
     }
     
+    private func getDocumentsDirectory() -> URL {
+        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        return url
+    }
+    
     public override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return header
     }
@@ -47,18 +63,41 @@ public final class ProfileController: UITableViewController  {
     public override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return view.frame.width
     }
+    
+    let personInfos = ["Meu banco", "Meu número", "Meu email", "Dados pessoais", "Tarifas e taxas", "Meus endereços"]
+    
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.reuseIdentifier, for: indexPath) as? ProfileCell
+        cell?.textLabel?.text = personInfos[indexPath.row]
+        cell?.detailTextLabel?.text = "2211123"
+        cell?.accessoryType = .disclosureIndicator
+        return cell ?? UITableViewCell()
+    }
+    
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return personInfos.count
+    }
 }
 
 extension ProfileController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
         if let editedImage = info[.editedImage] as?  UIImage {
             header?.userPhotoImageView.image = editedImage
+            writeImage(image: editedImage, imageName: "userImage")
         } else if let originalImage = info[.originalImage] as? UIImage {
             header?.userPhotoImageView.image = originalImage
+            writeImage(image: originalImage, imageName: "userImage")
         }
+        dismiss(animated: true)
+    }
+    
+    private func writeImage(image: UIImage, imageName: String) {
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let imagePath = path.appendingPathComponent(imageName)
         
-        dismiss(animated: true, completion: nil)
+        if let jpegData = image.jpegData(compressionQuality: 1) {
+            try? jpegData.write(to: imagePath)
+        }
     }
 }
 
@@ -67,4 +106,3 @@ extension ProfileController: ProfileHeaderDelegateProtocol {
         self.selectSource()
     }
 }
-

@@ -1,4 +1,5 @@
 import UIKit
+import Domain
 
 final class ResourceCell: UICollectionViewCell {
     static let reuseIdentifier = String(describing: ResourceCell.self)
@@ -45,12 +46,15 @@ final class ResourceCell: UICollectionViewCell {
     lazy var resourceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "Lorem ipsum, Lorem ipsum Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,ipsum ipsum ipsum ipsumipsumipsumipsumipsum"
         label.textColor = .orange
         label.numberOfLines = 0
         label.lineBreakMode = .byCharWrapping
         return label
     }()
+    
+    func setupCell(resource: Resource) {
+        resourceLabel.text = resource.resourceDescription
+    }
 }
 
 extension ResourceCell: CodeView {

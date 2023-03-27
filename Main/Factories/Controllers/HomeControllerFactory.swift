@@ -8,12 +8,17 @@ import Infra
 func makeHomeViewController() -> HomeController {
     let homeController = HomeController()
     let homeRouter = HomeRouter(viewController: homeController)
-    let cacheManager = CacheManager()
-    let httpGetClient = RemoteGetService(cacheManager: cacheManager)
-    let remoteFetchUserData = makeRemoteFetchUserDataFactory(httpGetClient: httpGetClient)
+//    let cacheManager = CacheManager()
+//    let httpGetClient = makeNetworkGetClient(cacheManager: cacheManager)
+    let localFetchData = makeLocalFetchUserData()
+    let remoteFetchUserData = makeRemoteFetchUserDataFactory(httpGetClient: localFetchData)
     let presenter = HomePresenter(fetchUserData: remoteFetchUserData,
                                   router: homeRouter,
-                                  updateUserDataDisplay: homeController)
+                                  profileView: homeController,
+                                  balanceView: homeController,
+                                  cardsView: homeController,
+                                  serviceView: homeController,
+                                  resourcesView: homeController) //retendo ciclo <----
     homeController.presenter = presenter
     return homeController
 }

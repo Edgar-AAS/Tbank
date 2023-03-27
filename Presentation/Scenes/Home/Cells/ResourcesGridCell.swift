@@ -1,9 +1,12 @@
 import UIKit
+import Domain
 
 final class ResourcesGridCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
     static let reuseIdentifier = String(describing: ResourcesGridCell.self)
     var collectionView: UICollectionView!
 
+    var resources = [Resource]()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCollectionView()
@@ -28,12 +31,18 @@ final class ResourcesGridCell: UITableViewCell, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return resources.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResourceCell.reuseIdentifier, for: indexPath) as? ResourceCell
+        cell?.setupCell(resource: resources[indexPath.row])
         return cell ?? UICollectionViewCell()
+    }
+    
+    
+    func setupCell(resources: [Resource]) {
+        self.resources = resources
     }
 }
 

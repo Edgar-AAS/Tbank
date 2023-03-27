@@ -1,4 +1,5 @@
 import UIKit
+import Domain
 
 final class ServiceCell: UICollectionViewCell {
     static let reuseIdentifier = String(describing: ServiceCell.self)
@@ -34,6 +35,10 @@ final class ServiceCell: UICollectionViewCell {
         label.textAlignment = .center
         return label
     }()
+    
+    func setupCell(service: MainService) {
+        self.serviceNameLabel.text = service.serviceName
+    }
 }
 
 extension ServiceCell: CodeView {

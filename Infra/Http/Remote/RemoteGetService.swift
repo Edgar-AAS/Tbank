@@ -1,7 +1,7 @@
 import Foundation
 import Data
 
-public class RemoteGetService: HttpGetClient {
+public class RemoteGetService: HttpGetClient {    
     private let session: URLSession
     private let cacheManager: CacheType
     
@@ -11,14 +11,16 @@ public class RemoteGetService: HttpGetClient {
     }
     
     //verificar se a chave passada e igual a chave recebida
-    //se tiver dados em cache nao deve fazer a request
-    //caso faça a request, a proxima vez que for chamada deve usar o cache
+    //se tiver dados em cache nao deve fazer a request <--
+    //caso faça a request, a proxima vez que for chamada deve usar o cache <---
     
-    public func get(to url: URL, completion: @escaping (Result<Data?, HttpError>) -> (Void)) {
-        if let cacheData = cacheManager.getCachedObject(forKey: "userData") as? Data {
-            print("using cache data")
-            completion(.success(cacheData))
-            return
+    public func get(to url: URL, objectCacheKey: String?, completion: @escaping (Result<Data?, HttpError>) -> (Void)) {
+        if let key = objectCacheKey {
+            if let dataInCache = cacheManager.getCachedObject(forKey: key) as? Data {
+                print("using cache data")
+                completion(.success(dataInCache))
+                return
+            }
         }
         
         session.dataTask(with: url) { (data, response, error) in
@@ -32,7 +34,9 @@ public class RemoteGetService: HttpGetClient {
                     case 204:
                         completion(.success(nil))
                     case 200...299:
-                        self.cacheManager.createCachedObject(data as NSData, forKey: "userData")
+                        if let cacheKey = objectCacheKey {
+                            self.cacheManager.createCachedObject(data as NSData, forKey: cacheKey)
+                        }
                         completion(.success(data))
                     case 401:
                         completion(.failure(.unauthorized)) //**

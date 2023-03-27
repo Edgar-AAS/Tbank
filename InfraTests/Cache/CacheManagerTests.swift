@@ -10,7 +10,7 @@ class CacheManagerTests: XCTestCase {
     }
     
     func test_ensure_cacheManager_creates_correct_object() {
-        let sut = CacheManager()
+        let sut = makeSut()
         let testObject = TestObject(any: "Any")
         sut.createCachedObject(testObject, forKey: "anyObject")
         let receivedObject = sut.cache.object(forKey: "anyObject") as! TestObject
@@ -18,7 +18,7 @@ class CacheManagerTests: XCTestCase {
     }
     
     func test_cacheManager_creates_object_with_correct_key() {
-        let sut = CacheManager()
+        let sut = makeSut()
         let testObject = TestObject(any: "Any")
         sut.createCachedObject(testObject, forKey: "anyObject")
         let receivedObject = sut.cache.object(forKey: "wrongKey") as? TestObject
@@ -89,7 +89,7 @@ class CacheManagerTests: XCTestCase {
         XCTAssertNil(sut.cache.object(forKey: "anyObject3"))
     }
     
-    //limite em cache
+    //testanto limite em cache
     //testando se ao exceder o limite o objeto mais antigo é removido do cache
     func test_cacheManager_should_limit_cache_size() {
         let sut = makeSut()

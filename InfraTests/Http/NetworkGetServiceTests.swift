@@ -30,7 +30,7 @@ class NetworkGetServiceTests: XCTestCase {
         expectResult(.failure(.forbidden), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 403), error: nil))
     }
     
-    func test_post_should_completes_with_data_when_request_completes_with_200() {
+    func test_get_should_completes_with_data_when_request_completes_with_200() {
         expectResult(.success(makeValidData()), when: (data: makeValidData(), response: makeHttpResponse(), error: nil))
     }
     
@@ -39,33 +39,78 @@ class NetworkGetServiceTests: XCTestCase {
         expectResult(.success(nil), when: (data: makeEmptyData(), response: makeHttpResponse(statusCode: 204), error: nil))
         expectResult(.success(nil), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 204), error: nil))
     }
+    
+    //se minha request completar com sucessso e tiver uma chave para o cache deve ser criado um objeto em cache
+    //caso contrario o cache e nulo
+    //verificar se a chave forne
+    
+    func test_get_dont_creates_object_in_cache_if_objectCacheKey_is_nil() {
+        let cacheSpy = CacheManagerSpy()
+        let sut = makeSut(cacheManagerSpy: cacheSpy)
+        UrlProtocolStub.simulate(data: makeValidData(), response: makeHttpResponse(), error: nil)
+        let exp1 = expectation(description: "waiting")
+        sut.get(to: makeUrl(), objectCacheKey: nil, completion: { result in
+            switch result {
+            case .success:
+                XCTAssertEqual(cacheSpy.objectCreationKey, nil)
+                XCTAssertTrue(cacheSpy.createdObjects.isEmpty)
+                exp1.fulfill()
+            case .failure: XCTFail()
+            }
+        })
+        wait(for: [exp1], timeout: 1)
+    }
+    
+    func test_get_creates_and_read_cache_object_with_same_key() {
+        let cacheSpy = CacheManagerSpy()
+        let sut = makeSut(cacheManagerSpy: cacheSpy)
+        
+        UrlProtocolStub.simulate(data: makeValidData(), response: makeHttpResponse(), error: nil)
+        let exp1 = expectation(description: "waiting")
+        sut.get(to: makeUrl(), objectCacheKey: "anyCacheKey", completion: { result in
+            switch result {
+            case .success:
+                XCTAssertEqual(cacheSpy.objectCreationKey, "anyCacheKey")
+                XCTAssertNotNil(cacheSpy.createdObjects)
+                exp1.fulfill()
+            case .failure: XCTFail()
+            }
+        })
+        wait(for: [exp1], timeout: 1)
+        
+        UrlProtocolStub.simulate(data: makeValidData(), response: makeHttpResponse(), error: nil)
+        let exp2 = expectation(description: "waiting")
+        sut.get(to: makeUrl(), objectCacheKey: "anyCacheKey", completion: { result in
+            switch result {
+            case .success:
+                XCTAssertEqual(cacheSpy.objectRescueKey, "anyCacheKey")
+                exp2.fulfill()
+            case .failure: XCTFail()
+            }
+        })
+        wait(for: [exp2], timeout: 1)
+    }
+
+    //eu faco a requisicao, depois tento fazer dnv, porem, não deve completar a requisicao, pois ja tem objeto em cache.
+    //testo quantos objetos foram criados em cache
+    //se haver apenas um objeto signfica que nao chamou duas vezes
 }
 
-//testes validos:
-//1) se tiver dado em cache qual o comportamento da API
-//2) se tiver dado em cache qual o comportamento da API
-
-
-//B)testar classe de cache
-//testar se os dados passados no cache e igual aos recebidos
-//testar se os dados de entrada e saida nao sao nulos, caso seja passado algum dado
-//procurar por testes de cache na internet
-
-
 extension NetworkGetServiceTests {
-    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> RemoteGetService {
+    func makeSut(cacheManagerSpy: CacheType = CacheManagerSpy(), file: StaticString = #filePath, line: UInt = #line) -> RemoteGetService {
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [UrlProtocolStub.self]
         let session = URLSession(configuration: configuration)
-        let sut = RemoteGetService(session: session, cacheManager: CacheManagerSpy())
+        let sut = RemoteGetService(session: session, cacheManager: cacheManagerSpy)
         checkMemoryLeak(for: sut, file: file, line: line)
+        checkMemoryLeak(for: cacheManagerSpy, file: file, line: line)
         return sut
     }
     
     func testRequestFor(url: URL = makeUrl(), action: @escaping (URLRequest) -> Void) {
         let sut = makeSut()
         let exp = expectation(description: "waiting")
-        sut.get(to: url) { _ in exp.fulfill() }
+        sut.get(to: url, objectCacheKey: nil) { _ in exp.fulfill() }
         var request: URLRequest?
         UrlProtocolStub.observerRequest { request = $0 }
         wait(for: [exp], timeout: 1)
@@ -76,7 +121,7 @@ extension NetworkGetServiceTests {
         let sut = makeSut()
         UrlProtocolStub.simulate(data: stub.data, response: stub.response, error: stub.error)
         let exp = expectation(description: "waiting")
-        sut.get(to: makeUrl()) { (receivedResult) in
+        sut.get(to: makeUrl(), objectCacheKey: nil) { (receivedResult) in
             switch (expectedResult, receivedResult) {
                 case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError, file: file, line: line)
                 case (.success(let expectedAccount), .success(let receivedAccount)): XCTAssertEqual(expectedAccount, receivedAccount, file: file, line: line)

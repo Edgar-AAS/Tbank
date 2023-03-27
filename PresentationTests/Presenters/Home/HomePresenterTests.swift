@@ -1,11 +1,15 @@
 import XCTest
 import Domain
 import Data
+import Presentation
 
 class HomePresenterTests: XCTestCase {
-//    func test_() {
-//        let fetchUserDataSpy = FetchUserDataSpy()
-//        let sut = HomePresenter(fetchDataResource: fetchUserDataSpy)
-//        sut.getCurrentUserData()
-//    }
+    func test_() {
+        
+    }
 }
+
+class HomeRouterSpy: PresenterToRouterHomeProtocol {
+    func goToProfile(userModel: UserModelElement) { }
+}
+

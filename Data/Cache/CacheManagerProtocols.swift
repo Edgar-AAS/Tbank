@@ -1,5 +1,7 @@
 import Foundation
 
+public typealias CacheType = CreateCachedObjectProtocol & GetCachedObjectProtocol & RemoveCachedObjectProtocol & RemoveAllCachedObjectProtocol
+
 public protocol CreateCachedObjectProtocol: AnyObject {
     func createCachedObject(_ object: AnyObject, forKey key: String)
 }

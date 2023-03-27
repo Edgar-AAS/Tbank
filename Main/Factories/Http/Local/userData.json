@@ -1,6 +1,6 @@
 [
   {
-    "username": "Simao Bacamarte",
+    "username": "LIL Vinicin",
     "totalBalance": 61106.31,
     "userImageUrl": "any_url.com",
     "balanceIsHidden": true,
@@ -79,6 +79,24 @@
          "serviceIconUrl": "any_url.com",
          "serviceName": "Investir",
          "serviceTag": 7
+        }
+    ],
+    "resources:": [
+        {
+        "applogoUrl": "anyUrl",
+        "resourceDescription": "dlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidas"
+        },
+        {
+        "applogoUrl": "anyUrl",
+        "resourceDescription":"dlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidas"
+        },
+        {
+        "applogoUrl": "anyUrl",
+        "resourceDescription": "dlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdasdasdasdasodaodakdaoda"
+        },
+        {
+        "applogoUrl": "anyUrl",
+        "resourceDescription": "dlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdasdadaisidsaodiajdsijdaidjaidjadjaijaidjadiajdaidjaidajaodijada"
         }
     ]
   }

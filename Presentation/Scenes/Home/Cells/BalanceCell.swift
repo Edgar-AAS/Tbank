@@ -37,6 +37,12 @@ final class BalanceCell: UITableViewCell {
         button.tintColor = .white
         return button
     }()
+    
+    func setupCell(with viewModel: BalanceViewModel?) {
+        guard let viewModel = viewModel else { return }
+        balanceLabel.text = viewModel.totalBalance
+        //logica do olho
+    }
 }
 
 extension BalanceCell: CodeView {

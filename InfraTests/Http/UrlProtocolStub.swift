@@ -24,11 +24,13 @@ class UrlProtocolStub: URLProtocol {
         return request
     }
     
+    //verificar se tem dados em cache e retorna-los caso tenha
+    
     override open func startLoading() {
         DispatchQueue.main.sync {
             UrlProtocolStub.emit?(request)
         }
-
+        
         if let data = UrlProtocolStub.data {
             client?.urlProtocol(self, didLoad: data)
         }

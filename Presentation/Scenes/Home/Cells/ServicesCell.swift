@@ -1,9 +1,12 @@
 import UIKit
+import Domain
 
 final class ServicesCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
     static let reuseIdentifier = String(describing: ServicesCell.self)
     var collectionView: UICollectionView!
-
+    
+    var services = [MainService]()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCollectionView()
@@ -27,12 +30,17 @@ final class ServicesCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         collectionView.register(ServiceCell.self, forCellWithReuseIdentifier: ServiceCell.reuseIdentifier)
     }
     
+    func setupCell(services: [MainService]) {
+        self.services = services
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return services.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ServiceCell.reuseIdentifier, for: indexPath) as? ServiceCell
+        cell?.setupCell(service: services[indexPath.item])
         cell?.backgroundColor = .yellow
         return cell ?? UICollectionViewCell()
     }

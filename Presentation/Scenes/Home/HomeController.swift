@@ -1,4 +1,5 @@
 import UIKit
+import Domain
 
 private enum HomeCellsType: Int {
     case balanceCell
@@ -16,37 +17,23 @@ public final class HomeController: UITableViewController {
     }()
     
     public var presenter: ViewToPresenterHomeProtocol?
+    public var header: PersonHeader?
+    public var balanceViewModel: BalanceViewModel?
+    public var cardsViewModel: CardsViewViewModel?
+    public var mainServices = [MainService]()
+    public var appResources = [Resource]()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupHeader()
         tableView.addSubview(refreshControlIndicator)
-        testParse(stringDate: "2016-02-29 12:24:26")
+        presenter?.fetchData()
     }
 
-    //vai receber a data em utc
-    //eu recebo um UTC converto para a linguagem do device
-    
-    //definir qual formato voce rebeceu
-    //definir qual formato vou quer setar
-    
-    func testParse(stringDate: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-        let setFormatter = DateFormatter()
-        setFormatter.dateFormat = "MM/yy" //<- o idioma do aplicativo deve ser levado em consideração
-        
-        if let date = dateFormatter.date(from: stringDate) {
-            print(setFormatter.string(from: date))
-        }
-    }
-    
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        presenter?.fetchData()
     }
     
     @objc private func refresh(sender: UIRefreshControl) {
@@ -63,8 +50,8 @@ public final class HomeController: UITableViewController {
     
 //MARK: - Setup Header and TableView
     private func setupHeader() {
-        let header = PersonHeader(frame: .init(x: 0, y: 0, width: view.frame.width, height: 100))
-        header.delegate = self
+        header = PersonHeader(frame: .init(x: 0, y: 0, width: view.frame.width, height: 100))
+        header?.delegate = self
         tableView.tableHeaderView = header
     }
     
@@ -97,32 +84,59 @@ extension HomeController {
         switch type {
         case .balanceCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: BalanceCell.reuseIdentifier, for: indexPath) as? BalanceCell
+            cell?.setupCell(with: balanceViewModel)
             return cell ?? UITableViewCell()
         case .cardCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: CardCell.reuseIdentifier, for: indexPath) as? CardCell
+            cell?.setupCell(with: cardsViewModel)
             return cell ?? UITableViewCell()
         case .serviceCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: ServicesCell.reuseIdentifier, for: indexPath) as? ServicesCell
+            cell?.setupCell(services: mainServices)
             return cell ?? UITableViewCell()
         case .resourcesCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: ResourcesGridCell.reuseIdentifier, for: indexPath) as? ResourcesGridCell
+            cell?.setupCell(resources: appResources)
             return cell ?? UITableViewCell()
         default: return UITableViewCell()
         }
     }
 }
 
-//MARK: - PersonHeader Delegates
+//MARK: - PersonHeader Delegate
 extension HomeController: PersonHeaderDelegateProtocol {
     public func profileButtonDidTapped() {
         presenter?.routeToProfile()
     }
 }
 
-//MARK: Presenter -> View
-extension HomeController: RefreshUserDataDisplay {
-    public func update(viewModel: UserDataViewModel) {
-        
+//MARK: - Presenter -> View
+extension HomeController: ProfileView {
+    public func updateProfileView(viewModel: ProfileViewModel) {
+        header?.updateHeaderDisplay(viewModel: viewModel)
     }
 }
 
+extension HomeController: BalanceView {
+    public func updateBalanceView(viewModel: BalanceViewModel) {
+        balanceViewModel = viewModel
+    }
+}
+
+extension HomeController: CardsView {
+    public func updateCardsView(viewModel: CardsViewViewModel) {
+        cardsViewModel = viewModel
+    }
+}
+
+extension HomeController: ServicesView {
+    public func updateServicesView(services: [MainService]) {
+        mainServices = services
+    }
+}
+
+extension HomeController: ResourcesView {
+    public func updateResourcesView(resources: [Resource]) {
+        appResources = resources
+    }
+}
