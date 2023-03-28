@@ -134,5 +134,7 @@ extension LoginView: CodeView {
     func setupDelegateTextFields(delegate: UITextFieldDelegate) {
         emailTextField.delegate = delegate
         passwordTextField.delegate = delegate
+        emailTextField.text = "test@gmail.com"
+        passwordTextField.text = "123"
     }
 }

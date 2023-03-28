@@ -3,7 +3,6 @@ import Infra
 import Data
 
 class NetworkPostServiceTests: XCTestCase {
-    //1) testar url
     func test_post_should_make_request_with_valid_url_and_method() {
         let url = makeUrl()
         testRequestFor(url: url, data: makeValidData()) { (request) in
@@ -46,8 +45,6 @@ class NetworkPostServiceTests: XCTestCase {
         expectResult(.success(nil), when: (data: makeEmptyData(), response: makeHttpResponse(statusCode: 204), error: nil))
         expectResult(.success(nil), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 204), error: nil))
     }
-    
-    //se 
 }
 
 extension NetworkPostServiceTests {

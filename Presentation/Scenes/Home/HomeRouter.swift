@@ -10,7 +10,7 @@ public class HomeRouter {
 }
 
 extension HomeRouter: PresenterToRouterHomeProtocol {
-    public func goToProfile(userModel: UserModelElement) {
+    public func goToProfile() {
         let profileController = ProfileController(style: .grouped)
         viewController?.navigationController?.pushViewController(profileController, animated: true)
     }

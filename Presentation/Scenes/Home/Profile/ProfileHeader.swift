@@ -4,7 +4,6 @@ class ProfileHeader: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        backgroundColor = .lightGray
     }
     
     convenience init(_ delegate: ProfileHeaderDelegateProtocol?) {
@@ -71,7 +70,7 @@ class ProfileHeader: UIView {
 
 // MARK: - Private Method
 extension ProfileHeader {
-    func configureGestureRecognizer() {
+    private func configureGestureRecognizer() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         userPhotoImageView.addGestureRecognizer(tapGesture)
     }

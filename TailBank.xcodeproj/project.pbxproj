@@ -172,6 +172,11 @@
 		72F95E9429C0BEA900D92E6D /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F95E9329C0BEA900D92E6D /* HomePresenterTests.swift */; };
 		72F95EAC29C0DF6700D92E6D /* FetchUserDataSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F95EAB29C0DF6700D92E6D /* FetchUserDataSpy.swift */; };
 		72F95EBE29C0EC9D00D92E6D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F95EBD29C0EC9D00D92E6D /* HomePresenter.swift */; };
+		72FEAB7A29D33C55002CA545 /* UpdatePersonTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FEAB7929D33C55002CA545 /* UpdatePersonTableView.swift */; };
+		72FEAB9129D340BC002CA545 /* PersonDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FEAB9029D340BC002CA545 /* PersonDataModel.swift */; };
+		72FEAB9A29D34168002CA545 /* FetchPersonDataResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FEAB9929D34168002CA545 /* FetchPersonDataResources.swift */; };
+		72FEABA329D341B8002CA545 /* RemoteFetchPersonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FEABA229D341B8002CA545 /* RemoteFetchPersonData.swift */; };
+		72FEABAC29D34345002CA545 /* RemoteFetchPersonDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FEABAB29D34345002CA545 /* RemoteFetchPersonDataTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -505,6 +510,11 @@
 		72F95EAB29C0DF6700D92E6D /* FetchUserDataSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserDataSpy.swift; sourceTree = "<group>"; };
 		72F95EBD29C0EC9D00D92E6D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		72F95F1E29C12DB600D92E6D /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		72FEAB7929D33C55002CA545 /* UpdatePersonTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePersonTableView.swift; sourceTree = "<group>"; };
+		72FEAB9029D340BC002CA545 /* PersonDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDataModel.swift; sourceTree = "<group>"; };
+		72FEAB9929D34168002CA545 /* FetchPersonDataResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchPersonDataResources.swift; sourceTree = "<group>"; };
+		72FEABA229D341B8002CA545 /* RemoteFetchPersonData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFetchPersonData.swift; sourceTree = "<group>"; };
+		72FEABAB29D34345002CA545 /* RemoteFetchPersonDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFetchPersonDataTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -702,6 +712,7 @@
 				72C8BF7A29CCC7F9005D3B91 /* CardsView.swift */,
 				72C8BF9329CCDB49005D3B91 /* ServicesView.swift */,
 				72C8BF9C29CCE066005D3B91 /* ResourcesView.swift */,
+				72FEAB7929D33C55002CA545 /* UpdatePersonTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -902,6 +913,7 @@
 				724AB0F629927C45000616A7 /* AddAccount.swift */,
 				72BF3E9029AFD9F5001D4BCA /* Authentication.swift */,
 				72770D2A29BFC5500081B57C /* FetchUserDataResources.swift */,
+				72FEAB9929D34168002CA545 /* FetchPersonDataResources.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -912,6 +924,7 @@
 				724AB0FF299281B4000616A7 /* AccountModel.swift */,
 				724AB1702992A48B000616A7 /* Model.swift */,
 				72770D2029BFBD860081B57C /* UserModel.swift */,
+				72FEAB9029D340BC002CA545 /* PersonDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1145,6 +1158,7 @@
 				72BF3EC729B0F3A7001D4BCA /* RemoteAuthentication.swift */,
 				72B8187C2992B14A0007C070 /* RemoteAddAccount.swift */,
 				72770D5E29BFEDD10081B57C /* RemoteFetchUserData.swift */,
+				72FEABA229D341B8002CA545 /* RemoteFetchPersonData.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1155,6 +1169,7 @@
 				724AB15229928352000616A7 /* RemoteAddAccountTests.swift */,
 				72BF3EAC29AFDD9E001D4BCA /* RemoteAuthenticationTests.swift */,
 				72770D3429BFC9160081B57C /* RemoteFetchUserDataTests.swift */,
+				72FEABAB29D34345002CA545 /* RemoteFetchPersonDataTests.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1819,6 +1834,7 @@
 				728B06C629C253B600DD5A83 /* ServicesCell.swift in Sources */,
 				728B06D829C253CD00DD5A83 /* FormTextField.swift in Sources */,
 				723FBBBA29C3C09E0006607C /* ProfileContract.swift in Sources */,
+				72FEAB7A29D33C55002CA545 /* UpdatePersonTableView.swift in Sources */,
 				728B06C129C253B600DD5A83 /* BalanceCell.swift in Sources */,
 				728B06A129C2539E00DD5A83 /* SignUpView.swift in Sources */,
 				72C8BF7B29CCC7F9005D3B91 /* CardsView.swift in Sources */,
@@ -1960,6 +1976,7 @@
 				72B818992992C10A0007C070 /* HttpError.swift in Sources */,
 				72BF3EC829B0F3A7001D4BCA /* RemoteAuthentication.swift in Sources */,
 				72B8187D2992B14A0007C070 /* RemoteAddAccount.swift in Sources */,
+				72FEABA329D341B8002CA545 /* RemoteFetchPersonData.swift in Sources */,
 				72BF3FB929B286D7001D4BCA /* HttpGetClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1970,6 +1987,7 @@
 			files = (
 				72770D3529BFC9160081B57C /* RemoteFetchUserDataTests.swift in Sources */,
 				72B818CD2992E96D0007C070 /* TestsFactorys.swift in Sources */,
+				72FEABAC29D34345002CA545 /* RemoteFetchPersonDataTests.swift in Sources */,
 				724AB15329928352000616A7 /* RemoteAddAccountTests.swift in Sources */,
 				72B818A32992E50A0007C070 /* TestsExtensions.swift in Sources */,
 				72BF3EAD29AFDD9E001D4BCA /* RemoteAuthenticationTests.swift in Sources */,
@@ -1984,10 +2002,12 @@
 			files = (
 				724AB1712992A48B000616A7 /* Model.swift in Sources */,
 				72770D2B29BFC5500081B57C /* FetchUserDataResources.swift in Sources */,
+				72FEAB9129D340BC002CA545 /* PersonDataModel.swift in Sources */,
 				724AB0F729927C45000616A7 /* AddAccount.swift in Sources */,
 				72B818932992BE3C0007C070 /* DomainError.swift in Sources */,
 				72BF3E9129AFD9F5001D4BCA /* Authentication.swift in Sources */,
 				724AB100299281B4000616A7 /* AccountModel.swift in Sources */,
+				72FEAB9A29D34168002CA545 /* FetchPersonDataResources.swift in Sources */,
 				72770D2129BFBD860081B57C /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

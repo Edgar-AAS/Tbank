@@ -3,7 +3,7 @@ import Domain
 
 public final class HomePresenter {
     private let router: PresenterToRouterHomeProtocol?
-    private let fetchUserData: FetchUserDataResources
+    private let fetchUserData: FetchUserDataResources //<- use case
     private let profileView: ProfileView  //<- controller
     private let balanceView: BalanceView //<- controller
     private let cardsView: CardsView //<- controller
@@ -60,6 +60,6 @@ extension HomePresenter: ViewToPresenterHomeProtocol {
     }
     
     public func routeToProfile() {
-        router?.goToProfile(userModel: userData!) //passa os dados para o router
+        router?.goToProfile() //passa os dados para o router
     }
 }

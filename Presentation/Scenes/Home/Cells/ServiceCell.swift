@@ -32,6 +32,7 @@ final class ServiceCell: UICollectionViewCell {
         label.text = "Recarga de celular"
         label.numberOfLines = 0
         label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textColor = .black
         label.textAlignment = .center
         return label
     }()
@@ -65,7 +66,7 @@ extension ServiceCell: CodeView {
             leading: leadingAnchor,
             trailing: trailingAnchor,
             bottom: bottomAnchor,
-            padding: .init(top: 8, left: 2, bottom: 2, right: 2)
+            padding: .init(top: 2, left: 2, bottom: 2, right: 2)
         )
     }
     

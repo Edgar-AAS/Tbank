@@ -19,19 +19,12 @@ public final class PersonHeader: UIView {
     
     weak var delegate: PersonHeaderDelegateProtocol?
     
-    lazy var profileButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "person"), for: .normal)
-        button.backgroundColor = UIColor(hexString: "9B2EFE")
-        button.contentMode = .scaleAspectFit
-        button.tintColor = .white
-        button.addTarget(self, action: #selector(profileButtonTapped), for: .touchUpInside)
-        return button
+    lazy var profileImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: "person"))
+        imageView.backgroundColor = .orange
+        imageView.isUserInteractionEnabled = true
+        return imageView
     }()
-    
-    @objc private func profileButtonTapped() {
-        delegate?.profileButtonDidTapped()
-    }
     
     lazy var userNameLabel: UILabel = {
         let label = UILabel()
@@ -50,8 +43,8 @@ public final class PersonHeader: UIView {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        profileButton.layer.cornerRadius = profileButton.frame.size.width / 2
-        profileButton.clipsToBounds = true
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+        profileImageView.layer.masksToBounds = true
     }
     
     lazy var headerView: UIView = {
@@ -69,11 +62,20 @@ public final class PersonHeader: UIView {
     private var headerViewBottom = NSLayoutConstraint()
     var containerView = UIView()
     private var containerViewHeight = NSLayoutConstraint()
+    
+    private func configureGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
+        profileImageView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func profileImageViewTapped() {
+        delegate?.profileButtonDidTapped()
+    }
 }
 
 extension PersonHeader: CodeView {
     func buildViewHierarchy() {
-        headerView.addSubview(profileButton)
+        headerView.addSubview(profileImageView)
         headerView.addSubview(userNameLabel)
         headerView.addSubview(notificationButton)
         addSubview(containerView)
@@ -98,7 +100,7 @@ extension PersonHeader: CodeView {
         headerViewHeight = headerView.heightAnchor.constraint(equalTo: containerView.heightAnchor)
         headerViewHeight.isActive = true
         
-        profileButton.fillConstraints(
+        profileImageView.fillConstraints(
             top: containerView.topAnchor,
             leading: leadingAnchor,
             trailing: nil,
@@ -111,13 +113,13 @@ extension PersonHeader: CodeView {
         
         userNameLabel.fillConstraints(
             top: nil,
-            leading: profileButton.trailingAnchor,
+            leading: profileImageView.trailingAnchor,
             trailing: nil,
             bottom: nil,
             padding: .init(top: 0, left: 16, bottom: 0, right: 0)
         )
         
-        userNameLabel.centerYAnchor.constraint(equalTo: profileButton.centerYAnchor).isActive = true
+        userNameLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true
         
         notificationButton.fillConstraints(
             top: userNameLabel.topAnchor,
@@ -127,6 +129,10 @@ extension PersonHeader: CodeView {
             padding: .init(top: 0, left: 0, bottom: 0, right: 16),
             size: .init(width: 24, height: 24)
         )
+    }
+    
+    func setupAdditionalConfiguration() {
+        configureGestureRecognizer()
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {

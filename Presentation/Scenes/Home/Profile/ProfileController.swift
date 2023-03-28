@@ -11,17 +11,26 @@ public final class ProfileController: UITableViewController  {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private var presenter: ViewToPresenterProfileProtocol?
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.reuseIdentifier)
-        header = ProfileHeader(self)
-        let path = getDocumentsDirectory().appendingPathComponent("userImage")
-        header?.userPhotoImageView.image = UIImage(contentsOfFile: path.path)
+        setupHeader()
+        presenter?.fetchPersonalData()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+    }
+    
+    private func setupHeader() {
+        header = ProfileHeader(self)
+        header?.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 300)
+        let path = getDocumentsDirectory().appendingPathComponent("userImage")
+        header?.userPhotoImageView.image = UIImage(contentsOfFile: path.path)
+        tableView.tableHeaderView = header
     }
     
     private func selectSource() {
@@ -56,12 +65,13 @@ public final class ProfileController: UITableViewController  {
         return url
     }
     
-    public override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return header
-    }
-    
-    public override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return view.frame.width
+    public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+            case 0:
+            return "Minha Conta"
+        default:
+            return nil
+        }
     }
     
     let personInfos = ["Meu banco", "Meu número", "Meu email", "Dados pessoais", "Tarifas e taxas", "Meus endereços"]

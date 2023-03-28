@@ -9,5 +9,5 @@ public protocol ViewToPresenterHomeProtocol: AnyObject {
 //botar talvez em dois protocolos
 
 public protocol PresenterToRouterHomeProtocol {
-    func goToProfile(userModel: UserModelElement)
+    func goToProfile()
 }

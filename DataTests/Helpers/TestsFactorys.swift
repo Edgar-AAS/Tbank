@@ -53,3 +53,7 @@ func makeUserModel() -> UserModel {
         resources: []
     )]
 }
+
+func makePersonModel() -> PersonDataModel {
+    return PersonDataModel(bankBranch: "", bankAccountNumber: "", bankNumber: "", corporateName: "")
+}
