@@ -56,7 +56,7 @@ class RemoteFetchUserDataTests: XCTestCase {
         let httpClientSpy = HttpGetClientSpy()
         let sut = RemoteFetchUserData(url: url, httpGetClient: httpClientSpy, objectCacheKey: objectCacheKey)
         checkMemoryLeak(for: sut, file: file, line: line)
-        checkMemoryLeak(for: httpClientSpy, file: file, line: line) //http client retendo
+        checkMemoryLeak(for: httpClientSpy, file: file, line: line)
         return (sut, httpClientSpy)
     }
     

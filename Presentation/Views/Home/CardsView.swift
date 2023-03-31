@@ -1,10 +1,11 @@
 import Foundation
+import Domain
 
 public protocol CardsView {
     func updateCardsView(viewModel: CardsViewViewModel)
 }
 
-public struct CardsViewViewModel {
+public struct CardsViewViewModel: Model {
     public let cards: [CardModel]
     
     public init(cards: [CardModel]) {
@@ -12,7 +13,7 @@ public struct CardsViewViewModel {
     }
 }
 
-public struct CardModel {
+public struct CardModel: Model {
     public let isVirtual: Bool
     public let balance: String
     public let cardFlag: String

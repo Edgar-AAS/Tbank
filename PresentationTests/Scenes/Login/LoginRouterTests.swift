@@ -7,7 +7,7 @@ class LoginRouterTests: XCTestCase {
         XCTAssertTrue(sut is PresenterToRouterLoginProtocol)
     }
     
-    func test_sut_should_call_correct_controller() {
+    func test_gotToHome_should_call_correct_controller() {
         let (sut, navigation) = makeSut()
         sut.goToHome()
         XCTAssertEqual(navigation.viewControllers.count, 1)

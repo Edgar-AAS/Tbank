@@ -18,7 +18,7 @@ public class RemoteFetchPersonData: FetchPersonDataResources {
             switch result {
             case .failure: completion(.failure(.unexpected)) //tratar os outros erros se for necessario
             case .success(let data):
-                if let model: PersonDataModel = data?.toModel() {
+                if let model: PersonData = data?.toModel() {
                     completion(.success(model))
                 } else {
                     completion(.failure(.unexpected))
@@ -27,3 +27,5 @@ public class RemoteFetchPersonData: FetchPersonDataResources {
         })
     }
 }
+
+//verificar se sao nove caracteres e adiciona um ao penultimo

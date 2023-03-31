@@ -1,10 +1,11 @@
 import Foundation
+import Domain
 
 public protocol ProfileView {
     func updateProfileView(viewModel: ProfileViewModel)
 }
 
-public struct ProfileViewModel {
+public struct ProfileViewModel: Model {
     public let userImageUrl: String
     public let username: String
     public let isNotifying: Bool

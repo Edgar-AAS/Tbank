@@ -38,22 +38,38 @@ func makeAuthenticationModel() -> AuthenticationModel {
 }
 
 func makeUserModel() -> UserModel {
-    return [UserModelElement(
+        return [UserModelElement(
         username: "Edgar",
-        totalBalance: 3500.00,
-        userImageURL: "",
+        totalBalance: 3530.45,
+        userImageURL: "https://anyUrl.com",
         balanceIsHidden: true,
         isNotifying: false
         , bankBranch: "",
         bankAccountNumber: "",
         bankNumber: "",
         corporateName: "",
-        cards: [],
-        mainServices: [],
-        resources: []
+        cards: [
+            Card(isVirtual: true,
+                 balance: 530,
+                 cardFlag: "Mastercard",
+                 cardTag: 1,
+                 cardBrandImageURL: "anyImageUrl.com",
+                 cardNumber: "3847890945671246",
+                 cardExpirationDate: "2032-04-12 23:14:26",
+                 cardFunction: "Débito e crédito",
+                 cvc: "345"
+            )],
+        mainServices: [
+            MainService(serviceIconURL: "anyIconUrl.com", serviceName: "Área pix", serviceTag: 0),
+            MainService(serviceIconURL: "anyIconUrl.com", serviceName: "Depositar", serviceTag: 1)
+        ],
+        resources: [
+            Resource(applogoURL: "anyUrl", resourceDescription: "Description 123 test"),
+            Resource(applogoURL: "anyUrl", resourceDescription: "123 test Description")
+        ]
     )]
 }
 
-func makePersonModel() -> PersonDataModel {
-    return PersonDataModel(bankBranch: "", bankAccountNumber: "", bankNumber: "", corporateName: "")
+func makePersonModel() -> PersonData {
+    return PersonData(bankBranch: "", bankAccountNumber: "", bankNumber: "", corporateName: "", adresses: [])
 }

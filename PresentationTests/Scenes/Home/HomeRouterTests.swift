@@ -12,13 +12,11 @@ class HomeRouterTests: XCTestCase {
         let sut = makeSut()
         XCTAssertTrue(sut is PresenterToRouterHomeProtocol)
     }
-    
-    
 }
 
 extension HomeRouterTests {
     func makeSut(viewController: UIViewController = HomeController(), file: StaticString = #filePath, line: UInt = #line) -> HomeRouter {
-        let sut = HomeRouter(viewController: viewController)
+        let sut = HomeRouter(viewController: viewController, destinationController: ProfileController(style: .grouped))
         checkMemoryLeak(for: sut, file: file, line: line)
         return sut
     }

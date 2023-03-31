@@ -1,4 +1,5 @@
 import UIKit
+import Domain
 
 public final class ProfileController: UITableViewController  {
     var header: ProfileHeader?
@@ -11,7 +12,7 @@ public final class ProfileController: UITableViewController  {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var presenter: ViewToPresenterProfileProtocol?
+    public var presenter: ViewToPresenterProfileProtocol?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +54,13 @@ public final class ProfileController: UITableViewController  {
     }
     
     private func selectPicture(sourceType: UIImagePickerController.SourceType) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = sourceType
-        imagePicker.allowsEditing = true
-        imagePicker.delegate = self
-        present(imagePicker, animated: true)
+        DispatchQueue.main.async {
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = sourceType
+            imagePicker.allowsEditing = true
+            imagePicker.delegate = self
+            self.present(imagePicker, animated: true)
+        }
     }
     
     private func getDocumentsDirectory() -> URL {
@@ -67,7 +70,7 @@ public final class ProfileController: UITableViewController  {
     
     public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-            case 0:
+        case 0:
             return "Minha Conta"
         default:
             return nil
@@ -108,6 +111,18 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
         if let jpegData = image.jpegData(compressionQuality: 1) {
             try? jpegData.write(to: imagePath)
         }
+    }
+}
+
+extension ProfileController: UpdatePersonTableView {
+    public func updateWith(viewModel: PersonData) {
+        print(viewModel)
+    }
+}
+
+extension ProfileController: AlertView {
+    public func showMessage(viewModel: AlertViewModel) {
+        print(viewModel.message)
     }
 }
 

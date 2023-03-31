@@ -1,12 +1,12 @@
 import Foundation
 
 public enum CurrencySymbols: String {
-    case brazilianReal = "R$ "
-    case americanDollar = "$ "
-    case euro = "€ "
-    case poundSterling = "£ "
-    case japaneseYen = "¥ "
-    case russianRuble = "₽ "
+    case brazilianReal = "R$"
+    case americanDollar = "$"
+    case euro = "€"
+    case poundSterling = "£"
+    case japaneseYen = "¥"
+    case russianRuble = "₽"
     case swissFranc = "CHF"
     case canadianDollar = "CAD"
     case australianDollar = "AUD"
@@ -20,6 +20,6 @@ extension Double {
         formatter.locale = Locale(identifier: "pt_BR")
         formatter.currencySymbol = symbol.rawValue
         formatter.alwaysShowsDecimalSeparator = true
-        return formatter.string(for: self) ?? String(format: "%.2f", self)
+        return formatter.string(for: self) ?? "Não foi possível mostrar o saldo"
     }
 }

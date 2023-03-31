@@ -3,15 +3,16 @@ import Domain
 
 public class HomeRouter {
     public weak var viewController: UIViewController?
+    public var destinationController: UIViewController
     
-    public init(viewController: UIViewController?) {
+    public init(viewController: UIViewController?, destinationController: UIViewController) {
         self.viewController = viewController
+        self.destinationController = destinationController
     }
 }
 
 extension HomeRouter: PresenterToRouterHomeProtocol {
     public func goToProfile() {
-        let profileController = ProfileController(style: .grouped)
-        viewController?.navigationController?.pushViewController(profileController, animated: true)
+        viewController?.navigationController?.pushViewController(destinationController, animated: true)
     }
 }

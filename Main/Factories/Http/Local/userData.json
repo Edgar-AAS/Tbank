@@ -5,10 +5,6 @@
     "userImageUrl": "any_url.com",
     "balanceIsHidden": true,
     "isNotifying": false,
-    "bankBranch": "0008",
-    "bankAccountNumber": "34587698-9",
-    "bankNumber": "0212",
-    "corporateName": "IT Soluções bancárias S.A",
     "cards": [
         {
         "isVirtual": true,

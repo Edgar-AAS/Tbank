@@ -1,0 +1,15 @@
+{
+    "bankBranch": "0008",
+    "bankAccountNumber": "345876989",
+    "bankNumber": "512",
+    "corporateName": "IT Soluções bancárias S.A",
+    "adresses": [
+        {
+            "streetAddress": "Rua dos bobos",
+            "city": "São Paulo",
+            "state": "SP",
+            "number": "0",
+            "zipCode": "12345678"
+        }
+    ]
+}

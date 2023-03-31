@@ -6,8 +6,8 @@ public protocol ViewToPresenterHomeProtocol: AnyObject {
     func routeToProfile()
     func fetchData()
 }
-//botar talvez em dois protocolos
 
+//botar talvez em dois protocolos
 public protocol PresenterToRouterHomeProtocol {
     func goToProfile()
 }

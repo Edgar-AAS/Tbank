@@ -8,7 +8,6 @@ public struct UserModelElement: Model {
     public let totalBalance: Double
     public let userImageURL: String
     public let balanceIsHidden, isNotifying: Bool
-    public let bankBranch, bankAccountNumber, bankNumber, corporateName: String
     public let cards: [Card]
     public let mainServices: [MainService]
     public let resources: [Resource]
@@ -16,7 +15,7 @@ public struct UserModelElement: Model {
     enum CodingKeys: String, CodingKey {
         case username, totalBalance
         case userImageURL = "userImageUrl"
-        case balanceIsHidden, isNotifying, bankBranch, bankAccountNumber, bankNumber, corporateName, cards, mainServices
+        case balanceIsHidden, isNotifying, cards, mainServices
         case resources = "resources:"
     }
 
@@ -26,10 +25,6 @@ public struct UserModelElement: Model {
         self.userImageURL = userImageURL
         self.balanceIsHidden = balanceIsHidden
         self.isNotifying = isNotifying
-        self.bankBranch = bankBranch
-        self.bankAccountNumber = bankAccountNumber
-        self.bankNumber = bankNumber
-        self.corporateName = corporateName
         self.cards = cards
         self.mainServices = mainServices
         self.resources = resources

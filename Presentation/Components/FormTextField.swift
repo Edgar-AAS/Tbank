@@ -19,6 +19,5 @@ class FormTextField: UITextField {
         layer.borderColor = UIColor.orange.cgColor
         layer.borderWidth = 1
         backgroundColor = UIColor(hexString: "404258")
-        autocorrectionType = .no
     }
 }

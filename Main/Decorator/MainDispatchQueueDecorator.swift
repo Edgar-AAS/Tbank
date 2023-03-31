@@ -29,3 +29,11 @@ extension MainQueueDispatchDecorator: Authentication where T: Authentication {
         }
     }
 }
+
+extension MainQueueDispatchDecorator: FetchUserDataResources where T: FetchUserDataResources {
+    public func fetch(completion: @escaping (Result<UserModel, DomainError>) -> Void) {
+        instance.fetch { (result) in
+            self.dispatch { completion(result) }
+        }
+    }
+}

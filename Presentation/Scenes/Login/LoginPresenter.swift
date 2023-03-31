@@ -21,6 +21,9 @@ public final class LoginPresenter {
                 self.router = router
     }
     
+    
+    //meu router deve ser do tipo PresenterToRouterLoginProtocol
+    //se meu http client completar com sucesso o metodo router.goToHome deve ser chamado
     public func login(loginRequest: LoginRequest) {
         if let message = validation.validate(data: loginRequest.toJson()) {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: message))
