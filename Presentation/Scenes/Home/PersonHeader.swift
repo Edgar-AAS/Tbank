@@ -30,14 +30,16 @@ public final class PersonHeader: UIView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.text = "Edgar Arlindo"
+        label.minimumScaleFactor = 0.5
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = .white
         return label
-    }()
+    }() 
     
     lazy var notificationButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "bell"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = .secundaryColor
         return button
     }()
     
@@ -50,7 +52,7 @@ public final class PersonHeader: UIView {
     lazy var headerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(hexString: "2D2173")
+        view.backgroundColor = .primaryColor
         return view
     }()
     
@@ -106,7 +108,7 @@ extension PersonHeader: CodeView {
             trailing: nil,
             bottom: nil,
             padding: .init(top: 16, left: 20, bottom: 0, right: 0),
-            size: .init(width: 64, height: 64)
+            size: .init(width: K.ViewsSize.CircularButton.medium, height: K.ViewsSize.CircularButton.medium)
         )
         
         headerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
@@ -114,16 +116,16 @@ extension PersonHeader: CodeView {
         userNameLabel.fillConstraints(
             top: nil,
             leading: profileImageView.trailingAnchor,
-            trailing: nil,
+            trailing: notificationButton.leadingAnchor,
             bottom: nil,
-            padding: .init(top: 0, left: 16, bottom: 0, right: 0)
+            padding: .init(top: 0, left: 16, bottom: 0, right: 16)
         )
         
         userNameLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true
         
         notificationButton.fillConstraints(
             top: userNameLabel.topAnchor,
-            leading: userNameLabel.trailingAnchor,
+            leading: nil,
             trailing: trailingAnchor,
             bottom: nil,
             padding: .init(top: 0, left: 0, bottom: 0, right: 16),

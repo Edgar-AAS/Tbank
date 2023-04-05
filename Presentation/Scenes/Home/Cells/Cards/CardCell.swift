@@ -1,5 +1,9 @@
 import UIKit
 
+protocol AddCardButtonDelegateProtocol: AnyObject {
+    func addCardButtonDidTapped()
+}
+
 final class CardCell: UITableViewCell, UICollectionViewDelegate {
     static let reuseIdentifier = String(describing: CardCell.self)
     var collectionView: UICollectionView!
@@ -10,7 +14,10 @@ final class CardCell: UITableViewCell, UICollectionViewDelegate {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCollectionView()
         setupView()
+        contentView.backgroundColor = .primaryColor
     }
+    
+    weak var delegate: AddCardButtonDelegateProtocol?
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -18,7 +25,7 @@ final class CardCell: UITableViewCell, UICollectionViewDelegate {
     
     lazy var myCardsLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 24)
         label.text = "Meus cartões"
         label.textColor = .white
         return label
@@ -28,20 +35,25 @@ final class CardCell: UITableViewCell, UICollectionViewDelegate {
         let button = UIButton(type: .system)
         let buttonImage = UIImage(systemName: "plus")
         button.setImage(buttonImage, for: .normal)
-        button.tintColor = .white
+        button.tintColor = .secundaryColor
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor(hexString: "2D2D2D").cgColor
+        button.layer.borderColor = UIColor.secundaryColor.cgColor
+        button.addTarget(self, action: #selector(addCardButtonTap), for: .touchUpInside)
         button.layer.cornerRadius = 10
-        button.backgroundColor = UIColor(hexString: "202020")
+        button.backgroundColor = UIColor(hexString: "0A2647")
         return button
     }()
     
-    func setupCollectionView() {
-        let layout = UICollectionViewFlowLayout()
+    @objc private func addCardButtonTap() {
+        delegate?.addCardButtonDidTapped()
+    }
+    
+    private func setupCollectionView() {
+        let layout = SnappingLayout()
         layout.estimatedItemSize = .zero
         layout.scrollDirection = .horizontal
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .red
+        collectionView = UICollectionView(frame: bounds, collectionViewLayout: layout)
+        collectionView.backgroundColor = .primaryColor
         collectionView.decelerationRate = .fast
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
@@ -64,7 +76,7 @@ extension CardCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCardCell.reuseIdentifier, for: indexPath) as? MyCardCell
         cell?.setupCell(with: cards[indexPath.row])
-        cell?.backgroundColor = .purple
+        cell?.backgroundColor = UIColor(hexString: "0A2647")
         return cell ?? UICollectionViewCell()
     }
 }
@@ -91,7 +103,7 @@ extension CardCell: CodeView {
             trailing: contentView.trailingAnchor,
             bottom: nil,
             padding: .init(top: 8, left: 0, bottom: 0, right: 16),
-            size: .init(width: 100, height: 44)
+            size: .init(width: 80, height: 44)
         )
         
         collectionView.fillConstraints(
@@ -102,10 +114,6 @@ extension CardCell: CodeView {
             padding: .init(top: 20, left: 0, bottom: 0, right: 0),
             size: .init(width: 0, height: contentView.bounds.width * 0.8)
         )
-    }
-    
-    func setupAdditionalConfiguration() {
-        backgroundColor = .black
     }
 }
 

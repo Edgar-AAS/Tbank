@@ -4,7 +4,7 @@ import UIKit
 public class LoginView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(hexString: "1A1A2E")
+        backgroundColor = .primaryColor
         setupView()
     }
     
@@ -22,36 +22,60 @@ public class LoginView: UIView {
     
     lazy var loginDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Acesse sua conta com e email e senha"
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.textColor = UIColor.white
+        label.text = "Acesse sua conta com email e senha"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = UIColor.systemGray
         return label
-    }()
+    }()	
     
     lazy var loadingIndicator: UIActivityIndicatorView = {
         let loadingView = UIActivityIndicatorView()
         loadingView.hidesWhenStopped = true
         loadingView.style = .large
-        loadingView.color = UIColor.systemGreen
+        loadingView.color = .secundaryColor
         return loadingView
     }()
     
     lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(hexString: "F99417")
-        button.tintColor = .white
+        button.backgroundColor = .secundaryColor
         button.setTitle("Entrar", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
-        button.layer.cornerRadius = 10
+        button.tintColor = .primaryColor
         return button
     }()
     
-    lazy var emailTextField = FormTextField(placeholder: "E-mail")
-    lazy var passwordTextField = FormTextField(placeholder: "Senha")
+    lazy var loginImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "login-logo")!)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    lazy var contentView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    lazy var emailTextField = CustomTextField(placeholderText: "Digite seu email")
+    lazy var passwordTextField = CustomTextField(placeholderText: "Digite sua senha")
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        emailTextField.addBottomLineWithColor(color: .secundaryColor, widht: 1)
+        passwordTextField.addBottomLineWithColor(color: .secundaryColor, widht: 1)
+        
+        loginButton.layer.cornerRadius = loginButton.frame.height / 2
+        loginButton.clipsToBounds = true
+        
+        emailTextField.setupLeftImageView(image: .envelopeImage())
+        passwordTextField.setupLeftImageView(image: .lockImage())
+    }
 }
 
 extension LoginView: CodeView {
     func buildViewHierarchy() {
+        addSubview(contentView)
+        contentView.addSubview(loginImageView)
         addSubview(loginLabel)
         addSubview(loginDescriptionLabel)
         addSubview(emailTextField)
@@ -61,12 +85,30 @@ extension LoginView: CodeView {
     }
     
     func setupConstrains() {
-        loginLabel.fillConstraints(
+        contentView.fillConstraints(
             top: safeAreaLayoutGuide.topAnchor,
             leading: leadingAnchor,
-            trailing: nil,
+            trailing: trailingAnchor,
             bottom: nil,
-            padding: .init(top: 32, left: 16, bottom: 0, right: 0)
+            padding: .init(top: 0, left: 0, bottom: 0, right: 0)
+        )
+    
+        loginImageView.fillConstraints(
+            top: contentView.topAnchor,
+            leading: nil,
+            trailing: nil,
+            bottom: contentView.bottomAnchor,
+            padding: .init(top: 16, left: 0, bottom: 24, right: 0)
+        )
+        
+        loginImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        
+        loginLabel.fillConstraints(
+            top: contentView.bottomAnchor,
+            leading: leadingAnchor,
+            trailing: trailingAnchor,
+            bottom: nil,
+            padding: .init(top: 16, left: 16, bottom: 0, right: 16)
         )
         
         loginDescriptionLabel.fillConstraints(
@@ -74,7 +116,7 @@ extension LoginView: CodeView {
             leading: loginLabel.leadingAnchor,
             trailing: loginLabel.trailingAnchor,
             bottom: nil,
-            padding: .init(top: 16, left: 0, bottom: 0, right: 0)
+            padding: .init(top: 8, left: 0, bottom: 0, right: 0)
         )
         
         emailTextField.fillConstraints(
@@ -82,7 +124,7 @@ extension LoginView: CodeView {
             leading: leadingAnchor,
             trailing: trailingAnchor,
             bottom: nil,
-            padding: .init(top: 16, left: 16, bottom: 0, right: 16),
+            padding: .init(top: 32, left: 16, bottom: 0, right: 16),
             size: .init(width: 0, height: 44)
         )
         
@@ -101,7 +143,7 @@ extension LoginView: CodeView {
             trailing: trailingAnchor,
             bottom: nil,
             padding: .init(top: 32, left: 32, bottom: 0, right: 32),
-            size: .init(width: 0, height: 50)
+            size: .init(width: 0, height: 60)
         )
         
         loadingIndicator.fillConstraints(
@@ -124,6 +166,7 @@ extension LoginView: CodeView {
     private func setupKeyboardTypes() {
         emailTextField.keyboardType = .emailAddress
         passwordTextField.keyboardType = .asciiCapable
+        passwordTextField.isSecureTextEntry = true
     }
     
     private func configureTextFieldsOrder() {
@@ -134,7 +177,5 @@ extension LoginView: CodeView {
     func setupDelegateTextFields(delegate: UITextFieldDelegate) {
         emailTextField.delegate = delegate
         passwordTextField.delegate = delegate
-        emailTextField.text = "test@gmail.com"
-        passwordTextField.text = "123"
     }
 }

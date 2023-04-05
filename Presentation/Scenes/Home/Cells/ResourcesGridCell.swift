@@ -17,7 +17,7 @@ final class ResourcesGridCell: UITableViewCell, UICollectionViewDelegate, UIColl
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupCollectionView() {
+    private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.estimatedItemSize = .zero
         collectionView = UICollectionView(frame: bounds, collectionViewLayout: layout)
@@ -25,7 +25,7 @@ final class ResourcesGridCell: UITableViewCell, UICollectionViewDelegate, UIColl
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .yellow
+        collectionView.backgroundColor = .primaryColor
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
         collectionView.register(ResourceCell.self, forCellWithReuseIdentifier: ResourceCell.reuseIdentifier)
     }
@@ -62,7 +62,7 @@ extension ResourcesGridCell: CodeView {
     }
     
     func setupAdditionalConfiguration() {
-        backgroundColor = .red
+        backgroundColor = .primaryColor
     }
 }
 

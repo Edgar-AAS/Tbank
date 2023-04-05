@@ -44,7 +44,7 @@ extension WeakVarProxy: ResourcesView where T: ResourcesView {
     }
 }
 
-extension WeakVarProxy: UpdatePersonTableView where T: UpdatePersonTableView {
+extension WeakVarProxy: UpdateProfileView where T: UpdateProfileView {
     func updateWith(viewModel: PersonData) {
         instance?.updateWith(viewModel: viewModel)
     }

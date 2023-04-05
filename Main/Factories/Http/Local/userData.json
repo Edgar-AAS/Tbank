@@ -1,6 +1,6 @@
 [
   {
-    "username": "LIL Vinicin",
+    "username": "Edgar Arlindo",
     "totalBalance": 61106.31,
     "userImageUrl": "any_url.com",
     "balanceIsHidden": true,
@@ -18,7 +18,7 @@
         "cvc": "932"
         },
         {
-        "isVirtual": false,
+        "isVirtual": true,
         "balance": 6016.39,
         "cardFlag": "Mastercard",
         "cardTag": 2,
@@ -42,37 +42,37 @@
     ],
     "mainServices": [
         {
-         "serviceIconUrl": "any_url.com",
+         "serviceIconUrl": "square.grid.2x2",
          "serviceName": "Área Pix",
          "serviceTag": 1
         },
         {
-         "serviceIconUrl": "any_url.com",
+         "serviceIconUrl": "barcode",
          "serviceName": "Pagar",
          "serviceTag": 2
         },
         {
-         "serviceIconUrl": "any_url.com",
+         "serviceIconUrl": "square.and.arrow.down",
          "serviceName": "Depositar",
          "serviceTag": 3
         },
         {
-         "serviceIconUrl": "any_url.com",
+         "serviceIconUrl": "iphone",
          "serviceName": "Recarga de celular",
          "serviceTag": 4
-        },
+        },  
         {
-         "serviceIconUrl": "any_url.com",
+         "serviceIconUrl": "dollarsign.square",
          "serviceName": "Cobrar",
          "serviceTag": 5
         },
         {
-         "serviceIconUrl": "any_url.com",
+         "serviceIconUrl": "globe",
          "serviceName": "Transferir internac.",
          "serviceTag": 6
         },
         {
-         "serviceIconUrl": "any_url.com",
+         "serviceIconUrl": "chart.bar",
          "serviceName": "Investir",
          "serviceTag": 7
         }
@@ -80,7 +80,7 @@
     "resources:": [
         {
         "applogoUrl": "anyUrl",
-        "resourceDescription": "dlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidasdlsadsaudjsaidas"
+        "resourceDescription": "Baixe o app da uber a aproveite as melhores oportunidades do delivery"
         },
         {
         "applogoUrl": "anyUrl",

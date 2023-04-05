@@ -15,7 +15,11 @@ final class ServiceCell: UICollectionViewCell {
     
     lazy var serviceView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(hexString: "2D2173")
+        view.backgroundColor = UIColor(hexString: "0A2647")
+        view.layer.cornerRadius = 10
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.secundaryColor.cgColor
+        view.clipsToBounds = true
         return view
     }()
     
@@ -23,7 +27,7 @@ final class ServiceCell: UICollectionViewCell {
         let imageView = UIImageView(image: UIImage(systemName: "iphone"))
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .clear
-        imageView.tintColor = .orange
+        imageView.tintColor = .secundaryColor
         return imageView
     }()
     
@@ -31,14 +35,15 @@ final class ServiceCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Recarga de celular"
         label.numberOfLines = 0
-        label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = .white
         label.textAlignment = .center
         return label
     }()
     
     func setupCell(service: MainService) {
         self.serviceNameLabel.text = service.serviceName
+        self.serviceImage.image = UIImage(systemName: service.serviceIconURL)
     }
 }
 
@@ -71,7 +76,6 @@ extension ServiceCell: CodeView {
     }
     
     func setupAdditionalConfiguration() {
-        serviceView.layer.cornerRadius = 10
-        serviceView.clipsToBounds = true
+        
     }
 }

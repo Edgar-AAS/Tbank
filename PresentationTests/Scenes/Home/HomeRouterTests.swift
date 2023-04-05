@@ -16,7 +16,7 @@ class HomeRouterTests: XCTestCase {
 
 extension HomeRouterTests {
     func makeSut(viewController: UIViewController = HomeController(), file: StaticString = #filePath, line: UInt = #line) -> HomeRouter {
-        let sut = HomeRouter(viewController: viewController, destinationController: ProfileController(style: .grouped))
+        let sut = HomeRouter(viewController: viewController, destinationController: ProfileController(style: .grouped), cardsViewController: CardsViewController())
         checkMemoryLeak(for: sut, file: file, line: line)
         return sut
     }

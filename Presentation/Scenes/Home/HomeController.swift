@@ -8,9 +8,15 @@ private enum HomeCellsType: Int {
     case resourcesCell
 }
 
-public final class HomeController: UITableViewController {
+protocol HomeControllerProtocol where Self: UIViewController {
+    var isNeedUpdate: Bool { get set }
+}
+
+public final class HomeController: UITableViewController, HomeControllerProtocol {
+    var isNeedUpdate: Bool = false
+    
     public lazy var refreshControlIndicator: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
+            let refreshControl = UIRefreshControl()
         refreshControl.tintColor = .white
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         return refreshControl
@@ -25,7 +31,8 @@ public final class HomeController: UITableViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+        registerCells()
+        setupTableviewProperties()
         setupHeader()
         tableView.addSubview(refreshControlIndicator)
         presenter?.fetchData()
@@ -34,6 +41,10 @@ public final class HomeController: UITableViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        if isNeedUpdate {
+            header?.profileImageView.loadImageWith(path: makeUserImagePath())
+            isNeedUpdate = false
+        }
     }
     
     @objc private func refresh(sender: UIRefreshControl) {
@@ -48,22 +59,32 @@ public final class HomeController: UITableViewController {
         header.scrollViewDidScroll(scrollView: tableView)
     }
     
+    private func makeUserImagePath() -> String {
+        let path = getDocumentsDirectory().appendingPathComponent(K.PathComponents.userImage).path
+        return path
+    }
+    
 //MARK: - Setup Header and TableView
     private func setupHeader() {
-        header = PersonHeader(frame: .init(x: 0, y: 0, width: view.frame.width, height: 100))
+        header = PersonHeader(frame: .init(x: 0, y: 0, width: view.frame.width, height: K.ViewsSize.Header.smallHeight))
+        let path = makeUserImagePath()
+        header?.profileImageView.loadImageWith(path: path)
         header?.delegate = self
         tableView.tableHeaderView = header
     }
     
-    private func setupTableView() {
-        tableView.backgroundColor = .purple
-        navigationController?.navigationBar.isHidden = true
+    private func registerCells() {
         tableView.register(CardCell.self, forCellReuseIdentifier: CardCell.reuseIdentifier)
         tableView.register(BalanceCell.self, forCellReuseIdentifier: BalanceCell.reuseIdentifier)
         tableView.register(ServicesCell.self, forCellReuseIdentifier: ServicesCell.reuseIdentifier)
         tableView.register(ResourcesGridCell.self, forCellReuseIdentifier: ResourcesGridCell.reuseIdentifier)
+    }
+    
+    private func setupTableviewProperties() {
+        view.backgroundColor = .primaryColor
+        tableView.backgroundColor = .primaryColor
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .white
+        navigationController?.navigationBar.isHidden = true
         tableView.showsVerticalScrollIndicator = false
         tableView.allowsSelection = false
     }
@@ -89,6 +110,7 @@ extension HomeController {
         case .cardCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: CardCell.reuseIdentifier, for: indexPath) as? CardCell
             cell?.setupCell(with: cardsViewModel)
+            cell?.delegate = self
             return cell ?? UITableViewCell()
         case .serviceCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: ServicesCell.reuseIdentifier, for: indexPath) as? ServicesCell
@@ -103,10 +125,16 @@ extension HomeController {
     }
 }
 
-//MARK: - PersonHeader Delegate
+//MARK: - Delegate actions
 extension HomeController: PersonHeaderDelegateProtocol {
     public func profileButtonDidTapped() {
         presenter?.routeToProfile()
+    }
+}
+
+extension HomeController: AddCardButtonDelegateProtocol {
+    func addCardButtonDidTapped() {
+        presenter?.routeToCards()
     }
 }
 

@@ -1,10 +1,8 @@
 import UIKit
 import Domain
 
-public final class ProfileController: UITableViewController  {
-    var header: ProfileHeader?
-    
-    public override init(style: UITableView.Style) {
+public final class ProfileController: UITableViewController {
+    public override init(style: UITableView.Style = .grouped) {
         super.init(style: style)
     }
     
@@ -12,10 +10,12 @@ public final class ProfileController: UITableViewController  {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var header: ProfileHeader?
     public var presenter: ViewToPresenterProfileProtocol?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.showsVerticalScrollIndicator = false
         tableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.reuseIdentifier)
         setupHeader()
         presenter?.fetchPersonalData()
@@ -28,9 +28,9 @@ public final class ProfileController: UITableViewController  {
     
     private func setupHeader() {
         header = ProfileHeader(self)
-        header?.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 300)
-        let path = getDocumentsDirectory().appendingPathComponent("userImage")
-        header?.userPhotoImageView.image = UIImage(contentsOfFile: path.path)
+        header?.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: K.ViewsSize.Header.largeHeight)
+        let path = getDocumentsDirectory().appendingPathComponent(K.PathComponents.userImage).path
+        header?.userPhotoImageView.loadImageWith(path: path)
         tableView.tableHeaderView = header
     }
     
@@ -54,18 +54,11 @@ public final class ProfileController: UITableViewController  {
     }
     
     private func selectPicture(sourceType: UIImagePickerController.SourceType) {
-        DispatchQueue.main.async {
             let imagePicker = UIImagePickerController()
             imagePicker.sourceType = sourceType
             imagePicker.allowsEditing = true
             imagePicker.delegate = self
-            self.present(imagePicker, animated: true)
-        }
-    }
-    
-    private func getDocumentsDirectory() -> URL {
-        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        return url
+            present(imagePicker, animated: true)
     }
     
     public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -96,11 +89,16 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[.editedImage] as?  UIImage {
             header?.userPhotoImageView.image = editedImage
-            writeImage(image: editedImage, imageName: "userImage")
+            writeImage(image: editedImage, imageName: K.PathComponents.userImage)
         } else if let originalImage = info[.originalImage] as? UIImage {
             header?.userPhotoImageView.image = originalImage
-            writeImage(image: originalImage, imageName: "userImage")
+            writeImage(image: originalImage, imageName: K.PathComponents.userImage)
         }
+        
+        if let homeController = navigationController?.viewControllers.last(where: { $0 is HomeControllerProtocol}) {
+            (homeController as? HomeControllerProtocol)?.isNeedUpdate = true
+        }
+        
         dismiss(animated: true)
     }
     
@@ -108,13 +106,13 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let imagePath = path.appendingPathComponent(imageName)
         
-        if let jpegData = image.jpegData(compressionQuality: 1) {
+        if let jpegData = image.jpegData(compressionQuality: 1.0) {
             try? jpegData.write(to: imagePath)
         }
     }
 }
 
-extension ProfileController: UpdatePersonTableView {
+extension ProfileController: UpdateProfileView {
     public func updateWith(viewModel: PersonData) {
         print(viewModel)
     }

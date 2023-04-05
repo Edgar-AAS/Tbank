@@ -1,6 +1,6 @@
 import UIKit
 
-class FormTextField: UITextField {
+class CustomTextField: UITextField {
     private var textExample: String?
     
     init(placeholder: String? = nil) {

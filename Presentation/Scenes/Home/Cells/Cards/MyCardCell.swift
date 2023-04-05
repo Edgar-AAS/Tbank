@@ -14,8 +14,8 @@ final class MyCardCell: UICollectionViewCell {
     
     lazy var myBalanceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.text = "Balanço"
+        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.text = "Saldo"
         label.textColor = .white
         return label
     }()
@@ -23,9 +23,7 @@ final class MyCardCell: UICollectionViewCell {
     lazy var balanceCardLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.text = "R$ 34955,39"
-        label.textColor = .white
-        label.backgroundColor = .blue
+        label.textColor = .secundaryColor
         return label
     }()
     
@@ -38,9 +36,7 @@ final class MyCardCell: UICollectionViewCell {
     
     lazy var cardNumberView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(hexString: "2D2173")
-        view.layer.cornerRadius = 18
-        view.clipsToBounds = true
+        view.backgroundColor = UIColor(hexString: "0A2647")
         return view
     }()
     
@@ -64,6 +60,12 @@ final class MyCardCell: UICollectionViewCell {
         label.textColor = .white
         return label
     }()
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        cardNumberView.layer.cornerRadius = cardNumberView.frame.height / 2
+        cardNumberView.clipsToBounds = true
+    }
     
     func setupCell(with cardModel: CardModel) {
         balanceCardLabel.text = cardModel.balance

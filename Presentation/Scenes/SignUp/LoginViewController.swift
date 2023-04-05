@@ -46,7 +46,7 @@ public final class LoginViewController: UIViewController {
 
 extension LoginViewController: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let nextField = view.viewWithTag(textField.tag + 1) as? FormTextField {
+        if let nextField = view.viewWithTag(textField.tag + 1) as? CustomTextField {
             if isAllFieldsFilled() {
                 loginButtonTapped()
             } else {

@@ -6,7 +6,7 @@ final class BalanceCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
-        contentView.backgroundColor = .blue
+        contentView.backgroundColor = .primaryColor
     }
     
     required init?(coder: NSCoder) {
@@ -15,10 +15,9 @@ final class BalanceCell: UITableViewCell {
     
     lazy var myAccountLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 24)
         label.text = "Minha Conta"
-        label.textColor = .orange
-        label.backgroundColor = .darkGray
+        label.textColor = .white    
         return label
     }()
     
@@ -26,15 +25,14 @@ final class BalanceCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.text = "R$ 2500,00"
-        label.textColor = .orange
-        label.backgroundColor = .yellow
+        label.textColor = .secundaryColor
         return label
     }()
     
     lazy var hideShowBalanceButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "eye"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = .secundaryColor
         return button
     }()
     

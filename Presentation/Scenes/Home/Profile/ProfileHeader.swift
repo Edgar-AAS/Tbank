@@ -30,7 +30,6 @@ class ProfileHeader: UIView {
         let label = UILabel()
         label.text = "@edgar.almd"
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.backgroundColor = .red
         label.textAlignment = .center
         return label
     }()
@@ -40,6 +39,7 @@ class ProfileHeader: UIView {
         label.text = "Edgar Arlindo"
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .center
+        label.textColor = .lightGray
         return label
     }()
     
@@ -96,7 +96,7 @@ extension ProfileHeader: CodeView {
             trailing: nil,
             bottom: nil,
             padding: .init(top: 24, left: 0, bottom: 0, right: 0),
-            size: .init(width: 120, height: 120)
+            size: .init(width: K.ViewsSize.CircularButton.large, height: K.ViewsSize.CircularButton.large)
         )
         userPhotoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         

@@ -11,7 +11,8 @@ func makeHomeViewController() -> HomeController {
     //let httpGetClient = makeNetworkGetClient(cacheManager: cacheManager)
     
     let homeController = HomeController()
-    let homeRouter = HomeRouter(viewController: homeController, destinationController: makeProfileController())
+    let cardsViewController = makeCardsViewController()
+    let homeRouter = HomeRouter(viewController: homeController, destinationController: makeProfileController(), cardsViewController: cardsViewController)
     let localFetchData = makeLocalFetchData(forResource: "userData", withExtension: "json")
     let remoteFetchUserData = makeRemoteFetchUserDataFactory(httpGetClient: localFetchData)
     let presenter = HomePresenter(fetchUserData: remoteFetchUserData,

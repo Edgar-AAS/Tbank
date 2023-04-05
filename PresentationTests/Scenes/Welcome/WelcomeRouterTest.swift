@@ -23,6 +23,7 @@ extension WelcomeRouterTest {
         let loginFactorySpy = LoginFactorySpy()
         let signUpFactorySpy = SignUpFactorySpy()
         let sut = WelcomeRouter(nav: nav, loginFactory: loginFactorySpy.makeLogin, signUpFactory: signUpFactorySpy.makeSignUp)
+        checkMemoryLeak(for: sut)
         return (sut, nav)
     }
 }

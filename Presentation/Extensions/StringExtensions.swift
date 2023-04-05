@@ -3,7 +3,7 @@ import Foundation
 extension String {
     func toSafeCardNumber() -> String {
         let subString = suffix(4)
-        let asterisks = "**** "
+        let asterisks = "•••• "
         let string = asterisks.appending(subString)
         return string
     }

@@ -139,6 +139,10 @@ extension HomePresenterTests {
 }
 
 class HomeRouterSpy: PresenterToRouterHomeProtocol {
+    func goToCardsController() {
+        
+    }
+    
     private(set) var callsCount = 0
     func goToProfile() {
         callsCount += 1

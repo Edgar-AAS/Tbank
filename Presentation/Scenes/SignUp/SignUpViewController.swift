@@ -48,7 +48,7 @@ public final class SignUpViewController: UIViewController {
 
 extension SignUpViewController: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let nextField = view.viewWithTag(textField.tag + 1) as? FormTextField {
+        if let nextField = view.viewWithTag(textField.tag + 1) as? CustomTextField {
             if isAllFieldsFilled() {
                 saveButtonTapped()
             } else {
@@ -60,7 +60,7 @@ extension SignUpViewController: UITextFieldDelegate {
         }
         return true
     }
-    
+
     private func isAllFieldsFilled() -> Bool {
         if let screen = signUpScreen {
             let fields = [screen.nameTextField, screen.emailTextField, screen.passwordTextField, screen.passwordConfirmationTextField]

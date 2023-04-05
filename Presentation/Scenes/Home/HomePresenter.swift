@@ -70,4 +70,8 @@ extension HomePresenter: ViewToPresenterHomeProtocol {
     public func routeToProfile() {
         router?.goToProfile()
     }
+    
+    public func routeToCards() {
+        router?.goToCardsController()
+    }
 }

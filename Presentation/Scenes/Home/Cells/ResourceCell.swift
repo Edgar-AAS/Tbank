@@ -31,7 +31,9 @@ final class ResourceCell: UICollectionViewCell {
     
     lazy var resourcesBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor(hexString: "0A2647")
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.secundaryColor.cgColor
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         return view
@@ -45,10 +47,9 @@ final class ResourceCell: UICollectionViewCell {
     
     lazy var resourceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = .orange
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .white
         label.numberOfLines = 0
-        label.lineBreakMode = .byCharWrapping
         return label
     }()
     

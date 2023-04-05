@@ -109,6 +109,7 @@ extension LoginPresenterTests {
                  router: LoginRouter = LoginRouter(navigationController: nil, destinationController: UIViewController()),
                  file: StaticString = #filePath, line: UInt = #line) -> LoginPresenter {
         let sut = LoginPresenter(validation: validationSpy, alertView: alertViewSpy, authentication: authenticationSpy, loadingView: loadingViewSpy, router: router)
+        checkMemoryLeak(for: alertViewSpy)
         checkMemoryLeak(for: sut, file: file, line: line)
         return sut
     }
