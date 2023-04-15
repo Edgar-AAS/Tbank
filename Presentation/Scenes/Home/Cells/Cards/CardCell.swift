@@ -8,7 +8,7 @@ final class CardCell: UITableViewCell, UICollectionViewDelegate {
     static let reuseIdentifier = String(describing: CardCell.self)
     var collectionView: UICollectionView!
     
-    var cards = [CardModel]()
+    var physicalCards = [CardModel]()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -27,7 +27,7 @@ final class CardCell: UITableViewCell, UICollectionViewDelegate {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.text = "Meus cartões"
-        label.textColor = .white
+        label.textColor = .offWhiteColor
         return label
     }()
     
@@ -62,20 +62,21 @@ final class CardCell: UITableViewCell, UICollectionViewDelegate {
         collectionView.register(MyCardCell.self, forCellWithReuseIdentifier: MyCardCell.reuseIdentifier)
     }
     
-    func setupCell(with viewModel: CardsViewViewModel?) {
-        guard let viewModel = viewModel else { return }
-        self.cards = viewModel.cards
+    func setupCell(with cards: [CardModel]?) {
+        guard let physicalCards = cards else { return }
+        self.physicalCards = physicalCards
+        collectionView.reloadData()
     }
 }
 
 extension CardCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cards.count
+        return physicalCards.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCardCell.reuseIdentifier, for: indexPath) as? MyCardCell
-        cell?.setupCell(with: cards[indexPath.row])
+        cell?.setupCell(with: physicalCards[indexPath.row])
         cell?.backgroundColor = UIColor(hexString: "0A2647")
         return cell ?? UICollectionViewCell()
     }

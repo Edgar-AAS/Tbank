@@ -3,7 +3,7 @@ import UIKit
 public class CardCreationViewController: UIViewController {
     var cardCreationView: CardCreationView?
     
-    public var presenter: ViewToPresenterCardCreationProtocol?
+    public var goToCardConfiguration: (() -> Void)?
     
     public override func loadView() {
         super.loadView()
@@ -13,7 +13,7 @@ public class CardCreationViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        navigationItem.backButtonTitle = ""
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -24,6 +24,6 @@ public class CardCreationViewController: UIViewController {
 
 extension CardCreationViewController: CardCreationViewDelegateProtocol {
     func cardCreationButtonDidTapped() {
-        presenter?.routeToCardConfiguration()
+        goToCardConfiguration?()
     }
 }

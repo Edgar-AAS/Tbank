@@ -5,13 +5,10 @@ import Infra
 import Data
 import UIKit
 
-func makeCardsViewController() -> CardsViewController {
+func makeCardsViewController(fethUserCards: FetchUserCards) -> CardsViewController {
     let viewController = CardsViewController()
-    let destinationController = makeCardCreationController() //factory
-    let router = CardsRouter(viewController: viewController, destinationController: destinationController)
-    let localRequest = makeLocalFetchData(forResource: "userData", withExtension: "json")
-    let remoteFetchUserData = makeRemoteFetchUserDataFactory(httpGetClient: localRequest)
-    let presenter = CardsPresenter(remoteFetchUserData: remoteFetchUserData, cardsView: viewController, router: router)
+    let router = CardsRouter(viewController: viewController, cardCreationFactory: makeCardCreationController)
+    let presenter = CardListPresenter(remoteFetchCards: fethUserCards, cardsView: viewController, router: router)
     viewController.presenter = presenter
     return viewController
 }

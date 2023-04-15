@@ -1,9 +1,13 @@
 import UIKit
 import Domain
 
+
+private let imageCache = NSCache<NSString, UIImage>()
+
 final class ResourceCell: UICollectionViewCell {
     static let reuseIdentifier = String(describing: ResourceCell.self)
-    
+    var representedIdentifier: String?
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -12,14 +16,6 @@ final class ResourceCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    lazy var myCardsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.text = "Meus cartões"
-        label.textColor = .white
-        return label
-    }()
     
     lazy var serviceView: UIView = {
         let view = UIView()
@@ -39,29 +35,59 @@ final class ResourceCell: UICollectionViewCell {
         return view
     }()
     
-    lazy var resourceImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "icon-uber-64x64"))
-        imageView.tintColor = .orange
-        return imageView
-    }()
-    
     lazy var resourceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .white
+        label.textColor = .offWhiteColor
         label.numberOfLines = 0
+        label.minimumScaleFactor = 0.5
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
+    lazy var imageContentView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(hexString: "0A2647")
+        return view
+    }()
+    
+    lazy var resourceImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     func setupCell(resource: Resource) {
-        resourceLabel.text = resource.resourceDescription
+        if let url = URL(string: resource.applogoURL) {
+            resourceLabel.text = resource.resourceDescription
+            loadImage(with: url, imageId: resource.applogoURL)
+        }
+    }
+    
+    private func loadImage(with url: URL, imageId: String) {
+        if let image = imageCache.object(forKey: imageId as NSString) {
+            resourceImage.image = image
+        } else {
+            DispatchQueue.global().async { [weak self] in
+                if let data = try? Data(contentsOf: url) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            imageCache.setObject(image, forKey: imageId as NSString)
+                            self?.resourceImage.image = image
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
 extension ResourceCell: CodeView {
     func buildViewHierarchy() {
         addSubview(resourcesBackgroundView)
-        resourcesBackgroundView.addSubview(resourceImage)
+        addSubview(imageContentView)
+        imageContentView.addSubview(resourceImage)
+        resourcesBackgroundView.addSubview(imageContentView)
         addSubview(resourceLabel)
     }
     
@@ -70,24 +96,31 @@ extension ResourceCell: CodeView {
             top: topAnchor,
             leading: leadingAnchor,
             trailing: trailingAnchor,
-            bottom: bottomAnchor,
-            padding: .init(top: 2, left: 2, bottom: 2, right: 2)
+            bottom: bottomAnchor
         )
         
-        resourceImage.fillConstraints(
+        imageContentView.fillConstraints(
             top: resourcesBackgroundView.topAnchor,
             leading: resourcesBackgroundView.leadingAnchor,
-            trailing: nil,
-            bottom: nil,
-            size: .init(width: 80, height: 80)
+            trailing: resourcesBackgroundView.trailingAnchor,
+            bottom: nil
         )
         
         resourceLabel.fillConstraints(
-            top: resourceImage.bottomAnchor,
+            top: imageContentView.bottomAnchor,
             leading: resourcesBackgroundView.leadingAnchor,
             trailing: resourcesBackgroundView.trailingAnchor,
             bottom: resourcesBackgroundView.bottomAnchor,
-            padding: .init(top: 8, left: 8, bottom: 8, right: 8)
+            padding: .init(top: 2, left: 8, bottom: 2, right: 8)
+        )
+        
+        resourceImage.fillConstraints(
+            top: imageContentView.topAnchor,
+            leading: imageContentView.leadingAnchor,
+            trailing: nil,
+            bottom: imageContentView.bottomAnchor,
+            padding: .init(top: 0, left: 0, bottom: 2, right: 0),
+            size: .init(width: 80, height: 80)
         )
     }
 }

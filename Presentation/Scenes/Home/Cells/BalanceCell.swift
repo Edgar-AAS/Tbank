@@ -17,14 +17,13 @@ final class BalanceCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.text = "Minha Conta"
-        label.textColor = .white    
+        label.textColor = .offWhiteColor
         return label
     }()
     
     lazy var balanceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.text = "R$ 2500,00"
         label.textColor = .secundaryColor
         return label
     }()

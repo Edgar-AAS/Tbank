@@ -19,10 +19,11 @@ public class NavigationController: UINavigationController {
     
     private func setup() {
         navigationBar.barTintColor = UIColor(hexString: "1A1A2E")
-        navigationBar.tintColor = .white
+        navigationBar.tintColor = .secundaryColor
         navigationBar.isTranslucent = false
         navigationBar.barStyle = .black
         navigationBar.shadowImage = UIImage()
+        navigationItem.backButtonTitle = ""
     }
     
     public func setRootViewController(_ viewController: UIViewController) {

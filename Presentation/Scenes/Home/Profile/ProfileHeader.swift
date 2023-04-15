@@ -1,6 +1,7 @@
 import UIKit
+import Domain
 
-class ProfileHeader: UIView {
+public class ProfileHeader: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -26,46 +27,78 @@ class ProfileHeader: UIView {
         return imageView
     }()
     
-    lazy var shortEmailLabel: UILabel = {
+    private lazy var shortEmailLabel: UILabel = {
         let label = UILabel()
         label.text = "@edgar.almd"
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.textAlignment = .center
+        label.textColor = .white
         return label
     }()
     
-    lazy var userNameLabel: UILabel = {
+    private lazy var userNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Edgar Arlindo"
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .center
         label.textColor = .lightGray
         return label
     }()
     
-    lazy var bankBranchAndAccountNumberLabel: UILabel = {
+    private lazy var bankBranchAndAccountNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "Agência: \("0002")" + " | " + "Conta: \("12345678-9")"
         label.font = UIFont.systemFont(ofSize: 20)
+        label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = .white
         return label
     }()
     
-    var string: (banNumber: String, accountNuber: String)?
-    
-    lazy var bankNumberAndCorporateNameLabel: UILabel = {
+    private lazy var bankNumberAndCorporateNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Banco: \("029")" + " - " + "TBank S.A"
         label.font = UIFont.systemFont(ofSize: 20)
+        label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = .white
         return label
     }()
     
-    override func layoutSubviews() {
+    func setupHeaderData(userData: UserDataViewModel) {
+        userNameLabel.text = userData.username
+        bankBranchAndAccountNumberLabel.attributedText = getBankBranchAndAcconuntNumberAttributedString(title1: "Agência", subtitle1: userData.bankBranch, title2: "Conta", subtitle2: userData.bankAccountNumber)
+        bankNumberAndCorporateNameLabel.attributedText = getbankNumberAndCorporateNameAttributedString(title1: "Banco", subtitle1: userData.bankNumber, subtitle2: userData.corporateName)
+    }
+    
+    public override func layoutSubviews() {
         super.layoutSubviews()
         userPhotoImageView.layer.cornerRadius = userPhotoImageView.frame.width / 2
         userPhotoImageView.layer.masksToBounds = true
     }
+    
+    private func getBankBranchAndAcconuntNumberAttributedString(title1: String, subtitle1: String, title2: String, subtitle2: String) -> NSMutableAttributedString {
+        let firstAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.white]
+        let secondAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.secundaryColor]
+
+        let attributedText = NSMutableAttributedString()
+        attributedText.append(NSAttributedString(string: "\(title1): ", attributes: firstAttributes))
+        attributedText.append(NSAttributedString(string: "\(subtitle1)", attributes: secondAttributes))
+        attributedText.append(NSAttributedString(string: " | ", attributes: firstAttributes))
+        attributedText.append(NSAttributedString(string: "\(title2): ", attributes: firstAttributes))
+        attributedText.append(NSAttributedString(string: "\(subtitle2)", attributes: secondAttributes))
+        return attributedText
+    }
+    
+    private func getbankNumberAndCorporateNameAttributedString(title1: String, subtitle1: String, subtitle2: String) -> NSMutableAttributedString {
+        let firstAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.white]
+        let secondAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.secundaryColor]
+
+        let attributedText = NSMutableAttributedString()
+        attributedText.append(NSAttributedString(string: "\(title1): ", attributes: firstAttributes))
+        attributedText.append(NSAttributedString(string: "\(subtitle1)", attributes: secondAttributes))
+        attributedText.append(NSAttributedString(string: " - ", attributes: firstAttributes))
+        attributedText.append(NSAttributedString(string: "\(subtitle2)", attributes: secondAttributes))
+        return attributedText
+    }
+    
 }
 
 // MARK: - Private Method
@@ -75,7 +108,7 @@ extension ProfileHeader {
         userPhotoImageView.addGestureRecognizer(tapGesture)
     }
     
-    @objc func imageTapped() {
+    @objc private func imageTapped() {
         delegate?.userPhotoImageDidTapped()
     }
 }
@@ -128,12 +161,23 @@ extension ProfileHeader: CodeView {
             top: bankBranchAndAccountNumberLabel.bottomAnchor,
             leading: leadingAnchor,
             trailing: trailingAnchor,
-            bottom: nil,
+            bottom: bottomAnchor,
             padding: .init(top: 2, left: 16, bottom: 0, right: 16)
         )
     }
     
     func setupAdditionalConfiguration() {
         configureGestureRecognizer()
+        backgroundColor = .primaryColor
+    }
+}
+
+extension ProfileHeader {
+    private func makeHorizontalStack(with views: [UIView], spacing: CGFloat) -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: views)
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = spacing
+        return stackView
     }
 }

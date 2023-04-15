@@ -2,5 +2,5 @@ import Foundation
 import Domain
 
 public protocol ServicesView {
-    func updateServicesView(services: [MainService])
+    func updateServicesView(services: [Service])
 }

@@ -5,17 +5,11 @@ import Presentation
 import Data
 import Infra
 
-func makeHomeViewController() -> HomeController {
-    //For remote use
-    //let cacheManager = CacheManager()
-    //let httpGetClient = makeNetworkGetClient(cacheManager: cacheManager)
-    
+func makeHomeViewController(fetchUserData: FetchUserDataResources, fetchUserCards: FetchUserCards) -> HomeController {
     let homeController = HomeController()
-    let cardsViewController = makeCardsViewController()
-    let homeRouter = HomeRouter(viewController: homeController, destinationController: makeProfileController(), cardsViewController: cardsViewController)
-    let localFetchData = makeLocalFetchData(forResource: "userData", withExtension: "json")
-    let remoteFetchUserData = makeRemoteFetchUserDataFactory(httpGetClient: localFetchData)
-    let presenter = HomePresenter(fetchUserData: remoteFetchUserData,
+    let homeRouter = HomeRouter(viewController: homeController, profileControllerFactory: profileFactory, cardsControllerFactory: carsListFactory)
+    let presenter = HomePresenter(fetchUserData: fetchUserData,
+                                  fetchUserCards: fetchUserCards,
                                   router: homeRouter,
                                   profileView: WeakVarProxy(homeController),
                                   balanceView: WeakVarProxy(homeController),

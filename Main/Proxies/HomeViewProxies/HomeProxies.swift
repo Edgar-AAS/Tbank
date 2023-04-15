@@ -33,7 +33,7 @@ extension WeakVarProxy: CardsView where T: CardsView {
 }
 
 extension WeakVarProxy: ServicesView where T: ServicesView {
-    func updateServicesView(services: [MainService]) {
+    func updateServicesView(services: [Service]) {
         instance?.updateServicesView(services: services)
     }
 }
@@ -45,7 +45,7 @@ extension WeakVarProxy: ResourcesView where T: ResourcesView {
 }
 
 extension WeakVarProxy: UpdateProfileView where T: UpdateProfileView {
-    func updateWith(viewModel: PersonData) {
+    func updateWith(viewModel: UserDataViewModel) {
         instance?.updateWith(viewModel: viewModel)
     }
 }

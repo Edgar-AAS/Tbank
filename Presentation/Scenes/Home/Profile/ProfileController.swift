@@ -3,22 +3,24 @@ import Domain
 
 public final class ProfileController: UITableViewController {
     public override init(style: UITableView.Style = .grouped) {
-        super.init(style: style)
+        super.init(style: .grouped)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var header: ProfileHeader?
-    public var presenter: ViewToPresenterProfileProtocol?
+    public var header: ProfileHeader?
+    public var presenter: ViewToProfilePresenterProtocol?
+    public var userDataViewModel: UserDataModel?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         tableView.showsVerticalScrollIndicator = false
         tableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.reuseIdentifier)
-        setupHeader()
-        presenter?.fetchPersonalData()
+        tableView.backgroundColor = .primaryColor
+        configurateProfileHeader()
+        presenter?.fetchUser()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -26,7 +28,7 @@ public final class ProfileController: UITableViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
-    private func setupHeader() {
+    private func configurateProfileHeader() {
         header = ProfileHeader(self)
         header?.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: K.ViewsSize.Header.largeHeight)
         let path = getDocumentsDirectory().appendingPathComponent(K.PathComponents.userImage).path
@@ -54,11 +56,11 @@ public final class ProfileController: UITableViewController {
     }
     
     private func selectPicture(sourceType: UIImagePickerController.SourceType) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.sourceType = sourceType
-            imagePicker.allowsEditing = true
-            imagePicker.delegate = self
-            present(imagePicker, animated: true)
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = sourceType
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
     }
     
     public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -75,8 +77,6 @@ public final class ProfileController: UITableViewController {
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.reuseIdentifier, for: indexPath) as? ProfileCell
         cell?.textLabel?.text = personInfos[indexPath.row]
-        cell?.detailTextLabel?.text = "2211123"
-        cell?.accessoryType = .disclosureIndicator
         return cell ?? UITableViewCell()
     }
     
@@ -98,7 +98,6 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
         if let homeController = navigationController?.viewControllers.last(where: { $0 is HomeControllerProtocol}) {
             (homeController as? HomeControllerProtocol)?.isNeedUpdate = true
         }
-        
         dismiss(animated: true)
     }
     
@@ -112,15 +111,22 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
     }
 }
 
+//TableViewDelegate
+extension ProfileController {
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
 extension ProfileController: UpdateProfileView {
-    public func updateWith(viewModel: PersonData) {
-        print(viewModel)
+    public func updateWith(viewModel: UserDataViewModel) {
+        header?.setupHeaderData(userData: viewModel)
     }
 }
 
 extension ProfileController: AlertView {
     public func showMessage(viewModel: AlertViewModel) {
-        print(viewModel.message)
+        showAlertController(title: viewModel.title, message: viewModel.message)
     }
 }
 

@@ -6,9 +6,8 @@ import Infra
 
 public func makeLoginViewController(authentication: Authentication) -> LoginViewController {
     let controller = LoginViewController()
-    let destinationController = makeHomeViewController()
     let validationComposite = ValidationComposite(validations: makeLoginValidations())
-    let router = LoginRouter(navigationController: Navigator.navigationController, destinationController: destinationController)
+    let router = LoginRouter(navigationController: Navigator.navigationController, homeFactory: homeFactory)
     let presenter = LoginPresenter(validation: validationComposite,
                                    alertView: WeakVarProxy(controller),
                                    authentication: authentication,

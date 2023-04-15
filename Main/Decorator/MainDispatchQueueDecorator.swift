@@ -31,9 +31,27 @@ extension MainQueueDispatchDecorator: Authentication where T: Authentication {
 }
 
 extension MainQueueDispatchDecorator: FetchUserDataResources where T: FetchUserDataResources {
-    public func fetch(completion: @escaping (Result<UserModel, DomainError>) -> Void) {
-        instance.fetch { (result) in
-            self.dispatch { completion(result) }
+    public func fetch(completion: @escaping (Result<UserData, DomainError>) -> Void) {
+        instance.fetch { [weak self] result  in
+            self?.dispatch { completion(result) }
         }
     }
 }
+
+extension MainQueueDispatchDecorator: FetchUserCards where T: FetchUserCards {
+    public func fetch(completion: @escaping (Result<UserCards, DomainError>) -> Void) {
+        instance.fetch { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}
+
+extension MainQueueDispatchDecorator: AddCard where T: AddCard {
+    public func add<T>(cardModel: T, completion: @escaping (Result<Void, DomainError>) -> Void) where T : Model {
+        instance.add(cardModel: cardModel) { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}
+
+

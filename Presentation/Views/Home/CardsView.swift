@@ -14,10 +14,11 @@ public struct CardsViewViewModel: Model {
 }
 
 public struct CardModel: Model {
+    public let name: String
     public let isVirtual: Bool
     public let balance: String
     public let cardFlag: String
-    public let cardBrandImageUrl: String
+    public let cardBrandImageUrl: String?
     public let cardTag: Int
     public let cardNumber: String
     public let cardExpirationDate: String
@@ -25,16 +26,18 @@ public struct CardModel: Model {
     public let cvc: String
     
     public init(
+        name: String,
         isVirtual: Bool,
         balance: String,
         cardFlag: String,
         cardTag: Int,
-        cardBrandImageUrl: String,
+        cardBrandImageUrl: String? = nil,
         cardNumber: String,
         cardExpirationDate: String,
         cardFunction: String,
         cvc: String
     ) {
+        self.name = name
         self.isVirtual = isVirtual
         self.balance = balance
         self.cardFlag = cardFlag

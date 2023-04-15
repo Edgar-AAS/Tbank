@@ -2,11 +2,11 @@ import Foundation
 import UIKit
 
 public final class SignUpViewController: UIViewController {
-    public var signUp: ((SignUpRequest) -> (Void))? //dependencia injetada pela viewModel
-    
     lazy var signUpScreen: SignUpView? = {
         return view as? SignUpView
     }()
+    
+    public var signUp: ((SignUpRequest) -> (Void))?
     
     public override func loadView() {
         super.loadView()

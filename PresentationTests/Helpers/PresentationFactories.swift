@@ -14,12 +14,13 @@ func makeCardViewModel() -> CardsViewViewModel {
     return CardsViewViewModel(
         cards: [
             CardModel(
+                name: "rodolfo",
                 isVirtual: true,
                 balance: "R$ 530,00",
                 cardFlag: "Mastercard",
                 cardTag: 1,
                 cardBrandImageUrl: "anyImageUrl.com",
-                cardNumber: "**** 1246",
+                cardNumber: "•••• 1246",
                 cardExpirationDate: "04/12",
                 cardFunction: "Débito e crédito",
                 cvc: "345"

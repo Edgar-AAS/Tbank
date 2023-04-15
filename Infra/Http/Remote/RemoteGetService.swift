@@ -3,20 +3,16 @@ import Data
 
 public class RemoteGetService: HttpGetClient {    
     private let session: URLSession
-    private let cacheManager: CacheType
+    private let cacheManager: CacheType?
     
-    public init(session: URLSession = .shared, cacheManager: CacheType) {
+    public init(session: URLSession = .shared, cacheManager: CacheType?) {
         self.session = session
         self.cacheManager = cacheManager
     }
     
-    //verificar se a chave passada e igual a chave recebida
-    //se tiver dados em cache nao deve fazer a request <--
-    //caso faça a request, a proxima vez que for chamada deve usar o cache <---
-    
     public func get(to url: URL, objectCacheKey: String?, completion: @escaping (Result<Data?, HttpError>) -> (Void)) {
         if let key = objectCacheKey {
-            if let dataInCache = cacheManager.getCachedObject(forKey: key) as? Data {
+            if let dataInCache = cacheManager?.getCachedObject(forKey: key) as? Data {
                 print("using cache data")
                 completion(.success(dataInCache))
                 return
@@ -35,7 +31,7 @@ public class RemoteGetService: HttpGetClient {
                         completion(.success(nil))
                     case 200...299:
                         if let cacheKey = objectCacheKey {
-                            self.cacheManager.createCachedObject(data as NSData, forKey: cacheKey)
+                            self.cacheManager?.createCachedObject(data as NSData, forKey: cacheKey)
                         }
                         completion(.success(data))
                     case 401:

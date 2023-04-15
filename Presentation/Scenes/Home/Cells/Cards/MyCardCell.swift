@@ -16,7 +16,7 @@ final class MyCardCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 22)
         label.text = "Saldo"
-        label.textColor = .white
+        label.textColor = .offWhiteColor
         return label
     }()
     
@@ -39,7 +39,7 @@ final class MyCardCell: UICollectionViewCell {
         view.backgroundColor = UIColor(hexString: "0A2647")
         return view
     }()
-    
+
     lazy var cardMarkView: UIView = {
         let view = UIView()
         return view
@@ -48,16 +48,14 @@ final class MyCardCell: UICollectionViewCell {
     lazy var cardNumberLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = .white
-        label.text = "**** 3270"
+        label.textColor = .offWhiteColor
         return label
     }()
     
     lazy var cardExpirationLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
-        label.text = "03/25"
-        label.textColor = .white
+        label.textColor = .offWhiteColor
         return label
     }()
     

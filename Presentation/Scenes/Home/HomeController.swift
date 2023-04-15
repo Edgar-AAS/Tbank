@@ -16,7 +16,7 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
     var isNeedUpdate: Bool = false
     
     public lazy var refreshControlIndicator: UIRefreshControl = {
-            let refreshControl = UIRefreshControl()
+        let refreshControl = UIRefreshControl()
         refreshControl.tintColor = .white
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         return refreshControl
@@ -25,10 +25,10 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
     public var presenter: ViewToPresenterHomeProtocol?
     public var header: PersonHeader?
     public var balanceViewModel: BalanceViewModel?
-    public var cardsViewModel: CardsViewViewModel?
-    public var mainServices = [MainService]()
+    public var physicalCards: [CardModel]?
+    public var mainServices = [Service]()
     public var appResources = [Resource]()
-    
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
@@ -36,11 +36,13 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
         setupHeader()
         tableView.addSubview(refreshControlIndicator)
         presenter?.fetchData()
-    }
-
+        navigationItem.backButtonTitle = ""
+    }   
+    
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        
         if isNeedUpdate {
             header?.profileImageView.loadImageWith(path: makeUserImagePath())
             isNeedUpdate = false
@@ -64,7 +66,7 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
         return path
     }
     
-//MARK: - Setup Header and TableView
+    //MARK: - Setup Header and TableView
     private func setupHeader() {
         header = PersonHeader(frame: .init(x: 0, y: 0, width: view.frame.width, height: K.ViewsSize.Header.smallHeight))
         let path = makeUserImagePath()
@@ -109,7 +111,7 @@ extension HomeController {
             return cell ?? UITableViewCell()
         case .cardCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: CardCell.reuseIdentifier, for: indexPath) as? CardCell
-            cell?.setupCell(with: cardsViewModel)
+            cell?.setupCell(with: physicalCards)
             cell?.delegate = self
             return cell ?? UITableViewCell()
         case .serviceCell:
@@ -141,31 +143,35 @@ extension HomeController: AddCardButtonDelegateProtocol {
 //MARK: - Views
 extension HomeController: ProfileView {
     public func updateProfileView(viewModel: ProfileViewModel) {
-        header?.updateHeaderDisplay(viewModel: viewModel)
+        self.header?.updateHeaderDisplay(viewModel: viewModel)
     }
 }
 
 extension HomeController: BalanceView {
     public func updateBalanceView(viewModel: BalanceViewModel) {
-        balanceViewModel = viewModel
+        self.balanceViewModel = viewModel
+        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
 }
 
 extension HomeController: CardsView {
     public func updateCardsView(viewModel: CardsViewViewModel) {
-        cardsViewModel = viewModel
+        self.physicalCards = viewModel.cards.filter({ $0.isVirtual == false })
+        tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
     }
 }
 
 extension HomeController: ServicesView {
-    public func updateServicesView(services: [MainService]) {
-        mainServices = services
+    public func updateServicesView(services: [Service]) {
+        self.mainServices = services
+        tableView.reloadRows(at: [IndexPath(row: 2, section: 0)], with: .automatic)
     }
 }
 
 extension HomeController: ResourcesView {
     public func updateResourcesView(resources: [Resource]) {
         appResources = resources
+        tableView.reloadRows(at: [IndexPath(row: 3, section: 0)], with: .automatic)
     }
 }
 

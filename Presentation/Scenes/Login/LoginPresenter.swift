@@ -21,7 +21,6 @@ public final class LoginPresenter {
                 self.router = router
     }
     
-    
     //meu router deve ser do tipo PresenterToRouterLoginProtocol
     //se meu http client completar com sucesso o metodo router.goToHome deve ser chamado
     public func login(loginRequest: LoginRequest) {

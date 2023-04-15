@@ -5,7 +5,7 @@ final class ServicesCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     static let reuseIdentifier = String(describing: ServicesCell.self)
     var collectionView: UICollectionView!
     
-    var services = [MainService]()
+    var services = [Service]()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,8 +30,9 @@ final class ServicesCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         collectionView.register(ServiceCell.self, forCellWithReuseIdentifier: ServiceCell.reuseIdentifier)
     }
     
-    func setupCell(services: [MainService]) {
+    func setupCell(services: [Service]) {
         self.services = services
+        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

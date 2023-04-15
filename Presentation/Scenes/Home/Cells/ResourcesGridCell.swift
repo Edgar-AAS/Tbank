@@ -6,7 +6,8 @@ final class ResourcesGridCell: UITableViewCell, UICollectionViewDelegate, UIColl
     var collectionView: UICollectionView!
 
     var resources = [Resource]()
-    
+    var imageIdentifier: String?
+        
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCollectionView()
@@ -40,9 +41,9 @@ final class ResourcesGridCell: UITableViewCell, UICollectionViewDelegate, UIColl
         return cell ?? UICollectionViewCell()
     }
     
-    
     func setupCell(resources: [Resource]) {
         self.resources = resources
+        collectionView.reloadData()
     }
 }
 

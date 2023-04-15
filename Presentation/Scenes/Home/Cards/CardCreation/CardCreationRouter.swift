@@ -2,17 +2,15 @@ import Foundation
 import UIKit
 
 public class CardCreationRouter {
-    weak var viewController: UIViewController?
-    public var cardConfigurationViewController: UIViewController
+    weak var cardCreationController: UIViewController?
+    public var cardConfigurationFactory: () -> CardConfigurationViewController
     
-    public init(viewController: UIViewController, cardConfigurationViewController: UIViewController) {
-        self.viewController = viewController
-        self.cardConfigurationViewController = cardConfigurationViewController
+    public init(cardCreationController: UIViewController, cardConfigurationFactory: @escaping () -> CardConfigurationViewController) {
+        self.cardCreationController = cardCreationController
+        self.cardConfigurationFactory = cardConfigurationFactory
     }
-}
-
-extension CardCreationRouter: CardCreationRoutingLogic {
+    
     public func goToCardConfiguration() {
-        viewController?.navigationController?.pushViewController(cardConfigurationViewController, animated: true)
+        cardCreationController?.navigationController?.pushViewController(cardConfigurationFactory(), animated: true)
     }
 }

@@ -35,13 +35,14 @@ final class ServiceCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Recarga de celular"
         label.numberOfLines = 0
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textColor = .offWhiteColor
         label.textAlignment = .center
         return label
     }()
     
-    func setupCell(service: MainService) {
+    func setupCell(service: Service) {
         self.serviceNameLabel.text = service.serviceName
         self.serviceImage.image = UIImage(systemName: service.serviceIconURL)
     }
@@ -73,9 +74,5 @@ extension ServiceCell: CodeView {
             bottom: bottomAnchor,
             padding: .init(top: 2, left: 2, bottom: 2, right: 2)
         )
-    }
-    
-    func setupAdditionalConfiguration() {
-        
     }
 }

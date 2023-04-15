@@ -21,6 +21,8 @@ class AddVirtualCardCell: UITableViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "plus"), for: .normal)
         button.setTitle("Criar cartão digital", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 10)
         button.tintColor = UIColor(hexString: "#FCB119")
         return button
     }()
@@ -37,7 +39,7 @@ extension AddVirtualCardCell: CodeView {
             leading: contentView.leadingAnchor,
             trailing: contentView.trailingAnchor,
             bottom: contentView.bottomAnchor,
-            padding: .init(top: 16, left: 24, bottom: 0, right: 0)
+            padding: .init(top: 16, left: 34, bottom: 0, right: 0)
         )
     }
 }

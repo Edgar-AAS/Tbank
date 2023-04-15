@@ -5,6 +5,13 @@ class ProfileCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+        configurateCell()
+    }
+    
+    private func configurateCell() {
+        backgroundColor = .primaryColor
+        accessoryType = .disclosureIndicator
+        textLabel?.textColor = .offWhiteColor
     }
     
     required init?(coder: NSCoder) {

@@ -3,6 +3,7 @@ import UIKit
 extension UIColor {
     static let primaryColor = UIColor(hexString: "1A1A2E")
     static let secundaryColor = UIColor(hexString: "EBB52F")
+    static let offWhiteColor = UIColor(hexString: "#F8F8FF")
 }
 
 extension UIColor {

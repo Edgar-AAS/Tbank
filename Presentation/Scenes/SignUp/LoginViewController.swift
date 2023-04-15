@@ -5,12 +5,12 @@ public final class LoginViewController: UIViewController {
     public var login: ((LoginRequest) -> (Void))?
     
     lazy var loginScreen: LoginView? = {
-        return view as? LoginView
+        return LoginView()
     }()
     
     public override func loadView() {
         super.loadView()
-        view = LoginView()
+        view = loginScreen
     }
     
     public override func viewDidLoad() {
@@ -25,7 +25,7 @@ public final class LoginViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
-    @objc func dismissKeyboard() {
+    @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
     
@@ -69,6 +69,23 @@ extension LoginViewController: UITextFieldDelegate {
         }
         return false
     }
+    
+//    public func textFieldDidChangeSelection(_ textField: UITextField) {
+//        if textField.text?.count == 0 {
+//            cardConfigurationView?.disableButton()
+//        } else if textField.text?.count == 1 {
+//            if let text = textField.text {
+//                if text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+//                    cardConfigurationView?.disableButton()
+//                    cardConfigurationView?.cardNameTextField.layer.borderColor = UIColor.offWhiteColor.cgColor
+//                } else {
+//                    cardConfigurationView?.enableButton()
+//                    cardConfigurationView?.cardNameTextField.layer.borderColor = UIColor.secundaryColor.cgColor
+//                }
+//            }
+//        }
+//    }
+    
 }
 
 extension LoginViewController: AlertView {

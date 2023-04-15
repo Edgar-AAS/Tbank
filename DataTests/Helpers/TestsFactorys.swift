@@ -49,7 +49,8 @@ func makeUserModel() -> UserModel {
         bankNumber: "",
         corporateName: "",
         cards: [
-            Card(isVirtual: true,
+            Card(name: "rodolfo",
+                 isVirtual: true,
                  balance: 530,
                  cardFlag: "Mastercard",
                  cardTag: 1,

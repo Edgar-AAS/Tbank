@@ -3,32 +3,25 @@ import UIKit
 
 extension UIImageView {
     func loadImageWith(path: String) {
-        DispatchQueue.global().async {
+        DispatchQueue.global().async { [weak self] in
             let image = UIImage(contentsOfFile: path)
             
             DispatchQueue.main.async {
-                self.image = image
+                self?.image = image
+            }
+        }
+    }
+    
+    func loadImageWith(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
             }
         }
     }
 }
-
-extension UIImage {
-    static func envelopeImage() -> UIImage {
-        if let envelopeImage = UIImage(systemName: "envelope") {
-            return envelopeImage
-        } else {
-            return UIImage()
-        }
-    }
-    
-    static func lockImage() -> UIImage {
-        if let envelopeImage = UIImage(systemName: "lock") {
-            return envelopeImage
-        } else {
-            return UIImage()
-        }
-    }
-}
-
 

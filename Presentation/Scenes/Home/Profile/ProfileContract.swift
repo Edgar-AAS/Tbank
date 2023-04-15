@@ -4,6 +4,6 @@ public protocol ProfileHeaderDelegateProtocol: AnyObject {
     func userPhotoImageDidTapped()
 }
 
-public protocol ViewToPresenterProfileProtocol {
-    func fetchPersonalData()
+public protocol ViewToProfilePresenterProtocol {
+    func fetchUser()
 }

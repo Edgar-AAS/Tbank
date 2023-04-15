@@ -19,9 +19,10 @@ extension UILabel {
         
         subtitle.addAttribute(.foregroundColor, value: subtitleColor, range: NSRange(location: 0, length: subtitle.length))
         subtitle.addAttribute(.font, value: subtitleFontSize, range: NSRange(location: 0, length: subtitle.length))
-        
+
         title.append(subtitle)
         label.attributedText = title
+        label.textAlignment = .left
         label.numberOfLines = 0
         return label
     }

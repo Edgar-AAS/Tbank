@@ -12,7 +12,7 @@ public final class PersonHeader: UIView {
         setupView()
     }
     
-    required init?(coder: NSCoder) {
+    required init?(coder: NSCoder) { 
         super.init(coder: coder)
         setupView()
     }
@@ -20,8 +20,7 @@ public final class PersonHeader: UIView {
     weak var delegate: PersonHeaderDelegateProtocol?
     
     lazy var profileImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "person"))
-        imageView.backgroundColor = .orange
+        let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
         return imageView
     }()
@@ -32,7 +31,7 @@ public final class PersonHeader: UIView {
         label.text = "Edgar Arlindo"
         label.minimumScaleFactor = 0.5
         label.adjustsFontSizeToFitWidth = true
-        label.textColor = .white
+        label.textColor = .offWhiteColor
         return label
     }() 
     
@@ -134,6 +133,7 @@ extension PersonHeader: CodeView {
     }
     
     func setupAdditionalConfiguration() {
+        backgroundColor = .primaryColor
         configureGestureRecognizer()
     }
     
@@ -144,4 +144,5 @@ extension PersonHeader: CodeView {
         headerViewBottom.constant = offsetY >= 0 ? 0 : -offsetY / 2
         headerViewHeight.constant = max(offsetY + scrollView.contentInset.top, scrollView.contentInset.top)
     }
+    
 }

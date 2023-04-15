@@ -1,15 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "icon-uber-64x64.pdf",
+      "filename" : "icons8-checked-card-128(-xxxhdpi).png",
       "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "preserves-vector-representation" : true
   }
 }
