@@ -2,7 +2,7 @@ import XCTest
 import Domain
 import Data
 
-class RemoteFetchPersonDataTests: XCTestCase {
+class RemoteFetchUserCardsTests: XCTestCase {
     func test_fetch_should_call_httpGetClient_with_correct_url() {
         let url = makeUrl()
         let (sut, httpGetClientSpy) = makeSut()
@@ -19,9 +19,9 @@ class RemoteFetchPersonDataTests: XCTestCase {
     
     func test_fetch_should_completes_with_data_if_httpGetClient_completes_with_valid_data() {
         let (sut, httpClientSpy) = makeSut()
-        let personModel = makePersonModel()
-        expect(sut, completeWith: .success(personModel), when: {
-            let data = try! JSONEncoder().encode(personModel)
+        let userCardModel = makeUserCardsResponse()
+        expect(sut, completeWith: .success(userCardModel), when: {
+            let data = try! JSONEncoder().encode(userCardModel)
             httpClientSpy.completeWithData(data)
         })
     }
@@ -50,17 +50,17 @@ class RemoteFetchPersonDataTests: XCTestCase {
         XCTAssertEqual(httpClientSpy.objectCacheKeyReceived, objectCacheKey)
     }
     
-    func makeSut(url: URL = URL(string: "any_url.com")!, objectCacheKey: String? = nil, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteFetchPersonData, httpClientSpy: HttpGetClientSpy) {
+    func makeSut(url: URL = URL(string: "any_url.com")!, objectCacheKey: String? = nil, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteFetchCards, httpClientSpy: HttpGetClientSpy) {
         let url = makeUrl()
         let objectCacheKey = makeObjectCacheKey()
         let httpClientSpy = HttpGetClientSpy()
-        let sut = RemoteFetchPersonData(url: url, httpGetClient: httpClientSpy, objectCacheKey: objectCacheKey)
+        let sut = RemoteFetchCards(url: url, httpGetClient: httpClientSpy, objectCacheKey: objectCacheKey)
         checkMemoryLeak(for: sut, file: file, line: line)
         checkMemoryLeak(for: httpClientSpy, file: file, line: line)
         return (sut, httpClientSpy)
     }
     
-    func expect(_ sut: RemoteFetchPersonData, completeWith expectedResult: FetchPersonDataResources.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    func expect(_ sut: RemoteFetchCards, completeWith expectedResult: RemoteFetchCards.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         let exp = expectation(description: "waiting")
         sut.fetch() { receivedResult in
             switch (expectedResult, receivedResult) {

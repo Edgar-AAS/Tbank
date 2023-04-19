@@ -39,7 +39,7 @@ class SignUpPresenterTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
     
-    func test_singUp_should_show_success_message_if_addAccount_succeds() {
+    func test_singUp_should_show_success_message_if_addAccount_succeeds() {
         let addAccountSpy = AddAccountSpy()
         let alertViewSpy = AlertViewSpy()
         let sut = makeSut(alertViewSpy: alertViewSpy, addAccountSpy: addAccountSpy)
@@ -57,8 +57,8 @@ class SignUpPresenterTests: XCTestCase {
         let addAccountSpy = AddAccountSpy()
         let loadingViewSpy = LoadingViewSpy()
         let sut = makeSut(addAccountSpy: addAccountSpy, loadingViewSpy: loadingViewSpy)
-        let exp = expectation(description: "waiting")
         
+        let exp = expectation(description: "waiting")
         loadingViewSpy.observe { (loadingViewModel) in
             XCTAssertEqual(loadingViewModel.isLoading, true)
             exp.fulfill()
@@ -99,14 +99,14 @@ class SignUpPresenterTests: XCTestCase {
 }
 
 extension SignUpPresenterTests {
-    func makeAccountModel() -> AccountModel {
-        return AccountModel(accessToken: "abc123")
-    }
-
     func makeSut(alertViewSpy: AlertViewSpy = AlertViewSpy(), addAccountSpy: AddAccountSpy = AddAccountSpy(), loadingViewSpy: LoadingViewSpy = LoadingViewSpy(), validationSpy: ValidationSpy = ValidationSpy(), file: StaticString = #filePath, line: UInt = #line) -> SignUpPresenter {
         let sut = SignUpPresenter(alertView: alertViewSpy, addAccount: addAccountSpy, loadingView: loadingViewSpy, validation: validationSpy)
         checkMemoryLeak(for: sut, file: file, line: line)
         checkMemoryLeak(for: alertViewSpy, file: file, line: line)
         return sut
+    }
+    
+    func makeAccountModel() -> AccountModel {
+        return AccountModel(accessToken: "abc123")
     }
 }

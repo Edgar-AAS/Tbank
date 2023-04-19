@@ -14,6 +14,7 @@ public struct CardsViewViewModel: Model {
 }
 
 public struct CardModel: Model {
+    public let id: String?
     public let name: String
     public let isVirtual: Bool
     public let balance: String
@@ -26,6 +27,7 @@ public struct CardModel: Model {
     public let cvc: String
     
     public init(
+        id: String?,
         name: String,
         isVirtual: Bool,
         balance: String,
@@ -37,6 +39,7 @@ public struct CardModel: Model {
         cardFunction: String,
         cvc: String
     ) {
+        self.id = id
         self.name = name
         self.isVirtual = isVirtual
         self.balance = balance

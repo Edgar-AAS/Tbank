@@ -199,86 +199,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C5B91D14-6F00-4FDC-92AF-484E402CED22"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Presentation/Scenes/Login/LoginRouter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "goToHome()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F39BBD4F-C9B1-4801-8D7F-7E51AA222285"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Data/UseCases/RemoteFetchUserData.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "fetch(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "99C56A64-4D84-414D-A6F1-FE7ADDAD7E55"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Data/UseCases/RemoteFetchUserData.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "fetch(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "95245112-3910-41FF-A089-801C9BF7F706"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Data/UseCases/RemoteFetchUserData.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "fetch(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0E02488F-77CA-4EA1-ACF8-CED9ED4435B1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Data/UseCases/RemoteFetchUserData.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "fetch(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "F374C5F3-4447-4023-951B-60BC61D2AE8F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -295,70 +215,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9904D0F8-AC50-4C79-9805-4A2BA0A22638"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Infra/Http/Remote/RemoteGetService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "get(to:objectCacheKey:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "83EEFD7C-3F6E-4E98-B9FE-0D84843B406C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Presentation/Scenes/Home/Cards/CardConfiguration/CardConfigurationPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "createDigitalCard(cardConfigurationRequest:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "25B8E8CA-1092-4541-B4CF-682DF1544B62"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Presentation/Scenes/Home/Cards/CardList/CardListPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "routeToCardInformationViewWith(indexPath:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CDC21762-319B-4D0E-B999-C27935BF19BF"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Presentation/Scenes/Home/Cards/CardInformation/CardInformationViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "backButtonTapped()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "4B3E5E3B-F915-4461-979F-A0E4AD3FCC9B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -369,38 +225,6 @@
             startingLineNumber = "13"
             endingLineNumber = "13"
             landmarkName = "popToCardController()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9D3BCB5A-AC04-4EC0-B43B-1B71B1B1A220"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Presentation/Scenes/Home/Cards/CardSuccess/CardSuccessRouter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "routeToCardInfo(digitalCardModel:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8517A91F-E079-4133-A332-58F3203C74B2"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Presentation/Scenes/Home/Cards/CardConfiguration/CardConfigurationRouter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "goToCardSuccessScreen(digitalCardModel:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -430,8 +254,8 @@
             filePath = "Presentation/Scenes/Home/Cards/CardList/CardsRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "goToCardCreationNavigation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -439,49 +263,205 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "245106E7-02D5-4D5A-AA97-E5896AFAC83F"
+            uuid = "69094281-6BA7-4382-B335-AF0A4768F9B5"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Presentation/Scenes/Home/Cards/CardList/CardsRouter.swift"
+            filePath = "Presentation/Scenes/Home/Cards/CardList/CardsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "goToCardInformationScreenWith(userCard:)"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9ADFE106-FDCA-43FF-8706-8E201C88F06D"
+            uuid = "E79402F6-B1C7-41A2-A199-64009DA13840"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Presentation/Scenes/Home/HomeController.swift"
+            filePath = "Presentation/Scenes/Home/Cards/CardSuccess/CardSuccessViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "profileButtonDidTapped()"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "cardAcessbuttonDidTapped()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "673EBDB5-F9BE-4E28-8EE4-07FE011FE502"
+            uuid = "06727B6E-47B6-48E6-A199-93FF7652EF63"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Presentation/Scenes/Home/HomePresenter.swift"
+            filePath = "Presentation/Scenes/Home/Cards/CardSuccess/CardSuccessRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "routeToProfile()"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "routeToCardInfo(digitalCardModel:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D198AF0D-0A50-4B78-9B5C-81307360A54C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Presentation/Scenes/Home/Cards/CardInformation/CardInformationViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "update(cardViewModel:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FE5EA416-1890-4C17-8AE4-A1F90EB251AA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Infra/Http/Remote/RemoteDeleteService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "delete(with:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0C6AFA81-EF2E-44E5-A993-57BDB2280080"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Infra/Http/Remote/RemoteDeleteService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "delete(with:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B887C6A9-3AE4-4934-A9E1-E7ABA038D38D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Infra/Http/Remote/RemoteDeleteService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "delete(with:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B887C6A9-3AE4-4934-A9E1-E7ABA038D38D - c86867088ea13dff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Infra.RemoteDeleteService.delete(with: Foundation.URL, completion: (Swift.Result&lt;Swift.Bool, Data.HttpError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Infra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardoalmeida/Documents/TailBankProject/TailBank/Infra/Http/Remote/RemoteDeleteService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "639">
+               </Location>
+               <Location
+                  uuid = "B887C6A9-3AE4-4934-A9E1-E7ABA038D38D - c86867088ea13dff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Infra.RemoteDeleteService.delete(with: Foundation.URL, completion: (Swift.Result&lt;Swift.Bool, Data.HttpError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Infra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardoalmeida/Documents/TailBankProject/TailBank/Infra/Http/Remote/RemoteDeleteService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "686">
+               </Location>
+               <Location
+                  uuid = "B887C6A9-3AE4-4934-A9E1-E7ABA038D38D - c86867088ea13dff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Infra.RemoteDeleteService.delete(with: Foundation.URL, completion: (Swift.Result&lt;Swift.Bool, Data.HttpError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Infra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardoalmeida/Documents/TailBankProject/TailBank/Infra/Http/Remote/RemoteDeleteService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "940">
+               </Location>
+               <Location
+                  uuid = "B887C6A9-3AE4-4934-A9E1-E7ABA038D38D - c86867088ea13dff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Infra.RemoteDeleteService.delete(with: Foundation.URL, completion: (Swift.Result&lt;Swift.Bool, Data.HttpError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Infra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardoalmeida/Documents/TailBankProject/TailBank/Infra/Http/Remote/RemoteDeleteService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "1032">
+               </Location>
+               <Location
+                  uuid = "B887C6A9-3AE4-4934-A9E1-E7ABA038D38D - c86867088ea13dff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Infra.RemoteDeleteService.delete(with: Foundation.URL, completion: (Swift.Result&lt;Swift.Bool, Data.HttpError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Infra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardoalmeida/Documents/TailBankProject/TailBank/Infra/Http/Remote/RemoteDeleteService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "1124">
+               </Location>
+               <Location
+                  uuid = "B887C6A9-3AE4-4934-A9E1-E7ABA038D38D - c86867088ea13dff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Infra.RemoteDeleteService.delete(with: Foundation.URL, completion: (Swift.Result&lt;Swift.Bool, Data.HttpError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Infra"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardoalmeida/Documents/TailBankProject/TailBank/Infra/Http/Remote/RemoteDeleteService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "1369">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

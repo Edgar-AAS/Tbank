@@ -1,11 +1,12 @@
 import Foundation
 
 public protocol AddCard {
-    typealias Result = Swift.Result<Void, DomainError>
+    typealias Result = Swift.Result<Bool, DomainError>
     func add<T: Model>(cardModel: T, completion: @escaping (AddCard.Result) -> Void)
 }
 
 public struct DigitalCardModel: Model {
+    public let id: String?
     public let name: String
     public let isVirtual: Bool
     public let balance: Double
@@ -18,6 +19,7 @@ public struct DigitalCardModel: Model {
     public let cvc: String
     
     public init(
+        id: String?,
         name: String,
         isVirtual: Bool = true,
         balance: Double = 0.0,
@@ -29,6 +31,7 @@ public struct DigitalCardModel: Model {
         cardFunction: String,
         cvc: String
     ) {
+        self.id = id
         self.name = name
         self.isVirtual = isVirtual
         self.balance = balance

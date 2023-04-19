@@ -9,11 +9,15 @@ private enum HomeCellsType: Int {
 }
 
 protocol HomeControllerProtocol where Self: UIViewController {
-    var isNeedUpdate: Bool { get set }
+    var isNeedUpdateCard: Bool { get set }
+    var isNeedUpdateProfile: Bool { get set }
+    var isNeedUpdateWithoutAnimation: Bool { get set }
 }
 
 public final class HomeController: UITableViewController, HomeControllerProtocol {
-    var isNeedUpdate: Bool = false
+    var isNeedUpdateCard: Bool = false
+    var isNeedUpdateProfile: Bool = false
+    var isNeedUpdateWithoutAnimation: Bool = false
     
     public lazy var refreshControlIndicator: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -25,34 +29,56 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
     public var presenter: ViewToPresenterHomeProtocol?
     public var header: PersonHeader?
     public var balanceViewModel: BalanceViewModel?
-    public var physicalCards: [CardModel]?
+    public var cards: [CardModel]?
     public var mainServices = [Service]()
     public var appResources = [Resource]()
 
+    private var goToLastItem: (() -> (Void))?
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
         setupTableviewProperties()
         setupHeader()
         tableView.addSubview(refreshControlIndicator)
-        presenter?.fetchData()
         navigationItem.backButtonTitle = ""
-    }   
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        presenter?.fetchData()
+        presenter?.fechCards()
+    }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        
-        if isNeedUpdate {
-            header?.profileImageView.loadImageWith(path: makeUserImagePath())
-            isNeedUpdate = false
-        }
+        updateIfNeeded()
     }
     
     @objc private func refresh(sender: UIRefreshControl) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.refreshControlIndicator.endRefreshing()
+        }
+    }
+
+    private func scrollToLastItem() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
+            self?.goToLastItem?()
+        }
+    }
+    
+    private func updateIfNeeded() {
+        switch true {
+            case isNeedUpdateCard:
+                presenter?.fechCards()
+                self.scrollToLastItem()
+                self.isNeedUpdateCard = false
+            case isNeedUpdateWithoutAnimation:
+                presenter?.fechCards()
+                isNeedUpdateWithoutAnimation = false
+            case isNeedUpdateProfile:
+                header?.profileImageView.loadImageWith(path: makeUserImagePath())
+                self.isNeedUpdateProfile = false
+        default: return
         }
     }
     
@@ -86,7 +112,6 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
         view.backgroundColor = .primaryColor
         tableView.backgroundColor = .primaryColor
         tableView.separatorStyle = .none
-        navigationController?.navigationBar.isHidden = true
         tableView.showsVerticalScrollIndicator = false
         tableView.allowsSelection = false
     }
@@ -111,7 +136,8 @@ extension HomeController {
             return cell ?? UITableViewCell()
         case .cardCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: CardCell.reuseIdentifier, for: indexPath) as? CardCell
-            cell?.setupCell(with: physicalCards)
+            cell?.setupCell(with: cards)
+            goToLastItem = cell?.goToLastItem
             cell?.delegate = self
             return cell ?? UITableViewCell()
         case .serviceCell:
@@ -144,34 +170,35 @@ extension HomeController: AddCardButtonDelegateProtocol {
 extension HomeController: ProfileView {
     public func updateProfileView(viewModel: ProfileViewModel) {
         self.header?.updateHeaderDisplay(viewModel: viewModel)
+        tableView.reloadData()
     }
 }
 
 extension HomeController: BalanceView {
     public func updateBalanceView(viewModel: BalanceViewModel) {
         self.balanceViewModel = viewModel
-        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+        tableView.reloadData()
     }
 }
 
 extension HomeController: CardsView {
     public func updateCardsView(viewModel: CardsViewViewModel) {
-        self.physicalCards = viewModel.cards.filter({ $0.isVirtual == false })
-        tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
+        self.cards = viewModel.cards
+        tableView.reloadData()
     }
 }
 
 extension HomeController: ServicesView {
     public func updateServicesView(services: [Service]) {
         self.mainServices = services
-        tableView.reloadRows(at: [IndexPath(row: 2, section: 0)], with: .automatic)
+        tableView.reloadData()
     }
 }
 
 extension HomeController: ResourcesView {
     public func updateResourcesView(resources: [Resource]) {
         appResources = resources
-        tableView.reloadRows(at: [IndexPath(row: 3, section: 0)], with: .automatic)
+        tableView.reloadData()
     }
 }
 

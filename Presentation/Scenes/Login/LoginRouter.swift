@@ -3,7 +3,7 @@ import Data
 
 public class LoginRouter {
     private let navigationController: UINavigationController?
-    private let homeFactory: () -> HomeController
+    public let homeFactory: () -> HomeController
     
     public init(navigationController: UINavigationController?, homeFactory: @escaping () -> HomeController) {
         self.navigationController = navigationController

@@ -10,12 +10,12 @@ public final class RemoteAddDigitalCard: AddCard {
         self.httpClient = httpClient
     }
     
-    public func add<T>(cardModel: T, completion: @escaping (Result<Void, DomainError>) -> Void) where T : Model {
+    public func add<T>(cardModel: T, completion: @escaping (Result<Bool, DomainError>) -> Void) where T : Model {
         httpClient.post(to: url, with: cardModel.toData()) { [weak self] result in
             guard self != nil else { return }
             switch result {
             case .success:
-                completion(.success(()))
+                completion(.success(true))
             case .failure(let error):
                 switch error {
                 case .unauthorized:

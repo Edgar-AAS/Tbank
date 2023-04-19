@@ -28,16 +28,17 @@ extension CardListPresenter: ViewToPresenterCardsProtocol {
                 self?.physicalCards = userCards.filter({ $0 .isVirtual == false })
                 self?.virtualCards =  userCards.filter({ $0 .isVirtual == true })
                 
-                let userCardsMapped = userCards.map { CardModel(name: $0.name,
-                                                               isVirtual: $0.isVirtual,
-                                                               balance: $0.balance.currencyWith(symbol: .brazilianReal),
-                                                               cardFlag: $0.cardFlag,
-                                                               cardTag: $0.cardTag,
-                                                               cardBrandImageUrl: $0.cardBrandImageURL,
-                                                               cardNumber: $0.cardNumber.toSafeCardNumber(),
-                                                               cardExpirationDate: $0.cardExpirationDate.toShortDate(),
-                                                               cardFunction: $0.cardFunction,
-                                                               cvc: $0.cvc) }
+                let userCardsMapped = userCards.map { CardModel(id: $0.id,
+                                                                name: $0.name,
+                                                                isVirtual: $0.isVirtual,
+                                                                balance: $0.balance.currencyWith(symbol: .brazilianReal),
+                                                                cardFlag: $0.cardFlag,
+                                                                cardTag: $0.cardTag,
+                                                                cardBrandImageUrl: $0.cardBrandImageURL,
+                                                                cardNumber: $0.cardNumber.toSafeCardNumber(),
+                                                                cardExpirationDate: $0.cardExpirationDate.toShortDate(),
+                                                                cardFunction: $0.cardFunction,
+                                                                cvc: $0.cvc) }
                 self?.cardsView.updateCardsView(viewModel: CardsViewViewModel(cards: userCardsMapped))
             case .failure: return
             }
@@ -46,10 +47,6 @@ extension CardListPresenter: ViewToPresenterCardsProtocol {
     
     public func routeToCardCreationFlow() {
         router.goToCardCreationNavigation()
-    }
-    
-    public func popToCardsController() {
-        
     }
     
     public func routeToCardInformationViewWith(indexPath: IndexPath) {

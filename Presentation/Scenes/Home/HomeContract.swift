@@ -6,6 +6,7 @@ public protocol ViewToPresenterHomeProtocol: AnyObject {
     func routeToProfile()
     func routeToCards()
     func fetchData()
+    func fechCards()
 }
 
 public protocol PresenterToRouterHomeProtocol {

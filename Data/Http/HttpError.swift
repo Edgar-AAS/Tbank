@@ -6,5 +6,6 @@ public enum HttpError: Error {
     case serverError
     case unauthorized
     case forbidden
+    case badUrl
 }
 

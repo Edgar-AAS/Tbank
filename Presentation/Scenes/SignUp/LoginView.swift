@@ -60,7 +60,7 @@ public class LoginView: UIView {
     }()
     
     lazy var loginImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "home-logo")!)
+        let imageView = UIImageView(image: UIImage(named: "home-logo"))
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -73,10 +73,24 @@ public class LoginView: UIView {
     lazy var emailTextField = CustomTextField(placeholderText: "Digite seu email")
     lazy var passwordTextField = CustomTextField(placeholderText: "Digite sua senha")
     
+    private lazy var goToSignUpLabel: UILabel = {
+        let label = UILabel()
+        let firstAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.white]
+        let secondAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.secundaryColor]
+        let attributedText = NSMutableAttributedString()
+        attributedText.append(NSAttributedString(string: "Não tem conta?", attributes: firstAttributes))
+        attributedText.append(NSAttributedString(string: " Cadastre-se",attributes: secondAttributes))
+        label.textAlignment = .center
+        label.minimumScaleFactor = 0.5
+        label.adjustsFontSizeToFitWidth = true
+        label.attributedText = attributedText
+        return label
+    }()
     
     public override func layoutSubviews() {
         super.layoutSubviews()
         loginButton.layer.cornerRadius = 30
+        loginButton.clipsToBounds = true
     }
 }
 
@@ -91,6 +105,7 @@ extension LoginView: CodeView {
         containerView.addSubview(emailTextField)
         containerView.addSubview(passwordTextField)
         containerView.addSubview(loginButton)
+        containerView.addSubview(goToSignUpLabel)
         containerView.addSubview(loadingIndicator)
     }
     
@@ -138,7 +153,7 @@ extension LoginView: CodeView {
             bottom: nil,
             padding: .init(top: 16, left: 16, bottom: 0, right: 16)
         )
-
+        
         loginDescriptionLabel.fillConstraints(
             top: loginLabel.bottomAnchor,
             leading: containerView.leadingAnchor,
@@ -146,7 +161,7 @@ extension LoginView: CodeView {
             bottom: nil,
             padding: .init(top: 8, left: 16, bottom: 0, right: 16)
         )
-
+        
         emailTextField.fillConstraints(
             top: loginDescriptionLabel.bottomAnchor,
             leading: containerView.leadingAnchor,
@@ -164,7 +179,7 @@ extension LoginView: CodeView {
             padding: .init(top: 16, left: 16, bottom: 0, right: 16),
             size: .init(width: 0, height: 44)
         )
-
+        
         loginButton.fillConstraints(
             top: passwordTextField.bottomAnchor,
             leading: containerView.leadingAnchor,
@@ -173,16 +188,22 @@ extension LoginView: CodeView {
             padding: .init(top: 32, left: 32, bottom: 0, right: 32),
             size: .init(width: 0, height: 60)
         )
-    
-        loadingIndicator.fillConstraints(
+        
+        goToSignUpLabel.fillConstraints(
             top: loginButton.bottomAnchor,
+            leading: containerView.leadingAnchor,
+            trailing: containerView.trailingAnchor,
+            bottom: nil,
+            padding: .init(top: 16, left: 16, bottom: 0, right: 16)
+        )
+        
+        loadingIndicator.fillConstraints(
+            top: goToSignUpLabel.bottomAnchor,
             leading: nil,
             trailing: nil,
             bottom: containerView.bottomAnchor,
-            padding: .init(top: 32, left: 0, bottom: 16, right: 0),
-            size: .init(width: 64, height: 64)
+            padding: .init(top: 20, left: 16, bottom: 16, right: 16)
         )
-        
         loadingIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
     }
     
@@ -191,6 +212,8 @@ extension LoginView: CodeView {
         setupKeyboardTypes()
         emailTextField.setupLeftImageView(image: UIImage(systemName: "envelope")!, with: .secundaryColor)
         passwordTextField.setupLeftImageView(image: UIImage(systemName: "lock")!, with: .secundaryColor)
+        emailTextField.text = "test@gmail.com"
+        passwordTextField.text = "123@"
     }
     
     private func setupKeyboardTypes() {

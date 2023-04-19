@@ -96,7 +96,7 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
         }
         
         if let homeController = navigationController?.viewControllers.last(where: { $0 is HomeControllerProtocol}) {
-            (homeController as? HomeControllerProtocol)?.isNeedUpdate = true
+            (homeController as? HomeControllerProtocol)?.isNeedUpdateProfile = true
         }
         dismiss(animated: true)
     }

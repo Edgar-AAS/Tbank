@@ -126,7 +126,7 @@
 		728B06A929C253A200DD5A83 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B8EB90299AD96200D69F96 /* SignUpViewController.swift */; };
 		728B06B929C253AE00DD5A83 /* PersonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A59C8029B818F100317C49 /* PersonHeader.swift */; };
 		728B06C129C253B600DD5A83 /* BalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACF8B429B8CEE3001E1E27 /* BalanceCell.swift */; };
-		728B06C229C253B600DD5A83 /* MyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACF8BE29B8D74D001E1E27 /* MyCardCell.swift */; };
+		728B06C229C253B600DD5A83 /* PhysicalCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACF8BE29B8D74D001E1E27 /* PhysicalCardCell.swift */; };
 		728B06C329C253B600DD5A83 /* ResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7291AE0729BBBCE8009343AE /* ResourceCell.swift */; };
 		728B06C429C253B600DD5A83 /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299888629BA2DC500B6A6EA /* ServiceCell.swift */; };
 		728B06C529C253B600DD5A83 /* ResourcesGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7299889029BA675D00B6A6EA /* ResourcesGridCell.swift */; };
@@ -146,6 +146,13 @@
 		728B076429C25A3B00DD5A83 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728B076329C25A3B00DD5A83 /* LoginViewController.swift */; };
 		728B076D29C25A6B00DD5A83 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728B076C29C25A6B00DD5A83 /* LoginView.swift */; };
 		728B078C29C25DB300DD5A83 /* UIControlTestsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728B078B29C25DB300DD5A83 /* UIControlTestsExtensions.swift */; };
+		728B867B29EEF60C00CE465B /* NetworkDeleteServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728B867A29EEF60C00CE465B /* NetworkDeleteServicesTests.swift */; };
+		728B86A729EEFE2000CE465B /* TestsFactorys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B818CC2992E96D0007C070 /* TestsFactorys.swift */; };
+		728B86B729EF275B00CE465B /* RemoteFetchUserCardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728B86B629EF275B00CE465B /* RemoteFetchUserCardsTests.swift */; };
+		728B86C029EF2A3200CE465B /* RemoteAddDigitalCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728B86BF29EF2A3200CE465B /* RemoteAddDigitalCardTests.swift */; };
+		728B86C929EF334400CE465B /* RemoteDeleteDigitalCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728B86C829EF334400CE465B /* RemoteDeleteDigitalCardTests.swift */; };
+		728B86D229EF352600CE465B /* HttpDeleteClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728B86D129EF352600CE465B /* HttpDeleteClientSpy.swift */; };
+		728B86E229EF3B4A00CE465B /* FetchUserCardsSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728B86E129EF3B4A00CE465B /* FetchUserCardsSpy.swift */; };
 		728EFA5B29CBA721008CF146 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EFA5A29CBA721008CF146 /* Navigator.swift */; };
 		72917EA729DC6FC6001A623F /* CardConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72917EA629DC6FC6001A623F /* CardConfigurationView.swift */; };
 		72917EB829DC9928001A623F /* UIlabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72917EB729DC9928001A623F /* UIlabelExtensions.swift */; };
@@ -174,7 +181,6 @@
 		72B818CD2992E96D0007C070 /* TestsFactorys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B818CC2992E96D0007C070 /* TestsFactorys.swift */; };
 		72B818DE2992F16A0007C070 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724AB14529928352000616A7 /* Data.framework */; };
 		72B818DF2992F16A0007C070 /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 724AB14529928352000616A7 /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		72B818E92992F1A20007C070 /* TestsFactorys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B818CC2992E96D0007C070 /* TestsFactorys.swift */; };
 		72B818F42992F89F0007C070 /* UrlProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B818F32992F89F0007C070 /* UrlProtocolStub.swift */; };
 		72B818F82993144B0007C070 /* TestsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B818A22992E50A0007C070 /* TestsExtensions.swift */; };
 		72BF3E9129AFD9F5001D4BCA /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BF3E9029AFD9F5001D4BCA /* Authentication.swift */; };
@@ -206,10 +212,19 @@
 		72C8BF9429CCDB49005D3B91 /* ServicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C8BF9329CCDB49005D3B91 /* ServicesView.swift */; };
 		72C8BF9D29CCE066005D3B91 /* ResourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C8BF9C29CCE066005D3B91 /* ResourcesView.swift */; };
 		72C8BFA729CD1AFA005D3B91 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C8BFA629CD1AFA005D3B91 /* CurrencyFormatter.swift */; };
+		72C9C02629ED72240096D882 /* CardInformationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C9C02529ED72240096D882 /* CardInformationFactory.swift */; };
+		72C9C03829ED80730096D882 /* RemoteDeleteDigitalCardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C9C03729ED80730096D882 /* RemoteDeleteDigitalCardFactory.swift */; };
+		72C9C04129ED87890096D882 /* RemoteDeleteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C9C04029ED87890096D882 /* RemoteDeleteService.swift */; };
+		72C9C04A29ED8D130096D882 /* CardSuccessFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C9C04929ED8D130096D882 /* CardSuccessFactory.swift */; };
+		72C9C06129EDB1B50096D882 /* UpdateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C9C06029EDB1B50096D882 /* UpdateCardView.swift */; };
 		72CFD1EA29CA673D00A49479 /* HomeRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CFD1E929CA673D00A49479 /* HomeRouterTests.swift */; };
 		72CFD1FA29CA7E4200A49479 /* LoginRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CFD1F929CA7E4200A49479 /* LoginRouterTests.swift */; };
 		72D0ED3929D605A9006A4BD1 /* ProfileViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0ED3829D605A9006A4BD1 /* ProfileViewSpy.swift */; };
-		72D30ADE29E2077C00E05934 /* FetchImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D30ADD29E2077C00E05934 /* FetchImages.swift */; };
+		72D2161B29EB084F00CBB206 /* DigitalCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D2161A29EB084F00CBB206 /* DigitalCardCell.swift */; };
+		72D2163029EB52D600CBB206 /* RemoteDeleteDigitalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D2162F29EB52D600CBB206 /* RemoteDeleteDigitalCard.swift */; };
+		72D2163A29EB53D800CBB206 /* RemoteDeleteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D2163929EB53D800CBB206 /* RemoteDeleteService.swift */; };
+		72D2164329EB541300CBB206 /* HttpDeleteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D2164229EB541300CBB206 /* HttpDeleteClient.swift */; };
+		72D2164C29EB5DC100CBB206 /* DeleteDigitalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D2164B29EB5DC100CBB206 /* DeleteDigitalCard.swift */; };
 		72D6EB3929D738BF00512644 /* UIControlTestsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728B078B29C25DB300DD5A83 /* UIControlTestsExtensions.swift */; };
 		72D6EB5729D75D0B00512644 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D6EB5629D75D0B00512644 /* ViewControllerExtensions.swift */; };
 		72D6EB6029D761FA00512644 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D6EB5F29D761FA00512644 /* UIImageExtensions.swift */; };
@@ -227,8 +242,6 @@
 		72DF0B7629E60ECD00973C98 /* CardInformationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DF0B7529E60ECD00973C98 /* CardInformationPresenter.swift */; };
 		72DF0B8829E6DAF600973C98 /* CardInformationContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DF0B8729E6DAF600973C98 /* CardInformationContract.swift */; };
 		72DF0B9129E6DB3800973C98 /* CardInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DF0B9029E6DB3800973C98 /* CardInfoView.swift */; };
-		72DF0BA829E7004300973C98 /* CardSuccessBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DF0BA729E7004300973C98 /* CardSuccessBuilder.swift */; };
-		72DF0BB829E70E5200973C98 /* CardInformationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DF0BB729E70E5200973C98 /* CardInformationBuilder.swift */; };
 		72DF0BC129E7100400973C98 /* CardInformationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DF0BC029E7100400973C98 /* CardInformationRouter.swift */; };
 		72F9559329E4A5BA00339114 /* SimpleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9559229E4A5BA00339114 /* SimpleScrollView.swift */; };
 		72F95E9429C0BEA900D92E6D /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F95E9329C0BEA900D92E6D /* HomePresenterTests.swift */; };
@@ -238,7 +251,6 @@
 		72FEAB9129D340BC002CA545 /* PersonDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FEAB9029D340BC002CA545 /* PersonDataModel.swift */; };
 		72FEAB9A29D34168002CA545 /* FetchUserCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FEAB9929D34168002CA545 /* FetchUserCards.swift */; };
 		72FEABA329D341B8002CA545 /* RemoteFetchCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FEABA229D341B8002CA545 /* RemoteFetchCards.swift */; };
-		72FEABAC29D34345002CA545 /* RemoteFetchPersonDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FEABAB29D34345002CA545 /* RemoteFetchPersonDataTests.swift */; };
 		72FEABBC29D35C15002CA545 /* ProfileControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FEABBB29D35C15002CA545 /* ProfileControllerFactory.swift */; };
 		72FEABDE29D36A24002CA545 /* personData.json in Resources */ = {isa = PBXBuildFile; fileRef = 72FEABDD29D36A24002CA545 /* personData.json */; };
 /* End PBXBuildFile section */
@@ -533,6 +545,12 @@
 		728B076329C25A3B00DD5A83 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Presentation/Scenes/SignUp/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		728B076C29C25A6B00DD5A83 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = Presentation/Scenes/SignUp/LoginView.swift; sourceTree = SOURCE_ROOT; };
 		728B078B29C25DB300DD5A83 /* UIControlTestsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlTestsExtensions.swift; sourceTree = "<group>"; };
+		728B867A29EEF60C00CE465B /* NetworkDeleteServicesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDeleteServicesTests.swift; sourceTree = "<group>"; };
+		728B86B629EF275B00CE465B /* RemoteFetchUserCardsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFetchUserCardsTests.swift; sourceTree = "<group>"; };
+		728B86BF29EF2A3200CE465B /* RemoteAddDigitalCardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteAddDigitalCardTests.swift; sourceTree = "<group>"; };
+		728B86C829EF334400CE465B /* RemoteDeleteDigitalCardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteDeleteDigitalCardTests.swift; sourceTree = "<group>"; };
+		728B86D129EF352600CE465B /* HttpDeleteClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpDeleteClientSpy.swift; sourceTree = "<group>"; };
+		728B86E129EF3B4A00CE465B /* FetchUserCardsSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserCardsSpy.swift; sourceTree = "<group>"; };
 		728EFA5A29CBA721008CF146 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		728EFA9829CBD938008CF146 /* LocalGetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalGetService.swift; sourceTree = "<group>"; };
 		72917EA629DC6FC6001A623F /* CardConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardConfigurationView.swift; sourceTree = "<group>"; };
@@ -560,7 +578,7 @@
 		72A6550E299D5CF100621ED4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72ACF8AA29B8BB81001E1E27 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		72ACF8B429B8CEE3001E1E27 /* BalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCell.swift; sourceTree = "<group>"; };
-		72ACF8BE29B8D74D001E1E27 /* MyCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardCell.swift; sourceTree = "<group>"; };
+		72ACF8BE29B8D74D001E1E27 /* PhysicalCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalCardCell.swift; sourceTree = "<group>"; };
 		72B518C129C4F1E700D653E7 /* CacheManagerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManagerProtocols.swift; sourceTree = "<group>"; };
 		72B5190429C50B3100D653E7 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		72B5194329C5309700D653E7 /* HomeControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControllerFactory.swift; sourceTree = "<group>"; };
@@ -607,10 +625,19 @@
 		72C8BF9329CCDB49005D3B91 /* ServicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesView.swift; sourceTree = "<group>"; };
 		72C8BF9C29CCE066005D3B91 /* ResourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesView.swift; sourceTree = "<group>"; };
 		72C8BFA629CD1AFA005D3B91 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
+		72C9C02529ED72240096D882 /* CardInformationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInformationFactory.swift; sourceTree = "<group>"; };
+		72C9C03729ED80730096D882 /* RemoteDeleteDigitalCardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDeleteDigitalCardFactory.swift; sourceTree = "<group>"; };
+		72C9C04029ED87890096D882 /* RemoteDeleteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDeleteService.swift; sourceTree = "<group>"; };
+		72C9C04929ED8D130096D882 /* CardSuccessFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSuccessFactory.swift; sourceTree = "<group>"; };
+		72C9C06029EDB1B50096D882 /* UpdateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCardView.swift; sourceTree = "<group>"; };
 		72CFD1E929CA673D00A49479 /* HomeRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouterTests.swift; sourceTree = "<group>"; };
 		72CFD1F929CA7E4200A49479 /* LoginRouterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRouterTests.swift; sourceTree = "<group>"; };
 		72D0ED3829D605A9006A4BD1 /* ProfileViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewSpy.swift; sourceTree = "<group>"; };
-		72D30ADD29E2077C00E05934 /* FetchImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImages.swift; sourceTree = "<group>"; };
+		72D2161A29EB084F00CBB206 /* DigitalCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitalCardCell.swift; sourceTree = "<group>"; };
+		72D2162F29EB52D600CBB206 /* RemoteDeleteDigitalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDeleteDigitalCard.swift; sourceTree = "<group>"; };
+		72D2163929EB53D800CBB206 /* RemoteDeleteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDeleteService.swift; sourceTree = "<group>"; };
+		72D2164229EB541300CBB206 /* HttpDeleteClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpDeleteClient.swift; sourceTree = "<group>"; };
+		72D2164B29EB5DC100CBB206 /* DeleteDigitalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDigitalCard.swift; sourceTree = "<group>"; };
 		72D6EB5629D75D0B00512644 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		72D6EB5F29D761FA00512644 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		72D6EB6829D767CE00512644 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -627,8 +654,6 @@
 		72DF0B7529E60ECD00973C98 /* CardInformationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInformationPresenter.swift; sourceTree = "<group>"; };
 		72DF0B8729E6DAF600973C98 /* CardInformationContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardInformationContract.swift; path = Presentation/Scenes/Home/Cards/CardCreation/CardInformationContract.swift; sourceTree = SOURCE_ROOT; };
 		72DF0B9029E6DB3800973C98 /* CardInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoView.swift; sourceTree = "<group>"; };
-		72DF0BA729E7004300973C98 /* CardSuccessBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSuccessBuilder.swift; sourceTree = "<group>"; };
-		72DF0BB729E70E5200973C98 /* CardInformationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInformationBuilder.swift; sourceTree = "<group>"; };
 		72DF0BC029E7100400973C98 /* CardInformationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInformationRouter.swift; sourceTree = "<group>"; };
 		72F9559229E4A5BA00339114 /* SimpleScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleScrollView.swift; sourceTree = "<group>"; };
 		72F95E9329C0BEA900D92E6D /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
@@ -639,7 +664,6 @@
 		72FEAB9029D340BC002CA545 /* PersonDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDataModel.swift; sourceTree = "<group>"; };
 		72FEAB9929D34168002CA545 /* FetchUserCards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserCards.swift; sourceTree = "<group>"; };
 		72FEABA229D341B8002CA545 /* RemoteFetchCards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFetchCards.swift; sourceTree = "<group>"; };
-		72FEABAB29D34345002CA545 /* RemoteFetchPersonDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFetchPersonDataTests.swift; sourceTree = "<group>"; };
 		72FEABBB29D35C15002CA545 /* ProfileControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileControllerFactory.swift; sourceTree = "<group>"; };
 		72FEABDD29D36A24002CA545 /* personData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = personData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -869,6 +893,7 @@
 				721DA1A12996EE5900CB38E3 /* AddAccountSpy.swift */,
 				72F95EAB29C0DF6700D92E6D /* FetchUserDataSpy.swift */,
 				72BF3F2329B13724001D4BCA /* AuthenticationSpy.swift */,
+				728B86E129EF3B4A00CE465B /* FetchUserCardsSpy.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -912,12 +937,12 @@
 			path = Validators;
 			sourceTree = "<group>";
 		};
-		723F4CFA29A68FBC0076D5A8 /* Protocols */ = {
+		723F4CFA29A68FBC0076D5A8 /* EmailValidator */ = {
 			isa = PBXGroup;
 			children = (
 				721DA15C2995BAC400CB38E3 /* EmailValidator.swift */,
 			);
-			path = Protocols;
+			path = EmailValidator;
 			sourceTree = "<group>";
 		};
 		723F4CFB29A68FC30076D5A8 /* Protocols */ = {
@@ -981,7 +1006,7 @@
 		7241082A299BD7F600129804 /* Validation */ = {
 			isa = PBXGroup;
 			children = (
-				723F4CFA29A68FBC0076D5A8 /* Protocols */,
+				723F4CFA29A68FBC0076D5A8 /* EmailValidator */,
 				723F4CE629A6787E0076D5A8 /* Validators */,
 				7241082C299BD7F600129804 /* Info.plist */,
 			);
@@ -1074,6 +1099,7 @@
 				72770D2A29BFC5500081B57C /* FetchUserDataResources.swift */,
 				72FEAB9929D34168002CA545 /* FetchUserCards.swift */,
 				7235950A29DF1ECB00C0F018 /* AddDigitalCard.swift */,
+				72D2164B29EB5DC100CBB206 /* DeleteDigitalCard.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1226,6 +1252,8 @@
 				72D995FC29E44343003DAFA8 /* CardsFactory.swift */,
 				72DF0B6C29E5D65800973C98 /* CardConfigurationFactory.swift */,
 				7276083329E99196001BD112 /* ProfileFactory.swift */,
+				72C9C02529ED72240096D882 /* CardInformationFactory.swift */,
+				72C9C04929ED8D130096D882 /* CardSuccessFactory.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1237,7 +1265,6 @@
 				7282F0BE29E48DB10009FCF6 /* CardInformationView.swift */,
 				7282F0CE29E495650009FCF6 /* CardInformationViewController.swift */,
 				72DF0B7529E60ECD00973C98 /* CardInformationPresenter.swift */,
-				72DF0BB729E70E5200973C98 /* CardInformationBuilder.swift */,
 				72DF0BC029E7100400973C98 /* CardInformationRouter.swift */,
 			);
 			path = CardInformation;
@@ -1315,6 +1342,7 @@
 			children = (
 				721DA0E6299454A200CB38E3 /* RemotePostService.swift */,
 				72BF3FF829B2B19F001D4BCA /* RemoteGetService.swift */,
+				72D2163929EB53D800CBB206 /* RemoteDeleteService.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -1379,6 +1407,7 @@
 				72B818772992B11B0007C070 /* HttpPostClient.swift */,
 				72B818982992C10A0007C070 /* HttpError.swift */,
 				72BF3FB829B286D7001D4BCA /* HttpGetClient.swift */,
+				72D2164229EB541300CBB206 /* HttpDeleteClient.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -1391,7 +1420,7 @@
 				72770D5E29BFEDD10081B57C /* RemoteFetchUserData.swift */,
 				72FEABA229D341B8002CA545 /* RemoteFetchCards.swift */,
 				7235950129DF1D8700C0F018 /* RemoteAddDigitalCard.swift */,
-				72D30ADD29E2077C00E05934 /* FetchImages.swift */,
+				72D2162F29EB52D600CBB206 /* RemoteDeleteDigitalCard.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1400,9 +1429,11 @@
 			isa = PBXGroup;
 			children = (
 				724AB15229928352000616A7 /* RemoteAddAccountTests.swift */,
+				728B86BF29EF2A3200CE465B /* RemoteAddDigitalCardTests.swift */,
 				72BF3EAC29AFDD9E001D4BCA /* RemoteAuthenticationTests.swift */,
 				72770D3429BFC9160081B57C /* RemoteFetchUserDataTests.swift */,
-				72FEABAB29D34345002CA545 /* RemoteFetchPersonDataTests.swift */,
+				728B86B629EF275B00CE465B /* RemoteFetchUserCardsTests.swift */,
+				728B86C829EF334400CE465B /* RemoteDeleteDigitalCardTests.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1412,6 +1443,7 @@
 			children = (
 				72B818862992B2650007C070 /* HttpPostClientSpy.swift */,
 				72BF400A29B2BB2E001D4BCA /* HttpGetClientSpy.swift */,
+				728B86D129EF352600CE465B /* HttpDeleteClientSpy.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -1467,6 +1499,7 @@
 			isa = PBXGroup;
 			children = (
 				72B818BA2992E71F0007C070 /* NetworkPostServiceTests.swift */,
+				728B867A29EEF60C00CE465B /* NetworkDeleteServicesTests.swift */,
 				72BF3FDE29B292C3001D4BCA /* NetworkGetServiceTests.swift */,
 				72B818F32992F89F0007C070 /* UrlProtocolStub.swift */,
 			);
@@ -1531,6 +1564,7 @@
 				72BF3F8C29B245D1001D4BCA /* EmailValidatorAdapter.swift */,
 				72BF3FA629B25567001D4BCA /* NetworkPostService.swift */,
 				72BF401429B2D797001D4BCA /* RemoteGetService.swift */,
+				72C9C04029ED87890096D882 /* RemoteDeleteService.swift */,
 			);
 			path = Infra;
 			sourceTree = "<group>";
@@ -1543,6 +1577,7 @@
 				72B5194C29C5615200D653E7 /* RemoteFetchUserDataFactory.swift */,
 				729236AA29DF967000720697 /* RemoteAddDigitalCard.swift */,
 				7279544729E1223E002E0E5C /* RemoteFetchCardsFactory.swift */,
+				72C9C03729ED80730096D882 /* RemoteDeleteDigitalCardFactory.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -1576,6 +1611,7 @@
 				72C8BF9329CCDB49005D3B91 /* ServicesView.swift */,
 				72C8BF9C29CCE066005D3B91 /* ResourcesView.swift */,
 				72DF0B9029E6DB3800973C98 /* CardInfoView.swift */,
+				72C9C06029EDB1B50096D882 /* UpdateCardView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1597,7 +1633,8 @@
 			children = (
 				72D6EB7A29D78ACD00512644 /* SnappingLayout.swift */,
 				72ACF8AA29B8BB81001E1E27 /* CardCell.swift */,
-				72ACF8BE29B8D74D001E1E27 /* MyCardCell.swift */,
+				72ACF8BE29B8D74D001E1E27 /* PhysicalCardCell.swift */,
+				72D2161A29EB084F00CBB206 /* DigitalCardCell.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -1610,7 +1647,6 @@
 				72DF0B4129E57FCA00973C98 /* CardSuccessView.swift */,
 				72DF0B5129E59EF500973C98 /* CardSuccessPresenter.swift */,
 				72DF0B5A29E59F0400973C98 /* CardSuccessRouter.swift */,
-				72DF0BA729E7004300973C98 /* CardSuccessBuilder.swift */,
 			);
 			path = CardSuccess;
 			sourceTree = "<group>";
@@ -2078,16 +2114,15 @@
 				728B06C729C253B600DD5A83 /* CardCell.swift in Sources */,
 				729E352629D0E1110091F4C0 /* ProfileCell.swift in Sources */,
 				72DF0BC129E7100400973C98 /* CardInformationRouter.swift in Sources */,
-				72DF0BA829E7004300973C98 /* CardSuccessBuilder.swift in Sources */,
 				72DF0B4229E57FCA00973C98 /* CardSuccessView.swift in Sources */,
 				721DA14D2995A33700CB38E3 /* SignUpRequest.swift in Sources */,
-				72DF0BB829E70E5200973C98 /* CardInformationBuilder.swift in Sources */,
 				72D9962629E4577F003DAFA8 /* CardListCell.swift in Sources */,
 				728B06C629C253B600DD5A83 /* ServicesCell.swift in Sources */,
 				723594F929DF0EF000C0F018 /* CardConfigurationRequest.swift in Sources */,
 				728B06D829C253CD00DD5A83 /* CustomTextField.swift in Sources */,
 				723F753429DB90FC00E1633F /* CardConfigurationViewController.swift in Sources */,
 				723FBBBA29C3C09E0006607C /* ProfileContract.swift in Sources */,
+				72D2161B29EB084F00CBB206 /* DigitalCardCell.swift in Sources */,
 				72FEAB7A29D33C55002CA545 /* UpdatePersonTableView.swift in Sources */,
 				7235951429DF707A00C0F018 /* CardGenerator.swift in Sources */,
 				728B06C129C253B600DD5A83 /* BalanceCell.swift in Sources */,
@@ -2103,6 +2138,7 @@
 				721DA1552995A41E00CB38E3 /* AlertView.swift in Sources */,
 				728B075929C258F600DD5A83 /* UIView.swift in Sources */,
 				723FBBB129C3B70A0006607C /* ProfileHeader.swift in Sources */,
+				72C9C06129EDB1B50096D882 /* UpdateCardView.swift in Sources */,
 				72917EDF29DCB9EB001A623F /* UIViewExtensions.swift in Sources */,
 				723F74E329DB19C700E1633F /* CardListPresenter.swift in Sources */,
 				723E2FD929D9DA7B0024231D /* CardsViewController.swift in Sources */,
@@ -2146,7 +2182,7 @@
 				723F74EC29DB19DB00E1633F /* CardsContract.swift in Sources */,
 				728B075A29C258F600DD5A83 /* CodeView.swift in Sources */,
 				728B063C29C22A5F00DD5A83 /* ProfilePresenter.swift in Sources */,
-				728B06C229C253B600DD5A83 /* MyCardCell.swift in Sources */,
+				728B06C229C253B600DD5A83 /* PhysicalCardCell.swift in Sources */,
 				728B06D929C253CD00DD5A83 /* NavigationController.swift in Sources */,
 				728B06C429C253B600DD5A83 /* ServiceCell.swift in Sources */,
 				72C8BF5B29CCB805005D3B91 /* ProfileView.swift in Sources */,
@@ -2188,6 +2224,7 @@
 				725099B829D6625500C2541B /* CardsViewSpy.swift in Sources */,
 				72CFD1FA29CA7E4200A49479 /* LoginRouterTests.swift in Sources */,
 				72BF3EEE29B11524001D4BCA /* TestsFactorys.swift in Sources */,
+				728B86E229EF3B4A00CE465B /* FetchUserCardsSpy.swift in Sources */,
 				728B071329C2543300DD5A83 /* LoginViewControllerTest.swift in Sources */,
 				7250999F29D657B100C2541B /* CurrencyFormatterTests.swift in Sources */,
 				725099C129D6627800C2541B /* ServiceViewSpy.swift in Sources */,
@@ -2243,13 +2280,17 @@
 				72BF401529B2D797001D4BCA /* RemoteGetService.swift in Sources */,
 				72B5194429C5309700D653E7 /* HomeControllerFactory.swift in Sources */,
 				72BF3F8229B24497001D4BCA /* LoginControllerFactory.swift in Sources */,
+				72C9C04129ED87890096D882 /* RemoteDeleteService.swift in Sources */,
+				72C9C02629ED72240096D882 /* CardInformationFactory.swift in Sources */,
 				729236A229DF926400720697 /* CardConfigurationController.swift in Sources */,
+				72C9C03829ED80730096D882 /* RemoteDeleteDigitalCardFactory.swift in Sources */,
 				72C8BF2A29CC9F51005D3B91 /* LocalGetService.swift in Sources */,
 				72143663299FDD3E00337EE9 /* MainDispatchQueueDecorator.swift in Sources */,
 				729236AB29DF967000720697 /* RemoteAddDigitalCard.swift in Sources */,
 				72858307299EB60A00FCF780 /* SignUpControllerFactory.swift in Sources */,
 				72DF0B6D29E5D65800973C98 /* CardConfigurationFactory.swift in Sources */,
 				72BF3F7029B171CE001D4BCA /* RemoteAuthenticationFactory.swift in Sources */,
+				72C9C04A29ED8D130096D882 /* CardSuccessFactory.swift in Sources */,
 				72FEABBC29D35C15002CA545 /* ProfileControllerFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2276,14 +2317,15 @@
 				72B818782992B11B0007C070 /* HttpPostClient.swift in Sources */,
 				72B518C229C4F1E700D653E7 /* CacheManagerProtocols.swift in Sources */,
 				7235950229DF1D8700C0F018 /* RemoteAddDigitalCard.swift in Sources */,
+				72D2164329EB541300CBB206 /* HttpDeleteClient.swift in Sources */,
 				72770D5F29BFEDD10081B57C /* RemoteFetchUserData.swift in Sources */,
+				72D2163029EB52D600CBB206 /* RemoteDeleteDigitalCard.swift in Sources */,
 				72B8189E2992D2440007C070 /* ExtensionsHelpers.swift in Sources */,
 				72B818992992C10A0007C070 /* HttpError.swift in Sources */,
 				72BF3EC829B0F3A7001D4BCA /* RemoteAuthentication.swift in Sources */,
 				72B8187D2992B14A0007C070 /* RemoteAddAccount.swift in Sources */,
 				72FEABA329D341B8002CA545 /* RemoteFetchCards.swift in Sources */,
 				72BF3FB929B286D7001D4BCA /* HttpGetClient.swift in Sources */,
-				72D30ADE29E2077C00E05934 /* FetchImages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2291,14 +2333,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				728B86D229EF352600CE465B /* HttpDeleteClientSpy.swift in Sources */,
 				72770D3529BFC9160081B57C /* RemoteFetchUserDataTests.swift in Sources */,
 				72B818CD2992E96D0007C070 /* TestsFactorys.swift in Sources */,
-				72FEABAC29D34345002CA545 /* RemoteFetchPersonDataTests.swift in Sources */,
 				724AB15329928352000616A7 /* RemoteAddAccountTests.swift in Sources */,
 				72B818A32992E50A0007C070 /* TestsExtensions.swift in Sources */,
 				72BF3EAD29AFDD9E001D4BCA /* RemoteAuthenticationTests.swift in Sources */,
+				728B86C929EF334400CE465B /* RemoteDeleteDigitalCardTests.swift in Sources */,
 				72BF400B29B2BB2E001D4BCA /* HttpGetClientSpy.swift in Sources */,
 				72B818872992B2650007C070 /* HttpPostClientSpy.swift in Sources */,
+				728B86C029EF2A3200CE465B /* RemoteAddDigitalCardTests.swift in Sources */,
+				728B86B729EF275B00CE465B /* RemoteFetchUserCardsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2311,6 +2356,7 @@
 				72FEAB9129D340BC002CA545 /* PersonDataModel.swift in Sources */,
 				724AB0F729927C45000616A7 /* AddAccount.swift in Sources */,
 				7235950B29DF1ECB00C0F018 /* AddDigitalCard.swift in Sources */,
+				72D2164C29EB5DC100CBB206 /* DeleteDigitalCard.swift in Sources */,
 				7279541329E0E497002E0E5C /* UserData.swift in Sources */,
 				72B818932992BE3C0007C070 /* DomainError.swift in Sources */,
 				72BF3E9129AFD9F5001D4BCA /* Authentication.swift in Sources */,
@@ -2326,6 +2372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72B5190529C50B3100D653E7 /* CacheManager.swift in Sources */,
+				72D2163A29EB53D800CBB206 /* RemoteDeleteService.swift in Sources */,
 				721DA0E7299454A200CB38E3 /* RemotePostService.swift in Sources */,
 				72BF3FF929B2B19F001D4BCA /* RemoteGetService.swift in Sources */,
 				721436C529A10E2300337EE9 /* EmailValidatorAdapter.swift in Sources */,
@@ -2338,12 +2385,13 @@
 			files = (
 				721436E829A10EA900337EE9 /* EmailValidatorAdapterTests.swift in Sources */,
 				72B818F42992F89F0007C070 /* UrlProtocolStub.swift in Sources */,
-				72B818E92992F1A20007C070 /* TestsFactorys.swift in Sources */,
+				728B867B29EEF60C00CE465B /* NetworkDeleteServicesTests.swift in Sources */,
 				72D998AE29C90C3E005BAB2E /* CacheManagerSpy.swift in Sources */,
 				72D9989E29C9000C005BAB2E /* CacheManagerTests.swift in Sources */,
 				72BF3FDF29B292C3001D4BCA /* NetworkGetServiceTests.swift in Sources */,
 				72B818BB2992E71F0007C070 /* NetworkPostServiceTests.swift in Sources */,
 				72B818F82993144B0007C070 /* TestsExtensions.swift in Sources */,
+				728B86A729EEFE2000CE465B /* TestsFactorys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

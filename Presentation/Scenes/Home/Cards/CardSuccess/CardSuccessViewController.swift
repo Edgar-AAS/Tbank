@@ -21,6 +21,10 @@ public class CardSuccessViewController: UIViewController {
         if let cardViewController = navigationController?.viewControllers.last(where: { $0 is CardsViewProtocol}) {
             (cardViewController as? CardsViewController)?.isNeedUpdate = true
         }
+        
+        if let homeController = navigationController?.viewControllers.last(where: { $0 is HomeControllerProtocol}) {
+            (homeController as? HomeController)?.isNeedUpdateCard = true
+        }
     }
     
     @objc private func backButtonTapped() {

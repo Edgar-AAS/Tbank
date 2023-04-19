@@ -8,7 +8,7 @@ import Validation
 public func makeCardConfigurationController(addCard: AddCard) -> CardConfigurationViewController {
     let controller = CardConfigurationViewController()
     let validationComposite = ValidationComposite(validations: makeAddCardValidations())
-    let router = CardConfigurationRouter(viewController: controller)
+    let router = CardConfigurationRouter(viewController: controller, cardSuccessFactory: makeCardSuccessFactory)
     let presenter = CardConfigurationPresenter(validation: validationComposite, addDigitalCard: addCard, alertView: WeakVarProxy(controller), loadingView: WeakVarProxy(controller), router: router)
     controller.createDigitalCard = presenter.createDigitalCard
     return controller

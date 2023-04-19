@@ -22,7 +22,7 @@ public class CardConfigurationPresenter {
         } else {
             loadingView.isLoading(viewModel: LoadingViewModel(isLoading: true))
             guard let name = cardConfigurationRequest.name else { return }
-            let digitalCardModel = DigitalCardModel(name: name,
+            let digitalCardModel = DigitalCardModel(id: nil, name: name,
                                                     cardNumber: CardGenerator.createCardNumber(),
                                                     cardExpirationDate: CardGenerator.createCardExpirationDate(),
                                                     cardFunction: CardGenerator.getCardFunction(cardFunction: .hybridCard),
@@ -31,10 +31,17 @@ public class CardConfigurationPresenter {
                 guard self != nil else { return }
                 switch result {
                 case .success:
-                    self?.router.goToCardSuccessScreen(digitalCardModel: digitalCardModel)
-                case .failure: return
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        self?.router.goToCardSuccessScreen(digitalCardModel: digitalCardModel)
+                        self?.loadingView.isLoading(viewModel: LoadingViewModel(isLoading: false))
+                    }
+                case .failure(let error):
+                    switch error {
+                    case .unexpected:
+                        self?.alertView.showMessage(viewModel: AlertViewModel(title: "Falha na criação do cartão digital", message: "Tente novamente em instantes."))
+                    default: return
+                    }
                 }
-                self?.loadingView.isLoading(viewModel: LoadingViewModel(isLoading: false))
             }
         }
     }

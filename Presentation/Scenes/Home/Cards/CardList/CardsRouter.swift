@@ -5,28 +5,24 @@ import Domain
 public class CardsRouter {
     public weak var viewController: UIViewController?
     public var cardCreationFactory: () -> CardCreationViewController
+    public var cardInformationFactory: (DigitalCardModel) -> CardInformationViewController
     
-    public init(viewController: UIViewController, cardCreationFactory: @escaping () -> CardCreationViewController) {
+    public init(viewController: UIViewController,
+                cardCreationFactory: @escaping () -> CardCreationViewController,
+                cardInformationFactory: @escaping (DigitalCardModel) -> CardInformationViewController)  
+    {
         self.viewController = viewController
         self.cardCreationFactory = cardCreationFactory
+        self.cardInformationFactory = cardInformationFactory
     }
 }
 
 extension CardsRouter: CardRoutingLogic {
     public func goToCardInformationScreenWith(userCard: UserCard) {
         if let controller = viewController {
-            let userCardMapped = DigitalCardModel(name: userCard.name,
-                                                  isVirtual: userCard.isVirtual,
-                                                  balance: userCard.balance,
-                                                  cardFlag: userCard.cardFlag,
-                                                  cardTag: userCard.cardTag,
-                                                  cardBrandImageUrl: userCard.cardBrandImageURL,
-                                                  cardNumber: userCard.cardNumber,
-                                                  cardExpirationDate: userCard.cardExpirationDate,
-                                                  cardFunction: userCard.cardFunction,
-                                                  cvc: userCard.cvc)
-            let cardInformationController = CardInformationBuilder.build(digitalCardModel: userCardMapped)
-            controller.navigationController?.pushViewController(cardInformationController, animated: true)
+            if let userCardJson = try? JSONEncoder().encode(userCard), let userCardMapped = try? JSONDecoder().decode(DigitalCardModel.self, from: userCardJson) {
+                controller.navigationController?.pushViewController(cardInformationFactory(userCardMapped), animated: true)
+            }
         }
     }
     

@@ -4,11 +4,11 @@ protocol AddCardButtonDelegateProtocol: AnyObject {
     func addCardButtonDidTapped()
 }
 
-final class CardCell: UITableViewCell, UICollectionViewDelegate {
+final class CardCell: UITableViewCell {
     static let reuseIdentifier = String(describing: CardCell.self)
-    var collectionView: UICollectionView!
+    private var collectionView: UICollectionView!
     
-    var physicalCards = [CardModel]()
+    private var cards = [CardModel]()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -17,13 +17,17 @@ final class CardCell: UITableViewCell, UICollectionViewDelegate {
         contentView.backgroundColor = .primaryColor
     }
     
+    func goToLastItem() {
+        collectionView.scrollToItem(at: IndexPath(item: cards.count - 1, section: 0), at: .right, animated: true)
+    }
+    
     weak var delegate: AddCardButtonDelegateProtocol?
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    lazy var myCardsLabel: UILabel = {
+    private lazy var myCardsLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.text = "Meus cartões"
@@ -59,29 +63,46 @@ final class CardCell: UITableViewCell, UICollectionViewDelegate {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        collectionView.register(MyCardCell.self, forCellWithReuseIdentifier: MyCardCell.reuseIdentifier)
+        collectionView.register(PhysicalCardCell.self, forCellWithReuseIdentifier: PhysicalCardCell.reuseIdentifier)
+        collectionView.register(DigitalCardCell.self, forCellWithReuseIdentifier: DigitalCardCell.reuseIdentifier)
     }
     
     func setupCell(with cards: [CardModel]?) {
-        guard let physicalCards = cards else { return }
-        self.physicalCards = physicalCards
+        guard let cardsModel = cards else { return }
+        self.cards = cardsModel
         collectionView.reloadData()
     }
 }
 
+//MARK: - UICollectionViewDataSource
 extension CardCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return physicalCards.count
+        return cards.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCardCell.reuseIdentifier, for: indexPath) as? MyCardCell
-        cell?.setupCell(with: physicalCards[indexPath.row])
-        cell?.backgroundColor = UIColor(hexString: "0A2647")
-        return cell ?? UICollectionViewCell()
+        let card = cards[indexPath.row]
+        
+        if card.isVirtual {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DigitalCardCell.reuseIdentifier, for: indexPath) as? DigitalCardCell
+            cell?.setupCell(with: card)
+            return cell ?? UICollectionViewCell()
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhysicalCardCell.reuseIdentifier, for: indexPath) as? PhysicalCardCell
+            cell?.setupCell(with: card)
+            return cell ?? UICollectionViewCell()
+        }
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
+extension CardCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: bounds.size.width/1.2, height: collectionView.frame.size.height - 20)
+    }
+}
+
+//MARK: - Configurate views
 extension CardCell: CodeView {
     func buildViewHierarchy() {
         contentView.addSubview(myCardsLabel)
@@ -115,11 +136,5 @@ extension CardCell: CodeView {
             padding: .init(top: 20, left: 0, bottom: 0, right: 0),
             size: .init(width: 0, height: contentView.bounds.width * 0.8)
         )
-    }
-}
-
-extension CardCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: bounds.size.width/1.2, height: collectionView.frame.size.height - 20)
     }
 }

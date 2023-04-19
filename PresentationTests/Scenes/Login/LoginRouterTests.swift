@@ -15,17 +15,27 @@ class LoginRouterTests: XCTestCase {
     }
     
     func test_sut_is_initizalized_with_the_correct_controller() {
-        let destinationVC = HomeController()
-        let (sut, _) = makeSut(with: destinationVC)
-        XCTAssertEqual(sut.destinationController, destinationVC)
+        let (sut, nav) = makeSut()
+        sut.goToHome()
+        XCTAssertEqual(nav.viewControllers.count, 1)
+        XCTAssertTrue(nav.viewControllers[0] is HomeController)
     }
 }
 
 extension LoginRouterTests {
-    func makeSut(with destinationVC: UIViewController = HomeController()) -> (sut: LoginRouter, nav: NavigationController) {
-        let nav = NavigationController()
-        let sut = LoginRouter(navigationController: nav, destinationController: destinationVC)
+    func makeSut() -> (sut: LoginRouter, nav: NavigationController) {
+        let navigation = NavigationController()
+        let homeFactory = HomeControllerFactory()
+        let sut = LoginRouter(navigationController: navigation, homeFactory: homeFactory.makeHome)
         checkMemoryLeak(for: sut)
-        return (sut, nav)
+        return (sut, navigation)
+    }
+}
+
+extension LoginRouterTests {
+    class HomeControllerFactory {
+        func makeHome() -> HomeController {
+            return HomeController()
+        }
     }
 }

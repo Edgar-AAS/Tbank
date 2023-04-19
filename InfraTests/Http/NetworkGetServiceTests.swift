@@ -3,7 +3,6 @@ import Infra
 import Data
 
 class NetworkGetServiceTests: XCTestCase {
-    //1) testar url
     func test_get_should_make_request_with_valid_url_and_method() {
         let url = makeUrl()
         testRequestFor(url: url) { (request) in
@@ -39,10 +38,6 @@ class NetworkGetServiceTests: XCTestCase {
         expectResult(.success(nil), when: (data: makeEmptyData(), response: makeHttpResponse(statusCode: 204), error: nil))
         expectResult(.success(nil), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 204), error: nil))
     }
-    
-    //se minha request completar com sucessso e tiver uma chave para o cache deve ser criado um objeto em cache
-    //caso contrario o cache e nulo
-    //verificar se a chave forne
     
     func test_get_dont_creates_object_in_cache_if_objectCacheKey_is_nil() {
         let cacheSpy = CacheManagerSpy()
@@ -90,10 +85,6 @@ class NetworkGetServiceTests: XCTestCase {
         })
         wait(for: [exp2], timeout: 1)
     }
-
-    //eu faco a requisicao, depois tento fazer dnv, porem, não deve completar a requisicao, pois ja tem objeto em cache.
-    //testo quantos objetos foram criados em cache
-    //se haver apenas um objeto signfica que nao chamou duas vezes
 }
 
 extension NetworkGetServiceTests {

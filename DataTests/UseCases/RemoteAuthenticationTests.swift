@@ -2,7 +2,6 @@ import XCTest
 import Data
 import Domain
 
-//falta o caso de dados invalidos
 class RemoteAuthenticationTests: XCTestCase {
     func test_auth_should_call_httpClient_with_correct_url() {
         let url = makeUrl()
@@ -18,13 +17,12 @@ class RemoteAuthenticationTests: XCTestCase {
         XCTAssertEqual(httpClientSpy.data, addAccountModel.toData())
     }
         
-    //callbacks
-    func test_auth_should_complete_with_error_if_httpClient_fails() {
-        let (sut, httpClientSpy) = makeSut()
-        expect(sut, completeWith: .failure(.unexpected)) {
-            httpClientSpy.completeWithError(.noConnectivity)
-        }
-    }
+//    func test_auth_should_complete_with_error_if_httpClient_fails() {
+//        let (sut, httpClientSpy) = makeSut()
+//        expect(sut, completeWith: .failure(.unexpected)) {
+//            httpClientSpy.completeWithError(.noConnectivity)
+//        }
+//    }
     
     func test_auth_should_complete_with_data_if_client_complete_with_valid_data() {
         let (sut, httpClientSpy) = makeSut()

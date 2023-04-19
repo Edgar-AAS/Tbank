@@ -19,7 +19,7 @@ class RemoteFetchUserDataTests: XCTestCase {
     
     func test_fetch_should_completes_with_data_if_httpGetClient_completes_with_valid_data() {
         let (sut, httpClientSpy) = makeSut()
-        let userModel = makeUserModel()
+        let userModel = makeUserDataReponse()
         expect(sut, completeWith: .success(userModel), when: {
             let data = try! JSONEncoder().encode(userModel)
             httpClientSpy.completeWithData(data)

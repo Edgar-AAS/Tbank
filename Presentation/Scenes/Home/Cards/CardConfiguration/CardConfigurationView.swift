@@ -50,7 +50,7 @@ public class CardConfigurationView: UIView {
         cardNameTextField.layer.borderColor = UIColor.secundaryColor.cgColor
     }
     
-    lazy var digitalCardTitle: UILabel = .descriptionLabel(titleText: "Dê um nome ao seu cartão digital!", subtitleText: "\nEscolha um nome que o identifique facilmente e que reflita o seu uso.", titleFontSize: 30, subtitleFontSize: 20, titleColor: .offWhiteColor, subtitleColor: UIColor(hexString: "#cecece"))
+    lazy var digitalCardTitle: UILabel = .descriptionLabel(titleText: "Dê um nome ao seu cartão digital!", subtitleText: "\nEscolha um nome que identifique facilmente o seu uso.", titleFontSize: 30, subtitleFontSize: 20, titleColor: .offWhiteColor, subtitleColor: UIColor(hexString: "#cecece"))
     
     lazy var contentView: UIView = {
         let view = UIView()

@@ -1,8 +1,9 @@
 import Foundation
 
-protocol ViewToPresenterCardInformationViewProtocol {
+public protocol ViewToPresenterCardInformationViewProtocol {
     func updateCardInformationView()
-    func popToCardController() 
+    func popToCardController()
+    func removeCard(at id: String)
 }
 
 public protocol CardInformationRoutingLogic {

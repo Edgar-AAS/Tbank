@@ -49,3 +49,15 @@ extension WeakVarProxy: UpdateProfileView where T: UpdateProfileView {
         instance?.updateWith(viewModel: viewModel)
     }
 }
+
+extension WeakVarProxy: UpdateCardView where T: UpdateCardView {
+    func update(cardViewModel: CardModel) {
+        instance?.update(cardViewModel: cardViewModel)
+    }
+}
+
+extension WeakVarProxy: CardInformationDelegate where T: CardInformationDelegate {
+    func digitalCardDidRemoved(isNeedUpdateView: Bool) {
+        instance?.digitalCardDidRemoved(isNeedUpdateView: isNeedUpdateView)
+    }
+}

@@ -14,14 +14,15 @@ func makeCardViewModel() -> CardsViewViewModel {
     return CardsViewViewModel(
         cards: [
             CardModel(
-                name: "rodolfo",
+                id: "any_id",
+                name: "any_name",
                 isVirtual: true,
                 balance: "R$ 530,00",
                 cardFlag: "Mastercard",
                 cardTag: 1,
                 cardBrandImageUrl: "anyImageUrl.com",
                 cardNumber: "•••• 1246",
-                cardExpirationDate: "04/12",
+                cardExpirationDate: "07/32",
                 cardFunction: "Débito e crédito",
                 cvc: "345"
             )
@@ -29,16 +30,16 @@ func makeCardViewModel() -> CardsViewViewModel {
     )
 }
 
-func makeServicesModel() -> [MainService] {
+func makeServicesModel() -> [Service] {
     return [
-        MainService(serviceIconURL: "anyIconUrl.com", serviceName: "Área pix", serviceTag: 0),
-        MainService(serviceIconURL: "anyIconUrl.com", serviceName: "Depositar", serviceTag: 1)
+        Service(serviceIconURL: "anyIconUrl.com", serviceName: "Área pix", serviceTag: 0),
+        Service(serviceIconURL: "anyIconUrl.com", serviceName: "Depositar", serviceTag: 1)
     ]
 }
 
 func makeResourcesModel() -> [Resource] {
     return [
-        Resource(applogoURL: "anyUrl", resourceDescription: "Description 123 test"),
-        Resource(applogoURL: "anyUrl", resourceDescription: "123 test Description")
+        Resource(applogoURL: "anyUrl", resourceDescription: "Description 123 test", resourceId: "1"),
+        Resource(applogoURL: "anyUrl", resourceDescription: "123 test Description", resourceId: "2")
     ]
 }

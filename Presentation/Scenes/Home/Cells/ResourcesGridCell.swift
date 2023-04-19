@@ -17,6 +17,14 @@ final class ResourcesGridCell: UITableViewCell, UICollectionViewDelegate, UIColl
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    lazy var recommendationLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Confira também"
+        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.textColor = .offWhiteColor
+        return label
+    }()
 
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
@@ -37,6 +45,7 @@ final class ResourcesGridCell: UITableViewCell, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResourceCell.reuseIdentifier, for: indexPath) as? ResourceCell
+        cell?.resourceImage.image = UIImage(named: "resource-\(indexPath.row + 1)")
         cell?.setupCell(resource: resources[indexPath.row])
         return cell ?? UICollectionViewCell()
     }
@@ -50,11 +59,22 @@ final class ResourcesGridCell: UITableViewCell, UICollectionViewDelegate, UIColl
 extension ResourcesGridCell: CodeView {
     func buildViewHierarchy() {
         contentView.addSubview(collectionView)
+        contentView.addSubview(recommendationLabel)
     }
     
     func setupConstrains() {
+        let cv = contentView
+        
+        recommendationLabel.fillConstraints(
+            top: cv.topAnchor,
+            leading: cv.leadingAnchor,
+            trailing: cv.trailingAnchor,
+            bottom: nil,
+            padding: .init(top: 8, left: 20, bottom: 0, right: 20)
+        )
+        
         collectionView.fillConstraints(
-            top: contentView.topAnchor,
+            top: recommendationLabel.bottomAnchor,
             leading: contentView.leadingAnchor,
             trailing: contentView.trailingAnchor,
             bottom: contentView.bottomAnchor,

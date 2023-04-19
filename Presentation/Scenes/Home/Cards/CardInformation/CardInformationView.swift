@@ -159,6 +159,18 @@ public class CardInformationView: UIView {
         return label
     }()
     
+    lazy var deleteCardButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = UIColor(hexString: "0A2647")
+        button.setTitle("Excluir cartão digital", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.tintColor = UIColor(hexString: "FF4735")
+        button.largeContentImageInsets = .init(top: 0, left: 20, bottom: 0, right: 50)
+        button.layer.cornerRadius = 30
+        button.clipsToBounds = true
+        return button
+    }()
+    
     private lazy var nameView = makeInfoView()
     private lazy var cardNumberView = makeInfoView()
     private lazy var expirationDateView = makeInfoView()
@@ -188,6 +200,7 @@ extension CardInformationView: CodeView {
         containerView.addSubview(cardNumberView)
         containerView.addSubview(expirationDateAndCVCHorizontalStack)
         containerView.addSubview(cardMarkAndCardFunctionHorizontalStack)
+        containerView.addSubview(deleteCardButton)
         nameView.addSubview(usernameLabel)
         nameView.addSubview(usernameContentLabel)
         cardNumberView.addSubview(numberLabel)
@@ -320,8 +333,17 @@ extension CardInformationView: CodeView {
             top: expirationDateAndCVCHorizontalStack.bottomAnchor,
             leading: containerView.leadingAnchor,
             trailing: containerView.trailingAnchor,
+            bottom: nil,
+            padding: .init(top: 16, left: 16, bottom: 0, right: 16)
+        )
+        
+        deleteCardButton.fillConstraints(
+            top: cardMarkAndCardFunctionHorizontalStack.bottomAnchor,
+            leading: containerView.leadingAnchor,
+            trailing: containerView.trailingAnchor,
             bottom: containerView.bottomAnchor,
-            padding: .init(top: 16, left: 16, bottom: 16, right: 16)
+            padding: .init(top: 32, left: 32, bottom: 16, right: 32),
+            size: .init(width: 0, height: 60)
         )
         
         cardMarkLabel.fillConstraints(
@@ -355,7 +377,6 @@ extension CardInformationView: CodeView {
             bottom: cardFunctionView.bottomAnchor,
             padding: .init(top: 8, left: 16, bottom: 16, right: 16)
         )
-
     }
     
     func setupAdditionalConfiguration() {

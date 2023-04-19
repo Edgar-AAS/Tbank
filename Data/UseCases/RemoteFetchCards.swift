@@ -27,5 +27,3 @@ public class RemoteFetchCards: FetchUserCards {
         })
     }
 }
-
-//verificar se sao nove caracteres e adiciona um ao penultimo

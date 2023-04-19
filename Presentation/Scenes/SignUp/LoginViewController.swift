@@ -69,23 +69,6 @@ extension LoginViewController: UITextFieldDelegate {
         }
         return false
     }
-    
-//    public func textFieldDidChangeSelection(_ textField: UITextField) {
-//        if textField.text?.count == 0 {
-//            cardConfigurationView?.disableButton()
-//        } else if textField.text?.count == 1 {
-//            if let text = textField.text {
-//                if text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-//                    cardConfigurationView?.disableButton()
-//                    cardConfigurationView?.cardNameTextField.layer.borderColor = UIColor.offWhiteColor.cgColor
-//                } else {
-//                    cardConfigurationView?.enableButton()
-//                    cardConfigurationView?.cardNameTextField.layer.borderColor = UIColor.secundaryColor.cgColor
-//                }
-//            }
-//        }
-//    }
-    
 }
 
 extension LoginViewController: AlertView {
@@ -101,11 +84,13 @@ extension LoginViewController: LoadingView {
         if viewModel.isLoading {
             self.view.isUserInteractionEnabled = false
             self.loginScreen?.loadingIndicator.startAnimating()
+            self.navigationController?.navigationBar.alpha = 0.5
             self.loginScreen?.loginButton.alpha = 0.5
             self.view.alpha = 0.5
         } else {
             self.view.isUserInteractionEnabled = true
             self.loginScreen?.loadingIndicator.stopAnimating()
+            self.navigationController?.navigationBar.alpha = 1
             self.loginScreen?.loginButton.alpha = 1
             self.view.alpha = 1
         }

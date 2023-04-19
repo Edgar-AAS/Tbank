@@ -58,10 +58,8 @@ final class ResourceCell: UICollectionViewCell {
     }()
     
     func setupCell(resource: Resource) {
-        if let url = URL(string: resource.applogoURL) {
-            resourceLabel.text = resource.resourceDescription
-            loadImage(with: url, imageId: resource.applogoURL)
-        }
+        resourceLabel.text = resource.resourceDescription
+//            loadImage(with: url, imageId: resource.applogoURL)
     }
     
     private func loadImage(with url: URL, imageId: String) {
