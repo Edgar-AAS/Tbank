@@ -16,7 +16,7 @@ Este projeto consiste em um teste de conceito de um aplicativo financeiro que si
   * Testes unitários nas camadas: Infra, Validation, Data, Presentation e Main 
   * Design patterns: Observer, Factory, Decorator e Composite
   * Design System: MVP-R
-  * Buscando seguir todos os princípios do SOLID
+  * SOLID
 
 ## 💻 Developer
 * Edgar Arlindo
