@@ -13,3 +13,8 @@ Este projeto consiste em um teste de conceito de um aplicativo financeiro que si
   * Design patterns: Observer, Factory, Decorator e Composite
   * Design System: MVP-R
   * Buscando seguir todos os princípios do SOLID
+
+## 💻 Developer
+* Edgar Arlindo
+    * [Github](https://github.com/Edgar-AAS)
+    * [LinkedIn](https://www.linkedin.com/in/edgar-arlindo-394242247/)
