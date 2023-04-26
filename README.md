@@ -16,5 +16,4 @@ Este projeto consiste em um teste de conceito de um aplicativo financeiro que si
 
 ## 💻 Developer
 * Edgar Arlindo
-    * [Github](https://github.com/Edgar-AAS)
     * [LinkedIn](https://www.linkedin.com/in/edgar-arlindo-394242247/)
