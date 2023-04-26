@@ -1,3 +1,7 @@
+[![Language](https://img.shields.io/badge/Swift-5.0-brightgreen.svg)](http://swift.org)
+[![Xcode](https://img.shields.io/badge/Xcode-12.4-brightgreen.svg)](https://developer.apple.com/download/more/)
+
+
 # ProtoBank
 Aplicativo protótipo de um banco digital que tem por objetivo simular comportamentos e funcionalidades de uma aplicação real.
 
