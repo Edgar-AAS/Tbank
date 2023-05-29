@@ -1,9 +1,6 @@
 import UIKit
 import Domain
 
-
-private let imageCache = NSCache<NSString, UIImage>()
-
 final class ResourceCell: UICollectionViewCell {
     static let reuseIdentifier = String(describing: ResourceCell.self)
     var representedIdentifier: String?
@@ -59,24 +56,6 @@ final class ResourceCell: UICollectionViewCell {
     
     func setupCell(resource: Resource) {
         resourceLabel.text = resource.resourceDescription
-//            loadImage(with: url, imageId: resource.applogoURL)
-    }
-    
-    private func loadImage(with url: URL, imageId: String) {
-        if let image = imageCache.object(forKey: imageId as NSString) {
-            resourceImage.image = image
-        } else {
-            DispatchQueue.global().async { [weak self] in
-                if let data = try? Data(contentsOf: url) {
-                    if let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            imageCache.setObject(image, forKey: imageId as NSString)
-                            self?.resourceImage.image = image
-                        }
-                    }
-                }
-            }
-        }
     }
 }
 

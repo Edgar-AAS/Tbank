@@ -41,7 +41,7 @@ class RemoteDeleteDigitalCardTests: XCTestCase {
         XCTAssertNil(result)
     }
     
-    func makeSut(url: URL = URL(string: "any_url.com")!, objectCacheKey: String? = nil, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteDeleteDigitalCard, httpClientSpy: HttpDeleteClientSpy) {
+    func makeSut(url: URL = URL(string: "any_url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteDeleteDigitalCard, httpClientSpy: HttpDeleteClientSpy) {
         let httpClientSpy = HttpDeleteClientSpy()
         let sut = RemoteDeleteDigitalCard(httpClient: httpClientSpy)
         checkMemoryLeak(for: sut, file: file, line: line)

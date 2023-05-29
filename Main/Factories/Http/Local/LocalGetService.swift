@@ -10,7 +10,7 @@ public class LocalFetchData: HttpGetClient {
         self.withExtension = withExtension
     }
     
-    public func get(to url: URL, objectCacheKey: String?, completion: @escaping (Result<Data?, HttpError>) -> (Void)) {
+    public func get(to url: URL, completion: @escaping (Result<Data?, HttpError>) -> (Void)) {
         let urlPath = Bundle.main.url(forResource: forResource, withExtension: withExtension)
         let data = try! Data(contentsOf: urlPath!)
         completion(.success(data))

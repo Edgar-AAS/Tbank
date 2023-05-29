@@ -204,6 +204,7 @@ extension LoginView: CodeView {
             bottom: containerView.bottomAnchor,
             padding: .init(top: 20, left: 16, bottom: 16, right: 16)
         )
+        
         loadingIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
     }
     

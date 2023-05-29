@@ -43,18 +43,11 @@ class RemoteFetchUserCardsTests: XCTestCase {
         XCTAssertNil(result)
     }
     
-    func test_fetch_should_call_httpClient_with_correct_cacheKey() {
-        let objectCacheKey = makeObjectCacheKey()
-        let (sut, httpClientSpy) = makeSut(objectCacheKey: objectCacheKey)
-        sut.fetch() { _ in }
-        XCTAssertEqual(httpClientSpy.objectCacheKeyReceived, objectCacheKey)
-    }
     
-    func makeSut(url: URL = URL(string: "any_url.com")!, objectCacheKey: String? = nil, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteFetchCards, httpClientSpy: HttpGetClientSpy) {
+    func makeSut(url: URL = URL(string: "any_url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteFetchCards, httpClientSpy: HttpGetClientSpy) {
         let url = makeUrl()
-        let objectCacheKey = makeObjectCacheKey()
         let httpClientSpy = HttpGetClientSpy()
-        let sut = RemoteFetchCards(url: url, httpGetClient: httpClientSpy, objectCacheKey: objectCacheKey)
+        let sut = RemoteFetchCards(url: url, httpGetClient: httpClientSpy)
         checkMemoryLeak(for: sut, file: file, line: line)
         checkMemoryLeak(for: httpClientSpy, file: file, line: line)
         return (sut, httpClientSpy)

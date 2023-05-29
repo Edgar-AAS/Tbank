@@ -16,7 +16,7 @@ class RemoteAuthenticationTests: XCTestCase {
         sut.auth(authenticationModel: addAccountModel) { _ in }
         XCTAssertEqual(httpClientSpy.data, addAccountModel.toData())
     }
-        
+
 //    func test_auth_should_complete_with_error_if_httpClient_fails() {
 //        let (sut, httpClientSpy) = makeSut()
 //        expect(sut, completeWith: .failure(.unexpected)) {

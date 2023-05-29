@@ -3,22 +3,12 @@ import Data
 
 public class RemoteGetService: HttpGetClient {    
     private let session: URLSession
-    private let cacheManager: CacheType?
     
-    public init(session: URLSession = .shared, cacheManager: CacheType?) {
+    public init(session: URLSession = .shared) {
         self.session = session
-        self.cacheManager = cacheManager
     }
     
-    public func get(to url: URL, objectCacheKey: String?, completion: @escaping (Result<Data?, HttpError>) -> (Void)) {
-        if let key = objectCacheKey {
-            if let dataInCache = cacheManager?.getCachedObject(forKey: key) as? Data {
-                print("using cache data")
-                completion(.success(dataInCache))
-                return
-            }
-        }
-        
+    public func get(to url: URL, completion: @escaping (Result<Data?, HttpError>) -> (Void)) {
         session.dataTask(with: url) { (data, response, error) in
             if error == nil {
                 guard let response = (response as? HTTPURLResponse) else { return
@@ -30,9 +20,6 @@ public class RemoteGetService: HttpGetClient {
                     case 204:
                         completion(.success(nil))
                     case 200...299:
-                        if let cacheKey = objectCacheKey {
-                            self.cacheManager?.createCachedObject(data as NSData, forKey: cacheKey)
-                        }
                         completion(.success(data))
                     case 401:
                         completion(.failure(.unauthorized)) //**

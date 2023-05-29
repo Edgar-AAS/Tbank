@@ -47,7 +47,6 @@ final class WelcomeView: UIView {
         
         loginButton.clipsToBounds = true
         registerButton.clipsToBounds = true
-        
     }
 }
 

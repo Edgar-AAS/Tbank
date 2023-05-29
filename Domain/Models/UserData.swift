@@ -1,7 +1,5 @@
 import Foundation
 
-// MARK: - UserDatum
-
 public typealias UserData = [UserDataModel]
 
 public struct UserDataModel: Model {

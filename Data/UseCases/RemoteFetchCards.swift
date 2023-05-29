@@ -4,16 +4,14 @@ import Domain
 public class RemoteFetchCards: FetchUserCards {
     private let url: URL
     private let httpGetClient: HttpGetClient
-    private let objectCacheKey: String?
 
-    public init(url: URL, httpGetClient: HttpGetClient, objectCacheKey: String? = nil) {
+    public init(url: URL, httpGetClient: HttpGetClient) {
         self.url = url
         self.httpGetClient = httpGetClient
-        self.objectCacheKey = objectCacheKey
     }
 
     public func fetch(completion: @escaping (FetchUserCards.Result) -> Void) {
-        httpGetClient.get(to: url, objectCacheKey: objectCacheKey, completion: { [weak self] result in
+        httpGetClient.get(to: url, completion: { [weak self] result in
             guard self != nil else { return }
             switch result {
             case .failure: completion(.failure(.unexpected)) //tratar os outros erros se for necessario
