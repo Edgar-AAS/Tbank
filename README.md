@@ -9,7 +9,7 @@ Aplicativo protótipo de um banco digital que tem por objetivo simular comportam
 
 Este projeto é um aplicativo financeiro que simula o fluxo de criação de um cartão digital. O objetivo principal é explorar conceitos de Arquitetura Limpa e desenvolvimento Orientado a Testes (TDD).
 
-![images](https://user-images.githubusercontent.com/103855076/234614265-5b0fcc87-c30a-4117-baf6-43f8aa101d00.png)
+![WhatsApp Image 2023-05-30 at 20 02 48](https://github.com/Edgar-AAS/Prototype-Bank-App/assets/103855076/10673dbd-9159-40b7-b6a4-4c80cb9768a0)
 
 # Tecnologias utilizadas
   * Linguagem Swift nativa
