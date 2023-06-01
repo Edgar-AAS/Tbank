@@ -103,7 +103,6 @@
 		7276085929E9FC20001BD112 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276085829E9FC20001BD112 /* UIButtonExtension.swift */; };
 		7276087229EA07E4001BD112 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276087129EA07E4001BD112 /* UITextFieldExtension.swift */; };
 		7276E8DF2A265D090014374E /* CardConfigurationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276E8DE2A265D090014374E /* CardConfigurationControllerTests.swift */; };
-		72770D2129BFBD860081B57C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72770D2029BFBD860081B57C /* UserModel.swift */; };
 		72770D2B29BFC5500081B57C /* FetchUserDataResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72770D2A29BFC5500081B57C /* FetchUserDataResources.swift */; };
 		72770D3529BFC9160081B57C /* RemoteFetchUserDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72770D3429BFC9160081B57C /* RemoteFetchUserDataTests.swift */; };
 		72770D5F29BFEDD10081B57C /* RemoteFetchUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72770D5E29BFEDD10081B57C /* RemoteFetchUserData.swift */; };
@@ -521,7 +520,6 @@
 		7276085829E9FC20001BD112 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		7276087129EA07E4001BD112 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		7276E8DE2A265D090014374E /* CardConfigurationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardConfigurationControllerTests.swift; sourceTree = "<group>"; };
-		72770D2029BFBD860081B57C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		72770D2A29BFC5500081B57C /* FetchUserDataResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserDataResources.swift; sourceTree = "<group>"; };
 		72770D3429BFC9160081B57C /* RemoteFetchUserDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchUserDataTests.swift; sourceTree = "<group>"; };
 		72770D5E29BFEDD10081B57C /* RemoteFetchUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchUserData.swift; sourceTree = "<group>"; };
@@ -1099,7 +1097,6 @@
 			children = (
 				724AB0FF299281B4000616A7 /* AccountModel.swift */,
 				724AB1702992A48B000616A7 /* Model.swift */,
-				72770D2029BFBD860081B57C /* UserModel.swift */,
 				7279541229E0E497002E0E5C /* UserData.swift */,
 				7279541B29E0E701002E0E5C /* UserCardData.swift */,
 			);
@@ -2330,7 +2327,6 @@
 				7279541C29E0E701002E0E5C /* UserCardData.swift in Sources */,
 				724AB100299281B4000616A7 /* AccountModel.swift in Sources */,
 				72FEAB9A29D34168002CA545 /* FetchUserCards.swift in Sources */,
-				72770D2129BFBD860081B57C /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

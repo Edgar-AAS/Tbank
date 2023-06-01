@@ -50,9 +50,9 @@ extension CardConfigurationViewController: UITextFieldDelegate {
 extension CardConfigurationViewController: LoadingView {
     public func isLoading(viewModel: LoadingViewModel) {
         if viewModel.isLoading {
-            enableScreen()
-        } else {
             disableScreen()
+        } else {
+            enableScreen()
         }
     }
     

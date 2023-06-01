@@ -1,6 +1,7 @@
 import UIKit
 import Domain
 import Data
+
 public class HomeRouter {
     public weak var viewController: UIViewController? //closure
     private var destinationController: UIViewController?

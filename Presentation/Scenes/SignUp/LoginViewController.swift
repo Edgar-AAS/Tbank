@@ -42,6 +42,17 @@ public final class LoginViewController: UIViewController {
         )
         login?(loginRequest)
     }
+    
+    private func isAllFieldsFilled() -> Bool {
+        if let screen = loginScreen {
+            let fields = [screen.emailTextField, screen.passwordTextField]
+            if fields.allSatisfy({ ($0.text?.isEmpty) == false }) {
+                print("passei aqui po")
+                return true
+            }
+        }
+        return false
+    }
 }
 
 extension LoginViewController: UITextFieldDelegate {
@@ -58,17 +69,6 @@ extension LoginViewController: UITextFieldDelegate {
         }
         return true
     }
-    
-    private func isAllFieldsFilled() -> Bool {
-        if let screen = loginScreen {
-            let fields = [screen.emailTextField, screen.passwordTextField]
-            if fields.allSatisfy({ ($0.text?.isEmpty) == false }) {
-                print("passei aqui po")
-                return true
-            }
-        }
-        return false
-    }
 }
 
 extension LoginViewController: AlertView {
@@ -82,17 +82,25 @@ extension LoginViewController: AlertView {
 extension LoginViewController: LoadingView {
     public func isLoading(viewModel: LoadingViewModel) {
         if viewModel.isLoading {
-            self.view.isUserInteractionEnabled = false
-            self.loginScreen?.loadingIndicator.startAnimating()
-            self.navigationController?.navigationBar.alpha = 0.5
-            self.loginScreen?.loginButton.alpha = 0.5
-            self.view.alpha = 0.5
+            disableScreen()
         } else {
-            self.view.isUserInteractionEnabled = true
-            self.loginScreen?.loadingIndicator.stopAnimating()
-            self.navigationController?.navigationBar.alpha = 1
-            self.loginScreen?.loginButton.alpha = 1
-            self.view.alpha = 1
+            enableScreen()
         }
+    }
+    
+    private func disableScreen() {
+        view.isUserInteractionEnabled = false
+        loginScreen?.loadingIndicator.startAnimating()
+        navigationController?.navigationBar.alpha = 0.5
+        loginScreen?.loginButton.alpha = 0.5
+        view.alpha = 0.5
+    }
+    
+    private func enableScreen() {
+        view.isUserInteractionEnabled = true
+        loginScreen?.loadingIndicator.stopAnimating()
+        navigationController?.navigationBar.alpha = 1
+        loginScreen?.loginButton.alpha = 1
+        view.alpha = 1
     }
 }

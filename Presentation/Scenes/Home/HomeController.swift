@@ -1,12 +1,6 @@
 import UIKit
 import Domain
 
-private enum HomeCellsType: Int {
-    case balanceCell
-    case cardCell
-    case serviceCell
-    case resourcesCell
-}
 
 protocol HomeControllerProtocol where Self: UIViewController {
     var isNeedUpdateCard: Bool { get set }
@@ -15,6 +9,13 @@ protocol HomeControllerProtocol where Self: UIViewController {
 }
 
 public final class HomeController: UITableViewController, HomeControllerProtocol {
+    private enum HomeCellsType: Int {
+        case balanceCell
+        case cardCell
+        case serviceCell
+        case resourcesCell
+    }
+    
     var isNeedUpdateCard: Bool = false
     var isNeedUpdateProfile: Bool = false
     var isNeedUpdateWithoutAnimation: Bool = false

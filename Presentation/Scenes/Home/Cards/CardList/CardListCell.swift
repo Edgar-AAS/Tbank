@@ -13,6 +13,7 @@ class CardListCell: UITableViewCell {
     }
     
     private func configurateCell() {
+        selectionStyle = .none
         detailTextLabel?.textColor = Colors.secundaryColor
         textLabel?.textColor = .white
         imageView?.image = UIImage(named: "yellowImageCard")

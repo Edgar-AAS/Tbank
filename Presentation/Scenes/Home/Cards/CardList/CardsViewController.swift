@@ -46,7 +46,7 @@ extension CardsViewController: CardsView {
 
 extension CardsViewController: CardsScreenViewDelegateProtocol {
     func closeButtonDidTapped() {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -82,7 +82,11 @@ extension CardsViewController: UITableViewDataSource {
             return cell  ?? UITableViewCell()
         }
     }
-    
+}
+
+
+//MARK: - Header and Footer
+extension CardsViewController {
     public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let header = view as? UITableViewHeaderFooterView {
             header.textLabel?.textColor = Colors.offWhiteColor
@@ -116,14 +120,13 @@ extension CardsViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
-    } 
+    }
 }
 
 extension CardsViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let index = IndexPath(row: virtualCards.count, section: 0)
-        
         if indexPath == index {
             presenter?.routeToCardCreationFlow()
         } else {

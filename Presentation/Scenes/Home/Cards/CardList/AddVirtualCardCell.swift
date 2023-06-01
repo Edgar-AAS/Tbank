@@ -42,4 +42,8 @@ extension AddVirtualCardCell: CodeView {
             padding: .init(top: 16, left: 34, bottom: 0, right: 0)
         )
     }
+    
+    func setupAdditionalConfiguration() {
+        selectionStyle = .none
+    }
 }

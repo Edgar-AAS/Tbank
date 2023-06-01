@@ -16,7 +16,6 @@ public class CardListPresenter {
     }
 }
 
-//View to Presenter
 extension CardListPresenter: ViewToPresenterCardsProtocol {
     public func fetchCards() {
         remoteFetchCards.fetch { [weak self] (result) in
