@@ -162,7 +162,7 @@ public class CardInformationView: UIView {
     lazy var deleteCardButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(hexString: "0A2647")
-        button.setTitle("Excluir cartão digital", for: .normal)
+        button.setTitle("Excluir cartão", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.tintColor = UIColor(hexString: "FF4735")
         button.largeContentImageInsets = .init(top: 0, left: 20, bottom: 0, right: 50)

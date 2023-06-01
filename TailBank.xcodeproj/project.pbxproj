@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		720470A12A291C2E00E40264 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720470A02A291C2E00E40264 /* HomeViewControllerTests.swift */; };
+		720470B22A2921A500E40264 /* CardCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720470B12A2921A500E40264 /* CardCellTests.swift */; };
 		7213634F29983D4B00E5C635 /* TestsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B818A22992E50A0007C070 /* TestsExtensions.swift */; };
 		72143647299FCB3400337EE9 /* PresentationFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72143646299FCB3400337EE9 /* PresentationFactories.swift */; };
 		72143658299FCB4E00337EE9 /* PresentationFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72143646299FCB3400337EE9 /* PresentationFactories.swift */; };
@@ -430,6 +431,7 @@
 
 /* Begin PBXFileReference section */
 		720470A02A291C2E00E40264 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		720470B12A2921A500E40264 /* CardCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellTests.swift; sourceTree = "<group>"; };
 		72143646299FCB3400337EE9 /* PresentationFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationFactories.swift; sourceTree = "<group>"; };
 		72143662299FDD3E00337EE9 /* MainDispatchQueueDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDispatchQueueDecorator.swift; sourceTree = "<group>"; };
 		7214367C29A10B9000337EE9 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -763,6 +765,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		720470B02A29218B00E40264 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				720470B12A2921A500E40264 /* CardCellTests.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		72143645299FCB0F00337EE9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -908,7 +918,7 @@
 		723E2FD729D9DA530024231D /* Cards */ = {
 			isa = PBXGroup;
 			children = (
-				7282F0BD29E48D7C0009FCF6 /* CardInformation */,
+				7282F0BD29E48D7C0009FCF6 /* CardInformations */,
 				72DF0B4029E57F8D00973C98 /* CardSuccess */,
 				72917EAF29DC704F001A623F /* CardConfiguration */,
 				723F74F429DB2BA600E1633F /* CardCreation */,
@@ -1253,7 +1263,7 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		7282F0BD29E48D7C0009FCF6 /* CardInformation */ = {
+		7282F0BD29E48D7C0009FCF6 /* CardInformations */ = {
 			isa = PBXGroup;
 			children = (
 				72DF0B8729E6DAF600973C98 /* CardInformationContract.swift */,
@@ -1262,7 +1272,7 @@
 				72DF0B7529E60ECD00973C98 /* CardInformationPresenter.swift */,
 				72DF0BC029E7100400973C98 /* CardInformationRouter.swift */,
 			);
-			path = CardInformation;
+			path = CardInformations;
 			sourceTree = "<group>";
 		};
 		72858334299ECE1200FCF780 /* Proxies */ = {
@@ -1564,6 +1574,7 @@
 		72CFD1E829CA66DB00A49479 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				720470B02A29218B00E40264 /* Cells */,
 				72F95E9329C0BEA900D92E6D /* HomePresenterTests.swift */,
 				72CFD1E929CA673D00A49479 /* HomeRouterTests.swift */,
 				720470A02A291C2E00E40264 /* HomeViewControllerTests.swift */,
@@ -2177,6 +2188,7 @@
 				721DA1A22996EE5900CB38E3 /* AddAccountSpy.swift in Sources */,
 				721436A929A10D8000337EE9 /* ValidationSpy.swift in Sources */,
 				72BF3ED529B11149001D4BCA /* LoginPresenterTests.swift in Sources */,
+				720470B22A2921A500E40264 /* CardCellTests.swift in Sources */,
 				728B078C29C25DB300DD5A83 /* UIControlTestsExtensions.swift in Sources */,
 				725099CA29D662A700C2541B /* ResoucesViewSpy.swift in Sources */,
 				728B070329C2542500DD5A83 /* WelcomeViewControllerTests.swift in Sources */,

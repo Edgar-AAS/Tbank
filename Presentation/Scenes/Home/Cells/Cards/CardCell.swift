@@ -1,16 +1,16 @@
 import UIKit
 
-protocol AddCardButtonDelegateProtocol: AnyObject {
+public protocol AddCardButtonDelegateProtocol: AnyObject {
     func addCardButtonDidTapped()
 }
 
-final class CardCell: UITableViewCell {
+public final class CardCell: UITableViewCell {
     static let reuseIdentifier = String(describing: CardCell.self)
     private var collectionView: UICollectionView!
     
     private var cards = [CardModel]()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCollectionView()
         setupView()
@@ -21,7 +21,7 @@ final class CardCell: UITableViewCell {
         collectionView.scrollToItem(at: IndexPath(item: cards.count - 1, section: 0), at: .right, animated: true)
     }
     
-    weak var delegate: AddCardButtonDelegateProtocol?
+    public weak var delegate: AddCardButtonDelegateProtocol?
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -35,7 +35,7 @@ final class CardCell: UITableViewCell {
         return label
     }()
     
-    lazy var addCardButton: UIButton = {
+    public lazy var addCardButton: UIButton = {
         let button = UIButton(type: .system)
         let buttonImage = UIImage(systemName: "plus")
         button.setImage(buttonImage, for: .normal)
@@ -76,11 +76,11 @@ final class CardCell: UITableViewCell {
 
 //MARK: - UICollectionViewDataSource
 extension CardCell: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cards.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let card = cards[indexPath.row]
         
         if card.isVirtual {
@@ -97,7 +97,7 @@ extension CardCell: UICollectionViewDataSource {
 
 //MARK: - UICollectionViewDelegateFlowLayout
 extension CardCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: bounds.size.width/1.2, height: collectionView.frame.size.height - 20)
     }
 }

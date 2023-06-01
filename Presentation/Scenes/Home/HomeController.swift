@@ -1,7 +1,6 @@
 import UIKit
 import Domain
 
-
 protocol HomeControllerProtocol where Self: UIViewController {
     var isNeedUpdateCard: Bool { get set }
     var isNeedUpdateProfile: Bool { get set }
@@ -33,7 +32,7 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
     public var cards: [CardModel]?
     public var mainServices = [Service]()
     public var appResources = [Resource]()
-
+    
     private var goToLastItem: (() -> (Void))?
     
     public override func viewDidLoad() {
@@ -51,7 +50,7 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        updateIfNeeded()
+        updateViewIfNeeded()
     }
     
     @objc private func refresh(sender: UIRefreshControl) {
@@ -60,25 +59,25 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
             self.refreshControlIndicator.endRefreshing()
         }
     }
-
+    
     private func scrollToLastItem() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
             self?.goToLastItem?()
         }
     }
     
-    private func updateIfNeeded() {
+    private func updateViewIfNeeded() {
         switch true {
-            case isNeedUpdateCard:
-                presenter?.fechCards()
-                self.scrollToLastItem()
-                self.isNeedUpdateCard = false
-            case isNeedUpdateWithoutAnimation:
-                presenter?.fechCards()
-                isNeedUpdateWithoutAnimation = false
-            case isNeedUpdateProfile:
-                header?.profileImageView.loadImageWith(path: makeUserImagePath())
-                self.isNeedUpdateProfile = false
+        case isNeedUpdateCard:
+            presenter?.fechCards()
+            scrollToLastItem()
+            isNeedUpdateCard = false
+        case isNeedUpdateWithoutAnimation:
+            presenter?.fechCards()
+            isNeedUpdateWithoutAnimation = false
+        case isNeedUpdateProfile:
+            header?.profileImageView.loadImageWith(path: makeUserImagePath())
+            isNeedUpdateProfile = false
         default: return
         }
     }
@@ -162,7 +161,7 @@ extension HomeController: PersonHeaderDelegateProtocol {
 }
 
 extension HomeController: AddCardButtonDelegateProtocol {
-    func addCardButtonDidTapped() {
+    public func addCardButtonDidTapped() {
         presenter?.routeToCards()
     }
 }
