@@ -14,7 +14,7 @@ public class RemoteFetchCards: FetchUserCards {
         httpGetClient.get(to: url, completion: { [weak self] result in
             guard self != nil else { return }
             switch result {
-            case .failure: completion(.failure(.unexpected)) //tratar os outros erros se for necessario
+            case .failure: completion(.failure(.unexpected))
             case .success(let data):
                 if let model: UserCards = data?.toModel() {
                     completion(.success(model))

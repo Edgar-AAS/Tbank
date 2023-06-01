@@ -76,7 +76,7 @@ public class ProfileHeader: UIView {
     
     private func getBankBranchAndAcconuntNumberAttributedString(title1: String, subtitle1: String, title2: String, subtitle2: String) -> NSMutableAttributedString {
         let firstAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.white]
-        let secondAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.secundaryColor]
+        let secondAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: Colors.secundaryColor]
 
         let attributedText = NSMutableAttributedString()
         attributedText.append(NSAttributedString(string: "\(title1): ", attributes: firstAttributes))
@@ -89,7 +89,7 @@ public class ProfileHeader: UIView {
     
     private func getbankNumberAndCorporateNameAttributedString(title1: String, subtitle1: String, subtitle2: String) -> NSMutableAttributedString {
         let firstAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.white]
-        let secondAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.secundaryColor]
+        let secondAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: Colors.secundaryColor]
 
         let attributedText = NSMutableAttributedString()
         attributedText.append(NSAttributedString(string: "\(title1): ", attributes: firstAttributes))
@@ -129,7 +129,7 @@ extension ProfileHeader: CodeView {
             trailing: nil,
             bottom: nil,
             padding: .init(top: 24, left: 0, bottom: 0, right: 0),
-            size: .init(width: K.ViewsSize.CircularButton.large, height: K.ViewsSize.CircularButton.large)
+            size: .init(width: CircularButtonSizes.large, height: CircularButtonSizes.large)
         )
         userPhotoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
@@ -168,7 +168,7 @@ extension ProfileHeader: CodeView {
     
     func setupAdditionalConfiguration() {
         configureGestureRecognizer()
-        backgroundColor = .primaryColor
+        backgroundColor = Colors.primaryColor
     }
 }
 

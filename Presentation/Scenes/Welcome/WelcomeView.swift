@@ -3,7 +3,7 @@ import UIKit
 final class WelcomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .primaryColor
+        backgroundColor = Colors.primaryColor
         setupView()
     }
     
@@ -22,8 +22,8 @@ final class WelcomeView: UIView {
     
     lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .secundaryColor
-        button.tintColor = .primaryColor
+        button.backgroundColor = Colors.secundaryColor
+        button.tintColor = Colors.primaryColor
         button.setTitle("Login", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         button.layer.cornerRadius = 10
@@ -32,8 +32,8 @@ final class WelcomeView: UIView {
     
     lazy var registerButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .secundaryColor
-        button.tintColor = .primaryColor
+        button.backgroundColor = Colors.secundaryColor
+        button.tintColor = Colors.primaryColor
         button.setTitle("Cadastrar-se", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         return button

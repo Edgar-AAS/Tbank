@@ -5,7 +5,6 @@ func makeUrl() -> URL {
     return URL(string: "any_url.com")!
 }
 
-
 func makeInvalidData() -> Data {
     return Data("invalid_data".utf8)
 }

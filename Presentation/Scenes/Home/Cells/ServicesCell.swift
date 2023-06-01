@@ -22,7 +22,7 @@ final class ServicesCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         layout.estimatedItemSize = .zero
         layout.scrollDirection = .horizontal
         collectionView = UICollectionView(frame: bounds, collectionViewLayout: layout)
-        collectionView.backgroundColor = .primaryColor
+        collectionView.backgroundColor = Colors.primaryColor
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -42,7 +42,7 @@ final class ServicesCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ServiceCell.reuseIdentifier, for: indexPath) as? ServiceCell
         cell?.setupCell(service: services[indexPath.item])
-        cell?.backgroundColor = .primaryColor
+        cell?.backgroundColor = Colors.primaryColor
         return cell ?? UICollectionViewCell()
     }
 }
@@ -63,7 +63,7 @@ extension ServicesCell: CodeView {
     }
     
     func setupAdditionalConfiguration() {
-        backgroundColor = .primaryColor
+        backgroundColor = Colors.primaryColor
     }
 }
 

@@ -16,14 +16,14 @@ final class PhysicalCardCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 22)
         label.text = "Saldo"
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         return label
     }()
     
     lazy var balanceCardLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = .secundaryColor
+        label.textColor = Colors.secundaryColor
         return label
     }()
     
@@ -48,14 +48,14 @@ final class PhysicalCardCell: UICollectionViewCell {
     lazy var cardNumberLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         return label
     }()
     
     lazy var cardExpirationLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         return label
     }()
     

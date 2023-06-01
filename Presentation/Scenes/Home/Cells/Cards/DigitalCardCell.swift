@@ -115,6 +115,6 @@ extension DigitalCardCell: CodeView {
     func setupAdditionalConfiguration() {
         layer.cornerRadius = 20
         clipsToBounds = true
-        backgroundColor = UIColor.secundaryColor
+        backgroundColor = Colors.secundaryColor.withAlphaComponent(0.95)
     }
 }

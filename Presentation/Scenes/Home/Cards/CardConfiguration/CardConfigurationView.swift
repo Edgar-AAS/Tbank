@@ -28,7 +28,7 @@ public class CardConfigurationView: UIView {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.addTarget(self, action: #selector(tap), for: .touchUpInside)
         button.isUserInteractionEnabled = false
-        button.setTitleColor(.primaryColor, for: .normal)   
+        button.setTitleColor(Colors.primaryColor, for: .normal)
         return button
     }()
     
@@ -44,13 +44,14 @@ public class CardConfigurationView: UIView {
     }
     
     func enableButton() {
-        makeDigitalCardButton.backgroundColor = .secundaryColor
+        let secundaryColor = Colors.secundaryColor
+        makeDigitalCardButton.backgroundColor = secundaryColor
         makeDigitalCardButton.isUserInteractionEnabled = true
-        cardNameTextField.tintColor = .secundaryColor
-        cardNameTextField.layer.borderColor = UIColor.secundaryColor.cgColor
+        cardNameTextField.tintColor = secundaryColor
+        cardNameTextField.layer.borderColor =  secundaryColor.cgColor
     }
     
-    lazy var digitalCardTitle: UILabel = .descriptionLabel(titleText: "Dê um nome ao seu cartão digital!", subtitleText: "\nEscolha um nome que identifique facilmente o seu uso.", titleFontSize: 30, subtitleFontSize: 20, titleColor: .offWhiteColor, subtitleColor: UIColor(hexString: "#cecece"))
+    lazy var digitalCardTitle: UILabel = .descriptionLabel(titleText: "Dê um nome ao seu cartão digital!", subtitleText: "\nEscolha um nome que identifique facilmente o seu uso.", titleFontSize: 30, subtitleFontSize: 20, titleColor: Colors.offWhiteColor, subtitleColor: UIColor(hexString: "#cecece"))
     
     lazy var contentView: UIView = {
         let view = UIView()
@@ -73,7 +74,7 @@ public class CardConfigurationView: UIView {
         let loadingView = UIActivityIndicatorView()
         loadingView.hidesWhenStopped = true
         loadingView.style = .large
-        loadingView.color = .secundaryColor
+        loadingView.color = Colors.secundaryColor
         return loadingView
     }()
 }
@@ -125,7 +126,7 @@ extension CardConfigurationView: CodeView {
     }
     
     func setupAdditionalConfiguration() {
-        backgroundColor = .primaryColor
+        backgroundColor = Colors.primaryColor
         cardNameTextField.setupLeftImageView(image: UIImage(systemName: "list.bullet.rectangle")!, with: .gray)
         cardNameTextField.tintColor = .gray
         cardNameTextField.layer.borderColor = UIColor.gray.cgColor

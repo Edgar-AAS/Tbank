@@ -102,6 +102,7 @@
 		7276083429E99196001BD112 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276083329E99196001BD112 /* ProfileFactory.swift */; };
 		7276085929E9FC20001BD112 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276085829E9FC20001BD112 /* UIButtonExtension.swift */; };
 		7276087229EA07E4001BD112 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276087129EA07E4001BD112 /* UITextFieldExtension.swift */; };
+		7276E8DF2A265D090014374E /* CardConfigurationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7276E8DE2A265D090014374E /* CardConfigurationControllerTests.swift */; };
 		72770D2129BFBD860081B57C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72770D2029BFBD860081B57C /* UserModel.swift */; };
 		72770D2B29BFC5500081B57C /* FetchUserDataResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72770D2A29BFC5500081B57C /* FetchUserDataResources.swift */; };
 		72770D3529BFC9160081B57C /* RemoteFetchUserDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72770D3429BFC9160081B57C /* RemoteFetchUserDataTests.swift */; };
@@ -519,6 +520,7 @@
 		7276083329E99196001BD112 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
 		7276085829E9FC20001BD112 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		7276087129EA07E4001BD112 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		7276E8DE2A265D090014374E /* CardConfigurationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardConfigurationControllerTests.swift; sourceTree = "<group>"; };
 		72770D2029BFBD860081B57C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		72770D2A29BFC5500081B57C /* FetchUserDataResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserDataResources.swift; sourceTree = "<group>"; };
 		72770D3429BFC9160081B57C /* RemoteFetchUserDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchUserDataTests.swift; sourceTree = "<group>"; };
@@ -821,6 +823,7 @@
 				7241091B299BFB1000129804 /* Components */,
 				72B8EB1B299ABAB700D69F96 /* Helpers */,
 				721DA110299550C900CB38E3 /* Info.plist */,
+				72D6EB6829D767CE00512644 /* Constants.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -1277,6 +1280,7 @@
 			children = (
 				72858310299EC04F00FCF780 /* SignUpControllerFactoryTests.swift */,
 				72BF3F5429B16B39001D4BCA /* LoginControllerFactoryTests.swift */,
+				7276E8DE2A265D090014374E /* CardConfigurationControllerTests.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -1351,7 +1355,6 @@
 				72F95EBD29C0EC9D00D92E6D /* HomePresenter.swift */,
 				723FBB8D29C3985B0006607C /* HomeRouter.swift */,
 				723FBB9629C398ED0006607C /* HomeContract.swift */,
-				72D6EB6829D767CE00512644 /* Constants.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -2268,6 +2271,7 @@
 				7285832B299EC40E00FCF780 /* TestsExtensions.swift in Sources */,
 				72BF3F5E29B16FB0001D4BCA /* AuthenticationSpy.swift in Sources */,
 				72D6EB3929D738BF00512644 /* UIControlTestsExtensions.swift in Sources */,
+				7276E8DF2A265D090014374E /* CardConfigurationControllerTests.swift in Sources */,
 				72BF3F5529B16B39001D4BCA /* LoginControllerFactoryTests.swift in Sources */,
 				729D54F729A7D099003DC66B /* EmailValidatorSpy.swift in Sources */,
 				72143658299FCB4E00337EE9 /* PresentationFactories.swift in Sources */,

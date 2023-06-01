@@ -17,12 +17,12 @@ class CustomTextField: UITextField {
     
     private func configurate() {
         placeholder = placeholderText
-        tintColor = .secundaryColor
+        tintColor = Colors.secundaryColor
         textColor = .white
         backgroundColor = UIColor(hexString: "0A2647")
         layer.cornerRadius = 12
         layer.borderWidth = 1
-        layer.borderColor = UIColor.secundaryColor.cgColor
+        layer.borderColor = Colors.secundaryColor.cgColor
         let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: attributes)
     }

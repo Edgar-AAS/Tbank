@@ -18,7 +18,7 @@ final class ServiceCell: UICollectionViewCell {
         view.backgroundColor = UIColor(hexString: "0A2647")
         view.layer.cornerRadius = 10
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.secundaryColor.cgColor
+        view.layer.borderColor = Colors.secundaryColor.cgColor
         view.clipsToBounds = true
         return view
     }()
@@ -27,7 +27,7 @@ final class ServiceCell: UICollectionViewCell {
         let imageView = UIImageView(image: UIImage(systemName: "iphone"))
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .clear
-        imageView.tintColor = .secundaryColor
+        imageView.tintColor = Colors.secundaryColor
         return imageView
     }()
     
@@ -37,7 +37,7 @@ final class ServiceCell: UICollectionViewCell {
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         label.textAlignment = .center
         return label
     }()

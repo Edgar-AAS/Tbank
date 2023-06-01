@@ -39,7 +39,7 @@ public class CardSuccessView: UIView {
         label.lineBreakMode = .byWordWrapping
         label.text = "Seu cartão digital foi criado"
         label.font = UIFont.boldSystemFont(ofSize: 30)
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         return label
     }()
     
@@ -56,12 +56,12 @@ public class CardSuccessView: UIView {
     
     lazy var cardAcessbutton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .secundaryColor
+        button.backgroundColor = Colors.secundaryColor
         button.setTitle("Acessar cartão", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.addTarget(self, action: #selector(tap), for: .touchUpInside)
         button.isUserInteractionEnabled = true
-        button.setTitleColor(.primaryColor, for: .normal)
+        button.setTitleColor(Colors.primaryColor, for: .normal)
         return button
     }()
     
@@ -137,7 +137,7 @@ extension CardSuccessView: CodeView {
     }
     
     func setupAdditionalConfiguration() {
-        backgroundColor = .primaryColor
+        backgroundColor = Colors.primaryColor
     }
 }
 

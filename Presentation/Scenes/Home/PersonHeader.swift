@@ -31,14 +31,14 @@ public final class PersonHeader: UIView {
         label.text = "Edgar Arlindo"
         label.minimumScaleFactor = 0.5
         label.adjustsFontSizeToFitWidth = true
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         return label
     }() 
     
     lazy var notificationButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "bell"), for: .normal)
-        button.tintColor = .secundaryColor
+        button.tintColor = Colors.secundaryColor
         return button
     }()
     
@@ -51,7 +51,7 @@ public final class PersonHeader: UIView {
     lazy var headerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .primaryColor
+        view.backgroundColor = Colors.primaryColor
         return view
     }()
     
@@ -107,7 +107,7 @@ extension PersonHeader: CodeView {
             trailing: nil,
             bottom: nil,
             padding: .init(top: 16, left: 20, bottom: 0, right: 0),
-            size: .init(width: K.ViewsSize.CircularButton.medium, height: K.ViewsSize.CircularButton.medium)
+            size: .init(width: CircularButtonSizes.medium, height: CircularButtonSizes.medium)
         )
         
         headerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
@@ -133,7 +133,7 @@ extension PersonHeader: CodeView {
     }
     
     func setupAdditionalConfiguration() {
-        backgroundColor = .primaryColor
+        backgroundColor = Colors.primaryColor
         configureGestureRecognizer()
     }
     

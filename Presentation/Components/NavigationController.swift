@@ -19,7 +19,7 @@ public class NavigationController: UINavigationController {
     
     private func setup() {
         navigationBar.barTintColor = UIColor(hexString: "1A1A2E")
-        navigationBar.tintColor = .secundaryColor
+        navigationBar.tintColor = Colors.secundaryColor
         navigationBar.isTranslucent = false
         navigationBar.barStyle = .black
         navigationBar.shadowImage = UIImage()

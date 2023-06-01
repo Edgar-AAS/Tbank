@@ -50,7 +50,7 @@ extension HomePresenter: ViewToPresenterHomeProtocol {
                                                            cardNumber: $0.cardNumber.toSafeCardNumber(),
                                                            cardExpirationDate: $0.cardExpirationDate.toShortDate(),
                                                            cardFunction: $0.cardFunction,
-                                                           cvc: $0.cvc)}
+                                                           cvc: $0.cvc) }
                 DispatchQueue.main.async { [weak self] in
                     self?.cardsView.updateCardsView(viewModel: CardsViewViewModel(cards: cards))
                 }

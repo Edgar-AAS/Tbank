@@ -9,9 +9,9 @@ class ProfileCell: UITableViewCell {
     }
     
     private func configurateCell() {
-        backgroundColor = .primaryColor
+        backgroundColor = Colors.primaryColor
         accessoryType = .disclosureIndicator
-        textLabel?.textColor = .offWhiteColor
+        textLabel?.textColor = Colors.offWhiteColor
     }
     
     required init?(coder: NSCoder) {

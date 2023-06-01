@@ -27,13 +27,13 @@ class CardCreationView: UIView {
         self.delegate = delegate
     }
     
-    lazy var descriptionVirtualCardLabel: UILabel = .descriptionLabel(titleText: "Simplifique suas compras com um cartão digital!", subtitleText: "\nDescubra os benefícios de um cartão seguro, prático e flexível para suas compras online e offline.", titleFontSize: 30, subtitleFontSize: 20, titleColor: .offWhiteColor, subtitleColor: UIColor(hexString: "#cecece"))
+    lazy var descriptionVirtualCardLabel: UILabel = .descriptionLabel(titleText: "Simplifique suas compras com um cartão digital!", subtitleText: "\nDescubra os benefícios de um cartão seguro, prático e flexível para suas compras online e offline.", titleFontSize: 30, subtitleFontSize: 20, titleColor: Colors.offWhiteColor, subtitleColor: UIColor(hexString: "#cecece"))
     
     lazy var makeVirtualCardButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Criar cartão digital", for: .normal)
-        button.backgroundColor = UIColor(hexString: "EBB52F")
-        button.setTitleColor(UIColor(hexString: "1A1A2E"), for: .normal)
+        button.backgroundColor = Colors.secundaryColor
+        button.setTitleColor(Colors.primaryColor, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(tap), for: .touchUpInside)
@@ -88,6 +88,6 @@ extension CardCreationView: CodeView {
     }
     
     func setupAdditionalConfiguration() {
-        backgroundColor = .primaryColor
+        backgroundColor = Colors.primaryColor
     }
 }

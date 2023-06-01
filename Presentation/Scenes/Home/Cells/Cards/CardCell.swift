@@ -14,7 +14,7 @@ final class CardCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCollectionView()
         setupView()
-        contentView.backgroundColor = .primaryColor
+        contentView.backgroundColor = Colors.primaryColor
     }
     
     func goToLastItem() {
@@ -31,7 +31,7 @@ final class CardCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.text = "Meus cartões"
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         return label
     }()
     
@@ -39,9 +39,9 @@ final class CardCell: UITableViewCell {
         let button = UIButton(type: .system)
         let buttonImage = UIImage(systemName: "plus")
         button.setImage(buttonImage, for: .normal)
-        button.tintColor = .secundaryColor
+        button.tintColor = Colors.secundaryColor
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.secundaryColor.cgColor
+        button.layer.borderColor = Colors.secundaryColor.cgColor
         button.addTarget(self, action: #selector(addCardButtonTap), for: .touchUpInside)
         button.layer.cornerRadius = 10
         button.backgroundColor = UIColor(hexString: "0A2647")
@@ -57,7 +57,7 @@ final class CardCell: UITableViewCell {
         layout.estimatedItemSize = .zero
         layout.scrollDirection = .horizontal
         collectionView = UICollectionView(frame: bounds, collectionViewLayout: layout)
-        collectionView.backgroundColor = .primaryColor
+        collectionView.backgroundColor = Colors.primaryColor
         collectionView.decelerationRate = .fast
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self

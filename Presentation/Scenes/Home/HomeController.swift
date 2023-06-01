@@ -88,13 +88,13 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
     }
     
     private func makeUserImagePath() -> String {
-        let path = getDocumentsDirectory().appendingPathComponent(K.PathComponents.userImage).path
+        let path = getDocumentsDirectory().appendingPathComponent(FileManagerPaths.userImage).path
         return path
     }
     
     //MARK: - Setup Header and TableView
     private func setupHeader() {
-        header = PersonHeader(frame: .init(x: 0, y: 0, width: view.frame.width, height: K.ViewsSize.Header.smallHeight))
+        header = PersonHeader(frame: .init(x: 0, y: 0, width: view.frame.width, height: HeaderHeights.small))
         let path = makeUserImagePath()
         header?.profileImageView.loadImageWith(path: path)
         header?.delegate = self
@@ -109,8 +109,8 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
     }
     
     private func setupTableviewProperties() {
-        view.backgroundColor = .primaryColor
-        tableView.backgroundColor = .primaryColor
+        view.backgroundColor = Colors.primaryColor
+        tableView.backgroundColor = Colors.primaryColor
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.allowsSelection = false

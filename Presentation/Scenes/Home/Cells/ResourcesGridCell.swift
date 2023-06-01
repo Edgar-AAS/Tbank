@@ -22,7 +22,7 @@ final class ResourcesGridCell: UITableViewCell, UICollectionViewDelegate, UIColl
         let label = UILabel()
         label.text = "Confira também"
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         return label
     }()
 
@@ -34,7 +34,7 @@ final class ResourcesGridCell: UITableViewCell, UICollectionViewDelegate, UIColl
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .primaryColor
+        collectionView.backgroundColor = Colors.primaryColor
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
         collectionView.register(ResourceCell.self, forCellWithReuseIdentifier: ResourceCell.reuseIdentifier)
     }
@@ -83,7 +83,7 @@ extension ResourcesGridCell: CodeView {
     }
     
     func setupAdditionalConfiguration() {
-        backgroundColor = .primaryColor
+        backgroundColor = Colors.primaryColor
     }
 }
 

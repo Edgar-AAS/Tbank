@@ -13,7 +13,7 @@ public final class CardInformationViewController: UIViewController {
         super.loadView()
         cardInformationView = CardInformationView()
         view = cardInformationView
-        view.backgroundColor = .primaryColor
+        view.backgroundColor = Colors.primaryColor
     }
 
     public override func viewDidLoad() {

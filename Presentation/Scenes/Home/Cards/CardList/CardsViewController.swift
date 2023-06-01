@@ -72,7 +72,7 @@ extension CardsViewController: UITableViewDataSource {
                 return cell ?? UITableViewCell()
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: AddVirtualCardCell.reuseIdentifier, for: indexPath) as? AddVirtualCardCell
-                cell?.backgroundColor = .primaryColor
+                cell?.backgroundColor = Colors.primaryColor
                 return cell ?? UITableViewCell()
             }
         } else {
@@ -85,7 +85,7 @@ extension CardsViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let header = view as? UITableViewHeaderFooterView {
-            header.textLabel?.textColor = .offWhiteColor
+            header.textLabel?.textColor = Colors.offWhiteColor
             header.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         }
     }
@@ -105,7 +105,7 @@ extension CardsViewController: UITableViewDataSource {
             return nil
         } else {
             let view = UIView()
-            view.backgroundColor = .secundaryColor
+            view.backgroundColor = Colors.secundaryColor
             return view
         }
     }

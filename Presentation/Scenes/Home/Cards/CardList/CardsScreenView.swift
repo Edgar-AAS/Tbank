@@ -26,7 +26,7 @@ public class CardsScreenView: UIView{
         let label = UILabel()
         label.text = "Meus Cartões"
         label.font = UIFont.boldSystemFont(ofSize: 32)
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         return label
     }()
     
@@ -35,7 +35,7 @@ public class CardsScreenView: UIView{
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         tableView.register(AddVirtualCardCell.self, forCellReuseIdentifier: AddVirtualCardCell.reuseIdentifier)
         tableView.register(CardListCell.self, forCellReuseIdentifier: CardListCell.reuseIdentifier)
-        tableView.backgroundColor = .primaryColor
+        tableView.backgroundColor = Colors.primaryColor
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         return tableView
@@ -76,6 +76,6 @@ extension CardsScreenView: CodeView {
     }
     
     func setupAdditionalConfiguration() {
-        backgroundColor = .primaryColor
+        backgroundColor = Colors.primaryColor
     }
 }

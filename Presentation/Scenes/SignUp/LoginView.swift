@@ -4,7 +4,7 @@ import UIKit
 public class LoginView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .primaryColor
+        backgroundColor = Colors.primaryColor
         setupView()
     }
     
@@ -14,7 +14,7 @@ public class LoginView: UIView {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .primaryColor
+        scrollView.backgroundColor = Colors.primaryColor
         scrollView.isDirectionalLockEnabled = true
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
@@ -29,7 +29,7 @@ public class LoginView: UIView {
         let label = UILabel()
         label.text = "Login"
         label.font = UIFont.boldSystemFont(ofSize: 48)
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.secundaryColor
         return label
     }()
     
@@ -46,16 +46,16 @@ public class LoginView: UIView {
         let loadingView = UIActivityIndicatorView()
         loadingView.hidesWhenStopped = true
         loadingView.style = .large
-        loadingView.color = .secundaryColor
+        loadingView.color = Colors.secundaryColor
         return loadingView
     }()
     
     lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .secundaryColor
+        button.backgroundColor = Colors.secundaryColor
         button.setTitle("Entrar", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
-        button.tintColor = .primaryColor
+        button.tintColor = Colors.primaryColor
         return button
     }()
     
@@ -76,7 +76,7 @@ public class LoginView: UIView {
     private lazy var goToSignUpLabel: UILabel = {
         let label = UILabel()
         let firstAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.white]
-        let secondAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.secundaryColor]
+        let secondAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: Colors.secundaryColor]
         let attributedText = NSMutableAttributedString()
         attributedText.append(NSAttributedString(string: "Não tem conta?", attributes: firstAttributes))
         attributedText.append(NSAttributedString(string: " Cadastre-se",attributes: secondAttributes))
@@ -211,8 +211,8 @@ extension LoginView: CodeView {
     func setupAdditionalConfiguration() {
         configureTextFieldsOrder()
         setupKeyboardTypes()
-        emailTextField.setupLeftImageView(image: UIImage(systemName: "envelope")!, with: .secundaryColor)
-        passwordTextField.setupLeftImageView(image: UIImage(systemName: "lock")!, with: .secundaryColor)
+        emailTextField.setupLeftImageView(image: UIImage(systemName: "envelope")!, with: Colors.secundaryColor)
+        passwordTextField.setupLeftImageView(image: UIImage(systemName: "lock")!, with: Colors.secundaryColor)
         emailTextField.text = "test@gmail.com"
         passwordTextField.text = "123@"
     }

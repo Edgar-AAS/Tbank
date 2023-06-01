@@ -18,7 +18,7 @@ public final class ProfileController: UITableViewController {
         super.viewDidLoad()
         tableView.showsVerticalScrollIndicator = false
         tableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.reuseIdentifier)
-        tableView.backgroundColor = .primaryColor
+        tableView.backgroundColor = Colors.primaryColor
         configurateProfileHeader()
         presenter?.fetchUser()
     }
@@ -30,8 +30,8 @@ public final class ProfileController: UITableViewController {
     
     private func configurateProfileHeader() {
         header = ProfileHeader(self)
-        header?.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: K.ViewsSize.Header.largeHeight)
-        let path = getDocumentsDirectory().appendingPathComponent(K.PathComponents.userImage).path
+        header?.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: HeaderHeights.large)
+        let path = getDocumentsDirectory().appendingPathComponent(FileManagerPaths.userImage).path
         header?.userPhotoImageView.loadImageWith(path: path)
         tableView.tableHeaderView = header
     }
@@ -89,10 +89,10 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[.editedImage] as?  UIImage {
             header?.userPhotoImageView.image = editedImage
-            writeImage(image: editedImage, imageName: K.PathComponents.userImage)
+            writeImage(image: editedImage, imageName: FileManagerPaths.userImage)
         } else if let originalImage = info[.originalImage] as? UIImage {
             header?.userPhotoImageView.image = originalImage
-            writeImage(image: originalImage, imageName: K.PathComponents.userImage)
+            writeImage(image: originalImage, imageName: FileManagerPaths.userImage)
         }
         
         if let homeController = navigationController?.viewControllers.last(where: { $0 is HomeControllerProtocol}) {

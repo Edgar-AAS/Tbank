@@ -30,7 +30,7 @@ public class CardInformationView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 30)
         label.text = "Picareta"
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         label.textAlignment = .left
         return label
     }()
@@ -49,7 +49,7 @@ public class CardInformationView: UIView {
         let label = UILabel()
         label.text = "Edgar A A Santos"
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textColor = .secundaryColor
+        label.textColor = Colors.secundaryColor
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textAlignment = .left
@@ -62,7 +62,7 @@ public class CardInformationView: UIView {
         label.text = "Número"
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         label.textAlignment = .left
         return label
     }()
@@ -71,7 +71,7 @@ public class CardInformationView: UIView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.text = "1234 1234 1234 1234"
-        label.textColor = .secundaryColor
+        label.textColor = Colors.secundaryColor
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -82,7 +82,7 @@ public class CardInformationView: UIView {
         label.text = "Validade"
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         label.textAlignment = .center
         return label
     }()
@@ -90,7 +90,7 @@ public class CardInformationView: UIView {
     private lazy var expirationDateContentlabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textColor = .secundaryColor
+        label.textColor = Colors.secundaryColor
         label.text = "03/31"
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -103,7 +103,7 @@ public class CardInformationView: UIView {
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         return label
     }()
     
@@ -111,7 +111,7 @@ public class CardInformationView: UIView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.text = "123"
-        label.textColor = .secundaryColor
+        label.textColor = Colors.secundaryColor
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -123,14 +123,14 @@ public class CardInformationView: UIView {
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         return label
     }()
     
     private lazy var cardMarkContentLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textColor = .secundaryColor
+        label.textColor = Colors.secundaryColor
         label.text = "Platinum"
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -143,14 +143,14 @@ public class CardInformationView: UIView {
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .offWhiteColor
+        label.textColor = Colors.offWhiteColor
         return label
     }()
     
     private lazy var cardFunctionContentLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textColor = .secundaryColor
+        label.textColor = Colors.secundaryColor
         label.minimumScaleFactor = 0.7
         label.adjustsFontSizeToFitWidth = true
         label.text = "Débito e crédito"
@@ -380,8 +380,8 @@ extension CardInformationView: CodeView {
     }
     
     func setupAdditionalConfiguration() {
-        backgroundColor = .primaryColor
-        scrollView.backgroundColor = .primaryColor
+        backgroundColor = Colors.primaryColor
+        scrollView.backgroundColor = Colors.primaryColor
     }
 }
 

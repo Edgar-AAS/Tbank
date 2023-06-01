@@ -37,10 +37,10 @@ extension CardConfigurationViewController: UITextFieldDelegate {
             if let text = textField.text {
                 if text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                     cardConfigurationView?.disableButton()
-                    cardConfigurationView?.cardNameTextField.layer.borderColor = UIColor.offWhiteColor.cgColor
+                    cardConfigurationView?.cardNameTextField.layer.borderColor = Colors.offWhiteColor.cgColor
                 } else {
                     cardConfigurationView?.enableButton()
-                    cardConfigurationView?.cardNameTextField.layer.borderColor = UIColor.secundaryColor.cgColor
+                    cardConfigurationView?.cardNameTextField.layer.borderColor = Colors.secundaryColor.cgColor
                 }
             }
         }
@@ -50,19 +50,27 @@ extension CardConfigurationViewController: UITextFieldDelegate {
 extension CardConfigurationViewController: LoadingView {
     public func isLoading(viewModel: LoadingViewModel) {
         if viewModel.isLoading {
-            self.view.isUserInteractionEnabled = false
-            self.navigationController?.navigationBar.isUserInteractionEnabled = false
-            self.cardConfigurationView?.loadingIndicator.startAnimating()
-            self.cardConfigurationView?.makeDigitalCardButton.alpha = 0.5
-            self.navigationController?.navigationBar.alpha = 0.5
-            self.view.alpha = 0.5
+            enableScreen()
         } else {
-            self.view.isUserInteractionEnabled = true
-            self.cardConfigurationView?.loadingIndicator.stopAnimating()
-            self.cardConfigurationView?.makeDigitalCardButton.alpha = 1
-            self.navigationController?.navigationBar.alpha = 1
-            self.view.alpha = 1
+            disableScreen()
         }
+    }
+    
+    private func disableScreen() {
+        self.view.isUserInteractionEnabled = false
+        self.navigationController?.navigationBar.isUserInteractionEnabled = false
+        self.cardConfigurationView?.loadingIndicator.startAnimating()
+        self.cardConfigurationView?.makeDigitalCardButton.alpha = 0.5
+        self.navigationController?.navigationBar.alpha = 0.5
+        self.view.alpha = 0.5
+    }
+    
+    private func enableScreen() {
+        self.view.isUserInteractionEnabled = true
+        self.cardConfigurationView?.loadingIndicator.stopAnimating()
+        self.cardConfigurationView?.makeDigitalCardButton.alpha = 1
+        self.navigationController?.navigationBar.alpha = 1
+        self.view.alpha = 1
     }
 }
 
