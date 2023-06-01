@@ -3,7 +3,6 @@ import Domain
 import Presentation
 import Infra
 import Data
-import UIKit
 
 func makeCardsViewController(fethUserCards: FetchUserCards) -> CardsViewController {
     let viewController = CardsViewController()

@@ -8,14 +8,14 @@ protocol HomeControllerProtocol where Self: UIViewController {
     var isNeedUpdateWithoutAnimation: Bool { get set }
 }
 
+private enum HomeCellsType: Int {
+    case balanceCell
+    case cardCell
+    case serviceCell
+    case resourcesCell
+}
+
 public final class HomeController: UITableViewController, HomeControllerProtocol {
-    private enum HomeCellsType: Int {
-        case balanceCell
-        case cardCell
-        case serviceCell
-        case resourcesCell
-    }
-    
     var isNeedUpdateCard: Bool = false
     var isNeedUpdateProfile: Bool = false
     var isNeedUpdateWithoutAnimation: Bool = false

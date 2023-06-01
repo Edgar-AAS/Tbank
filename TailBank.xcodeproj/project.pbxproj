@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		720470A12A291C2E00E40264 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720470A02A291C2E00E40264 /* HomeViewControllerTests.swift */; };
 		7213634F29983D4B00E5C635 /* TestsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B818A22992E50A0007C070 /* TestsExtensions.swift */; };
 		72143647299FCB3400337EE9 /* PresentationFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72143646299FCB3400337EE9 /* PresentationFactories.swift */; };
 		72143658299FCB4E00337EE9 /* PresentationFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72143646299FCB3400337EE9 /* PresentationFactories.swift */; };
@@ -428,6 +429,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		720470A02A291C2E00E40264 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		72143646299FCB3400337EE9 /* PresentationFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationFactories.swift; sourceTree = "<group>"; };
 		72143662299FDD3E00337EE9 /* MainDispatchQueueDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDispatchQueueDecorator.swift; sourceTree = "<group>"; };
 		7214367C29A10B9000337EE9 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -1564,6 +1566,7 @@
 			children = (
 				72F95E9329C0BEA900D92E6D /* HomePresenterTests.swift */,
 				72CFD1E929CA673D00A49479 /* HomeRouterTests.swift */,
+				720470A02A291C2E00E40264 /* HomeViewControllerTests.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -2186,6 +2189,7 @@
 				72F95E9429C0BEA900D92E6D /* HomePresenterTests.swift in Sources */,
 				721DA11B299550CA00CB38E3 /* SignUpPresenterTests.swift in Sources */,
 				72BF3F2429B13724001D4BCA /* AuthenticationSpy.swift in Sources */,
+				720470A12A291C2E00E40264 /* HomeViewControllerTests.swift in Sources */,
 				725099B829D6625500C2541B /* CardsViewSpy.swift in Sources */,
 				72CFD1FA29CA7E4200A49479 /* LoginRouterTests.swift in Sources */,
 				72BF3EEE29B11524001D4BCA /* TestsFactorys.swift in Sources */,
