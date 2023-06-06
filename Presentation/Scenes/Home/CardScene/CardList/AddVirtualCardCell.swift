@@ -45,5 +45,6 @@ extension AddVirtualCardCell: CodeView {
     
     func setupAdditionalConfiguration() {
         selectionStyle = .none
+        backgroundColor = Colors.primaryColor
     }
 }

@@ -2,7 +2,7 @@ import Foundation
 
 public protocol AddCard {
     typealias Result = Swift.Result<Bool, DomainError>
-    func add<T: Model>(cardModel: T, completion: @escaping (AddCard.Result) -> Void)
+    func add(cardModel: UserCard, completion: @escaping (AddCard.Result) -> Void)
 }
 
 public struct DigitalCardModel: Model {

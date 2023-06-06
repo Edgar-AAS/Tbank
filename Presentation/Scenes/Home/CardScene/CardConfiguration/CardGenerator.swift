@@ -1,4 +1,5 @@
 import Foundation
+import Domain
 
 enum CardFunction: String {
     case credit = "Crédito"
@@ -7,37 +8,51 @@ enum CardFunction: String {
 }
 
 struct CardGenerator {
-    static let cardFlag = "MasterCard"
+    private let cardFlag = "Gold"
     
-    static func createCardNumber() -> String {
+    private func createCardNumber() -> String {
         let randomNumbers = (0..<16).map { _ in String(arc4random_uniform(10)) }
         let numbersString = randomNumbers.joined()
         return numbersString
     }
     
-    static func createCVC() -> String {
+    private func createCVC() -> String {
         let randomNumbers = (0..<3).map { _ in String(arc4random_uniform(10)) }
         let numbersString = randomNumbers.joined()
         return numbersString
     }
     
-    static func getCardFunction(cardFunction: CardFunction) -> String {
+    private func getCardFunction(cardFunction: CardFunction) -> String {
         return cardFunction.rawValue
     }
     
-    static func createCardExpirationDate() -> String {
+    private func createCardExpirationDate() -> String {
         let date = Date()
         let calendar = Calendar.current
         let yearsToAdd = 8
         let futureDate = calendar.date(byAdding: .year, value: yearsToAdd, to: date)
-
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
+        
         if let futureDate = futureDate {
             let expirationDate = dateFormatter.string(from: futureDate)
             return expirationDate
         }
         return "--/--"
+    }
+    
+    func createDigitalCardWith(name: String) -> UserCard {
+        return UserCard(isVirtual: true,
+                        balance: 0.0,
+                        cardFlag: cardFlag,
+                        cardTag: 0,
+                        cardBrandImageURL: "",
+                        cardNumber: createCardNumber(),
+                        cardExpirationDate: createCardExpirationDate(),
+                        cardFunction: getCardFunction(cardFunction: .hybridCard),
+                        cvc: createCVC(),
+                        id: "",
+                        name: name)
     }
 }

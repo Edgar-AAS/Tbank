@@ -1,4 +1,5 @@
 import UIKit
+import Domain
 
 public class CardInformationView: UIView {
     public override init(frame: CGRect) {
@@ -181,13 +182,14 @@ public class CardInformationView: UIView {
     private lazy var expirationDateAndCVCHorizontalStack = makeHorizontalStack(with: [expirationDateView, cvcView], spacing: 32)
     private lazy var cardMarkAndCardFunctionHorizontalStack = makeHorizontalStack(with: [cardMarkView, cardFunctionView], spacing: 32)
     
-    func updateUI(cardViewModel: CardModel) {
-        cardNameLabel.text = cardViewModel.name
-        numberContentLabel.text = cardViewModel.cardNumber
-        expirationDateContentlabel.text = cardViewModel.cardExpirationDate
-        cvcContentLabel.text = cardViewModel.cvc
-        cardMarkContentLabel.text = cardViewModel.cardFlag
-        cardFunctionContentLabel.text = cardViewModel.cardFunction
+    func updateUI(userCardModel: UserCard) {
+        let cardInformationFormatter = userCardModel.getCardInformationFormatter
+        cardNameLabel.text = cardInformationFormatter.name
+        numberContentLabel.text = cardInformationFormatter.cardNumber
+        expirationDateContentlabel.text = cardInformationFormatter.cardExpirationDate
+        cvcContentLabel.text = cardInformationFormatter.cvc
+        cardMarkContentLabel.text = cardInformationFormatter.cardFlag
+        cardFunctionContentLabel.text = cardInformationFormatter.cardFunction
     }
 }
 

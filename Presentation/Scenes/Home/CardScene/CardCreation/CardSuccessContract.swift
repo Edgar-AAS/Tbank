@@ -2,7 +2,7 @@ import Foundation
 import Domain
 
 public protocol CardSuccessRoutingLogic {
-    func routeToCardInfo(digitalCardModel: DigitalCardModel)
+    func routeToCardInfo(userCardModel: UserCard)
     func routeToCardView()
 }
 

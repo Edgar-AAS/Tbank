@@ -23,7 +23,9 @@ public class NavigationController: UINavigationController {
         navigationBar.isTranslucent = false
         navigationBar.barStyle = .black
         navigationBar.shadowImage = UIImage()
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationItem.backButtonTitle = ""
+        navigationBar.isHidden = true
     }
     
     public func setRootViewController(_ viewController: UIViewController) {
@@ -39,6 +41,6 @@ public class NavigationController: UINavigationController {
     }
     
     func hideBarButtonText() {
-        currentViewController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
+        currentViewController?.navigationItem.backBarButtonItem = UIBarButtonItem(customView: UIView())
     }
 }

@@ -2,7 +2,7 @@ import Foundation
 import Domain
 
 public protocol CardConfigurationRouterLogic {
-    func goToCardSuccessScreen(digitalCardModel: DigitalCardModel)
+    func goToCardSuccessScreen(userCardModel: UserCard)
 }
 
 public protocol ViewToCardConfigurationPresenter {

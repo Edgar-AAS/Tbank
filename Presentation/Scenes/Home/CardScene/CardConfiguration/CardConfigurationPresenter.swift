@@ -22,17 +22,13 @@ public class CardConfigurationPresenter {
         } else {
             loadingView.isLoading(viewModel: LoadingViewModel(isLoading: true))
             guard let name = cardConfigurationRequest.name else { return }
-            let digitalCardModel = DigitalCardModel(id: nil, name: name,
-                                                    cardNumber: CardGenerator.createCardNumber(),
-                                                    cardExpirationDate: CardGenerator.createCardExpirationDate(),
-                                                    cardFunction: CardGenerator.getCardFunction(cardFunction: .hybridCard),
-                                                    cvc: CardGenerator.createCVC())
-            addDigitalCard.add(cardModel: digitalCardModel) { [weak self] (result) in
+            let digitalCard = CardGenerator().createDigitalCardWith(name: name)
+            addDigitalCard.add(cardModel: digitalCard) { [weak self] (result) in
                 guard self != nil else { return }
                 switch result {
                 case .success:
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        self?.router.goToCardSuccessScreen(digitalCardModel: digitalCardModel)
+                        self?.router.goToCardSuccessScreen(userCardModel: digitalCard)
                         self?.loadingView.isLoading(viewModel: LoadingViewModel(isLoading: false))
                     }
                 case .failure(let error):

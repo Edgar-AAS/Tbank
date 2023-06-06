@@ -1,4 +1,5 @@
 import UIKit
+import Domain
 
 protocol CardsViewProtocol where Self: UIViewController {
     var isNeedUpdate: Bool { get set }
@@ -10,8 +11,8 @@ public class CardsViewController: UIViewController, CardsViewProtocol {
     public var cardView: CardsScreenView?
     public var presenter: ViewToPresenterCardsProtocol?
     
-    private var virtualCards = [CardModel]()
-    private var physicalCards = [CardModel]()
+    private var virtualCards = [UserCard]()
+    private var physicalCards = [UserCard]()
         
     public override func loadView() {
         super.loadView()
@@ -23,11 +24,11 @@ public class CardsViewController: UIViewController, CardsViewProtocol {
     public override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.fetchCards()
-        navigationController?.navigationBar.isHidden = false
         navigationItem.backButtonTitle = ""
     }
     
     public override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
         super.viewWillAppear(animated)
         if isNeedUpdate {
             presenter?.fetchCards()
@@ -37,9 +38,9 @@ public class CardsViewController: UIViewController, CardsViewProtocol {
 }
 
 extension CardsViewController: CardsView {
-    public func updateCardsView(viewModel: CardsViewViewModel) {
-        virtualCards = viewModel.cards.filter({ $0.isVirtual == true })
-        physicalCards = viewModel.cards.filter({ $0.isVirtual == false })
+    public func updateCardsView(cardsModel: UserCards) {
+        virtualCards = cardsModel.filter({ $0.isVirtual == true })
+        physicalCards = cardsModel.filter({ $0.isVirtual == false })
         cardView?.myCardsTableView.reloadData()
     }
 }
@@ -67,18 +68,15 @@ extension CardsViewController: UITableViewDataSource {
         if indexPath.section == 0 {
             if indexPath.row <= virtualCards.count - 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CardListCell.reuseIdentifier, for: indexPath) as? CardListCell
-                cell?.textLabel?.text = virtualCards[indexPath.row].name
-                cell?.detailTextLabel?.text = virtualCards[indexPath.row].cardNumber.toSafeCardNumber()
+                cell?.setupCell(userCard: virtualCards[indexPath.row])
                 return cell ?? UITableViewCell()
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: AddVirtualCardCell.reuseIdentifier, for: indexPath) as? AddVirtualCardCell
-                cell?.backgroundColor = Colors.primaryColor
                 return cell ?? UITableViewCell()
             }
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: CardListCell.reuseIdentifier, for: indexPath) as? CardListCell
-            cell?.textLabel?.text = physicalCards[indexPath.row].name
-            cell?.detailTextLabel?.text = physicalCards[indexPath.row].cardNumber.toSafeCardNumber()
+            cell?.setupCell(userCard: physicalCards[indexPath.row])
             return cell  ?? UITableViewCell()
         }
     }
@@ -125,7 +123,6 @@ extension CardsViewController {
 
 extension CardsViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         let index = IndexPath(row: virtualCards.count, section: 0)
         if indexPath == index {
             presenter?.routeToCardCreationFlow()

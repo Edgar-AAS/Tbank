@@ -47,7 +47,7 @@ extension MainQueueDispatchDecorator: FetchUserCards where T: FetchUserCards {
 }
 
 extension MainQueueDispatchDecorator: AddCard where T: AddCard {
-    public func add<T>(cardModel: T, completion: @escaping (Result<Bool, DomainError>) -> Void) where T : Model {
+    public func add(cardModel: UserCard, completion: @escaping (Result<Bool, DomainError>) -> Void) {
         instance.add(cardModel: cardModel) { [weak self] result in
             self?.dispatch { completion(result) }
         }

@@ -18,6 +18,10 @@ public class CardConfigurationViewController: UIViewController {
         hideKeyboardOnTap()
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
     private func hideKeyboardOnTap() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false

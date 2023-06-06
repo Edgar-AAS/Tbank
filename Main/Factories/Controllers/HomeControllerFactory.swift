@@ -7,7 +7,10 @@ import Infra
 
 func makeHomeViewController(fetchUserData: FetchUserDataResources, fetchUserCards: FetchUserCards) -> HomeController {
     let homeController = HomeController()
-    let homeRouter = HomeRouter(viewController: homeController, profileControllerFactory: profileFactory, cardsControllerFactory: carsListFactory)
+    let homeRouter = HomeRouter(viewController: homeController,
+                                profileControllerFactory: profileFactory,
+                                cardsControllerFactory: carsListFactory,
+                                cardInformationFactory: makeCardInformationFactory)
     let presenter = HomePresenter(fetchUserData: fetchUserData,
                                   fetchUserCards: fetchUserCards,
                                   router: homeRouter,

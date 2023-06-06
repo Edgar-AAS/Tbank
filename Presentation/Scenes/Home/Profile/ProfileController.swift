@@ -25,7 +25,7 @@ public final class ProfileController: UITableViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     private func configurateProfileHeader() {

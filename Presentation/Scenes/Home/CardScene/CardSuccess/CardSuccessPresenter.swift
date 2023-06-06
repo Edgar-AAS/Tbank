@@ -3,11 +3,11 @@ import Domain
 
 public class CardSuccessPresenter {
     private let router: CardSuccessRoutingLogic
-    private let digitalCardModel: DigitalCardModel
+    private let userCardModel: UserCard
     
-    public init(router: CardSuccessRoutingLogic, digitalCardModel: DigitalCardModel) {
+    public init(router: CardSuccessRoutingLogic, userCardModel: UserCard) {
         self.router = router
-        self.digitalCardModel = digitalCardModel
+        self.userCardModel = userCardModel
     }
 }
 
@@ -17,6 +17,6 @@ extension CardSuccessPresenter: ViewToPresenterCardSuccessProtocol {
     }
     
     public func goToCardInfo() {
-        router.routeToCardInfo(digitalCardModel: digitalCardModel)
+        router.routeToCardInfo(userCardModel: userCardModel)
     }
 }

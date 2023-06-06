@@ -27,8 +27,8 @@ extension WeakVarProxy: BalanceView where T: BalanceView {
 }
 
 extension WeakVarProxy: CardsView where T: CardsView {
-    func updateCardsView(viewModel: CardsViewViewModel) {
-        instance?.updateCardsView(viewModel: viewModel)
+    func updateCardsView(cardsModel: UserCards) {
+        instance?.updateCardsView(cardsModel: cardsModel)
     }
 }
 
@@ -51,8 +51,8 @@ extension WeakVarProxy: UpdateProfileView where T: UpdateProfileView {
 }
 
 extension WeakVarProxy: UpdateCardView where T: UpdateCardView {
-    func update(cardViewModel: CardModel) {
-        instance?.update(cardViewModel: cardViewModel)
+    func update(userCardModel: UserCard) {
+        instance?.update(userCardModel: userCardModel)
     }
 }
 

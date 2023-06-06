@@ -5,6 +5,7 @@ protocol HomeControllerProtocol where Self: UIViewController {
     var isNeedUpdateCard: Bool { get set }
     var isNeedUpdateProfile: Bool { get set }
     var isNeedUpdateWithoutAnimation: Bool { get set }
+    var isOpenFromHome: Bool { get set }
 }
 
 private enum HomeCellsType: Int {
@@ -15,10 +16,6 @@ private enum HomeCellsType: Int {
 }
 
 public final class HomeController: UITableViewController, HomeControllerProtocol {
-    var isNeedUpdateCard: Bool = false
-    var isNeedUpdateProfile: Bool = false
-    var isNeedUpdateWithoutAnimation: Bool = false
-    
     public lazy var refreshControlIndicator: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = .white
@@ -26,10 +23,15 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
         return refreshControl
     }()
     
+    var isNeedUpdateCard: Bool = false
+    var isNeedUpdateProfile: Bool = false
+    var isNeedUpdateWithoutAnimation: Bool = false
+    var isOpenFromHome: Bool = false
+    
     public var presenter: ViewToPresenterHomeProtocol?
     public var header: PersonHeader?
     public var balanceViewModel: BalanceViewModel?
-    public var cards: [CardModel]?
+    public var cards: UserCards?
     public var mainServices = [Service]()
     public var appResources = [Resource]()
     
@@ -37,9 +39,9 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        registerCells()
+        registerTableViewCells()
         setupTableviewProperties()
-        setupHeader()
+        setupTableViewHeader()
         tableView.addSubview(refreshControlIndicator)
         navigationItem.backButtonTitle = ""
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
@@ -49,7 +51,8 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        view.backgroundColor = Colors.primaryColor
         updateViewIfNeeded()
     }
     
@@ -92,16 +95,15 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
         return path
     }
     
-    //MARK: - Setup Header and TableView
-    private func setupHeader() {
+    private func setupTableViewHeader() {
         header = PersonHeader(frame: .init(x: 0, y: 0, width: view.frame.width, height: HeaderHeights.small))
         let path = makeUserImagePath()
         header?.profileImageView.loadImageWith(path: path)
         header?.delegate = self
         tableView.tableHeaderView = header
     }
-    
-    private func registerCells() {
+        
+    private func registerTableViewCells() {
         tableView.register(CardCell.self, forCellReuseIdentifier: CardCell.reuseIdentifier)
         tableView.register(BalanceCell.self, forCellReuseIdentifier: BalanceCell.reuseIdentifier)
         tableView.register(ServicesCell.self, forCellReuseIdentifier: ServicesCell.reuseIdentifier)
@@ -136,9 +138,11 @@ extension HomeController {
             return cell ?? UITableViewCell()
         case .cardCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: CardCell.reuseIdentifier, for: indexPath) as? CardCell
-            cell?.setupCell(with: cards)
-            goToLastItem = cell?.goToLastItem
-            cell?.delegate = self
+            if let cardModel = cards {
+                cell?.setupCell(with: cardModel)
+                goToLastItem = cell?.goToLastItem
+                cell?.delegate = self
+            }
             return cell ?? UITableViewCell()
         case .serviceCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: ServicesCell.reuseIdentifier, for: indexPath) as? ServicesCell
@@ -160,7 +164,12 @@ extension HomeController: PersonHeaderDelegateProtocol {
     }
 }
 
-extension HomeController: AddCardButtonDelegateProtocol {
+extension HomeController: CardCellDelegateProtocol {
+    public func cardDidTapped(userCard: UserCard) {
+        isOpenFromHome = true
+        presenter?.routeToCardInformationScreen(with: userCard)
+    }
+    
     public func addCardButtonDidTapped() {
         presenter?.routeToCards()
     }
@@ -182,8 +191,8 @@ extension HomeController: BalanceView {
 }
 
 extension HomeController: CardsView {
-    public func updateCardsView(viewModel: CardsViewViewModel) {
-        self.cards = viewModel.cards
+    public func updateCardsView(cardsModel: UserCards) {
+        self.cards = cardsModel
         tableView.reloadData()
     }
 }

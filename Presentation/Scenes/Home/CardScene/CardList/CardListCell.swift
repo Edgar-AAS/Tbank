@@ -1,4 +1,5 @@
 import UIKit
+import Domain
 
 class CardListCell: UITableViewCell {
     static let reuseIdentifier = String(describing: CardListCell.self)
@@ -6,6 +7,11 @@ class CardListCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         configurateCell()
+    }
+    
+    func setupCell(userCard: UserCard) {
+        textLabel?.text = userCard.name
+        detailTextLabel?.text = userCard.cardNumber.toSafeCardNumber()
     }
     
     required init?(coder: NSCoder) {

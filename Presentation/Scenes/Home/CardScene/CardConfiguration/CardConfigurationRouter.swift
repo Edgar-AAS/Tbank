@@ -4,20 +4,20 @@ import Domain
 
 public class CardConfigurationRouter {
     private weak var viewController: UIViewController?
-    private let cardSuccessFactory: (DigitalCardModel) -> CardSuccessViewController
+    private let cardSuccessFactory: (UserCard) -> CardSuccessViewController
     
-    public init(viewController: UIViewController, cardSuccessFactory: @escaping (DigitalCardModel) -> CardSuccessViewController) {
+    public init(viewController: UIViewController, cardSuccessFactory: @escaping (UserCard) -> CardSuccessViewController) {
         self.viewController = viewController
         self.cardSuccessFactory = cardSuccessFactory
     }
 }
 
 extension CardConfigurationRouter: CardConfigurationRouterLogic {
-    public func goToCardSuccessScreen(digitalCardModel: DigitalCardModel) {
+    public func goToCardSuccessScreen(userCardModel: UserCard) {
         if let controller = viewController {
             DispatchQueue.main.async  { [weak self] in
                 guard let self = self else { return }
-                controller.navigationController?.pushViewController(self.cardSuccessFactory(digitalCardModel), animated: true)
+                controller.navigationController?.pushViewController(self.cardSuccessFactory(userCardModel), animated: true)
             }
         }
     }

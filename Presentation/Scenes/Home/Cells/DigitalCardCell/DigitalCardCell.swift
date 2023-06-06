@@ -1,7 +1,8 @@
 import UIKit
+import Domain
 
-final class PhysicalCardCell: UICollectionViewCell {
-    static let reuseIdentifier = String(describing: PhysicalCardCell.self)
+final class DigitalCardCell: UICollectionViewCell {
+    static let reuseIdentifier = String(describing: DigitalCardCell.self)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -12,21 +13,13 @@ final class PhysicalCardCell: UICollectionViewCell {
         fatalError()
     }
     
-    lazy var myBalanceLabel: UILabel = {
+    lazy var cardNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 22)
-        label.text = "Saldo"
-        label.textColor = Colors.offWhiteColor
+        label.textColor = .black
         return label
     }()
-    
-    lazy var balanceCardLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = Colors.secundaryColor
-        return label
-    }()
-    
+        
     lazy var cardMarkImage: UIImageView = {
         let cardMarkImage = UIImage(named: "icon-mastercard-64x64")
         let imageView = UIImageView(image: cardMarkImage)
@@ -36,7 +29,7 @@ final class PhysicalCardCell: UICollectionViewCell {
     
     lazy var cardNumberView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(hexString: "051E3A")
+        view.backgroundColor = UIColor(hexString: "AB831F")
         return view
     }()
 
@@ -48,14 +41,14 @@ final class PhysicalCardCell: UICollectionViewCell {
     lazy var cardNumberLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = Colors.offWhiteColor
+        label.textColor = .black
         return label
     }()
     
     lazy var cardExpirationLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = Colors.offWhiteColor
+        label.textColor = .black
         return label
     }()
     
@@ -65,17 +58,17 @@ final class PhysicalCardCell: UICollectionViewCell {
         cardNumberView.clipsToBounds = true
     }
     
-    func setupCell(with cardModel: CardModel) {
-        balanceCardLabel.text = cardModel.balance
-        cardNumberLabel.text = cardModel.cardNumber
-        cardExpirationLabel.text = cardModel.cardExpirationDate
+    func setupCell(with userCard: UserCard) {
+        let digitalCardFormatter = userCard.getDigitalCardFormmated
+        cardNameLabel.text = digitalCardFormatter.name
+        cardNumberLabel.text = digitalCardFormatter.cardNumber
+        cardExpirationLabel.text = digitalCardFormatter.cardExpirationDate
     }
 }
 
-extension PhysicalCardCell: CodeView {
+extension DigitalCardCell: CodeView {
     func buildViewHierarchy() {
-        addSubview(myBalanceLabel)
-        addSubview(balanceCardLabel)
+        addSubview(cardNameLabel)
         addSubview(cardMarkView)
         cardMarkView.addSubview(cardMarkImage)
         addSubview(cardNumberView)
@@ -84,31 +77,22 @@ extension PhysicalCardCell: CodeView {
     }
     
     func setupConstrains() {
-        myBalanceLabel.fillConstraints(
+        cardNameLabel.fillConstraints(
             top: topAnchor,
-            leading: leadingAnchor,
-            trailing: nil,
-            bottom: nil,
-            padding: .init(top: 32, left: 20, bottom: 0, right: 0)
-        )
-        
-        balanceCardLabel.fillConstraints(
-            top: myBalanceLabel.bottomAnchor,
             leading: leadingAnchor,
             trailing: trailingAnchor,
             bottom: nil,
-            padding: .init(top: 8, left: 20, bottom: 0, right: 16)
+            padding: .init(top: 32, left: 20, bottom: 0, right: 8)
         )
         
         cardMarkView.fillConstraints(
-            top: balanceCardLabel.bottomAnchor,
+            top: cardNameLabel.bottomAnchor,
             leading: leadingAnchor,
             trailing: nil,
             bottom: nil,
-            padding: .init(top: 48, left: 20, bottom: 0, right: 0),
+            padding: .init(top: 85, left: 20, bottom: 0, right: 0),
             size: .init(width: 64, height: 36)
         )
-        
         cardMarkImage.fillSuperview()
         
         cardNumberView.fillConstraints(
@@ -119,7 +103,6 @@ extension PhysicalCardCell: CodeView {
             padding: .init(top: 8, left: 20, bottom: 16, right: 0),
             size: .init(width: 120, height: 0)
         )
-
         cardNumberLabel.superviewCenter()
         
         cardExpirationLabel.fillConstraints(
@@ -134,6 +117,6 @@ extension PhysicalCardCell: CodeView {
     func setupAdditionalConfiguration() {
         layer.cornerRadius = 20
         clipsToBounds = true
-        backgroundColor = UIColor(hexString: "0A2647")
+        backgroundColor = Colors.secundaryColor.withAlphaComponent(0.95)
     }
 }

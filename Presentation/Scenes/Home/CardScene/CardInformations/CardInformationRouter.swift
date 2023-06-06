@@ -12,4 +12,9 @@ public class CardInformationRouter: CardInformationRoutingLogic {
         guard let controller = viewController?.navigationController?.viewControllers.first(where: { $0 is CardsViewController }) else { return }
         viewController?.navigationController?.popToViewController(controller, animated: true)
     }
+    
+    public func popToHome() {
+        guard let controller = viewController?.navigationController?.viewControllers.first(where: { $0 is HomeController }) else { return }
+        viewController?.navigationController?.popToViewController(controller, animated: true)
+    }
 }

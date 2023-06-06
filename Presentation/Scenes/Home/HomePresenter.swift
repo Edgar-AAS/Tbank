@@ -35,25 +35,16 @@ public final class HomePresenter {
 }
 
 extension HomePresenter: ViewToPresenterHomeProtocol {
+    public func routeToCardInformationScreen(with cardModel: UserCard) {
+        router?.goToInformationControllerWith(selectedCard: cardModel)
+    }
+    
     public func fechCards() {
         fetchUserCards.fetch { [weak self] result in
             guard self != nil else { return }
             switch result {
-            case .success(let userCardsModel):
-                let cards = userCardsModel.map { CardModel(id: $0.id,
-                                                           name: $0.name,
-                                                           isVirtual: $0.isVirtual,
-                                                           balance: $0.balance.currencyWith(symbol: .brazilianReal),
-                                                           cardFlag: $0.cardFlag,
-                                                           cardTag: $0.cardTag,
-                                                           cardBrandImageUrl: $0.cardBrandImageURL,
-                                                           cardNumber: $0.cardNumber.toSafeCardNumber(),
-                                                           cardExpirationDate: $0.cardExpirationDate.toShortDate(),
-                                                           cardFunction: $0.cardFunction,
-                                                           cvc: $0.cvc) }
-                DispatchQueue.main.async { [weak self] in
-                    self?.cardsView.updateCardsView(viewModel: CardsViewViewModel(cards: cards))
-                }
+            case .success(let cardsModel):
+                self?.cardsView.updateCardsView(cardsModel: cardsModel)
             case .failure(let error):
                 switch error {
                 case .unexpected:

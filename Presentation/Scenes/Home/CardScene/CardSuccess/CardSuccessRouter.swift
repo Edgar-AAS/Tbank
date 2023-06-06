@@ -4,9 +4,9 @@ import UIKit
 
 public class CardSuccessRouter {
     private weak var viewController: UIViewController?
-    private let cardInformationFactory: (DigitalCardModel) -> CardInformationViewController
+    private let cardInformationFactory: (UserCard) -> CardInformationViewController
     
-    public init(viewController: UIViewController, cardInformationFactory: @escaping (DigitalCardModel) -> CardInformationViewController) {
+    public init(viewController: UIViewController, cardInformationFactory: @escaping (UserCard) -> CardInformationViewController) {
         self.viewController = viewController
         self.cardInformationFactory = cardInformationFactory
     }
@@ -18,8 +18,8 @@ extension CardSuccessRouter: CardSuccessRoutingLogic {
         viewController?.navigationController?.popToViewController(controller, animated: true)
     }
     
-    public func routeToCardInfo(digitalCardModel: DigitalCardModel) {
-        viewController?.navigationController?.pushViewController(cardInformationFactory(digitalCardModel), animated: true)
+    public func routeToCardInfo(userCardModel: UserCard) {
+        viewController?.navigationController?.pushViewController(cardInformationFactory(userCardModel), animated: true)
     }
 }
     
