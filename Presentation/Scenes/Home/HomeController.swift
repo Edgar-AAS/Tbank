@@ -90,6 +90,7 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
         header.scrollViewDidScroll(scrollView: tableView)
     }
     
+
     private func makeUserImagePath() -> String {
         let path = getDocumentsDirectory().appendingPathComponent(FileManagerPaths.userImage).path
         return path
@@ -124,11 +125,7 @@ extension HomeController {
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
-    
-    public override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.estimatedRowHeight
-    }
-    
+        
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let type = HomeCellsType(rawValue: indexPath.row)
         switch type {
@@ -147,6 +144,7 @@ extension HomeController {
         case .serviceCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: ServicesCell.reuseIdentifier, for: indexPath) as? ServicesCell
             cell?.setupCell(services: mainServices)
+            cell?.delegate = self
             return cell ?? UITableViewCell()
         case .resourcesCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: ResourcesGridCell.reuseIdentifier, for: indexPath) as? ResourcesGridCell
@@ -161,6 +159,12 @@ extension HomeController {
 extension HomeController: PersonHeaderDelegateProtocol {
     public func profileButtonDidTapped() {
         presenter?.routeToProfile()
+    }
+}
+
+extension HomeController: ServicesCellDelegateProtocol {
+    public func cardServiceDidTapped(serviceTag: Int) {
+        presenter?.routeToServiceWith(tag: serviceTag)
     }
 }
 

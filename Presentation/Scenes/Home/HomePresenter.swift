@@ -35,6 +35,10 @@ public final class HomePresenter {
 }
 
 extension HomePresenter: ViewToPresenterHomeProtocol {
+    public func routeToServiceWith(tag: Int) {
+        router?.goToCardServiceWith(tag: tag)
+    }
+    
     public func routeToCardInformationScreen(with cardModel: UserCard) {
         router?.goToInformationControllerWith(selectedCard: cardModel)
     }

@@ -21,6 +21,15 @@ public class HomeRouter {
 }
 
 extension HomeRouter: PresenterToRouterHomeProtocol {
+    public func goToCardServiceWith(tag: Int) {
+        switch tag {
+        case 0:
+            viewController?.navigationController?.pushViewController(PixAreaViewController(), animated: true)
+        default:
+            break
+        }
+    }
+    
     public func goToInformationControllerWith(selectedCard: UserCard) {
         viewController?.navigationController?.pushViewController(cardInformationFactory(selectedCard), animated: true)
     }
