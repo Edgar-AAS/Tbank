@@ -1,15 +1,18 @@
 import UIKit
 import Domain
 
-final class PixAreaViewController: UITableViewController {
-    override func viewDidLoad() {
+public final class PixAreaViewController: UITableViewController {
+    public var presenter: ViewToPresenterPixAreaProtocol?
+    
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupTableViewProperties()
         registerTableViewCells()
+        print("teste")
+        
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -26,11 +29,11 @@ final class PixAreaViewController: UITableViewController {
         tableView.separatorStyle = .none
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: PixAreaDescriptionCell.reuseIdentifier, for: indexPath) as? PixAreaDescriptionCell
             return cell ?? UITableViewCell()
@@ -60,7 +63,7 @@ final class PixAreaViewController: UITableViewController {
 }
 
 extension PixAreaViewController: ServicesCellDelegateProtocol {
-    func cardServiceDidTapped(serviceTag: Int) {
-        print("123123")
+    public func cardServiceDidTapped(serviceTag: Int) {
+        presenter?.callPixServiceWith(tag: serviceTag)
     }
 }

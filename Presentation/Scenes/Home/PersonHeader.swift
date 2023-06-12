@@ -33,7 +33,7 @@ public final class PersonHeader: UIView {
         label.adjustsFontSizeToFitWidth = true
         label.textColor = Colors.offWhiteColor
         return label
-    }() 
+    }()
     
     lazy var notificationButton: UIButton = {
         let button = UIButton(type: .system)

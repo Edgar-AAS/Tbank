@@ -26,13 +26,13 @@ public class CardConfigurationView: UIView {
         button.backgroundColor = .gray
         button.setTitle("Criar cartão digital", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.addTarget(self, action: #selector(tap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(cardTapped), for: .touchUpInside)
         button.isUserInteractionEnabled = false
         button.setTitleColor(Colors.primaryColor, for: .normal)
         return button
     }()
     
-    @objc func tap() {
+    @objc func cardTapped() {
         delegate?.digitalCardButtonDidTapped()
     }
     

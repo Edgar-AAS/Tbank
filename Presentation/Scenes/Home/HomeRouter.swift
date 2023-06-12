@@ -7,16 +7,20 @@ public class HomeRouter {
     private var cardsControllerFactory: () -> CardsViewController
     private var profileControllerFactory: () -> ProfileController
     private var cardInformationFactory: (UserCard) -> CardInformationViewController
+    private var pixAreaControllerFactory: () -> PixAreaViewController
     
     public init(viewController: UIViewController?,
                 profileControllerFactory: @escaping () -> ProfileController,
                 cardsControllerFactory: @escaping () -> CardsViewController,
-                cardInformationFactory: @escaping (UserCard) -> CardInformationViewController)
+                cardInformationFactory: @escaping (UserCard) -> CardInformationViewController,
+                pixAreaControllerFactory: @escaping () -> PixAreaViewController
+    )
     {
         self.viewController = viewController
         self.cardsControllerFactory = cardsControllerFactory
         self.profileControllerFactory = profileControllerFactory
         self.cardInformationFactory = cardInformationFactory
+        self.pixAreaControllerFactory = pixAreaControllerFactory
     }
 }
 
@@ -24,7 +28,7 @@ extension HomeRouter: PresenterToRouterHomeProtocol {
     public func goToCardServiceWith(tag: Int) {
         switch tag {
         case 0:
-            viewController?.navigationController?.pushViewController(PixAreaViewController(), animated: true)
+            viewController?.navigationController?.pushViewController(pixAreaControllerFactory(), animated: true)
         default:
             break
         }

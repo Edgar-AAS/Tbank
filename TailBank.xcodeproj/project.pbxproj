@@ -169,6 +169,12 @@
 		72917EDF29DCB9EB001A623F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72917EDE29DCB9EB001A623F /* UIViewExtensions.swift */; };
 		729236A229DF926400720697 /* CardConfigurationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729236A129DF926400720697 /* CardConfigurationController.swift */; };
 		729236AB29DF967000720697 /* RemoteAddDigitalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729236AA29DF967000720697 /* RemoteAddDigitalCard.swift */; };
+		729CC5382A374C8100DAD7AB /* PixAreaContratct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729CC5372A374C8100DAD7AB /* PixAreaContratct.swift */; };
+		729CC5412A374D6700DAD7AB /* PixAreaPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729CC5402A374D6700DAD7AB /* PixAreaPresenter.swift */; };
+		729CC54A2A374DFE00DAD7AB /* PixAreaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729CC5492A374DFE00DAD7AB /* PixAreaRouter.swift */; };
+		729CC5532A3753BC00DAD7AB /* PixAreaControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729CC5522A3753BC00DAD7AB /* PixAreaControllerFactory.swift */; };
+		729CC55E2A375CF300DAD7AB /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729CC55D2A375CF300DAD7AB /* TransferViewController.swift */; };
+		729CC5672A375D7900DAD7AB /* TransferScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729CC5662A375D7900DAD7AB /* TransferScreen.swift */; };
 		729D54B329A7A747003DC66B /* ValidationSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729D54B229A7A747003DC66B /* ValidationSpy.swift */; };
 		729D54BD29A7A78C003DC66B /* ValidationComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729D54BC29A7A78C003DC66B /* ValidationComposite.swift */; };
 		729D54F729A7D099003DC66B /* EmailValidatorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721DA1772996E2F000CB38E3 /* EmailValidatorSpy.swift */; };
@@ -246,7 +252,6 @@
 		72DF0BC129E7100400973C98 /* CardInformationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DF0BC029E7100400973C98 /* CardInformationRouter.swift */; };
 		72F12F742A30FA78003774C5 /* PixAreaDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F12F732A30FA78003774C5 /* PixAreaDescriptionCell.swift */; };
 		72F12F942A31218E003774C5 /* SendTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F12F932A31218E003774C5 /* SendTitleCell.swift */; };
-		72F9559329E4A5BA00339114 /* SimpleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9559229E4A5BA00339114 /* SimpleScrollView.swift */; };
 		72F95E9429C0BEA900D92E6D /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F95E9329C0BEA900D92E6D /* HomePresenterTests.swift */; };
 		72F95EAC29C0DF6700D92E6D /* FetchUserDataSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F95EAB29C0DF6700D92E6D /* FetchUserDataSpy.swift */; };
 		72F95EBE29C0EC9D00D92E6D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F95EBD29C0EC9D00D92E6D /* HomePresenter.swift */; };
@@ -580,6 +585,12 @@
 		7299B7C029B64AF0006F3BC5 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		7299B7CA29B64FDB006F3BC5 /* WelcomeRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeRouterTest.swift; sourceTree = "<group>"; };
 		7299B7DC29B6654D006F3BC5 /* WelcomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeRouter.swift; sourceTree = "<group>"; };
+		729CC5372A374C8100DAD7AB /* PixAreaContratct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixAreaContratct.swift; sourceTree = "<group>"; };
+		729CC5402A374D6700DAD7AB /* PixAreaPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixAreaPresenter.swift; sourceTree = "<group>"; };
+		729CC5492A374DFE00DAD7AB /* PixAreaRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixAreaRouter.swift; sourceTree = "<group>"; };
+		729CC5522A3753BC00DAD7AB /* PixAreaControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixAreaControllerFactory.swift; sourceTree = "<group>"; };
+		729CC55D2A375CF300DAD7AB /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
+		729CC5662A375D7900DAD7AB /* TransferScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferScreen.swift; sourceTree = "<group>"; };
 		729D54B229A7A747003DC66B /* ValidationSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationSpy.swift; sourceTree = "<group>"; };
 		729D54BC29A7A78C003DC66B /* ValidationComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationComposite.swift; sourceTree = "<group>"; };
 		729E352529D0E1110091F4C0 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
@@ -660,7 +671,6 @@
 		72DF0BC029E7100400973C98 /* CardInformationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInformationRouter.swift; sourceTree = "<group>"; };
 		72F12F732A30FA78003774C5 /* PixAreaDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixAreaDescriptionCell.swift; sourceTree = "<group>"; };
 		72F12F932A31218E003774C5 /* SendTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTitleCell.swift; sourceTree = "<group>"; };
-		72F9559229E4A5BA00339114 /* SimpleScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleScrollView.swift; sourceTree = "<group>"; };
 		72F95E9329C0BEA900D92E6D /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
 		72F95EAB29C0DF6700D92E6D /* FetchUserDataSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserDataSpy.swift; sourceTree = "<group>"; };
 		72F95EBD29C0EC9D00D92E6D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -1085,7 +1095,6 @@
 			children = (
 				7241091C299BFFEB00129804 /* CustomTextField.swift */,
 				7299B7C029B64AF0006F3BC5 /* NavigationController.swift */,
-				72F9559229E4A5BA00339114 /* SimpleScrollView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1286,8 +1295,9 @@
 		727137A32A3003CF00E3C809 /* PixArea */ = {
 			isa = PBXGroup;
 			children = (
+				729CC55C2A375CA200DAD7AB /* TransferService */,
+				729CC55B2A375C8B00DAD7AB /* Home */,
 				72F12F722A30FA40003774C5 /* Cells */,
-				727137902A2FFBFC00E3C809 /* PixAreaViewController.swift */,
 			);
 			path = PixArea;
 			sourceTree = "<group>";
@@ -1302,6 +1312,7 @@
 				723F74FE29DB305600E1633F /* CardsViewControllerFactory.swift */,
 				723F754C29DB93BD00E1633F /* CardCreationControllerFactory.swift */,
 				729236A129DF926400720697 /* CardConfigurationController.swift */,
+				729CC5522A3753BC00DAD7AB /* PixAreaControllerFactory.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1398,6 +1409,26 @@
 				7299B7CA29B64FDB006F3BC5 /* WelcomeRouterTest.swift */,
 			);
 			path = Welcome;
+			sourceTree = "<group>";
+		};
+		729CC55B2A375C8B00DAD7AB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				727137902A2FFBFC00E3C809 /* PixAreaViewController.swift */,
+				729CC5372A374C8100DAD7AB /* PixAreaContratct.swift */,
+				729CC5402A374D6700DAD7AB /* PixAreaPresenter.swift */,
+				729CC5492A374DFE00DAD7AB /* PixAreaRouter.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		729CC55C2A375CA200DAD7AB /* TransferService */ = {
+			isa = PBXGroup;
+			children = (
+				729CC55D2A375CF300DAD7AB /* TransferViewController.swift */,
+				729CC5662A375D7900DAD7AB /* TransferScreen.swift */,
+			);
+			path = TransferService;
 			sourceTree = "<group>";
 		};
 		729E352429D0E0E70091F4C0 /* cell */ = {
@@ -2172,6 +2203,7 @@
 				72D9962629E4577F003DAFA8 /* CardListCell.swift in Sources */,
 				728B06C629C253B600DD5A83 /* ServicesCell.swift in Sources */,
 				723594F929DF0EF000C0F018 /* CardConfigurationRequest.swift in Sources */,
+				729CC55E2A375CF300DAD7AB /* TransferViewController.swift in Sources */,
 				728B06D829C253CD00DD5A83 /* CustomTextField.swift in Sources */,
 				723F753429DB90FC00E1633F /* CardConfigurationViewController.swift in Sources */,
 				723FBBBA29C3C09E0006607C /* ProfileContract.swift in Sources */,
@@ -2182,6 +2214,7 @@
 				728B06A129C2539E00DD5A83 /* SignUpView.swift in Sources */,
 				72C8BF7B29CCC7F9005D3B91 /* CardsView.swift in Sources */,
 				7257A45B2A2E472400877611 /* UserCardExtension.swift in Sources */,
+				729CC54A2A374DFE00DAD7AB /* PixAreaRouter.swift in Sources */,
 				723F752B29DB8B5700E1633F /* CardCreationContract.swift in Sources */,
 				728B06CF29C253C200DD5A83 /* ProfileController.swift in Sources */,
 				727137912A2FFBFC00E3C809 /* PixAreaViewController.swift in Sources */,
@@ -2212,6 +2245,7 @@
 				727953F229E07A75002E0E5C /* CardSuccessViewController.swift in Sources */,
 				72C8BF9429CCDB49005D3B91 /* ServicesView.swift in Sources */,
 				725C1F3F29DE56D00061D32F /* CardConfigurationPresenter.swift in Sources */,
+				729CC5412A374D6700DAD7AB /* PixAreaPresenter.swift in Sources */,
 				723F74F629DB2BB800E1633F /* CardCreationViewController.swift in Sources */,
 				721DA19A2996E41A00CB38E3 /* SignUpPresenter.swift in Sources */,
 				72DF0B5B29E59F0400973C98 /* CardSuccessRouter.swift in Sources */,
@@ -2221,6 +2255,7 @@
 				72C8BF7229CCC33D005D3B91 /* BalanceView.swift in Sources */,
 				72917EC129DC9A80001A623F /* UIColorExtensions.swift in Sources */,
 				723F752229DB8B4B00E1633F /* CardCreationRouter.swift in Sources */,
+				729CC5672A375D7900DAD7AB /* TransferScreen.swift in Sources */,
 				7282F0BF29E48DB10009FCF6 /* CardInformationView.swift in Sources */,
 				728B06C329C253B600DD5A83 /* ResourceCell.swift in Sources */,
 				723F74DA29DB19B900E1633F /* CardsRouter.swift in Sources */,
@@ -2232,7 +2267,6 @@
 				72DF0B5229E59EF500973C98 /* CardSuccessPresenter.swift in Sources */,
 				728B068F29C2538600DD5A83 /* WelcomeView.swift in Sources */,
 				728B06B929C253AE00DD5A83 /* PersonHeader.swift in Sources */,
-				72F9559329E4A5BA00339114 /* SimpleScrollView.swift in Sources */,
 				728B06A929C253A200DD5A83 /* SignUpViewController.swift in Sources */,
 				723FBB7529C390250006607C /* LoginContract.swift in Sources */,
 				723F74EC29DB19DB00E1633F /* CardsContract.swift in Sources */,
@@ -2242,6 +2276,7 @@
 				728B06D929C253CD00DD5A83 /* NavigationController.swift in Sources */,
 				728B06C429C253B600DD5A83 /* ServiceCell.swift in Sources */,
 				72C8BF5B29CCB805005D3B91 /* ProfileView.swift in Sources */,
+				729CC5382A374C8100DAD7AB /* PixAreaContratct.swift in Sources */,
 				72D6EB5729D75D0B00512644 /* ViewControllerExtensions.swift in Sources */,
 				72D6EB7B29D78ACD00512644 /* SnappingLayout.swift in Sources */,
 				721DA1AE2996F24100CB38E3 /* LoadingView.swift in Sources */,
@@ -2350,6 +2385,7 @@
 				72BF3F7029B171CE001D4BCA /* RemoteAuthenticationFactory.swift in Sources */,
 				72C9C04A29ED8D130096D882 /* CardSuccessFactory.swift in Sources */,
 				72FEABBC29D35C15002CA545 /* ProfileControllerFactory.swift in Sources */,
+				729CC5532A3753BC00DAD7AB /* PixAreaControllerFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
