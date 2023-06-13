@@ -107,7 +107,7 @@ extension PersonHeader: CodeView {
             trailing: nil,
             bottom: nil,
             padding: .init(top: 16, left: 20, bottom: 0, right: 0),
-            size: .init(width: CircularButtonSizes.medium, height: CircularButtonSizes.medium)
+            size: .init(width: CircularButtonSize.medium, height: CircularButtonSize.medium)
         )
         
         headerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true

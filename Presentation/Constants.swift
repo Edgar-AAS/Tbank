@@ -7,14 +7,18 @@ enum HeaderHeights {
     static let large: CGFloat = 300
 }
 
-enum CircularButtonSizes {
-    static let small = 36
-    static let medium = 64
-    static let large = 120
+enum CircularButtonSize {
+    static let small: CGFloat = 36
+    static let medium: CGFloat = 64
+    static let large: CGFloat = 120
 }
 
 enum FileManagerPaths {
     static let userImage = "userImage"
+}
+
+enum Icons {
+    static let arrow_foward = UIImage(systemName: "arrow.forward")
 }
 
 enum Colors {

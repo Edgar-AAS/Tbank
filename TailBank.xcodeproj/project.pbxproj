@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		720470A12A291C2E00E40264 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720470A02A291C2E00E40264 /* HomeViewControllerTests.swift */; };
 		720470B22A2921A500E40264 /* CardCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720470B12A2921A500E40264 /* CardCellTests.swift */; };
+		720B50012A38D54A00639FDE /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B50002A38D54A00639FDE /* CircularButton.swift */; };
 		7213634F29983D4B00E5C635 /* TestsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B818A22992E50A0007C070 /* TestsExtensions.swift */; };
 		72143647299FCB3400337EE9 /* PresentationFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72143646299FCB3400337EE9 /* PresentationFactories.swift */; };
 		72143658299FCB4E00337EE9 /* PresentationFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72143646299FCB3400337EE9 /* PresentationFactories.swift */; };
@@ -443,6 +444,7 @@
 /* Begin PBXFileReference section */
 		720470A02A291C2E00E40264 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		720470B12A2921A500E40264 /* CardCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellTests.swift; sourceTree = "<group>"; };
+		720B50002A38D54A00639FDE /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
 		72143646299FCB3400337EE9 /* PresentationFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationFactories.swift; sourceTree = "<group>"; };
 		72143662299FDD3E00337EE9 /* MainDispatchQueueDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDispatchQueueDecorator.swift; sourceTree = "<group>"; };
 		7214367C29A10B9000337EE9 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -1095,6 +1097,7 @@
 			children = (
 				7241091C299BFFEB00129804 /* CustomTextField.swift */,
 				7299B7C029B64AF0006F3BC5 /* NavigationController.swift */,
+				720B50002A38D54A00639FDE /* CircularButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2241,6 +2244,7 @@
 				72917EB829DC9928001A623F /* UIlabelExtensions.swift in Sources */,
 				723F750829DB56C200E1633F /* CardCreationView.swift in Sources */,
 				7282F0CF29E495650009FCF6 /* CardInformationViewController.swift in Sources */,
+				720B50012A38D54A00639FDE /* CircularButton.swift in Sources */,
 				7276087229EA07E4001BD112 /* UITextFieldExtension.swift in Sources */,
 				727953F229E07A75002E0E5C /* CardSuccessViewController.swift in Sources */,
 				72C8BF9429CCDB49005D3B91 /* ServicesView.swift in Sources */,

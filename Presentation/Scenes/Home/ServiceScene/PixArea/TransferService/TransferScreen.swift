@@ -10,7 +10,7 @@ public final class TransferScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    lazy var scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.isDirectionalLockEnabled = true
         scrollView.showsVerticalScrollIndicator = false
@@ -44,6 +44,7 @@ public final class TransferScreen: UIView {
         textField.text = String().currencyInputFormatting()
         textField.font = UIFont.boldSystemFont(ofSize: 36)
         textField.tintColor = Colors.offWhiteColor
+        textField.textColor = .white
         return textField
     }()
     
@@ -52,20 +53,6 @@ public final class TransferScreen: UIView {
         view.backgroundColor = .lightGray
         return view
     }()
-    
-    lazy var forwardButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "arrow.forward"), for: .normal)
-        button.tintColor = .white
-        button.backgroundColor = Colors.secundaryColor
-        return button
-    }()
-    
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        forwardButton.layer.cornerRadius = forwardButton.frame.size.width / 2
-        forwardButton.layer.masksToBounds = true
-    }
 }
 
 extension TransferScreen: CodeView {
@@ -76,7 +63,6 @@ extension TransferScreen: CodeView {
         containerView.addSubview(availableBalanceDescriptionLabel)
         containerView.addSubview(transactionAmountField)
         containerView.addSubview(bottomLine)
-        containerView.addSubview(forwardButton)
     }
     
     func setupConstrains() {
@@ -126,18 +112,9 @@ extension TransferScreen: CodeView {
             top: transactionAmountField.bottomAnchor,
             leading: containerView.leadingAnchor,
             trailing: containerView.trailingAnchor,
-            bottom: nil,
+            bottom: containerView.bottomAnchor,
             padding: .init(top: 2, left: 20, bottom: 0, right: 20),
             size: .init(width: 0, height: 1)
-        )
-        
-        forwardButton.fillConstraints(
-            top: bottomLine.bottomAnchor,
-            leading: nil,
-            trailing: containerView.trailingAnchor,
-            bottom: containerView.bottomAnchor,
-            padding: .init(top: 20, left: 0, bottom: 0, right: 20),
-            size: .init(width: 64, height: 64)
         )
     }
     

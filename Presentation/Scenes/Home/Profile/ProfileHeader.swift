@@ -129,7 +129,7 @@ extension ProfileHeader: CodeView {
             trailing: nil,
             bottom: nil,
             padding: .init(top: 24, left: 0, bottom: 0, right: 0),
-            size: .init(width: CircularButtonSizes.large, height: CircularButtonSizes.large)
+            size: .init(width: CircularButtonSize.large, height: CircularButtonSize.large)
         )
         userPhotoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
