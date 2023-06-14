@@ -61,3 +61,9 @@ extension WeakVarProxy: CardInformationDelegate where T: CardInformationDelegate
         instance?.digitalCardDidRemoved(isNeedUpdateView: isNeedUpdateView)
     }
 }
+
+extension WeakVarProxy: UpdateBalanceView where T: UpdateBalanceView {
+    func update(balance: String) {
+        instance?.update(balance: balance)
+    }
+}

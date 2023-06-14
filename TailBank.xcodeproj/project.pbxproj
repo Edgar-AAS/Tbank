@@ -39,6 +39,8 @@
 		721DA19A2996E41A00CB38E3 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721DA1842996E39000CB38E3 /* SignUpPresenter.swift */; };
 		721DA1A22996EE5900CB38E3 /* AddAccountSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721DA1A12996EE5900CB38E3 /* AddAccountSpy.swift */; };
 		721DA1AE2996F24100CB38E3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721DA1AD2996F24100CB38E3 /* LoadingView.swift */; };
+		72292B8A2A3A68B700A44B42 /* UpdateBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72292B892A3A68B700A44B42 /* UpdateBalanceView.swift */; };
+		72292B932A3A698900A44B42 /* RemoteFetchAccountBalanceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72292B922A3A698900A44B42 /* RemoteFetchAccountBalanceFactory.swift */; };
 		722A7A5429CE3A12003F38E6 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722A7A5329CE3A12003F38E6 /* StringExtensions.swift */; };
 		723594F929DF0EF000C0F018 /* CardConfigurationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723594F829DF0EF000C0F018 /* CardConfigurationRequest.swift */; };
 		7235950229DF1D8700C0F018 /* RemoteAddDigitalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7235950129DF1D8700C0F018 /* RemoteAddDigitalCard.swift */; };
@@ -101,6 +103,8 @@
 		724B433C2A3A27D2004721BB /* ValidatePixTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B433B2A3A27D2004721BB /* ValidatePixTransferService.swift */; };
 		724B434E2A3A2975004721BB /* ValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B434D2A3A2975004721BB /* ValidationType.swift */; };
 		724B43752A3A3D4F004721BB /* ValidatePixTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B43742A3A3D4F004721BB /* ValidatePixTransferService.swift */; };
+		724B43D82A3A54F3004721BB /* UpdateBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B43D72A3A54F3004721BB /* UpdateBalance.swift */; };
+		724B43E82A3A56EA004721BB /* RemoteFetchAccountBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B43E72A3A56EA004721BB /* RemoteFetchAccountBalance.swift */; };
 		7250999F29D657B100C2541B /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7250999E29D657B100C2541B /* CurrencyFormatterTests.swift */; };
 		725099AF29D6623000C2541B /* BalanceViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725099AE29D6623000C2541B /* BalanceViewSpy.swift */; };
 		725099B829D6625500C2541B /* CardsViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725099B729D6625500C2541B /* CardsViewSpy.swift */; };
@@ -478,6 +482,8 @@
 		721DA1A12996EE5900CB38E3 /* AddAccountSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountSpy.swift; sourceTree = "<group>"; };
 		721DA1AD2996F24100CB38E3 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		721DA1B42996F28500CB38E3 /* LoadingViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewSpy.swift; sourceTree = "<group>"; };
+		72292B892A3A68B700A44B42 /* UpdateBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBalanceView.swift; sourceTree = "<group>"; };
+		72292B922A3A698900A44B42 /* RemoteFetchAccountBalanceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchAccountBalanceFactory.swift; sourceTree = "<group>"; };
 		722A7A5329CE3A12003F38E6 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		723594F829DF0EF000C0F018 /* CardConfigurationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardConfigurationRequest.swift; sourceTree = "<group>"; };
 		7235950129DF1D8700C0F018 /* RemoteAddDigitalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddDigitalCard.swift; sourceTree = "<group>"; };
@@ -539,6 +545,8 @@
 		724B433B2A3A27D2004721BB /* ValidatePixTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePixTransferService.swift; sourceTree = "<group>"; };
 		724B434D2A3A2975004721BB /* ValidationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationType.swift; sourceTree = "<group>"; };
 		724B43742A3A3D4F004721BB /* ValidatePixTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePixTransferService.swift; sourceTree = "<group>"; };
+		724B43D72A3A54F3004721BB /* UpdateBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBalance.swift; sourceTree = "<group>"; };
+		724B43E72A3A56EA004721BB /* RemoteFetchAccountBalance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFetchAccountBalance.swift; sourceTree = "<group>"; };
 		7250999E29D657B100C2541B /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
 		725099AE29D6623000C2541B /* BalanceViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewSpy.swift; sourceTree = "<group>"; };
 		725099B729D6625500C2541B /* CardsViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewSpy.swift; sourceTree = "<group>"; };
@@ -905,6 +913,7 @@
 		721DA1532995A40A00CB38E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				724B438B2A3A51B5004721BB /* Pix */,
 				725414B62A24FEAB00D34801 /* Profile */,
 				72D0ED2F29D6053B006A4BD1 /* Home */,
 				721DA1542995A41E00CB38E3 /* AlertView.swift */,
@@ -1145,13 +1154,11 @@
 		724AB0FD2992813C000616A7 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				724AB0F629927C45000616A7 /* AddAccount.swift */,
-				72BF3E9029AFD9F5001D4BCA /* Authentication.swift */,
-				72770D2A29BFC5500081B57C /* FetchUserDataResources.swift */,
-				72FEAB9929D34168002CA545 /* FetchUserCards.swift */,
-				7235950A29DF1ECB00C0F018 /* AddDigitalCard.swift */,
-				72D2164B29EB5DC100CBB206 /* DeleteDigitalCard.swift */,
-				724B43292A3A2117004721BB /* ValidateBalance.swift */,
+				724B43BF2A3A54A4004721BB /* SignUp */,
+				724B43C72A3A54B2004721BB /* Login */,
+				724B43B72A3A549E004721BB /* Home */,
+				724B43B62A3A548C004721BB /* Cards */,
+				724B43D62A3A54BB004721BB /* PixServices */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1200,9 +1207,104 @@
 		724B434C2A3A2957004721BB /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				72B818922992BE3C0007C070 /* DomainError.swift */,
 				724B434D2A3A2975004721BB /* ValidationType.swift */,
 			);
 			path = Commons;
+			sourceTree = "<group>";
+		};
+		724B438B2A3A51B5004721BB /* Pix */ = {
+			isa = PBXGroup;
+			children = (
+				72292B892A3A68B700A44B42 /* UpdateBalanceView.swift */,
+			);
+			path = Pix;
+			sourceTree = "<group>";
+		};
+		724B439C2A3A53BF004721BB /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				72FEABA229D341B8002CA545 /* RemoteFetchCards.swift */,
+				7235950129DF1D8700C0F018 /* RemoteAddDigitalCard.swift */,
+				72D2162F29EB52D600CBB206 /* RemoteDeleteDigitalCard.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		724B439D2A3A53D7004721BB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				72770D5E29BFEDD10081B57C /* RemoteFetchUserData.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		724B43A52A3A5425004721BB /* PixServices */ = {
+			isa = PBXGroup;
+			children = (
+				724B433B2A3A27D2004721BB /* ValidatePixTransferService.swift */,
+				724B43E72A3A56EA004721BB /* RemoteFetchAccountBalance.swift */,
+			);
+			path = PixServices;
+			sourceTree = "<group>";
+		};
+		724B43AD2A3A5442004721BB /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				72B8187C2992B14A0007C070 /* RemoteAddAccount.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		724B43AE2A3A544D004721BB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				72BF3EC729B0F3A7001D4BCA /* RemoteAuthentication.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		724B43B62A3A548C004721BB /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				72FEAB9929D34168002CA545 /* FetchUserCards.swift */,
+				7235950A29DF1ECB00C0F018 /* AddDigitalCard.swift */,
+				72D2164B29EB5DC100CBB206 /* DeleteDigitalCard.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		724B43B72A3A549E004721BB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				72770D2A29BFC5500081B57C /* FetchUserDataResources.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		724B43BF2A3A54A4004721BB /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				724AB0F629927C45000616A7 /* AddAccount.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		724B43C72A3A54B2004721BB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				72BF3E9029AFD9F5001D4BCA /* Authentication.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		724B43D62A3A54BB004721BB /* PixServices */ = {
+			isa = PBXGroup;
+			children = (
+				724B43292A3A2117004721BB /* ValidateBalance.swift */,
+				724B43D72A3A54F3004721BB /* UpdateBalance.swift */,
+			);
+			path = PixServices;
 			sourceTree = "<group>";
 		};
 		7250998629D6537300C2541B /* CurrencyFormatter */ = {
@@ -1273,7 +1375,6 @@
 			isa = PBXGroup;
 			children = (
 				724B434C2A3A2957004721BB /* Commons */,
-				72B818912992BE340007C070 /* Errors */,
 				724AB0FE29928199000616A7 /* Models */,
 				724AB0FD2992813C000616A7 /* UseCases */,
 				725291D02991B27B00AC9C35 /* Info.plist */,
@@ -1530,13 +1631,11 @@
 		72B8187B2992B13C0007C070 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				72BF3EC729B0F3A7001D4BCA /* RemoteAuthentication.swift */,
-				72B8187C2992B14A0007C070 /* RemoteAddAccount.swift */,
-				72770D5E29BFEDD10081B57C /* RemoteFetchUserData.swift */,
-				72FEABA229D341B8002CA545 /* RemoteFetchCards.swift */,
-				7235950129DF1D8700C0F018 /* RemoteAddDigitalCard.swift */,
-				72D2162F29EB52D600CBB206 /* RemoteDeleteDigitalCard.swift */,
-				724B433B2A3A27D2004721BB /* ValidatePixTransferService.swift */,
+				724B43AE2A3A544D004721BB /* Login */,
+				724B43AD2A3A5442004721BB /* SignUp */,
+				724B439D2A3A53D7004721BB /* Home */,
+				724B439C2A3A53BF004721BB /* Cards */,
+				724B43A52A3A5425004721BB /* PixServices */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1562,14 +1661,6 @@
 				728B86D129EF352600CE465B /* HttpDeleteClientSpy.swift */,
 			);
 			path = Http;
-			sourceTree = "<group>";
-		};
-		72B818912992BE340007C070 /* Errors */ = {
-			isa = PBXGroup;
-			children = (
-				72B818922992BE3C0007C070 /* DomainError.swift */,
-			);
-			path = Errors;
 			sourceTree = "<group>";
 		};
 		72B8189C2992D2340007C070 /* Helpers */ = {
@@ -1693,6 +1784,7 @@
 				7279544729E1223E002E0E5C /* RemoteFetchCardsFactory.swift */,
 				72C9C03729ED80730096D882 /* RemoteDeleteDigitalCardFactory.swift */,
 				724B43742A3A3D4F004721BB /* ValidatePixTransferService.swift */,
+				72292B922A3A698900A44B42 /* RemoteFetchAccountBalanceFactory.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -2305,6 +2397,7 @@
 				72C8BF9D29CCE066005D3B91 /* ResourcesView.swift in Sources */,
 				725C1F4829DE57B50061D32F /* CardConfigurationRouter.swift in Sources */,
 				7265B8262A396903009E255D /* TransferContract.swift in Sources */,
+				72292B8A2A3A68B700A44B42 /* UpdateBalanceView.swift in Sources */,
 				72DF0B7629E60ECD00973C98 /* CardInformationPresenter.swift in Sources */,
 				72DF0B5229E59EF500973C98 /* CardSuccessPresenter.swift in Sources */,
 				728B068F29C2538600DD5A83 /* WelcomeView.swift in Sources */,
@@ -2402,6 +2495,7 @@
 				72C8BF5229CCA280005D3B91 /* LocalFetchUserData.swift in Sources */,
 				7279544829E1223E002E0E5C /* RemoteFetchCardsFactory.swift in Sources */,
 				724B43182A39FF91004721BB /* TransferControllerFactory.swift in Sources */,
+				72292B932A3A698900A44B42 /* RemoteFetchAccountBalanceFactory.swift in Sources */,
 				7241087B299BEFB800129804 /* AppDelegate.swift in Sources */,
 				727953FB29E08CA1002E0E5C /* HomeFactory.swift in Sources */,
 				7241087D299BEFB800129804 /* SceneDelegate.swift in Sources */,
@@ -2460,6 +2554,7 @@
 				72770D5F29BFEDD10081B57C /* RemoteFetchUserData.swift in Sources */,
 				724B433C2A3A27D2004721BB /* ValidatePixTransferService.swift in Sources */,
 				72D2163029EB52D600CBB206 /* RemoteDeleteDigitalCard.swift in Sources */,
+				724B43E82A3A56EA004721BB /* RemoteFetchAccountBalance.swift in Sources */,
 				72B8189E2992D2440007C070 /* ExtensionsHelpers.swift in Sources */,
 				72B818992992C10A0007C070 /* HttpError.swift in Sources */,
 				72BF3EC829B0F3A7001D4BCA /* RemoteAuthentication.swift in Sources */,
@@ -2494,6 +2589,7 @@
 				724AB1712992A48B000616A7 /* Model.swift in Sources */,
 				7257A4522A2E460900877611 /* DigitalCardFormatter.swift in Sources */,
 				72770D2B29BFC5500081B57C /* FetchUserDataResources.swift in Sources */,
+				724B43D82A3A54F3004721BB /* UpdateBalance.swift in Sources */,
 				724AB0F729927C45000616A7 /* AddAccount.swift in Sources */,
 				7257A4642A2E4DBE00877611 /* PhysicalCardFormatter.swift in Sources */,
 				7235950B29DF1ECB00C0F018 /* AddDigitalCard.swift in Sources */,

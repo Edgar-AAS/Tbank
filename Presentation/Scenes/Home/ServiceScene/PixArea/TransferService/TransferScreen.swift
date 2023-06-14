@@ -31,13 +31,22 @@ public final class TransferScreen: UIView {
         return label
     }()
     
-    private lazy var availableBalanceDescriptionLabel: UILabel = {
+    private lazy var descriptionBalanceLabel: UILabel = {
         let label = UILabel()
-        label.text = "Saldo disponivel em conta R$ 1520,42"
-        label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.textColor = UIColor.lightGray
+        label.text = "Saldo disponivel na conta: "
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.textColor = UIColor(hexString: "#cecece")
         return label
     }()
+    
+    private var balanceLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.textColor = UIColor(hexString: "#cecece")
+        return label
+    }()
+    
+    private lazy var horizontalStack = makeHorizontalStack(with: [descriptionBalanceLabel, balanceLabel, UIView()], spacing: 2)
     
     lazy var transactionAmountField: UITextField = {
         let textField = UITextField()
@@ -53,6 +62,10 @@ public final class TransferScreen: UIView {
         view.backgroundColor = .lightGray
         return view
     }()
+    
+    func updateAvaiableBalance(balance: String) {
+        self.balanceLabel.text = balance
+    }
 }
 
 extension TransferScreen: CodeView {
@@ -60,7 +73,7 @@ extension TransferScreen: CodeView {
         addSubview(scrollView)
         scrollView.addSubview(containerView)
         containerView.addSubview(transferTitleLabel)
-        containerView.addSubview(availableBalanceDescriptionLabel)
+        containerView.addSubview(horizontalStack)
         containerView.addSubview(transactionAmountField)
         containerView.addSubview(bottomLine)
     }
@@ -92,7 +105,7 @@ extension TransferScreen: CodeView {
             padding: .init(top: 8, left: 20, bottom: 0, right: 20)
         )
         
-        availableBalanceDescriptionLabel.fillConstraints(
+        horizontalStack.fillConstraints(
             top: transferTitleLabel.bottomAnchor,
             leading: containerView.leadingAnchor,
             trailing: containerView.trailingAnchor,
@@ -101,7 +114,7 @@ extension TransferScreen: CodeView {
         )
         
         transactionAmountField.fillConstraints(
-            top: availableBalanceDescriptionLabel.bottomAnchor,
+            top: horizontalStack.bottomAnchor,
             leading: containerView.leadingAnchor,
             trailing: containerView.trailingAnchor,
             bottom: nil,

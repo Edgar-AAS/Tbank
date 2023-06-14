@@ -71,4 +71,19 @@ extension UIView {
             heightAnchor.constraint(equalToConstant: size.height).isActive = true
         }
     }
+    
+    func makeHorizontalStack(with views: [UIView], spacing: CGFloat) -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: views)
+        stackView.axis = .horizontal
+        stackView.spacing = spacing
+        return stackView
+    }
+    
+    private func makeVerticalStack(with views: [UIView], spacing: CGFloat) -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: views)
+        stackView.axis = .vertical
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = spacing
+        return stackView
+    }
 }

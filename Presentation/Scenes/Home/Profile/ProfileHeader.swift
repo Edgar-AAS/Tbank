@@ -171,13 +171,3 @@ extension ProfileHeader: CodeView {
         backgroundColor = Colors.primaryColor
     }
 }
-
-extension ProfileHeader {
-    private func makeHorizontalStack(with views: [UIView], spacing: CGFloat) -> UIStackView {
-        let stackView = UIStackView(arrangedSubviews: views)
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.spacing = spacing
-        return stackView
-    }
-}

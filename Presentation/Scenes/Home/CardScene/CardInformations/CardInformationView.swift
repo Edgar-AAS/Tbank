@@ -179,8 +179,8 @@ public class CardInformationView: UIView {
     private lazy var cardMarkView = makeInfoView()
     private lazy var cardFunctionView = makeInfoView()
 
-    private lazy var expirationDateAndCVCHorizontalStack = makeHorizontalStack(with: [expirationDateView, cvcView], spacing: 32)
-    private lazy var cardMarkAndCardFunctionHorizontalStack = makeHorizontalStack(with: [cardMarkView, cardFunctionView], spacing: 32)
+    private lazy var expirationDateAndCVCHorizontalStack = horizontalStack(with: [expirationDateView, cvcView], spacing: 32)
+    private lazy var cardMarkAndCardFunctionHorizontalStack = horizontalStack(with: [cardMarkView, cardFunctionView], spacing: 32)
     
     func updateUI(userCardModel: UserCard) {
         let cardInformationFormatter = userCardModel.getCardInformationFormatter
@@ -388,15 +388,7 @@ extension CardInformationView: CodeView {
 }
 
 extension CardInformationView {
-    private func makeVerticalStack(with views: [UIView], spacing: CGFloat) -> UIStackView {
-        let stackView = UIStackView(arrangedSubviews: views)
-        stackView.axis = .vertical
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = spacing
-        return stackView
-    }
-    
-    private func makeHorizontalStack(with views: [UIView], spacing: CGFloat) -> UIStackView {
+    private func horizontalStack(with views: [UIView], spacing: CGFloat) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: views)
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually

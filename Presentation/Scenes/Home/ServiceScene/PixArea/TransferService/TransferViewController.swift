@@ -28,11 +28,15 @@ public final class TransferViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(forwardButton)
+        setViewTargets()
+        presenter?.fetchBalance()
+    }
+        
+    private func setViewTargets() {
         transferView.transactionAmountField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         forwardButton.addTarget(self, action: #selector(forwardButtonTapped), for: .touchUpInside)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
-        
     
     @objc private func forwardButtonTapped() {
         guard let enteredBalance = transferView.transactionAmountField.text else { return }
@@ -71,4 +75,11 @@ extension TransferViewController: AlertView {
         print(viewModel)
     }
 }
+
+extension TransferViewController: UpdateBalanceView {
+    public func update(balance: String) {
+        transferView.updateAvaiableBalance(balance: balance)
+    }
+}
+
 
