@@ -2,15 +2,13 @@ import UIKit
 import Domain
 
 public final class PixAreaViewController: UITableViewController {
-    public var presenter: ViewToPresenterPixAreaProtocol?
-    
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupTableViewProperties()
         registerTableViewCells()
-        print("teste")
-        
     }
+    
+    public var presenter: ViewToPresenterPixAreaProtocol?
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

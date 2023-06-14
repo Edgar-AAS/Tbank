@@ -1,7 +1,7 @@
 import Foundation
 
 public final class PixAreaServicePresenter {
-        private let router: PixAreaRoutingLogic
+    private let router: PixAreaRoutingLogic
     
     public init (router: PixAreaRoutingLogic) {
         self.router = router

@@ -62,4 +62,11 @@ extension MainQueueDispatchDecorator: DeleteDigitalCard where T: DeleteDigitalCa
     }
 }
 
+extension MainQueueDispatchDecorator: ValidateBalance where T: ValidateBalance {
+    public func validate(enteredValue: Double, completion: @escaping (ValidationResponseType) -> Void) {
+        instance.validate(enteredValue: enteredValue) { [weak self] result in
+            self?.dispatch { completion (result) }
+        }
+    }
+}
 

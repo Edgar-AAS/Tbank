@@ -9,7 +9,7 @@ func makeHomeViewController(fetchUserData: FetchUserDataResources, fetchUserCard
     let homeController = HomeController()
     let homeRouter = HomeRouter(viewController: homeController,
                                 profileControllerFactory: profileFactory,
-                                cardsControllerFactory: carsListFactory,
+                                cardsControllerFactory: cardListFactory,
                                 cardInformationFactory: makeCardInformationFactory,
                                 pixAreaControllerFactory: makePixAreaControllerFactory)
     let presenter = HomePresenter(fetchUserData: fetchUserData,

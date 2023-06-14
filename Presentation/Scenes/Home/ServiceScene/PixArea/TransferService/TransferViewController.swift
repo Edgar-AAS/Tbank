@@ -1,36 +1,44 @@
 import UIKit
 
-final class TransferViewController: UIViewController {
-    private var buttonYCoordinate: CGFloat?
-    
+public final class TransferViewController: UIViewController {
     private lazy var transferView = {
         return TransferScreen()
     }()
     
-    override func loadView() {
+    private lazy var forwardButton: CircularButton = {
+        return CircularButton(size: CircularButtonSize.medium,
+                              image: Icons.arrow_foward,
+                              backgroundColor: UIColor.darkGray,
+                              tintColor: .white)
+    }()
+    
+    public override func loadView() {
         super.loadView()
         view = transferView
     }
     
-    private lazy var forwardButton: CircularButton = {
-        return CircularButton(size: CircularButtonSize.medium,
-                              image: Icons.arrow_foward,
-                              backgroundColor: Colors.secundaryColor,
-                              tintColor: .white)
-    }()
-    
-    override func viewWillLayoutSubviews() {
+    public override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         setupForwardButtonFrame()
     }
     
-    override func viewDidLoad() {
+    private var buttonYCoordinate: CGFloat?
+    public var presenter: ViewToPresenterTransferProtocol?
+    
+    public override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(forwardButton)
         transferView.transactionAmountField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        forwardButton.addTarget(self, action: #selector(forwardButtonTapped), for: .touchUpInside)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
         
+    
+    @objc private func forwardButtonTapped() {
+        guard let enteredBalance = transferView.transactionAmountField.text else { return }
+        presenter?.validateBalance(enteredBalance)
+    }
+    
     @objc func textFieldEditingChanged(_ textField: UITextField) {
         if let amountString = textField.text?.currencyInputFormatting() {
             textField.text = amountString
@@ -54,7 +62,13 @@ final class TransferViewController: UIViewController {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+
+extension TransferViewController: AlertView {
+    public func showMessage(viewModel: AlertViewModel) {
+        print(viewModel)
     }
 }
 

@@ -8,7 +8,7 @@ public let makeCardInformationFactory: (UserCard) -> CardInformationViewControll
     let router = CardInformationRouter(viewController: controller)
     let httpDeleteClient = makeRemoteDeleteService()
     let deleteCard = makeRemoteDeleteDigitalCard(httpClient: httpDeleteClient)
-    let presenter = CardInformationPresenter(userCardModel: userCardModel, deleteCard: MainQueueDispatchDecorator(deleteCard), updateCardView: WeakVarProxy(controller), delegate: WeakVarProxy(controller), router: router)
+    let presenter = CardInformationPresenter(userCardModel: userCardModel, deleteCard: deleteCard, updateCardView: WeakVarProxy(controller), delegate: WeakVarProxy(controller), router: router)
     controller.presenter = presenter
     return controller
 }
