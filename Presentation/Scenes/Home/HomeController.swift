@@ -85,12 +85,6 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
         }
     }
     
-    public override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let header = tableView.tableHeaderView as? PersonHeader else { return }
-        header.scrollViewDidScroll(scrollView: tableView)
-    }
-    
-
     private func makeUserImagePath() -> String {
         let path = getDocumentsDirectory().appendingPathComponent(FileManagerPaths.userImage).path
         return path
@@ -98,8 +92,7 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
     
     private func setupTableViewHeader() {
         header = PersonHeader(frame: .init(x: 0, y: 0, width: view.frame.width, height: HeaderHeights.small))
-        let path = makeUserImagePath()
-        header?.profileImageView.loadImageWith(path: path)
+        header?.profileImageView.loadImageWith(path: makeUserImagePath())
         header?.delegate = self
         tableView.tableHeaderView = header
     }
@@ -217,8 +210,6 @@ extension HomeController: ResourcesView {
 
 extension HomeController: AlertView {
     public func showMessage(viewModel: AlertViewModel) {
-        let alert = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+        showAlertController(title: viewModel.title, message: viewModel.message)
     }
 }

@@ -6,6 +6,8 @@ final class CircularButton: UIButton {
     private let color: UIColor?
     private let tint: UIColor?
     
+    
+    
     init(size: CGFloat, image: UIImage?, backgroundColor: UIColor?, tintColor: UIColor?) {
         self.size = size
         self.image = image

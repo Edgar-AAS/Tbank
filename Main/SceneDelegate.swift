@@ -5,13 +5,6 @@ import Presentation
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
-    private let signUpFactory: () -> SignUpViewController = {
-        let httpPostClient = makeNetworkPostClient()
-        let addAccount = makeRemoteAddAccount(httpPostClient: httpPostClient)
-        let controller = makeSignUpController(addAccount: addAccount)
-        return controller
-    }
-    
     private let loginFactory: () -> LoginViewController = {
         let httpPostClient = makeNetworkPostClient()
         let authentication = makeRemoteAuthentication(httpClient: httpPostClient)
@@ -22,8 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        Navigator.navigationController.setRootViewController(homeFactory())
-        window?.rootViewController = Navigator.navigationController
+        let navigationController = NavigationController()
+        navigationController.setRootViewController(loginFactory())
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 }

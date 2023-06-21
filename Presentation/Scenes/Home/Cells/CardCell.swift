@@ -38,8 +38,7 @@ public final class CardCell: UITableViewCell {
     
     public lazy var addCardButton: UIButton = {
         let button = UIButton(type: .system)
-        let buttonImage = UIImage(systemName: "plus")
-        button.setImage(buttonImage, for: .normal)
+        button.setImage(Icons.plus, for: .normal)
         button.tintColor = Colors.secundaryColor
         button.layer.borderWidth = 1
         button.layer.borderColor = Colors.secundaryColor.cgColor

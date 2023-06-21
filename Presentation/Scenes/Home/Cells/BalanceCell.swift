@@ -38,7 +38,6 @@ final class BalanceCell: UITableViewCell {
     func setupCell(with viewModel: BalanceViewModel?) {
         guard let viewModel = viewModel else { return }
         balanceLabel.text = viewModel.totalBalance
-        //logica do olho
     }
 }
 

@@ -18,17 +18,7 @@ public final class LoginViewController: UIViewController {
         configureViews()
         hideKeyboardOnTap()
     }
-    
-    private func hideKeyboardOnTap() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tapGesture.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
+        
     private func configureViews() {
         loginScreen?.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         loginScreen?.emailTextField.becomeFirstResponder()

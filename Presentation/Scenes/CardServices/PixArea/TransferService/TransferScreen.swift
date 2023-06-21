@@ -24,24 +24,27 @@ public final class TransferScreen: UIView {
     
     private lazy var transferTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Qual o valor da transferência?"
-        label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
+        label.minimumScaleFactor = 0.7
+        label.adjustsFontSizeToFitWidth = true
+        label.text = "Qual é o valor da transferência?"
+        label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         label.textColor = Colors.offWhiteColor
         return label
     }()
     
     private lazy var descriptionBalanceLabel: UILabel = {
         let label = UILabel()
-        label.text = "Saldo disponivel na conta: "
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.text = "Saldo disponivel em conta: "
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         label.textColor = UIColor(hexString: "#cecece")
         return label
     }()
     
     private var balanceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.minimumScaleFactor = 0.7
+        label.adjustsFontSizeToFitWidth = true
+        label.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
         label.textColor = UIColor(hexString: "#cecece")
         return label
     }()

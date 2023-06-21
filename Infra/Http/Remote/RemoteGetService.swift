@@ -8,7 +8,11 @@ public class RemoteGetService: HttpGetClient {
         self.session = session
     }
     
-    public func get(to url: URL, completion: @escaping (Result<Data?, HttpError>) -> (Void)) {
+    public func get(to url: URL?, completion: @escaping (Result<Data?, HttpError>) -> (Void)) {
+        guard let url = url else {
+            return completion(.failure(.badUrl))
+        }
+        
         session.dataTask(with: url) { (data, response, error) in
             if error == nil {
                 guard let response = (response as? HTTPURLResponse) else { return

@@ -67,3 +67,9 @@ extension WeakVarProxy: UpdateBalanceView where T: UpdateBalanceView {
         instance?.update(balance: balance)
     }
 }
+
+extension WeakVarProxy: ContactListDataSource where T: ContactListDataSource {
+    func updateList(list: [ContactModel]) {
+        instance?.updateList(list: list)
+    }
+}

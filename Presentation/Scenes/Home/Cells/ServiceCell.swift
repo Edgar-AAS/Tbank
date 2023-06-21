@@ -33,7 +33,6 @@ final class ServiceCell: UICollectionViewCell {
     
     lazy var serviceNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Recarga de celular"
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.boldSystemFont(ofSize: 14)

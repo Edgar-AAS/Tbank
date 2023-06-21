@@ -19,6 +19,8 @@ enum FileManagerPaths {
 
 enum Icons {
     static let arrow_foward = UIImage(systemName: "arrow.forward")
+    static let bell = UIImage(systemName: "bell")
+    static let plus = UIImage(systemName: "plus")
 }
 
 enum Colors {

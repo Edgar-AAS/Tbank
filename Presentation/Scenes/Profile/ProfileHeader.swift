@@ -19,9 +19,7 @@ public class ProfileHeader: UIView {
     weak var delegate: ProfileHeaderDelegateProtocol?
     
     lazy var userPhotoImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "camera"))
-        imageView.backgroundColor = .orange
-        imageView.contentMode = .scaleAspectFill
+        let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
         imageView.layer.masksToBounds = true
         return imageView
@@ -98,7 +96,6 @@ public class ProfileHeader: UIView {
         attributedText.append(NSAttributedString(string: "\(subtitle2)", attributes: secondAttributes))
         return attributedText
     }
-    
 }
 
 // MARK: - Private Method

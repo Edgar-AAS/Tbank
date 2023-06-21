@@ -1,5 +1,5 @@
 import Foundation
 
-public protocol UpdateBalanceView {
+public protocol UpdateBalanceView: AnyObject {
     func update(balance: String)
 }

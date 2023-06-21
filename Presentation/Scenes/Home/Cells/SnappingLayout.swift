@@ -1,7 +1,6 @@
 import UIKit
 
 class SnappingLayout: UICollectionViewFlowLayout {
-  
   override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
     
     guard let collectionView = collectionView else {

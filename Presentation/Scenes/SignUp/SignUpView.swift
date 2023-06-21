@@ -47,15 +47,6 @@ public class SignUpView: UIView {
     lazy var emailTextField = CustomTextField()
     lazy var passwordTextField = CustomTextField()
     lazy var passwordConfirmationTextField = CustomTextField()
-    
-    
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        nameTextField.addBottomLineWithColor(color: .red, widht: 1)
-        emailTextField.addBottomLineWithColor(color: .red, widht: 1)
-        passwordTextField.addBottomLineWithColor(color: .red, widht: 1)
-        passwordConfirmationTextField.addBottomLineWithColor(color: .red, widht: 1)
-    }
 }
 
 extension SignUpView: CodeView {

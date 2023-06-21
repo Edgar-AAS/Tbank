@@ -1,6 +1,6 @@
 import UIKit
 
-class CustomTextField: UITextField {
+final class CustomTextField: UITextField {
     private let padding: CGFloat = 45
     
     private let placeholderText: String

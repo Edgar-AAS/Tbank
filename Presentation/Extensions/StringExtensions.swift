@@ -1,6 +1,14 @@
 import Foundation
 
 extension String {
+    func firtsLettersOfName() -> String {
+        let components = self.split(separator: " ")
+        guard let firstName = components.first, let lastName = components.last else { return "" }
+        let firstInital = firstName.prefix(1)
+        let lastInital = lastName.prefix(1)
+        return "\(firstInital)\(lastInital)".uppercased()
+    }
+    
     func toSafeCardNumber() -> String {
         let subString = suffix(4)
         let asterisks = "•••• "
@@ -56,9 +64,7 @@ extension String {
         guard number != 0 as NSNumber else {
             return formatter.string(from: 0)!
         }
-
-        
-        print(formatter.string(from: number)!)
+    
         return formatter.string(from: number)!
     }
     

@@ -6,12 +6,19 @@ public final class TransferPresenter {
     private let alertView: AlertView
     private let updateBalance: UpdateBalance
     private let updateBalanceView: UpdateBalanceView
+    private let router: TransferRouterLogic
     
-    public init(validatePixTransferService: ValidateBalance, alertView: AlertView, updateBalance: UpdateBalance, updateBalanceView: UpdateBalanceView) {
+    public init(validatePixTransferService: ValidateBalance,
+                alertView: AlertView,
+                updateBalance: UpdateBalance,
+                updateBalanceView: UpdateBalanceView,
+                router: TransferRouterLogic
+    ) {
         self.validatePixTransferService = validatePixTransferService
         self.updateBalance = updateBalance
         self.alertView = alertView
         self.updateBalanceView = updateBalanceView
+        self.router = router
     }
 }
 
@@ -30,7 +37,7 @@ extension TransferPresenter: ViewToPresenterTransferProtocol {
             var message = String()
             switch validationType {
                 case .authorized:
-                    message = "Saldo autorizado"
+                    self?.router.routeToContactListViewWith(currencyValue: enteredValueRaw)
                 case .unauthorized:
                     message = "Saldo da conta indisponivel para transferencia"
                 case .zero:

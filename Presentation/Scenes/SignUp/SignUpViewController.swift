@@ -19,16 +19,6 @@ public final class SignUpViewController: UIViewController {
         configureViews()
     }
     
-    private func hideKeyboardOnTap() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tapGesture.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
     private func configureViews() {
         signUpScreen?.saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         signUpScreen?.nameTextField.becomeFirstResponder()
@@ -65,7 +55,6 @@ extension SignUpViewController: UITextFieldDelegate {
         if let screen = signUpScreen {
             let fields = [screen.nameTextField, screen.emailTextField, screen.passwordTextField, screen.passwordConfirmationTextField]
             if fields.allSatisfy({ ($0.text?.isEmpty) == false }) {
-                print("passei aqui po")
                 return true
             }
         }
@@ -73,14 +62,8 @@ extension SignUpViewController: UITextFieldDelegate {
     }
 }
 
-//DispatchQueue conhcece meu controller e meu controller conhece o DispatchQueue
-//Duas referencias fortes = retain cycle
-//Design Pattern Decorator para nao precisar usar dispatch main em tudo <-
-
 extension SignUpViewController: LoadingView {
     public func isLoading(viewModel: LoadingViewModel) {
-        //manipulando a interface de usuario em background//
-        //problema de fazer isso na UI é que todo código que for callBack precisaria de DispatchQueue.main.async
         if viewModel.isLoading {
             self.view.isUserInteractionEnabled = false
             self.signUpScreen?.loadingIndicator.startAnimating()
@@ -97,9 +80,7 @@ extension SignUpViewController: LoadingView {
 
 extension SignUpViewController: AlertView {
     public func showMessage(viewModel: AlertViewModel) {
-        let alert = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true)
+        showAlertController(title: viewModel.title, message: viewModel.message)
     }
 }
 

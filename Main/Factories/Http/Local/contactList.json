@@ -1,0 +1,91 @@
+[{
+  "name" : "John Doe",
+  "cpf" : "71275724108",
+  "cnpj" : "93264047000143",
+  "email" : "john.doe@example.com",
+  "phoneNumber" : "984782716"
+},
+{
+  "name" : "Leanne Graham",
+  "cpf" : "65396265841",
+  "cnpj" : "71321158000101",
+  "email" : "leanne.graham@example.com",
+  "phoneNumber" : "982732920"
+},
+{
+  "name" : "Ervin Howell",
+  "cpf" : "46826359995",
+  "cnpj" : "32429316000190",
+  "email" : "ervin.howell@example.com",
+  "phoneNumber" : "972428428"
+},
+{
+  "name" : "Clementine Bauch",
+  "cpf" : "13742485253",
+  "cnpj" : "23034709000103",
+  "email" : "clementine.bauch@example.com",
+  "phoneNumber" : "996301883"
+},
+{
+  "name" : "Jane Smith",
+  "cpf" : "31231121602",
+  "cnpj" : "26216507000170",
+  "email" : "jane.smith@example.com",
+  "phoneNumber" : "971568566"
+},
+{
+  "name" : "Michael Johnson",
+  "cpf" : "51921657766",
+  "cnpj" : "52273274000158",
+  "email" : "michael.johnson@example.com",
+  "phoneNumber" : "984786379"
+},
+{
+  "name" : "Emily Davis",
+  "cpf" : "43866522487",
+  "cnpj" : "29913237000145",
+  "email" : "emily.davis@example.com",
+  "phoneNumber" : "999847622"
+},
+{
+  "name" : "Andrew Wilson",
+  "cpf" : "16367543414",
+  "cnpj" : "79577828000167",
+  "email" : "andrew.wilson@example.com",
+  "phoneNumber" : "967854226"
+},
+{
+  "name" : "Olivia Thompson",
+  "cpf" : "02977743367",
+  "cnpj" : "21293664000166",
+  "email" : "olivia.thompson@example.com",
+  "phoneNumber" : "983121554"
+},
+{
+  "name" : "Daniel Jackson",
+  "cpf" : "38884512999",
+  "cnpj" : "25419543000179",
+  "email" : "daniel.jackson@example.com",
+  "phoneNumber" : "996756261"
+},
+{
+  "name" : "Sophia Roberts",
+  "cpf" : "13471425098",
+  "cnpj" : "25265532000181",
+  "email" : "sophia.roberts@example.com",
+  "phoneNumber" : "973176835"
+},
+{
+  "name" : "William Harris",
+  "cpf" : "02399568001",
+  "cnpj" : "88171320000155",
+  "email" : "william.harris@example.com",
+  "phoneNumber" : "983706963"
+},
+{
+  "name" : "Elizabeth Adams",
+  "cpf" : "68171844000139",
+  "cnpj" : "987654321",
+  "email" : "elizabeth.adams@example.com",
+  "phoneNumber" : "924561246"
+}]
