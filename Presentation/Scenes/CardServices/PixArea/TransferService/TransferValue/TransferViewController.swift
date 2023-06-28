@@ -8,7 +8,7 @@ public final class TransferViewController: UIViewController {
     private lazy var forwardButton: CircularButton = {
         return CircularButton(size: CircularButtonSize.medium,
                               image: Icons.arrow_foward,
-                              backgroundColor: UIColor.darkGray,
+                              backgroundColor: UIColor.gray,
                               tintColor: .white)
     }()
     
@@ -31,7 +31,7 @@ public final class TransferViewController: UIViewController {
         setViewTargets()
         presenter?.fetchBalance()
     }
-        
+    
     private func setViewTargets() {
         transferView.transactionAmountField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         forwardButton.addTarget(self, action: #selector(forwardButtonTapped), for: .touchUpInside)
@@ -46,6 +46,17 @@ public final class TransferViewController: UIViewController {
     @objc func textFieldEditingChanged(_ textField: UITextField) {
         if let amountString = textField.text?.currencyInputFormatting() {
             textField.text = amountString
+            changeButtonStateWith(text: amountString)
+        }
+    }
+    
+    private func changeButtonStateWith(text: String) {
+        if text == String().currencyInputFormatting() {
+            forwardButton.backgroundColor = UIColor.gray
+            forwardButton.isEnabled = false
+        } else {
+            forwardButton.isEnabled = true
+            forwardButton.backgroundColor = Colors.secundaryColor
         }
     }
     

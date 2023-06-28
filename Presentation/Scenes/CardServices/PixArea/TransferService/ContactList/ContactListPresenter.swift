@@ -27,8 +27,8 @@ extension ContactListPresenter: ViewToPresentContactList {
         updateBalanceView?.update(balance: currencyValue.currencyWith(symbol: .brazilianReal))
     }
     
-    public func goToPreTransferScreenWith(contact: ContactModel) {
-        router.routeToPreTransferWith(contact: contact)
+    public func goToPreTransferScreenWith(contact: ContactModel, valueToTransfer: String) {
+        router.routeToPreTransferWith(contact: contact, valueToTransfer: valueToTransfer)
     }
     
     public func fetchListWith(text: String) {

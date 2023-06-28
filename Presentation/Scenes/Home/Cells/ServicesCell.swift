@@ -35,7 +35,7 @@ final class ServicesCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         collectionView.register(ServiceCell.self, forCellWithReuseIdentifier: ServiceCell.reuseIdentifier)
     }
     
-    func setupCell(services: [Service]) {
+    func setupCell(with services: [Service]) {
         self.services = services
         collectionView.reloadData()
     }

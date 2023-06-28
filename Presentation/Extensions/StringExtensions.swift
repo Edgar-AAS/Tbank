@@ -30,6 +30,26 @@ extension String {
         return "--/--"
     }
     
+    func formatCPF() -> String {
+        var formattedCPF = self
+        
+        formattedCPF = formattedCPF.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        
+        guard formattedCPF.count == 11 else {
+            return self
+        }
+        
+        let firstGroupRange = formattedCPF.index(formattedCPF.startIndex, offsetBy: 3)
+        let secondGroupRange = formattedCPF.index(formattedCPF.startIndex, offsetBy: 7)
+        let thirdGroupRange = formattedCPF.index(formattedCPF.startIndex, offsetBy: 11)
+        
+        formattedCPF.insert(".", at: firstGroupRange)
+        formattedCPF.insert(".", at: secondGroupRange)
+        formattedCPF.insert("-", at: thirdGroupRange)
+        return formattedCPF
+    }
+    
+    
     func formatString() -> String {
         let formattedString = self.enumerated().map { (index, char) -> String in
             return (index > 0 && index % 4 == 0) ? " \(char)" : String(char)

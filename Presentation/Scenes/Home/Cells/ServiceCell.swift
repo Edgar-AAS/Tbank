@@ -43,7 +43,7 @@ final class ServiceCell: UICollectionViewCell {
     
     func setupCell(service: Service) {
         self.serviceNameLabel.text = service.serviceName
-        self.serviceImage.image = UIImage(systemName: service.serviceIconURL)
+        self.serviceImage.image = UIImage(systemName: service.iconUrl)
     }
 }
 

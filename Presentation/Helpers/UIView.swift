@@ -79,7 +79,7 @@ extension UIView {
         return stackView
     }
     
-    private func makeVerticalStack(with views: [UIView], spacing: CGFloat) -> UIStackView {
+    func makeVerticalStack(with views: [UIView], spacing: CGFloat) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: views)
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false

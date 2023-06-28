@@ -21,7 +21,7 @@ class ContactListCell: UITableViewCell {
         return view
     }()
     
-    lazy var letterLabel: UILabel = {
+    private lazy var letterLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
@@ -29,7 +29,7 @@ class ContactListCell: UITableViewCell {
         return label
     }()
     
-    lazy var contactNameLabel: UILabel = {
+    private lazy var contactNameLabel: UILabel = {
        let label = UILabel()
         label.textColor = Colors.offWhiteColor
         label.minimumScaleFactor = 0.75

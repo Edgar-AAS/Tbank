@@ -70,16 +70,11 @@ public struct Resource: Model {
 
 // MARK: - Service
 public struct Service: Model {
-    public let serviceIconURL, serviceName: String
+    public let iconUrl, serviceName: String
     public let serviceTag: Int
 
-    enum CodingKeys: String, CodingKey {
-        case serviceIconURL = "serviceIconUrl"
-        case serviceName, serviceTag
-    }
-
-    public init(serviceIconURL: String, serviceName: String, serviceTag: Int) {
-        self.serviceIconURL = serviceIconURL
+    public init(iconUrl: String, serviceName: String, serviceTag: Int) {
+        self.iconUrl = iconUrl
         self.serviceName = serviceName
         self.serviceTag = serviceTag
     }

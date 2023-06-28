@@ -16,9 +16,7 @@ public final class ProfileController: UITableViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.showsVerticalScrollIndicator = false
-        tableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.reuseIdentifier)
-        tableView.backgroundColor = Colors.primaryColor
+        setupTableViewProperties()
         configurateProfileHeader()
         presenter?.fetchUser()
     }
@@ -63,12 +61,18 @@ public final class ProfileController: UITableViewController {
         present(imagePicker, animated: true)
     }
     
+    private func setupTableViewProperties() {
+        tableView.showsVerticalScrollIndicator = false
+        tableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.reuseIdentifier)
+        tableView.backgroundColor = Colors.primaryColor
+    }
+    
     public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
             return "Minha Conta"
         default:
-            return nil
+            return ""
         }
     }
     
@@ -77,6 +81,7 @@ public final class ProfileController: UITableViewController {
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.reuseIdentifier, for: indexPath) as? ProfileCell
         cell?.textLabel?.text = personInfos[indexPath.row]
+        
         return cell ?? UITableViewCell()
     }
     

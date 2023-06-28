@@ -136,7 +136,7 @@ extension HomeController {
             return cell ?? UITableViewCell()
         case .serviceCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: ServicesCell.reuseIdentifier, for: indexPath) as? ServicesCell
-            cell?.setupCell(services: mainServices)
+            cell?.setupCell(with: mainServices)
             cell?.delegate = self
             return cell ?? UITableViewCell()
         case .resourcesCell:

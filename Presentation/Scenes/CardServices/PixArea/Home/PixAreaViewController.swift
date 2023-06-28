@@ -31,6 +31,11 @@ public final class PixAreaViewController: UITableViewController {
         return 5
     }
     
+    private let services = [Service(iconUrl: Icons.Url.transfer, serviceName: "Transferir", serviceTag: 0),
+                            Service(iconUrl: Icons.Url.calendar, serviceName: "Programar", serviceTag: 1),
+                            Service(iconUrl: Icons.Url.copyPaste, serviceName: "Pix Copia e Cola", serviceTag: 2),
+                            Service(iconUrl: Icons.Url.qrCode, serviceName: "Ler QR code", serviceTag: 3)]
+    
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: PixAreaDescriptionCell.reuseIdentifier, for: indexPath) as? PixAreaDescriptionCell
@@ -41,10 +46,7 @@ public final class PixAreaViewController: UITableViewController {
             return cell ?? UITableViewCell()
         } else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: ServicesCell.reuseIdentifier, for: indexPath) as? ServicesCell
-            cell?.setupCell(services: [Service(serviceIconURL: "dock.arrow.up.rectangle", serviceName: "Transferir", serviceTag: 1),
-                                       Service(serviceIconURL: "calendar", serviceName: "Programar", serviceTag: 1),
-                                       Service(serviceIconURL: "square.on.square", serviceName: "Pix Copia e Cola", serviceTag: 1),
-                                       Service(serviceIconURL: "qrcode", serviceName: "Ler QR code", serviceTag: 1)])
+            cell?.setupCell(with: services)
             cell?.delegate = self
             return cell ?? UITableViewCell()
         } else if indexPath.row == 3 {
@@ -53,8 +55,8 @@ public final class PixAreaViewController: UITableViewController {
             return cell ?? UITableViewCell()
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: ServicesCell.reuseIdentifier, for: indexPath) as? ServicesCell
-            cell?.setupCell(services: [Service(serviceIconURL: "dollarsign.square", serviceName: "Cobrar", serviceTag: 1),
-                                       Service(serviceIconURL: "dock.arrow.down.rectangle", serviceName: "Depositar", serviceTag: 1)])
+            cell?.setupCell(with: [Service(iconUrl: Icons.Url.demand, serviceName: "Cobrar", serviceTag: 1),
+                                   Service(iconUrl: Icons.Url.deposit, serviceName: "Depositar", serviceTag: 1)])
             return cell ?? UITableViewCell()
         }
     }

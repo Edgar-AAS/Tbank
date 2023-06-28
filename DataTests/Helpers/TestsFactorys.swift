@@ -71,15 +71,15 @@ func makeUserDataReponse() -> UserData {
 func makeUserCardsResponse() -> UserCards {
     return [
         UserCard(isVirtual: true,
-                     balance: 530,
-                     cardFlag: "Mastercard",
-                     cardTag: 1,
-                     cardBrandImageURL: "anyImageUrl.com",
-                     cardNumber: "1234 1234 1234 1246",
-                     cardExpirationDate: "2032-07-15 06:34:22",
-                     cardFunction: "Débito e crédito",
-                     cvc: "345",
-                     id: "any_id",
-                     name: "any_name")
+                 balance: 530,
+                 cardFlag: "Mastercard",
+                 cardTag: 1,
+                 cardBrandImageURL: "anyImageUrl.com",
+                 cardNumber: "1234 1234 1234 1246",
+                 cardExpirationDate: "2032-07-15 06:34:22",
+                 cardFunction: "Débito e crédito",
+                 cvc: "345",
+                 id: "any_id",
+                 name: "any_name")
     ]
 }

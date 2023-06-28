@@ -3,7 +3,7 @@ import Domain
 
 public protocol ViewToPresentContactList {
     func fetchListWith(text: String)
-    func goToPreTransferScreenWith(contact: ContactModel)
+    func goToPreTransferScreenWith(contact: ContactModel, valueToTransfer: String)
     func updateBalance()
 }
 
@@ -12,5 +12,5 @@ public protocol ContactListDataSource: AnyObject {
 }
 
 public protocol ContactListRoutingLogic {
-    func routeToPreTransferWith(contact: ContactModel)
+    func routeToPreTransferWith(contact: ContactModel, valueToTransfer: String)
 }

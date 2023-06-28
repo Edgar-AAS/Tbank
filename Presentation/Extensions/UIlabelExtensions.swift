@@ -5,6 +5,7 @@ extension UILabel {
         let label = UILabel()
         let titleColor = titleColor
         let subtitleColor = subtitleColor
+        
         let titleFontSize = UIFont.boldSystemFont(ofSize: titleFontSize)
         let subtitleFontSize = UIFont.systemFont(ofSize: subtitleFontSize)
         

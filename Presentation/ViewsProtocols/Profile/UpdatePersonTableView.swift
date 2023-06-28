@@ -11,4 +11,12 @@ public struct UserDataViewModel: Model {
     public let bankAccountNumber: String
     public let bankNumber: String
     public let corporateName: String
+    
+    public init(username: String, bankBranch: String, bankAccountNumber: String, bankNumber: String, corporateName: String) {
+        self.username = username
+        self.bankBranch = bankBranch
+        self.bankAccountNumber = bankAccountNumber
+        self.bankNumber = bankNumber
+        self.corporateName = corporateName
+    }
 }
