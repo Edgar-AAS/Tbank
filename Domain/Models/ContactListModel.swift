@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ContactModel: Codable {
+public struct ContactModel: Model {
     public let name, cpf, cnpj, email: String
     public let phoneNumber, bankAccountNumber, bankBranch: String
 

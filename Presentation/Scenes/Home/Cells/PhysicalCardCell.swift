@@ -66,11 +66,10 @@ final class PhysicalCardCell: UICollectionViewCell {
         cardNumberView.clipsToBounds = true
     }
     
-    func setupCell(with cardModel: UserCard) {
-        let physicalCardFormmated = cardModel.getPhysicalFormmated
-        balanceCardLabel.text = physicalCardFormmated.balance
-        cardNumberLabel.text = physicalCardFormmated.cardNumber
-        cardExpirationLabel.text = physicalCardFormmated.expirationDate
+    func setupCell(with cardModel: CardViewModel) {
+        balanceCardLabel.text = cardModel.balance
+        cardNumberLabel.text = cardModel.cardNumber
+        cardExpirationLabel.text = cardModel.cardExpirationDate
     }
 }
 

@@ -5,9 +5,9 @@ public class CardListPresenter {
     private let cardsView: CardsView
     private let router: CardRoutingLogic
     private let remoteFetchCards: FetchUserCards
-    private var userCards: UserCards?
-    private var physicalCards: [UserCard]?
-    private var virtualCards: [UserCard]?
+    private var userCards: [Card]?
+    private var physicalCards: [Card]?
+    private var virtualCards: [Card]?
     
     public init(remoteFetchCards: FetchUserCards, cardsView: CardsView, router: CardRoutingLogic) { 
         self.remoteFetchCards = remoteFetchCards

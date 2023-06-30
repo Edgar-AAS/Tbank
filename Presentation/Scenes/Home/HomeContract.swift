@@ -5,15 +5,14 @@ import Data
 public protocol ViewToPresenterHomeProtocol: AnyObject {
     func routeToProfile()
     func routeToCards()
-    func routeToCardInformationScreen(with cardModel: UserCard)
+    func routeToCardInformationScreen(with cardModel: Card)
     func routeToServiceWith(tag: Int)
-    func fetchData()
-    func fechCards()
+    func fetchUserData()
 }
 
 public protocol PresenterToRouterHomeProtocol {
     func goToProfile()
     func goToCardsController()
-    func goToInformationControllerWith(selectedCard: UserCard)
+    func goToInformationControllerWith(selectedCard: Card)
     func goToCardServiceWith(tag: Int)
 }

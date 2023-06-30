@@ -17,6 +17,7 @@ class CardCreationView: UIView {
     
     lazy var cardImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "card-logo"))
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -34,7 +35,7 @@ class CardCreationView: UIView {
         button.setTitle("Criar cartão digital", for: .normal)
         button.backgroundColor = Colors.secundaryColor
         button.setTitleColor(Colors.primaryColor, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(tap), for: .touchUpInside)
         return button

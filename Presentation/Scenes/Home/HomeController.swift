@@ -8,13 +8,6 @@ protocol HomeControllerProtocol where Self: UIViewController {
     var isOpenFromHome: Bool { get set }
 }
 
-private enum HomeCellsType: Int {
-    case balanceCell
-    case cardCell
-    case serviceCell
-    case resourcesCell
-}
-
 public final class HomeController: UITableViewController, HomeControllerProtocol {
     public lazy var refreshControlIndicator: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -28,31 +21,22 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
     var isNeedUpdateWithoutAnimation: Bool = false
     var isOpenFromHome: Bool = false
     
-    public var presenter: ViewToPresenterHomeProtocol?
-    public var header: PersonHeader?
-    public var balanceViewModel: BalanceViewModel?
-    public var cards: UserCards?
-    public var mainServices = [Service]()
-    public var appResources = [Resource]()
-    
     private var goToLastItem: (() -> (Void))?
+    public var presenter: ViewToPresenterHomeProtocol?
+    private var homeListDataSource: [HomeListCellType] = []
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        removeBackButtonTitle()
         registerTableViewCells()
         setupTableviewProperties()
-        setupTableViewHeader()
-        tableView.addSubview(refreshControlIndicator)
-        navigationItem.backButtonTitle = ""
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        presenter?.fetchData()
-        presenter?.fechCards()
+        presenter?.fetchUserData()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
-        view.backgroundColor = Colors.primaryColor
         updateViewIfNeeded()
     }
     
@@ -72,14 +56,14 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
     private func updateViewIfNeeded() {
         switch true {
         case isNeedUpdateCard:
-            presenter?.fechCards()
+            presenter?.fetchUserData()
             scrollToLastItem()
             isNeedUpdateCard = false
         case isNeedUpdateWithoutAnimation:
-            presenter?.fechCards()
+            presenter?.fetchUserData()
             isNeedUpdateWithoutAnimation = false
         case isNeedUpdateProfile:
-            header?.profileImageView.loadImageWith(path: makeUserImagePath())
+//            header?.profileImageView.loadImageWith(path: makeUserImagePath()) -> TALVEZ UMA DELEGATE DO HEADER PARA A CONTROLLE NOTIFICANDO O STATUS
             isNeedUpdateProfile = false
         default: return
         }
@@ -90,14 +74,8 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
         return path
     }
     
-    private func setupTableViewHeader() {
-        header = PersonHeader(frame: .init(x: 0, y: 0, width: view.frame.width, height: HeaderHeights.small))
-        header?.profileImageView.loadImageWith(path: makeUserImagePath())
-        header?.delegate = self
-        tableView.tableHeaderView = header
-    }
-        
     private func registerTableViewCells() {
+        tableView.register(PersonHeaderCell.self, forCellReuseIdentifier: PersonHeaderCell.reuseIdentifier)
         tableView.register(CardCell.self, forCellReuseIdentifier: CardCell.reuseIdentifier)
         tableView.register(BalanceCell.self, forCellReuseIdentifier: BalanceCell.reuseIdentifier)
         tableView.register(ServicesCell.self, forCellReuseIdentifier: ServicesCell.reuseIdentifier)
@@ -106,45 +84,83 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
     
     private func setupTableviewProperties() {
         view.backgroundColor = Colors.primaryColor
-        tableView.backgroundColor = Colors.primaryColor
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.allowsSelection = false
+        tableView.addSubview(refreshControlIndicator)
     }
 }
 
 //MARK: - TableView DataSource
 extension HomeController {
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return homeListDataSource.count
     }
         
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let type = HomeCellsType(rawValue: indexPath.row)
-        switch type {
-        case .balanceCell:
-            let cell = tableView.dequeueReusableCell(withIdentifier: BalanceCell.reuseIdentifier, for: indexPath) as? BalanceCell
-            cell?.setupCell(with: balanceViewModel)
-            return cell ?? UITableViewCell()
-        case .cardCell:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CardCell.reuseIdentifier, for: indexPath) as? CardCell
-            if let cardModel = cards {
-                cell?.setupCell(with: cardModel)
-                goToLastItem = cell?.goToLastItem
-                cell?.delegate = self
-            }
-            return cell ?? UITableViewCell()
-        case .serviceCell:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ServicesCell.reuseIdentifier, for: indexPath) as? ServicesCell
-            cell?.setupCell(with: mainServices)
-            cell?.delegate = self
-            return cell ?? UITableViewCell()
-        case .resourcesCell:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ResourcesGridCell.reuseIdentifier, for: indexPath) as? ResourcesGridCell
-            cell?.setupCell(resources: appResources)
-            return cell ?? UITableViewCell()
-        default: return UITableViewCell()
+        let cell: UITableViewCell
+        let cellType = homeListDataSource[indexPath.row]
+            
+        switch cellType {
+            case .userHeaderCell(let personViewModel):
+                cell = getPersonHeaderCell(with: personViewModel, indexPath: indexPath)
+            case .balanceCell(let balanceViewModel):
+                cell = getBalanceCell(with: balanceViewModel, indexPath: indexPath)
+            case .cardsCell(let cardViewModels):
+                cell = getCardCell(with: cardViewModels, indexPath: indexPath)
+            case .servicesCell(let serviceViewModels):
+                cell = getServicesCell(with: serviceViewModels, indexPath: indexPath)
+            case .resourcesCell(let resourceViewModels):
+                cell = getResourcesCell(with: resourceViewModels, indexPath: indexPath)
         }
+        return cell
+    }
+}
+
+extension HomeController {
+    func getPersonHeaderCell(with viewModel: PersonHeaderViewModel, indexPath: IndexPath) -> PersonHeaderCell {
+        let personCell = tableView.dequeueReusableCell(withIdentifier: PersonHeaderCell.reuseIdentifier, for: indexPath) as! PersonHeaderCell
+        personCell.profileImageView.loadImageWith(path: makeUserImagePath())
+        personCell.configureCell(with: viewModel)
+        return personCell
+    }
+    
+    func getBalanceCell(with viewModel: BalanceViewModel, indexPath: IndexPath) -> BalanceCell {
+        let balanceCell = tableView.dequeueReusableCell(withIdentifier: BalanceCell.reuseIdentifier, for: indexPath) as! BalanceCell
+        balanceCell.configureCell(with: viewModel)
+        return balanceCell
+    }
+    
+    func getCardCell(with viewModel: [CardViewModel], indexPath: IndexPath) -> CardCell {
+        let cardCell = tableView.dequeueReusableCell(withIdentifier: CardCell.reuseIdentifier, for: indexPath) as! CardCell
+        cardCell.configureCell(with: viewModel)
+        return cardCell
+    }
+    
+    func getServicesCell(with viewModel: [ServiceViewModel], indexPath: IndexPath) -> ServicesCell {
+        let serviceCell = tableView.dequeueReusableCell(withIdentifier: ServicesCell.reuseIdentifier, for: indexPath) as! ServicesCell
+        serviceCell.configureCell(with: viewModel)
+        return serviceCell
+    }
+    
+    func getResourcesCell(with viewModel: [ResourceViewModel], indexPath: IndexPath) -> ResourcesGridCell {
+        let serviceCell = tableView.dequeueReusableCell(withIdentifier: ResourcesGridCell.reuseIdentifier, for: indexPath) as! ResourcesGridCell
+        serviceCell.configureCell(with: viewModel)
+        return serviceCell
+    }
+}
+
+//MARK: - PresenterToView
+extension HomeController: UpdateHomeListCellsProtocol {
+    public func updateHomeCellsWith(homeList: [HomeListCellType]) {
+        self.homeListDataSource = homeList
+        tableView.reloadData()
+    }
+}
+
+extension HomeController: AlertView {
+    public func showMessage(viewModel: AlertViewModel) {
+        showAlertController(title: viewModel.title, message: viewModel.message)
     }
 }
 
@@ -162,54 +178,12 @@ extension HomeController: ServicesCellDelegateProtocol {
 }
 
 extension HomeController: CardCellDelegateProtocol {
-    public func cardDidTapped(userCard: UserCard) {
+    public func cardDidTapped(userCard: Card) {
         isOpenFromHome = true
         presenter?.routeToCardInformationScreen(with: userCard)
     }
     
     public func addCardButtonDidTapped() {
         presenter?.routeToCards()
-    }
-}
-
-//MARK: - Views
-extension HomeController: ProfileView {
-    public func updateProfileView(viewModel: ProfileViewModel) {
-        self.header?.updateHeaderDisplay(viewModel: viewModel)
-        tableView.reloadData()
-    }
-}
-
-extension HomeController: BalanceView {
-    public func updateBalanceView(viewModel: BalanceViewModel) {
-        self.balanceViewModel = viewModel
-        tableView.reloadData()
-    }
-}
-
-extension HomeController: CardsView {
-    public func updateCardsView(cardsModel: UserCards) {
-        self.cards = cardsModel
-        tableView.reloadData()
-    }
-}
-
-extension HomeController: ServicesView {
-    public func updateServicesView(services: [Service]) {
-        self.mainServices = services
-        tableView.reloadData()
-    }
-}
-
-extension HomeController: ResourcesView {
-    public func updateResourcesView(resources: [Resource]) {
-        appResources = resources
-        tableView.reloadData()
-    }
-}
-
-extension HomeController: AlertView {
-    public func showMessage(viewModel: AlertViewModel) {
-        showAlertController(title: viewModel.title, message: viewModel.message)
     }
 }

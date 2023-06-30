@@ -28,15 +28,14 @@ final class BalanceCell: UITableViewCell {
         return label
     }()
     
-    lazy var hideShowBalanceButton: UIButton = {
+    private lazy var hideShowBalanceButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "eye"), for: .normal)
         button.tintColor = Colors.secundaryColor
         return button
     }()
     
-    func setupCell(with viewModel: BalanceViewModel?) {
-        guard let viewModel = viewModel else { return }
+    func configureCell(with viewModel: BalanceViewModel) {
         balanceLabel.text = viewModel.totalBalance
     }
 }

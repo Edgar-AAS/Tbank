@@ -4,11 +4,11 @@ public protocol PersonHeaderDelegateProtocol: AnyObject {
     func profileButtonDidTapped()
 }
 
-public final class PersonHeader: UIView {
-    static let reuseIdentifier = String(describing: PersonHeader.self)
+public final class PersonHeaderCell: UITableViewCell {
+    static let reuseIdentifier = String(describing: PersonHeaderCell.self)
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
     }
     
@@ -23,6 +23,7 @@ public final class PersonHeader: UIView {
         let imageView = UIImageView()
         imageView.tintColor = Colors.secundaryColor
         imageView.image = UIImage(systemName: "person.circle")
+        imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
         return imageView
     }()
@@ -58,7 +59,7 @@ public final class PersonHeader: UIView {
         return view
     }()
     
-    func updateHeaderDisplay(viewModel: ProfileViewModel) {
+    func configureCell(with viewModel: PersonHeaderViewModel) {
         userNameLabel.text = viewModel.username
     }
 
@@ -72,7 +73,7 @@ public final class PersonHeader: UIView {
     }
 }
 
-extension PersonHeader: CodeView {
+extension PersonHeaderCell: CodeView {
     func buildViewHierarchy() {
         addSubview(profileImageView)
         addSubview(userNameLabel)
@@ -81,16 +82,14 @@ extension PersonHeader: CodeView {
     }
     
     func setupConstrains() {
-        let safeArea = safeAreaLayoutGuide
-        
         profileImageView.size(size: .init(width: CircularButtonSize.medium, height: CircularButtonSize.medium))
         
         horizontalStack.fillConstraints(
-            top: safeArea.topAnchor,
-            leading: safeArea.leadingAnchor,
-            trailing: safeArea.trailingAnchor,
-            bottom: safeArea.bottomAnchor,
-            padding: .init(top: 0, left: 20, bottom: 0, right: 16)
+            top: safeAreaLayoutGuide.topAnchor,
+            leading: leadingAnchor,
+            trailing: trailingAnchor,
+            bottom: bottomAnchor,
+            padding: .init(top: 10, left: 20, bottom: 10, right: 16)
         )
     }
     

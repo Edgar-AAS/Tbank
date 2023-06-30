@@ -11,7 +11,7 @@ class HomePresenterTests: XCTestCase {
         let sut = makeSut(fetchUserDataSpy: fetchUserDataSpy, profileViewSpy: profileViewSpy)
         let exp = expectation(description: "waiting")
         profileViewSpy.observe { (receivedViewModel) in
-            XCTAssertEqual(receivedViewModel, ProfileViewModel(userImageUrl: "any_url.com", username: "Edgar Arlindo", isNotifying: false))
+            XCTAssertEqual(receivedViewModel, PersonHeaderViewModel(userImageUrl: "any_url.com", username: "Edgar Arlindo", isNotifying: false))
             exp.fulfill()
         }
         sut.fetchData()

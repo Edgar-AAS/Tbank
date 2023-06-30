@@ -4,6 +4,7 @@ import Domain
 public final class PixAreaViewController: UITableViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
+        removeBackButtonTitle()
         setupTableViewProperties()
         registerTableViewCells()
     }
@@ -28,13 +29,8 @@ public final class PixAreaViewController: UITableViewController {
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return presenter?.getNumberOfCells() ?? 0
     }
-    
-    private let services = [Service(iconUrl: Icons.Url.transfer, serviceName: "Transferir", serviceTag: 0),
-                            Service(iconUrl: Icons.Url.calendar, serviceName: "Programar", serviceTag: 1),
-                            Service(iconUrl: Icons.Url.copyPaste, serviceName: "Pix Copia e Cola", serviceTag: 2),
-                            Service(iconUrl: Icons.Url.qrCode, serviceName: "Ler QR code", serviceTag: 3)]
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
@@ -45,22 +41,26 @@ public final class PixAreaViewController: UITableViewController {
             cell?.setTitleForCell(text: "Enviar")
             return cell ?? UITableViewCell()
         } else if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: ServicesCell.reuseIdentifier, for: indexPath) as? ServicesCell
-            cell?.setupCell(with: services)
-            cell?.delegate = self
-            return cell ?? UITableViewCell()
+            if let cell = tableView.dequeueReusableCell(withIdentifier: ServicesCell.reuseIdentifier, for: indexPath) as? ServicesCell {
+//                guard let service = presenter?.getServicesCell() else { return UITableViewCell() }
+                cell.configureCell(with: [ServiceViewModel(iconURL: "", serviceName: "", serviceTag: 1)])
+                cell.delegate = self
+                return cell
+            } else { return UITableViewCell() }
         } else if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: GenericTitleCell.reuseIdentifier, for: indexPath) as? GenericTitleCell
             cell?.setTitleForCell(text: "Receber")
             return cell ?? UITableViewCell()
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: ServicesCell.reuseIdentifier, for: indexPath) as? ServicesCell
-            cell?.setupCell(with: [Service(iconUrl: Icons.Url.demand, serviceName: "Cobrar", serviceTag: 1),
-                                   Service(iconUrl: Icons.Url.deposit, serviceName: "Depositar", serviceTag: 1)])
+            cell?.configureCell(with: [ServiceViewModel(iconURL: Icons.Url.demand, serviceName: "Cobrar", serviceTag: 1),
+                                       ServiceViewModel(iconURL: Icons.Url.deposit, serviceName: "Depositar", serviceTag: 1)])
             return cell ?? UITableViewCell()
         }
     }
 }
+
+
 
 extension PixAreaViewController: ServicesCellDelegateProtocol {
     public func cardServiceDidTapped(serviceTag: Int) {

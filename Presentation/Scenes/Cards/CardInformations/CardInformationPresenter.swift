@@ -9,10 +9,10 @@ public class CardInformationPresenter {
     private let updateCardView: UpdateCardView
     private let deleteCard: DeleteDigitalCard
     private let router: CardInformationRoutingLogic
-    public let userCardModel: UserCard
+    public let userCardModel: Card
     public let delegate: CardInformationDelegate
     
-    public init(userCardModel: UserCard,
+    public init(userCardModel: Card,
                 deleteCard: DeleteDigitalCard,
                 updateCardView: UpdateCardView,
                 delegate: CardInformationDelegate,

@@ -13,7 +13,7 @@ public class CardConfigurationViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.backButtonTitle = ""
+        removeBackButtonTitle()
         cardConfigurationView?.cardNameTextField.becomeFirstResponder()
         hideKeyboardOnTap()
     }

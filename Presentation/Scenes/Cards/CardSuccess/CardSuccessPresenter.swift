@@ -3,9 +3,9 @@ import Domain
 
 public class CardSuccessPresenter {
     private let router: CardSuccessRoutingLogic
-    private let userCardModel: UserCard
+    private let userCardModel: Card
     
-    public init(router: CardSuccessRoutingLogic, userCardModel: UserCard) {
+    public init(router: CardSuccessRoutingLogic, userCardModel: Card) {
         self.router = router
         self.userCardModel = userCardModel
     }

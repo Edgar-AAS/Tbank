@@ -5,9 +5,8 @@ final class ResourcesGridCell: UITableViewCell, UICollectionViewDelegate, UIColl
     static let reuseIdentifier = String(describing: ResourcesGridCell.self)
     var collectionView: UICollectionView!
 
-    var resources = [Resource]()
-    var imageIdentifier: String?
-        
+    var resourceViewModels: [ResourceViewModel] = []
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCollectionView()
@@ -40,18 +39,18 @@ final class ResourcesGridCell: UITableViewCell, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return resources.count
+        return resourceViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResourceCell.reuseIdentifier, for: indexPath) as? ResourceCell
         cell?.resourceImage.image = UIImage(named: "resource-\(indexPath.row + 1)")
-        cell?.setupCell(resource: resources[indexPath.row])
+        cell?.configureCell(with: resourceViewModels[indexPath.item])
         return cell ?? UICollectionViewCell()
     }
     
-    func setupCell(resources: [Resource]) {
-        self.resources = resources
+    func configureCell(with viewModel: [ResourceViewModel]) {
+        self.resourceViewModels = viewModel
         collectionView.reloadData()
     }
 }

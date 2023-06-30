@@ -41,9 +41,9 @@ final class ServiceCell: UICollectionViewCell {
         return label
     }()
     
-    func setupCell(service: Service) {
-        self.serviceNameLabel.text = service.serviceName
-        self.serviceImage.image = UIImage(systemName: service.iconUrl)
+    func configureCell(with viewModel: ServiceViewModel) {
+        self.serviceNameLabel.text = viewModel.serviceName
+        self.serviceImage.image = UIImage(systemName: viewModel.iconURL)
     }
 }
 

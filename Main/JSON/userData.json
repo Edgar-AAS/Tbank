@@ -1,0 +1,131 @@
+{
+    "username": "Edgar Arlindo",
+    "totalBalance": 48044.08,
+    "balanceIsHidden": false,
+    "isNotifying": false,
+    "bankBranch": "0008",
+    "bankAccountNumber": "345876989",
+    "bankNumber": "512",
+    "corporateName": "IT Soluções bancarias S.A",
+    "cards": [
+        {
+            "isVirtual": false,
+            "balance": 32523.65,
+            "cardFlag": "Gold",
+            "cardTag": 0,
+            "cardBrandImageUrl": "",
+            "cardNumber": "3847890945676328",
+            "cardExpirationDate": "2030-02-12 22:34:26",
+            "cardFunction": "Débito e Crédito",
+            "cvc": "453",
+            "id": "1",
+            "name": "EDGAR A A SANTOS"
+        },
+        {
+            "isVirtual": false,
+            "balance": 15520.43,
+            "cardFlag": "Gold",
+            "cardTag": 0,
+            "cardBrandImageUrl": "",
+            "cardNumber": "2437123714284184",
+            "cardExpirationDate": "2032-07-15 06:34:22",
+            "cardFunction": "Débito e Crédito",
+            "cvc": "652",
+            "id": "2",
+            "name": "EDGAR A A SANTOS"
+        },
+        {
+            "isVirtual": true,
+            "balance": 0,
+            "cardFlag": "Gold",
+            "cardTag": 0,
+            "cardBrandImageUrl": "",
+            "cardNumber": "3739861827304708",
+            "cardExpirationDate": "2031-06-14 19:53:17",
+            "cardFunction": "Débito e Crédito",
+            "cvc": "213",
+            "id": "6",
+            "name": "OPEN TO WORK"
+        },
+        {
+            "isVirtual": true,
+            "balance": 0,
+            "cardFlag": "Gold",
+            "cardTag": 0,
+            "cardBrandImageUrl": "",
+            "cardNumber": "4302938009320668",
+            "cardExpirationDate": "2031-06-28 20:43:17",
+            "cardFunction": "Débito e Crédito",
+            "cvc": "503",
+            "id": "7",
+            "name": "Netflix"
+        }
+    ],
+    "services": [
+        {   "iconUrl": "square.grid.2x2",
+            "serviceName": "Área Pix",
+            "serviceTag": 1
+        },
+        {
+            "iconUrl": "barcode",
+            "serviceName": "Pagar",
+            "serviceTag": 2
+        },
+        {
+            "iconUrl": "square.and.arrow.down",
+            "serviceName": "Depositar",
+            "serviceTag": 3
+        },
+        {
+            "iconUrl": "iphone",
+            "serviceName": "Recarga de celular",
+            "serviceTag": 4
+        },
+        {
+            "iconUrl": "dollarsign.square",
+            "serviceName": "Cobrar",
+            "serviceTag": 5
+        },
+        {
+            "iconUrl": "globe",
+            "serviceName": "Transferir internac.",
+            "serviceTag": 6
+        },
+        {
+            "iconUrl": "chart.bar",
+            "serviceName": "Investir",
+            "serviceTag": 7
+        }
+    ],
+    "resources": [
+        {
+            "resourceId": "1",
+            "applogoUrl": "",
+            "resourceDescription": "Assine Amazon Prime e tenha frete grátis, filmes, séries e músicas ilimitadas."
+        },
+        {
+            "resourceId": "2",
+            "applogoUrl": "",
+            "resourceDescription": "Baixe o app da Uber para viagens seguras e práticas em qualquer lugar. Aproveite agora!"
+        },
+        {
+            "resourceId": "3",
+            "applogoUrl": "",
+            "resourceDescription": "Apple Fitness+: treinos personalizados com os melhores treinadores. Assine agora e treine quando quiser."
+        },
+        {
+            "resourceId": "4",
+            "applogoUrl": "",
+            "resourceDescription": "Leia seus livros favoritos em qualquer lugar com o aplicativo Amazon Kindle."
+        }
+    ],
+    "adresses": [
+        {
+            "street": "Rua dos bobos",
+            "city": "Sao Paulo",
+            "state": "SP",
+            "number": "0",
+            "zipCode": "12345678"
+        }
+    ]
+}

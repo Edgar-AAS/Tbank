@@ -28,6 +28,7 @@
 		721436E829A10EA900337EE9 /* EmailValidatorAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72410836299BD7F600129804 /* EmailValidatorAdapterTests.swift */; };
 		721436F129A10F1600337EE9 /* Validation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72410829299BD7F500129804 /* Validation.framework */; };
 		721436F229A10F1600337EE9 /* Validation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 72410829299BD7F500129804 /* Validation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7218A9052A4F36D600505014 /* HomeCellsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7218A9042A4F36D600505014 /* HomeCellsDataSource.swift */; };
 		721DA0E7299454A200CB38E3 /* RemotePostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721DA0E6299454A200CB38E3 /* RemotePostService.swift */; };
 		721DA0F229945C6900CB38E3 /* UseCasesIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721DA0F129945C6900CB38E3 /* UseCasesIntegrationTests.swift */; };
 		721DA0F429945C6900CB38E3 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724AB14529928352000616A7 /* Data.framework */; };
@@ -105,9 +106,9 @@
 		724B43182A39FF91004721BB /* TransferControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B43172A39FF91004721BB /* TransferControllerFactory.swift */; };
 		724B43212A3A007D004721BB /* TransferFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B43202A3A007D004721BB /* TransferFactory.swift */; };
 		724B432A2A3A2117004721BB /* ValidateBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B43292A3A2117004721BB /* ValidateBalance.swift */; };
-		724B433C2A3A27D2004721BB /* ValidatePixTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B433B2A3A27D2004721BB /* ValidatePixTransferService.swift */; };
+		724B433C2A3A27D2004721BB /* RemoteValidateBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B433B2A3A27D2004721BB /* RemoteValidateBalance.swift */; };
 		724B434E2A3A2975004721BB /* ValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B434D2A3A2975004721BB /* ValidationType.swift */; };
-		724B43752A3A3D4F004721BB /* ValidatePixTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B43742A3A3D4F004721BB /* ValidatePixTransferService.swift */; };
+		724B43752A3A3D4F004721BB /* RemoteValidateBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B43742A3A3D4F004721BB /* RemoteValidateBalance.swift */; };
 		724B43D82A3A54F3004721BB /* UpdateBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B43D72A3A54F3004721BB /* UpdateBalance.swift */; };
 		724B43E82A3A56EA004721BB /* RemoteFetchAccountBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B43E72A3A56EA004721BB /* RemoteFetchAccountBalance.swift */; };
 		7250999F29D657B100C2541B /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7250999E29D657B100C2541B /* CurrencyFormatterTests.swift */; };
@@ -119,6 +120,14 @@
 		72538F562A40CE9900887DD0 /* LocalFetchContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72538F552A40CE9900887DD0 /* LocalFetchContactList.swift */; };
 		72538F662A40CFB200887DD0 /* FetchContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72538F652A40CFB200887DD0 /* FetchContactList.swift */; };
 		72538F6F2A40D26100887DD0 /* ContactListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72538F6E2A40D26100887DD0 /* ContactListModel.swift */; };
+		7256B38D2A4C890400D0B1DD /* TransferSuccessPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256B38C2A4C890400D0B1DD /* TransferSuccessPresenter.swift */; };
+		7256B3962A4C8D6F00D0B1DD /* PreTransferControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256B3952A4C8D6F00D0B1DD /* PreTransferControllerFactory.swift */; };
+		7256B39F2A4C97AE00D0B1DD /* UpdateSuccessTransferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256B39E2A4C97AE00D0B1DD /* UpdateSuccessTransferView.swift */; };
+		7256B3BC2A4CC35D00D0B1DD /* ContactToTransferModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256B3BB2A4CC35D00D0B1DD /* ContactToTransferModel.swift */; };
+		7256B3D32A4CCB6100D0B1DD /* TransferSuccessRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256B3D22A4CCB6100D0B1DD /* TransferSuccessRouter.swift */; };
+		7256B3DC2A4CCCAA00D0B1DD /* TransferSuccessViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256B3DB2A4CCCAA00D0B1DD /* TransferSuccessViewControllerFactory.swift */; };
+		7256B3E52A4CCD5000D0B1DD /* TransferSuccessFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256B3E42A4CCD5000D0B1DD /* TransferSuccessFactory.swift */; };
+		7256B4042A4CEDC100D0B1DD /* TransferSuccessContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256B4032A4CEDC100D0B1DD /* TransferSuccessContract.swift */; };
 		7257A4522A2E460900877611 /* DigitalCardFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7257A4512A2E460900877611 /* DigitalCardFormatter.swift */; };
 		7257A45B2A2E472400877611 /* UserCardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7257A45A2A2E472400877611 /* UserCardExtension.swift */; };
 		7257A4642A2E4DBE00877611 /* PhysicalCardFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7257A4632A2E4DBE00877611 /* PhysicalCardFormatter.swift */; };
@@ -144,8 +153,7 @@
 		72770D5F29BFEDD10081B57C /* RemoteFetchUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72770D5E29BFEDD10081B57C /* RemoteFetchUserData.swift */; };
 		727953F229E07A75002E0E5C /* CardSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727953F129E07A75002E0E5C /* CardSuccessViewController.swift */; };
 		727953FB29E08CA1002E0E5C /* HomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727953FA29E08CA1002E0E5C /* HomeFactory.swift */; };
-		7279541329E0E497002E0E5C /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7279541229E0E497002E0E5C /* UserData.swift */; };
-		7279541C29E0E701002E0E5C /* UserCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7279541B29E0E701002E0E5C /* UserCardData.swift */; };
+		7279541329E0E497002E0E5C /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7279541229E0E497002E0E5C /* UserDataModel.swift */; };
 		7279544829E1223E002E0E5C /* RemoteFetchCardsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7279544729E1223E002E0E5C /* RemoteFetchCardsFactory.swift */; };
 		727E94F12A3E37200003FC31 /* ContactListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727E94F02A3E37200003FC31 /* ContactListCell.swift */; };
 		7282F0BF29E48DB10009FCF6 /* CardInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7282F0BE29E48DB10009FCF6 /* CardInformationView.swift */; };
@@ -241,7 +249,7 @@
 		72BF400B29B2BB2E001D4BCA /* HttpGetClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BF400A29B2BB2E001D4BCA /* HttpGetClientSpy.swift */; };
 		72BF401529B2D797001D4BCA /* RemoteGetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BF401429B2D797001D4BCA /* RemoteGetService.swift */; };
 		72C5F1CA299D253A003A079E /* RemoteAddAccountFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C5F1C9299D253A003A079E /* RemoteAddAccountFactory.swift */; };
-		72C8BF2A29CC9F51005D3B91 /* LocalGetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EFA9829CBD938008CF146 /* LocalGetService.swift */; };
+		72C8BF2A29CC9F51005D3B91 /* LocalFetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EFA9829CBD938008CF146 /* LocalFetchData.swift */; };
 		72C8BF3929CC9F5F005D3B91 /* userData.json in Resources */ = {isa = PBXBuildFile; fileRef = 72A59C4A29B7DFCE00317C49 /* userData.json */; };
 		72C8BF5229CCA280005D3B91 /* LocalFetchUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C8BF5129CCA280005D3B91 /* LocalFetchUserData.swift */; };
 		72C8BF5B29CCB805005D3B91 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C8BF5A29CCB805005D3B91 /* ProfileView.swift */; };
@@ -484,6 +492,7 @@
 		72143662299FDD3E00337EE9 /* MainDispatchQueueDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDispatchQueueDecorator.swift; sourceTree = "<group>"; };
 		7214367C29A10B9000337EE9 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		721436A829A10D8000337EE9 /* ValidationSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationSpy.swift; sourceTree = "<group>"; };
+		7218A9042A4F36D600505014 /* HomeCellsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellsDataSource.swift; sourceTree = "<group>"; };
 		721DA0E6299454A200CB38E3 /* RemotePostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePostService.swift; sourceTree = "<group>"; };
 		721DA0EF29945C6900CB38E3 /* UseCasesIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UseCasesIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		721DA0F129945C6900CB38E3 /* UseCasesIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCasesIntegrationTests.swift; sourceTree = "<group>"; };
@@ -563,9 +572,9 @@
 		724B43172A39FF91004721BB /* TransferControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferControllerFactory.swift; sourceTree = "<group>"; };
 		724B43202A3A007D004721BB /* TransferFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferFactory.swift; sourceTree = "<group>"; };
 		724B43292A3A2117004721BB /* ValidateBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateBalance.swift; sourceTree = "<group>"; };
-		724B433B2A3A27D2004721BB /* ValidatePixTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePixTransferService.swift; sourceTree = "<group>"; };
+		724B433B2A3A27D2004721BB /* RemoteValidateBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteValidateBalance.swift; sourceTree = "<group>"; };
 		724B434D2A3A2975004721BB /* ValidationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationType.swift; sourceTree = "<group>"; };
-		724B43742A3A3D4F004721BB /* ValidatePixTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePixTransferService.swift; sourceTree = "<group>"; };
+		724B43742A3A3D4F004721BB /* RemoteValidateBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteValidateBalance.swift; sourceTree = "<group>"; };
 		724B43D72A3A54F3004721BB /* UpdateBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBalance.swift; sourceTree = "<group>"; };
 		724B43E72A3A56EA004721BB /* RemoteFetchAccountBalance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFetchAccountBalance.swift; sourceTree = "<group>"; };
 		7250999E29D657B100C2541B /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
@@ -579,6 +588,14 @@
 		72538F552A40CE9900887DD0 /* LocalFetchContactList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFetchContactList.swift; sourceTree = "<group>"; };
 		72538F652A40CFB200887DD0 /* FetchContactList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchContactList.swift; sourceTree = "<group>"; };
 		72538F6E2A40D26100887DD0 /* ContactListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListModel.swift; sourceTree = "<group>"; };
+		7256B38C2A4C890400D0B1DD /* TransferSuccessPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferSuccessPresenter.swift; sourceTree = "<group>"; };
+		7256B3952A4C8D6F00D0B1DD /* PreTransferControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreTransferControllerFactory.swift; sourceTree = "<group>"; };
+		7256B39E2A4C97AE00D0B1DD /* UpdateSuccessTransferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSuccessTransferView.swift; sourceTree = "<group>"; };
+		7256B3BB2A4CC35D00D0B1DD /* ContactToTransferModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactToTransferModel.swift; sourceTree = "<group>"; };
+		7256B3D22A4CCB6100D0B1DD /* TransferSuccessRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferSuccessRouter.swift; sourceTree = "<group>"; };
+		7256B3DB2A4CCCAA00D0B1DD /* TransferSuccessViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferSuccessViewControllerFactory.swift; sourceTree = "<group>"; };
+		7256B3E42A4CCD5000D0B1DD /* TransferSuccessFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferSuccessFactory.swift; sourceTree = "<group>"; };
+		7256B4032A4CEDC100D0B1DD /* TransferSuccessContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferSuccessContract.swift; sourceTree = "<group>"; };
 		7257A4512A2E460900877611 /* DigitalCardFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalCardFormatter.swift; sourceTree = "<group>"; };
 		7257A45A2A2E472400877611 /* UserCardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardExtension.swift; sourceTree = "<group>"; };
 		7257A4632A2E4DBE00877611 /* PhysicalCardFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalCardFormatter.swift; sourceTree = "<group>"; };
@@ -604,8 +621,7 @@
 		72770D5E29BFEDD10081B57C /* RemoteFetchUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchUserData.swift; sourceTree = "<group>"; };
 		727953F129E07A75002E0E5C /* CardSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSuccessViewController.swift; sourceTree = "<group>"; };
 		727953FA29E08CA1002E0E5C /* HomeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFactory.swift; sourceTree = "<group>"; };
-		7279541229E0E497002E0E5C /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		7279541B29E0E701002E0E5C /* UserCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardData.swift; sourceTree = "<group>"; };
+		7279541229E0E497002E0E5C /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		7279544729E1223E002E0E5C /* RemoteFetchCardsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFetchCardsFactory.swift; sourceTree = "<group>"; };
 		727E94F02A3E37200003FC31 /* ContactListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListCell.swift; sourceTree = "<group>"; };
 		7282F0BE29E48DB10009FCF6 /* CardInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInformationView.swift; sourceTree = "<group>"; };
@@ -625,7 +641,7 @@
 		728B86C829EF334400CE465B /* RemoteDeleteDigitalCardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteDeleteDigitalCardTests.swift; sourceTree = "<group>"; };
 		728B86D129EF352600CE465B /* HttpDeleteClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpDeleteClientSpy.swift; sourceTree = "<group>"; };
 		728B86E129EF3B4A00CE465B /* FetchUserCardsSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserCardsSpy.swift; sourceTree = "<group>"; };
-		728EFA9829CBD938008CF146 /* LocalGetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalGetService.swift; sourceTree = "<group>"; };
+		728EFA9829CBD938008CF146 /* LocalFetchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFetchData.swift; sourceTree = "<group>"; };
 		72917EA629DC6FC6001A623F /* CardConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardConfigurationView.swift; sourceTree = "<group>"; };
 		72917EB729DC9928001A623F /* UIlabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIlabelExtensions.swift; sourceTree = "<group>"; };
 		72917EC029DC9A80001A623F /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
@@ -901,8 +917,19 @@
 			children = (
 				72B7F3982A3BCC5200DB3432 /* TransferSuccessViewController.swift */,
 				72B7F3A12A3BCE2400DB3432 /* TransferSuccessView.swift */,
+				7256B38C2A4C890400D0B1DD /* TransferSuccessPresenter.swift */,
+				7256B3D22A4CCB6100D0B1DD /* TransferSuccessRouter.swift */,
+				7256B4032A4CEDC100D0B1DD /* TransferSuccessContract.swift */,
 			);
 			path = TransferSuccess;
+			sourceTree = "<group>";
+		};
+		7218A9032A4F36C200505014 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				7218A9042A4F36D600505014 /* HomeCellsDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		721DA0F029945C6900CB38E3 /* UseCasesIntegrationTests */ = {
@@ -917,6 +944,7 @@
 		721DA10E299550C900CB38E3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				7218A9032A4F36C200505014 /* DataSource */,
 				7241091B299BFB1000129804 /* Components */,
 				722A7A5229CE39C8003F38E6 /* Extensions */,
 				721DA15B2995BAB800CB38E3 /* ValidatorFields */,
@@ -1123,6 +1151,7 @@
 				72143661299FDD2300337EE9 /* Decorator */,
 				72858334299ECE1200FCF780 /* Proxies */,
 				724108F9299BF2B500129804 /* Factories */,
+				72C8BF4229CCA0E4005D3B91 /* JSON */,
 				72410883299BEFC800129804 /* images.xcassets */,
 				72410888299BEFC800129804 /* Info.plist */,
 			);
@@ -1141,7 +1170,7 @@
 		724108F9299BF2B500129804 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
-				7279540329E08CA5002E0E5C /* Home */,
+				7279540329E08CA5002E0E5C /* Scenes */,
 				7272112129AE9DE100684796 /* Controllers */,
 				72BF3F8B29B24580001D4BCA /* Infra */,
 				7272112B29AE9EB400684796 /* Http */,
@@ -1175,6 +1204,7 @@
 		72410955299C0CDC00129804 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				729CC55C2A375CA200DAD7AB /* TransferService */,
 				72410931299C0A7F00129804 /* SignUpView.swift */,
 				72B8EB90299AD96200D69F96 /* SignUpViewController.swift */,
 				721DA1842996E39000CB38E3 /* SignUpPresenter.swift */,
@@ -1191,7 +1221,7 @@
 				724B43B72A3A549E004721BB /* Home */,
 				724B43B62A3A548C004721BB /* Cards */,
 				724B43D62A3A54BB004721BB /* PixServices */,
-				72538F652A40CFB200887DD0 /* FetchContactList.swift */,
+				7256B3F42A4CE85800D0B1DD /* ContactList */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1201,9 +1231,9 @@
 			children = (
 				724AB0FF299281B4000616A7 /* AccountModel.swift */,
 				724AB1702992A48B000616A7 /* Model.swift */,
-				7279541229E0E497002E0E5C /* UserData.swift */,
-				7279541B29E0E701002E0E5C /* UserCardData.swift */,
+				7279541229E0E497002E0E5C /* UserDataModel.swift */,
 				72538F6E2A40D26100887DD0 /* ContactListModel.swift */,
+				7256B3BB2A4CC35D00D0B1DD /* ContactToTransferModel.swift */,
 				7257A46C2A2E4DFC00877611 /* Maps */,
 			);
 			path = Models;
@@ -1252,6 +1282,7 @@
 			children = (
 				72292B892A3A68B700A44B42 /* UpdateBalanceView.swift */,
 				720DFD812A46469B0048351A /* UpdatePreTransferView.swift */,
+				7256B39E2A4C97AE00D0B1DD /* UpdateSuccessTransferView.swift */,
 			);
 			path = Pix;
 			sourceTree = "<group>";
@@ -1277,7 +1308,7 @@
 		724B43A52A3A5425004721BB /* PixServices */ = {
 			isa = PBXGroup;
 			children = (
-				724B433B2A3A27D2004721BB /* ValidatePixTransferService.swift */,
+				724B433B2A3A27D2004721BB /* RemoteValidateBalance.swift */,
 				724B43E72A3A56EA004721BB /* RemoteFetchAccountBalance.swift */,
 			);
 			path = PixServices;
@@ -1433,6 +1464,14 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		7256B3F42A4CE85800D0B1DD /* ContactList */ = {
+			isa = PBXGroup;
+			children = (
+				72538F652A40CFB200887DD0 /* FetchContactList.swift */,
+			);
+			path = ContactList;
+			sourceTree = "<group>";
+		};
 		7257A46C2A2E4DFC00877611 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
@@ -1508,7 +1547,6 @@
 		727137A32A3003CF00E3C809 /* PixArea */ = {
 			isa = PBXGroup;
 			children = (
-				729CC55C2A375CA200DAD7AB /* TransferService */,
 				729CC55B2A375C8B00DAD7AB /* Home */,
 				72F12F722A30FA40003774C5 /* Cells */,
 			);
@@ -1528,6 +1566,8 @@
 				729CC5522A3753BC00DAD7AB /* PixAreaControllerFactory.swift */,
 				724B43172A39FF91004721BB /* TransferControllerFactory.swift */,
 				72E077222A4262EA00113EFB /* ContactListControllerFactory.swift */,
+				7256B3952A4C8D6F00D0B1DD /* PreTransferControllerFactory.swift */,
+				7256B3DB2A4CCCAA00D0B1DD /* TransferSuccessViewControllerFactory.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1535,13 +1575,19 @@
 		7272112B29AE9EB400684796 /* Http */ = {
 			isa = PBXGroup;
 			children = (
-				72C8BF4229CCA0E4005D3B91 /* Local */,
-				72C8BF4129CCA0DD005D3B91 /* Remote */,
+				72C5F1C9299D253A003A079E /* RemoteAddAccountFactory.swift */,
+				72BF3F6F29B171CE001D4BCA /* RemoteAuthenticationFactory.swift */,
+				72B5194C29C5615200D653E7 /* RemoteFetchUserDataFactory.swift */,
+				729236AA29DF967000720697 /* RemoteAddDigitalCard.swift */,
+				7279544729E1223E002E0E5C /* RemoteFetchCardsFactory.swift */,
+				72C9C03729ED80730096D882 /* RemoteDeleteDigitalCardFactory.swift */,
+				724B43742A3A3D4F004721BB /* RemoteValidateBalance.swift */,
+				72292B922A3A698900A44B42 /* RemoteFetchAccountBalanceFactory.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
 		};
-		7279540329E08CA5002E0E5C /* Home */ = {
+		7279540329E08CA5002E0E5C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				727953FA29E08CA1002E0E5C /* HomeFactory.swift */,
@@ -1553,8 +1599,9 @@
 				724B43202A3A007D004721BB /* TransferFactory.swift */,
 				72E0772B2A42670500113EFB /* ContactListFactory.swift */,
 				720DFDB52A4657330048351A /* PreTransferFactory.swift */,
+				7256B3E42A4CCD5000D0B1DD /* TransferSuccessFactory.swift */,
 			);
-			path = Home;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		7282F0BD29E48D7C0009FCF6 /* CardInformations */ = {
@@ -1838,31 +1885,16 @@
 			path = Infra;
 			sourceTree = "<group>";
 		};
-		72C8BF4129CCA0DD005D3B91 /* Remote */ = {
+		72C8BF4229CCA0E4005D3B91 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				72C5F1C9299D253A003A079E /* RemoteAddAccountFactory.swift */,
-				72BF3F6F29B171CE001D4BCA /* RemoteAuthenticationFactory.swift */,
-				72B5194C29C5615200D653E7 /* RemoteFetchUserDataFactory.swift */,
-				729236AA29DF967000720697 /* RemoteAddDigitalCard.swift */,
-				7279544729E1223E002E0E5C /* RemoteFetchCardsFactory.swift */,
-				72C9C03729ED80730096D882 /* RemoteDeleteDigitalCardFactory.swift */,
-				724B43742A3A3D4F004721BB /* ValidatePixTransferService.swift */,
-				72292B922A3A698900A44B42 /* RemoteFetchAccountBalanceFactory.swift */,
-			);
-			path = Remote;
-			sourceTree = "<group>";
-		};
-		72C8BF4229CCA0E4005D3B91 /* Local */ = {
-			isa = PBXGroup;
-			children = (
-				728EFA9829CBD938008CF146 /* LocalGetService.swift */,
+				728EFA9829CBD938008CF146 /* LocalFetchData.swift */,
 				72C8BF5129CCA280005D3B91 /* LocalFetchUserData.swift */,
 				72A59C4A29B7DFCE00317C49 /* userData.json */,
 				72FEABDD29D36A24002CA545 /* personData.json */,
 				72295CD82A3F80DC0074AAA7 /* contactList.json */,
 			);
-			path = Local;
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		72CFD1E829CA66DB00A49479 /* Home */ = {
@@ -2383,10 +2415,13 @@
 				72C8BFA729CD1AFA005D3B91 /* CurrencyFormatter.swift in Sources */,
 				728B06C729C253B600DD5A83 /* CardCell.swift in Sources */,
 				729E352629D0E1110091F4C0 /* ProfileCell.swift in Sources */,
+				7256B4042A4CEDC100D0B1DD /* TransferSuccessContract.swift in Sources */,
 				72DF0BC129E7100400973C98 /* CardInformationRouter.swift in Sources */,
 				725E1B432A3D0CDA00373884 /* ContactListToTransferHeader.swift in Sources */,
 				72DF0B4229E57FCA00973C98 /* CardSuccessView.swift in Sources */,
+				7256B39F2A4C97AE00D0B1DD /* UpdateSuccessTransferView.swift in Sources */,
 				72E0770A2A4259A500113EFB /* ContactListPresenter.swift in Sources */,
+				7218A9052A4F36D600505014 /* HomeCellsDataSource.swift in Sources */,
 				721DA14D2995A33700CB38E3 /* SignUpRequest.swift in Sources */,
 				729E28262A4362E700ABB7F0 /* ContactListRouter.swift in Sources */,
 				72D9962629E4577F003DAFA8 /* CardListCell.swift in Sources */,
@@ -2416,6 +2451,7 @@
 				7265B81D2A3968E7009E255D /* TransferRouter.swift in Sources */,
 				725C1F5129DE582B0061D32F /* CardConfigurationContract.swift in Sources */,
 				723FBB8E29C3985B0006607C /* HomeRouter.swift in Sources */,
+				7256B38D2A4C890400D0B1DD /* TransferSuccessPresenter.swift in Sources */,
 				721DA1552995A41E00CB38E3 /* AlertView.swift in Sources */,
 				728B075929C258F600DD5A83 /* UIView.swift in Sources */,
 				72B7F3992A3BCC5200DB3432 /* TransferSuccessViewController.swift in Sources */,
@@ -2478,6 +2514,7 @@
 				72C8BF5B29CCB805005D3B91 /* ProfileView.swift in Sources */,
 				729CC5382A374C8100DAD7AB /* PixAreaContratct.swift in Sources */,
 				72D6EB5729D75D0B00512644 /* ViewControllerExtensions.swift in Sources */,
+				7256B3D32A4CCB6100D0B1DD /* TransferSuccessRouter.swift in Sources */,
 				72D6EB7B29D78ACD00512644 /* SnappingLayout.swift in Sources */,
 				721DA1AE2996F24100CB38E3 /* LoadingView.swift in Sources */,
 				728B06D029C253C200DD5A83 /* HomeController.swift in Sources */,
@@ -2572,6 +2609,7 @@
 				720DFDB62A4657330048351A /* PreTransferFactory.swift in Sources */,
 				72D995FD29E44343003DAFA8 /* CardsFactory.swift in Sources */,
 				72B5194D29C5615200D653E7 /* RemoteFetchUserDataFactory.swift in Sources */,
+				7256B3962A4C8D6F00D0B1DD /* PreTransferControllerFactory.swift in Sources */,
 				72BF3FA729B25567001D4BCA /* NetworkPostService.swift in Sources */,
 				7251FD1A29D690FC002B76B2 /* HomeProxies.swift in Sources */,
 				72BF401529B2D797001D4BCA /* RemoteGetService.swift in Sources */,
@@ -2581,8 +2619,10 @@
 				72C9C04129ED87890096D882 /* RemoteDeleteService.swift in Sources */,
 				72C9C02629ED72240096D882 /* CardInformationFactory.swift in Sources */,
 				729236A229DF926400720697 /* CardConfigurationController.swift in Sources */,
+				7256B3E52A4CCD5000D0B1DD /* TransferSuccessFactory.swift in Sources */,
+				7256B3DC2A4CCCAA00D0B1DD /* TransferSuccessViewControllerFactory.swift in Sources */,
 				72C9C03829ED80730096D882 /* RemoteDeleteDigitalCardFactory.swift in Sources */,
-				72C8BF2A29CC9F51005D3B91 /* LocalGetService.swift in Sources */,
+				72C8BF2A29CC9F51005D3B91 /* LocalFetchData.swift in Sources */,
 				72143663299FDD3E00337EE9 /* MainDispatchQueueDecorator.swift in Sources */,
 				729236AB29DF967000720697 /* RemoteAddDigitalCard.swift in Sources */,
 				72858307299EB60A00FCF780 /* SignUpControllerFactory.swift in Sources */,
@@ -2590,7 +2630,7 @@
 				72BF3F7029B171CE001D4BCA /* RemoteAuthenticationFactory.swift in Sources */,
 				72E0772C2A42670500113EFB /* ContactListFactory.swift in Sources */,
 				72C9C04A29ED8D130096D882 /* CardSuccessFactory.swift in Sources */,
-				724B43752A3A3D4F004721BB /* ValidatePixTransferService.swift in Sources */,
+				724B43752A3A3D4F004721BB /* RemoteValidateBalance.swift in Sources */,
 				72E077232A4262EA00113EFB /* ContactListControllerFactory.swift in Sources */,
 				72FEABBC29D35C15002CA545 /* ProfileControllerFactory.swift in Sources */,
 				729CC5532A3753BC00DAD7AB /* PixAreaControllerFactory.swift in Sources */,
@@ -2622,7 +2662,7 @@
 				7235950229DF1D8700C0F018 /* RemoteAddDigitalCard.swift in Sources */,
 				72D2164329EB541300CBB206 /* HttpDeleteClient.swift in Sources */,
 				72770D5F29BFEDD10081B57C /* RemoteFetchUserData.swift in Sources */,
-				724B433C2A3A27D2004721BB /* ValidatePixTransferService.swift in Sources */,
+				724B433C2A3A27D2004721BB /* RemoteValidateBalance.swift in Sources */,
 				72D2163029EB52D600CBB206 /* RemoteDeleteDigitalCard.swift in Sources */,
 				724B43E82A3A56EA004721BB /* RemoteFetchAccountBalance.swift in Sources */,
 				72B8189E2992D2440007C070 /* ExtensionsHelpers.swift in Sources */,
@@ -2656,6 +2696,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7256B3BC2A4CC35D00D0B1DD /* ContactToTransferModel.swift in Sources */,
 				724AB1712992A48B000616A7 /* Model.swift in Sources */,
 				7257A4522A2E460900877611 /* DigitalCardFormatter.swift in Sources */,
 				72770D2B29BFC5500081B57C /* FetchUserDataResources.swift in Sources */,
@@ -2667,11 +2708,10 @@
 				7257A4752A2E4F0000877611 /* CardListFormatter.swift in Sources */,
 				724B432A2A3A2117004721BB /* ValidateBalance.swift in Sources */,
 				72D2164C29EB5DC100CBB206 /* DeleteDigitalCard.swift in Sources */,
-				7279541329E0E497002E0E5C /* UserData.swift in Sources */,
+				7279541329E0E497002E0E5C /* UserDataModel.swift in Sources */,
 				72B818932992BE3C0007C070 /* DomainError.swift in Sources */,
 				72BF3E9129AFD9F5001D4BCA /* Authentication.swift in Sources */,
 				72538F6F2A40D26100887DD0 /* ContactListModel.swift in Sources */,
-				7279541C29E0E701002E0E5C /* UserCardData.swift in Sources */,
 				724AB100299281B4000616A7 /* AccountModel.swift in Sources */,
 				724B434E2A3A2975004721BB /* ValidationType.swift in Sources */,
 				72FEAB9A29D34168002CA545 /* FetchUserCards.swift in Sources */,

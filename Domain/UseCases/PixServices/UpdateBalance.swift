@@ -1,5 +1,5 @@
 import Foundation
 
-public protocol UpdateBalance {
-    func fetchBalance(completion: @escaping (Double) -> ())
+public protocol FetchBalance {
+    func fetch(completion: @escaping (Double) -> ())
 }

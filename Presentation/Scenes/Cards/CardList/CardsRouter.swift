@@ -5,11 +5,11 @@ import Domain
 public class CardsRouter {
     public weak var viewController: UIViewController?
     public var cardCreationFactory: () -> CardCreationViewController
-    public var cardInformationFactory: (UserCard) -> CardInformationViewController
+    public var cardInformationFactory: (Card) -> CardInformationViewController
     
     public init(viewController: UIViewController,
                 cardCreationFactory: @escaping () -> CardCreationViewController,
-                cardInformationFactory: @escaping (UserCard) -> CardInformationViewController)
+                cardInformationFactory: @escaping (Card) -> CardInformationViewController)
     {
         self.viewController = viewController
         self.cardCreationFactory = cardCreationFactory
@@ -18,7 +18,7 @@ public class CardsRouter {
 }
 
 extension CardsRouter: CardRoutingLogic {
-    public func goToCardInformationScreenWith(userCard: UserCard) {
+    public func goToCardInformationScreenWith(userCard: Card) {
         if let controller = viewController {
             controller.navigationController?.pushViewController(cardInformationFactory(userCard), animated: true)
         }

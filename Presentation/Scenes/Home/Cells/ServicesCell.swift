@@ -8,7 +8,8 @@ public protocol ServicesCellDelegateProtocol: AnyObject {
 final class ServicesCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
     static let reuseIdentifier = String(describing: ServicesCell.self)
     private var collectionView: UICollectionView!
-    private var services: [Service] = []
+    
+    private var servicesViewModels: [ServiceViewModel] = []
     
     weak var delegate: ServicesCellDelegateProtocol?
     
@@ -35,8 +36,8 @@ final class ServicesCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         collectionView.register(ServiceCell.self, forCellWithReuseIdentifier: ServiceCell.reuseIdentifier)
     }
     
-    func setupCell(with services: [Service]) {
-        self.services = services
+    func configureCell(with viewModel: [ServiceViewModel]) {
+        self.servicesViewModels = viewModel
         collectionView.reloadData()
     }
     
@@ -45,12 +46,12 @@ final class ServicesCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return services.count
+        return servicesViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ServiceCell.reuseIdentifier, for: indexPath) as? ServiceCell
-        cell?.setupCell(service: services[indexPath.item])
+        cell?.configureCell(with: servicesViewModels[indexPath.item])
         return cell ?? UICollectionViewCell()
     }
 }

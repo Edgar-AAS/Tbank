@@ -6,7 +6,7 @@ public final class CardInformationViewController: UIViewController {
         return view as? CardInformationView
     }()
     
-    public var userCardModel: UserCard?
+    public var userCardModel: Card?
     public var presenter: ViewToPresenterCardInformationViewProtocol?
     
     public override func loadView() {
@@ -73,8 +73,7 @@ extension CardInformationViewController: CardInformationDelegate {
 }
 
 extension CardInformationViewController: UpdateCardView {
-    public func update(userCardModel: UserCard) {
-        cardInformationView?.updateUI(userCardModel: userCardModel)
+    public func update(userCardModel: Card) {
         self.userCardModel = userCardModel
     }
 }

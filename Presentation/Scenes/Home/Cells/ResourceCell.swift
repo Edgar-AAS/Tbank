@@ -54,8 +54,8 @@ final class ResourceCell: UICollectionViewCell {
         return imageView
     }()
     
-    func setupCell(resource: Resource) {
-        resourceLabel.text = resource.resourceDescription
+    func configureCell(with viewModel: ResourceViewModel) {
+        resourceLabel.text = viewModel.resourceDescription
     }
 }
 

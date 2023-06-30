@@ -16,7 +16,7 @@ public class RemoteFetchCards: FetchUserCards {
             switch result {
             case .failure: completion(.failure(.unexpected))
             case .success(let data):
-                if let model: UserCards = data?.toModel() {
+                if let model: [Card] = data?.toModel() {
                     completion(.success(model))
                 } else {
                     completion(.failure(.unexpected))

@@ -3,18 +3,16 @@ import Domain
 
 public class HomeRouter {
     public weak var viewController: UIViewController?
-    private var destinationController: UIViewController?
     private var cardsControllerFactory: () -> CardsViewController
     private var profileControllerFactory: () -> ProfileController
-    private var cardInformationFactory: (UserCard) -> CardInformationViewController
+    private var cardInformationFactory: (Card) -> CardInformationViewController
     private var pixAreaControllerFactory: () -> PixAreaViewController
     
-    public init(viewController: UIViewController?,
+    public init(viewController: UIViewController,
                 profileControllerFactory: @escaping () -> ProfileController,
                 cardsControllerFactory: @escaping () -> CardsViewController,
-                cardInformationFactory: @escaping (UserCard) -> CardInformationViewController,
-                pixAreaControllerFactory: @escaping () -> PixAreaViewController
-    )
+                cardInformationFactory: @escaping (Card) -> CardInformationViewController,
+                pixAreaControllerFactory: @escaping () -> PixAreaViewController)
     {
         self.viewController = viewController
         self.cardsControllerFactory = cardsControllerFactory
@@ -29,12 +27,11 @@ extension HomeRouter: PresenterToRouterHomeProtocol {
         switch tag {
         case 0:
             viewController?.navigationController?.pushViewController(pixAreaControllerFactory(), animated: true)
-        default:
-            break
+        default: return
         }
     }
     
-    public func goToInformationControllerWith(selectedCard: UserCard) {
+    public func goToInformationControllerWith(selectedCard: Card) {
         viewController?.navigationController?.pushViewController(cardInformationFactory(selectedCard), animated: true)
     }
     

@@ -11,8 +11,8 @@ public class CardsViewController: UIViewController, CardsViewProtocol {
     public var cardView: CardsScreenView?
     public var presenter: ViewToPresenterCardsProtocol?
     
-    private var virtualCards = [UserCard]()
-    private var physicalCards = [UserCard]()
+    private var virtualCards = [Card]()
+    private var physicalCards = [Card]()
         
     public override func loadView() {
         super.loadView()
@@ -24,7 +24,7 @@ public class CardsViewController: UIViewController, CardsViewProtocol {
     public override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.fetchCards()
-        navigationItem.backButtonTitle = ""
+        removeBackButtonTitle()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +38,7 @@ public class CardsViewController: UIViewController, CardsViewProtocol {
 }
 
 extension CardsViewController: CardsView {
-    public func updateCardsView(cardsModel: UserCards) {
+    public func updateCardsView(cardsModel: [Card]) {
         virtualCards = cardsModel.filter({ $0.isVirtual == true })
         physicalCards = cardsModel.filter({ $0.isVirtual == false })
         cardView?.myCardsTableView.reloadData()

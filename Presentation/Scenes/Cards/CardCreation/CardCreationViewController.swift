@@ -13,7 +13,7 @@ public class CardCreationViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.backButtonTitle = ""
+        removeBackButtonTitle()
     }
     
     public override func viewWillAppear(_ animated: Bool) {

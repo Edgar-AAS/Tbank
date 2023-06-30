@@ -13,8 +13,9 @@ public class CardSuccessViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.backButtonTitle = ""
+        removeBackButtonTitle()
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
         let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButton
         

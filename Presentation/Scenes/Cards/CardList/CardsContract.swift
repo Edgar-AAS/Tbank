@@ -9,5 +9,5 @@ public protocol ViewToPresenterCardsProtocol {
 
 public protocol CardRoutingLogic {
     func goToCardCreationNavigation()
-    func goToCardInformationScreenWith(userCard: UserCard)
+    func goToCardInformationScreenWith(userCard: Card)
 }

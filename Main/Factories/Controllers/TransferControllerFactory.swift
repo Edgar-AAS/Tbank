@@ -2,12 +2,12 @@ import Foundation
 import Domain
 import Presentation
 
-public func makeTransferControllerFactory(validatePixTransferService: ValidateBalance, updateBalance: UpdateBalance) -> TransferViewController {
+public func makeTransferControllerFactory(validatePixTransferService: ValidateBalance, fetchBalance: FetchBalance) -> TransferViewController {
     let controller = TransferViewController()
     let router = TransferRouter(viewController: controller, contractListFactory: contactListFactory)
-    let presenter = TransferPresenter(validatePixTransferService: validatePixTransferService,
+    let presenter = TransferPresenter(validateBalance: validatePixTransferService,
                                       alertView: WeakVarProxy(controller),
-                                      updateBalance: updateBalance,
+                                      fetchAvaiableBalance: fetchBalance,
                                       updateBalanceView: WeakVarProxy(controller),
                                       router: router)
     controller.presenter = presenter

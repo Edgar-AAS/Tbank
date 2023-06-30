@@ -1,7 +1,7 @@
 import Foundation
 import Domain
 
-public final class RemoteFetchAccountBalance: UpdateBalance {
+public final class RemoteFetchAccountBalance: FetchBalance {
     private let httpClient: HttpGetClient
     private let url: URL
 
@@ -10,13 +10,13 @@ public final class RemoteFetchAccountBalance: UpdateBalance {
         self.url = url
     }
     
-    public func fetchBalance(completion: @escaping (Double) -> ()) {
+    public func fetch(completion: @escaping (Double) -> ()) {
         httpClient.get(to: url) { [weak self] result in
             guard self != nil else { return }
             switch result {
             case .success(let data):
-                if let model: UserData = data?.toModel(), let balance = model.first?.totalBalance {
-                    completion(balance)
+                if let model: UserDataModel = data?.toModel() {
+                    completion(model.totalBalance)
                 }
             case .failure: return
             }

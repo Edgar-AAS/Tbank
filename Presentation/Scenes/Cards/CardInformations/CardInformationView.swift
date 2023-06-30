@@ -182,7 +182,7 @@ public class CardInformationView: UIView {
     private lazy var expirationDateAndCVCHorizontalStack = horizontalStack(with: [expirationDateView, cvcView], spacing: 32)
     private lazy var cardMarkAndCardFunctionHorizontalStack = horizontalStack(with: [cardMarkView, cardFunctionView], spacing: 32)
     
-    func updateUI(userCardModel: UserCard) {
+    func updateUI(userCardModel: Card) {
         let cardInformationFormatter = userCardModel.getCardInformationFormatter
         cardNameLabel.text = cardInformationFormatter.name
         numberContentLabel.text = cardInformationFormatter.cardNumber

@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol LoadingView {
+public protocol LoadingView: AnyObject {
     func isLoading(viewModel: LoadingViewModel)
 }
 

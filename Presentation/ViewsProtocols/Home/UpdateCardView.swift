@@ -2,5 +2,5 @@ import Foundation
 import Domain
 
 public protocol UpdateCardView {
-    func update(userCardModel: UserCard)
+    func update(userCardModel: Card)
 }

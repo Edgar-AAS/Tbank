@@ -19,14 +19,13 @@ extension ProfilePresenter: ViewToProfilePresenterProtocol {
             guard self != nil else { return }
             switch result {
             case .success(let userData):
-                if let data = userData.first {
-                    let userDataViewModel = UserDataViewModel(username: data.username,
-                                                              bankBranch: data.bankBranch,
-                                                              bankAccountNumber: data.bankAccountNumber.formatBankAccountNumber(),
-                                                              bankNumber: data.bankNumber,
-                                                              corporateName: data.corporateName)
-                    self?.updateProfileView.updateWith(viewModel: userDataViewModel)
-                }
+                let data = userData
+                let userDataViewModel = UserDataViewModel(username: data.username,
+                                                          bankBranch: data.bankBranch,
+                                                          bankAccountNumber: data.bankAccountNumber.formatBankAccountNumber(),
+                                                          bankNumber: data.bankNumber,
+                                                          corporateName: data.corporateName)
+                self?.updateProfileView.updateWith(viewModel: userDataViewModel)
             case .failure:
                 self?.alertView.showMessage(viewModel: AlertViewModel(title: "Error ao carregar dados.", message: "tente novamente em instantes"))
             }

@@ -10,7 +10,7 @@ public final class RemoteAddDigitalCard: AddCard {
         self.httpClient = httpClient
     }
     
-    public func add(cardModel: UserCard, completion: @escaping (Result<Bool, DomainError>) -> Void) {
+    public func add(cardModel: Card, completion: @escaping (Result<Bool, DomainError>) -> Void) {
         httpClient.post(to: url, with: cardModel.toData()) { [weak self] result in
             guard self != nil else { return }
             switch result {

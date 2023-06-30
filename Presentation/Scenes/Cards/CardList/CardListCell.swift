@@ -6,19 +6,19 @@ class CardListCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-        configurateCell()
-    }
-    
-    func setupCell(userCard: UserCard) {
-        textLabel?.text = userCard.name
-        detailTextLabel?.text = userCard.cardNumber.toSafeCardNumber()
+        configurate()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configurateCell() {
+    func setupCell(userCard: Card) {
+        textLabel?.text = userCard.name
+        detailTextLabel?.text = userCard.cardNumber.toSafeCardNumber()
+    }
+    
+    private func configurate() {
         selectionStyle = .none
         detailTextLabel?.textColor = Colors.secundaryColor
         textLabel?.textColor = .white

@@ -42,8 +42,8 @@ struct CardGenerator {
         return "--/--"
     }
     
-    func createDigitalCardWith(name: String) -> UserCard {
-        return UserCard(isVirtual: true,
+    func createDigitalCardWith(name: String) -> Card {
+        return Card(isVirtual: true,
                         balance: 0.0,
                         cardFlag: cardFlag,
                         cardTag: 0,

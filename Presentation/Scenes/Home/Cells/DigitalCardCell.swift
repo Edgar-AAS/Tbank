@@ -58,11 +58,10 @@ final class DigitalCardCell: UICollectionViewCell {
         cardNumberView.clipsToBounds = true
     }
     
-    func setupCell(with userCard: UserCard) {
-        let digitalCardFormatter = userCard.getDigitalCardFormmated
-        cardNameLabel.text = digitalCardFormatter.name
-        cardNumberLabel.text = digitalCardFormatter.cardNumber
-        cardExpirationLabel.text = digitalCardFormatter.cardExpirationDate
+    func setupCell(with viewModel: CardViewModel) {
+        cardNameLabel.text = viewModel.name
+        cardNumberLabel.text = viewModel.cardNumber
+        cardExpirationLabel.text = viewModel.cardExpirationDate
     }
 }
 

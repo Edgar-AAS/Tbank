@@ -31,7 +31,7 @@ extension MainQueueDispatchDecorator: Authentication where T: Authentication {
 }
 
 extension MainQueueDispatchDecorator: FetchUserDataResources where T: FetchUserDataResources {
-    public func fetch(completion: @escaping (Result<UserData, DomainError>) -> Void) {
+    public func fetch(completion: @escaping (Result<UserDataModel, DomainError>) -> Void) {
         instance.fetch { [weak self] result  in
             self?.dispatch { completion(result) }
         }
@@ -39,7 +39,7 @@ extension MainQueueDispatchDecorator: FetchUserDataResources where T: FetchUserD
 }
 
 extension MainQueueDispatchDecorator: FetchUserCards where T: FetchUserCards {
-    public func fetch(completion: @escaping (Result<UserCards, DomainError>) -> Void) {
+    public func fetch(completion: @escaping (Result<[Card], DomainError>) -> Void) {
         instance.fetch { [weak self] result in
             self?.dispatch { completion(result) }
         }
@@ -47,7 +47,7 @@ extension MainQueueDispatchDecorator: FetchUserCards where T: FetchUserCards {
 }
 
 extension MainQueueDispatchDecorator: AddCard where T: AddCard {
-    public func add(cardModel: UserCard, completion: @escaping (Result<Bool, DomainError>) -> Void) {
+    public func add(cardModel: Card, completion: @escaping (Result<Bool, DomainError>) -> Void) {
         instance.add(cardModel: cardModel) { [weak self] result in
             self?.dispatch { completion(result) }
         }
@@ -70,9 +70,9 @@ extension MainQueueDispatchDecorator: ValidateBalance where T: ValidateBalance {
     }
 }
 
-extension MainQueueDispatchDecorator: UpdateBalance where T: UpdateBalance {
-    public func fetchBalance(completion: @escaping (Double) -> ()) {
-        instance.fetchBalance { [weak self] result in
+extension MainQueueDispatchDecorator: FetchBalance where T: FetchBalance {
+    public func fetch(completion: @escaping (Double) -> ()) {
+        instance.fetch { [weak self] result in
             self?.dispatch { completion(result) }
         }
     }

@@ -3,13 +3,14 @@ import Domain
 
 public protocol CardCellDelegateProtocol: AnyObject {
     func addCardButtonDidTapped()
-    func cardDidTapped(userCard: UserCard)
+    func cardDidTapped(userCard: Card)
 }
 
 public final class CardCell: UITableViewCell {
     static let reuseIdentifier = String(describing: CardCell.self)
     var collectionView: UICollectionView!
-    private var userCardsModel: UserCards = []
+    
+    private var cardViewModels: [CardViewModel] = []
     
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -19,7 +20,7 @@ public final class CardCell: UITableViewCell {
     }
     
     func goToLastItem() {
-        collectionView.scrollToItem(at: IndexPath(item: userCardsModel.count - 1, section: 0), at: .right, animated: true)
+        collectionView.scrollToItem(at: IndexPath(item: cardViewModels.count - 1, section: 0), at: .right, animated: true)
     }
     
     public weak var delegate: CardCellDelegateProtocol?
@@ -67,19 +68,19 @@ public final class CardCell: UITableViewCell {
         collectionView.register(DigitalCardCell.self, forCellWithReuseIdentifier: DigitalCardCell.reuseIdentifier)
     }
     
-    func setupCell(with cards: UserCards) {
-        userCardsModel  = cards
+    func configureCell(with cards: [CardViewModel]) {
+        cardViewModels  = cards
         collectionView.reloadData()
     }
 }
 //MARK: - UICollectionViewDataSource
 extension CardCell: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return userCardsModel.count
+        return cardViewModels.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let card = userCardsModel[indexPath.row]
+        let card = cardViewModels[indexPath.row]
         
         if card.isVirtual {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DigitalCardCell.reuseIdentifier, for: indexPath) as? DigitalCardCell
@@ -96,7 +97,7 @@ extension CardCell: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegate
 extension CardCell: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.cardDidTapped(userCard: userCardsModel[indexPath.row])
+//        delegate?.cardDidTapped(userCard: cardViewModels[indexPath.row])
     }
 }
 
@@ -130,7 +131,7 @@ extension CardCell: CodeView {
             trailing: contentView.trailingAnchor,
             bottom: nil,
             padding: .init(top: 8, left: 0, bottom: 0, right: 16),
-            size: .init(width: 80, height: 44)
+            size: .init(width: 70, height: 44)
         )
         
         collectionView.fillConstraints(

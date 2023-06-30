@@ -1,7 +1,7 @@
 import Foundation
 import Domain
 
-extension UserCard {
+extension Card {
     var getDigitalCardFormmated: DigitalCardFormatter {
         return DigitalCardFormatter(
             cardNumber: getCardNumber,

@@ -2,7 +2,7 @@ import Foundation
 import Domain
 
 extension ContactModel {
-    var getContactModelFormatted: ContactModel {
+    var formatted: ContactModel {
         .init(name: name,
               cpf: cpf.formatCPF(),
               cnpj: cnpj,

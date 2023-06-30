@@ -15,7 +15,7 @@ extension WeakVarProxy: LoadingView where T: LoadingView {
 }
 
 extension WeakVarProxy: ProfileView where T: ProfileView {
-    func updateProfileView(viewModel: ProfileViewModel) {
+    func updateProfileView(viewModel: PersonHeaderViewModel) {
         instance?.updateProfileView(viewModel: viewModel)
     }
 }
@@ -27,7 +27,7 @@ extension WeakVarProxy: BalanceView where T: BalanceView {
 }
 
 extension WeakVarProxy: CardsView where T: CardsView {
-    func updateCardsView(cardsModel: UserCards) {
+    func updateCardsView(cardsModel: [Card]) {
         instance?.updateCardsView(cardsModel: cardsModel)
     }
 }
@@ -51,7 +51,7 @@ extension WeakVarProxy: UpdateProfileView where T: UpdateProfileView {
 }
 
 extension WeakVarProxy: UpdateCardView where T: UpdateCardView {
-    func update(userCardModel: UserCard) {
+    func update(userCardModel: Card) {
         instance?.update(userCardModel: userCardModel)
     }
 }
@@ -71,5 +71,11 @@ extension WeakVarProxy: UpdateBalanceView where T: UpdateBalanceView {
 extension WeakVarProxy: ContactListDataSource where T: ContactListDataSource {
     func updateList(list: [ContactModel]) {
         instance?.updateList(list: list)
+    }
+}
+
+extension WeakVarProxy: UpdateHomeListCellsProtocol where T: UpdateHomeListCellsProtocol {
+    func updateHomeCellsWith(homeList: [HomeListCellType]) {
+        instance?.updateHomeCellsWith(homeList: homeList)
     }
 }
