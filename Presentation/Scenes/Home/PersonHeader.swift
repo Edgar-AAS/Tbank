@@ -1,7 +1,7 @@
 import UIKit
 
 public protocol PersonHeaderDelegateProtocol: AnyObject {
-    func profileButtonDidTapped()
+    func profileImageViewDidTapped()
 }
 
 public final class PersonHeaderCell: UITableViewCell {
@@ -24,6 +24,8 @@ public final class PersonHeaderCell: UITableViewCell {
         imageView.tintColor = Colors.secundaryColor
         imageView.image = UIImage(systemName: "person.circle")
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 32
+        imageView.layer.masksToBounds = true
         imageView.isUserInteractionEnabled = true
         return imageView
     }()
@@ -31,7 +33,6 @@ public final class PersonHeaderCell: UITableViewCell {
     lazy var userNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.minimumScaleFactor = 0.5
         label.adjustsFontSizeToFitWidth = true
         label.textColor = Colors.offWhiteColor
         return label
@@ -45,12 +46,6 @@ public final class PersonHeaderCell: UITableViewCell {
     }()
     
     private lazy var horizontalStack = makeHorizontalStack(with: [profileImageView, userNameLabel, notificationButton], spacing: 10)
-    
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
-        profileImageView.layer.masksToBounds = true
-    }
     
     lazy var headerView: UIView = {
         let view = UIView()
@@ -69,27 +64,24 @@ public final class PersonHeaderCell: UITableViewCell {
     }
     
     @objc private func profileImageViewTapped() {
-        delegate?.profileButtonDidTapped()
+        delegate?.profileImageViewDidTapped()
     }
 }
 
 extension PersonHeaderCell: CodeView {
     func buildViewHierarchy() {
-        addSubview(profileImageView)
-        addSubview(userNameLabel)
-        addSubview(notificationButton)
-        addSubview(horizontalStack)
+        contentView.addSubview(horizontalStack)
     }
     
     func setupConstrains() {
         profileImageView.size(size: .init(width: CircularButtonSize.medium, height: CircularButtonSize.medium))
         
         horizontalStack.fillConstraints(
-            top: safeAreaLayoutGuide.topAnchor,
-            leading: leadingAnchor,
-            trailing: trailingAnchor,
-            bottom: bottomAnchor,
-            padding: .init(top: 10, left: 20, bottom: 10, right: 16)
+            top: contentView.topAnchor,
+            leading: contentView.leadingAnchor,
+            trailing: contentView.trailingAnchor,
+            bottom: contentView.bottomAnchor,
+            padding: .init(top: 16, left: 20, bottom: 20, right: 20)
         )
     }
     

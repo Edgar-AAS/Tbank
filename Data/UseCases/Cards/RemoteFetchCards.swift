@@ -1,7 +1,7 @@
 import Foundation
 import Domain
 
-public class RemoteFetchCards: FetchUserCards {
+public class RemoteFetchCards: FetchCardList {
     private let url: URL
     private let httpGetClient: HttpGetClient
 
@@ -10,7 +10,7 @@ public class RemoteFetchCards: FetchUserCards {
         self.httpGetClient = httpGetClient
     }
 
-    public func fetch(completion: @escaping (FetchUserCards.Result) -> Void) {
+    public func fetch(completion: @escaping (FetchCardList.Result) -> Void) {
         httpGetClient.get(to: url, completion: { [weak self] result in
             guard self != nil else { return }
             switch result {

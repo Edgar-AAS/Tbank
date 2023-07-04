@@ -54,11 +54,11 @@ final class DigitalCardCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        cardNumberView.layer.cornerRadius = cardNumberView.frame.height / 2
-        cardNumberView.clipsToBounds = true
+        cardNumberView.makeCornerRadius()
     }
     
-    func setupCell(with viewModel: CardViewModel) {
+    func configureCell(with cardModel: Card) {
+        let viewModel = cardModel.getDigitalCardFormmated
         cardNameLabel.text = viewModel.name
         cardNumberLabel.text = viewModel.cardNumber
         cardExpirationLabel.text = viewModel.cardExpirationDate

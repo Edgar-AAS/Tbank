@@ -16,38 +16,33 @@ public class CardsViewController: UIViewController, CardsViewProtocol {
         
     public override func loadView() {
         super.loadView()
-        cardView = CardsScreenView(delegate: self)
+        cardView = CardsScreenView()
         cardView?.setupTableViewProtocols(delegate: self, dataSource: self)
         view = cardView
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.fetchCards()
         removeBackButtonTitle()
+        presenter?.fetchCardsList()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: true)
         super.viewWillAppear(animated)
+        showNavigationBar()
+     
         if isNeedUpdate {
-            presenter?.fetchCards()
+            presenter?.fetchCardsList()
             isNeedUpdate = false
         }
     }
 }
 
-extension CardsViewController: CardsView {
-    public func updateCardsView(cardsModel: [Card]) {
-        virtualCards = cardsModel.filter({ $0.isVirtual == true })
-        physicalCards = cardsModel.filter({ $0.isVirtual == false })
+extension CardsViewController: UpdateCardListCells {
+    public func updateCardsList(cardListSource: CardListSource) {
+        self.virtualCards = cardListSource.virtualCards
+        self.physicalCards = cardListSource.physicalCards
         cardView?.myCardsTableView.reloadData()
-    }
-}
-
-extension CardsViewController: CardsScreenViewDelegateProtocol {
-    func closeButtonDidTapped() {
-        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -57,7 +52,7 @@ extension CardsViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == .zero {
             return virtualCards.count + 1
         } else {
             return physicalCards.count
@@ -65,7 +60,7 @@ extension CardsViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        if indexPath.section == .zero {
             if indexPath.row <= virtualCards.count - 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CardListCell.reuseIdentifier, for: indexPath) as? CardListCell
                 cell?.setupCell(userCard: virtualCards[indexPath.row])
@@ -102,20 +97,6 @@ extension CardsViewController {
         return titleHeader
     }
     
-    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if section == 1 {
-            return nil
-        } else {
-            let view = UIView()
-            view.backgroundColor = Colors.secundaryColor
-            return view
-        }
-    }
-    
-    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.5
-    }
-    
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
@@ -123,11 +104,13 @@ extension CardsViewController {
 
 extension CardsViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let index = IndexPath(row: virtualCards.count, section: 0)
-        if indexPath == index {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let lastRow = IndexPath(row: virtualCards.count, section: 0)
+        if indexPath == lastRow {
             presenter?.routeToCardCreationFlow()
         } else {
-            presenter?.routeToCardInformationViewWith(indexPath: indexPath)
+            presenter?.routeToCardInformationViewWith(section: indexPath.section, row: indexPath.row)
         }
     }
 }

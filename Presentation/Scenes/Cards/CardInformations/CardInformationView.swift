@@ -29,7 +29,7 @@ public class CardInformationView: UIView {
     private lazy var cardNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 30)
-        label.text = "Picareta"
+        label.text = "Nome do cartão"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = Colors.offWhiteColor
         label.textAlignment = .left
@@ -182,14 +182,14 @@ public class CardInformationView: UIView {
     private lazy var expirationDateAndCVCHorizontalStack = horizontalStack(with: [expirationDateView, cvcView], spacing: 32)
     private lazy var cardMarkAndCardFunctionHorizontalStack = horizontalStack(with: [cardMarkView, cardFunctionView], spacing: 32)
     
-    func updateUI(userCardModel: Card) {
-        let cardInformationFormatter = userCardModel.getCardInformationFormatter
-        cardNameLabel.text = cardInformationFormatter.name
-        numberContentLabel.text = cardInformationFormatter.cardNumber
-        expirationDateContentlabel.text = cardInformationFormatter.cardExpirationDate
-        cvcContentLabel.text = cardInformationFormatter.cvc
-        cardMarkContentLabel.text = cardInformationFormatter.cardFlag
-        cardFunctionContentLabel.text = cardInformationFormatter.cardFunction
+    func configureUI(with userCardModel: Card) {
+        let viewModel = userCardModel.getCardInformationFormatter
+        cardNameLabel.text = viewModel.name
+        numberContentLabel.text = viewModel.cardNumber
+        expirationDateContentlabel.text = viewModel.cardExpirationDate
+        cvcContentLabel.text = viewModel.cvc
+        cardMarkContentLabel.text = viewModel.cardFlag
+        cardFunctionContentLabel.text = viewModel.cardFunction
     }
 }
 

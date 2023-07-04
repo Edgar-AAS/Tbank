@@ -2,33 +2,27 @@ import Foundation
 import Domain
 
 public class ProfilePresenter {
-    public let fetchUserData: FetchUserDataResources
-    public let updateProfileView: UpdateProfileView
-    public let alertView: AlertView
+    public let profileInfoModel: ProfileInfoModel
+    public weak var updateProfileListCells: UpdateProfileListCellsProtocol?
     
-    public init(fetchUserData: FetchUserDataResources, updatePersonTableView: UpdateProfileView, alertView: AlertView) {
-        self.fetchUserData = fetchUserData
-        self.updateProfileView = updatePersonTableView
-        self.alertView = alertView
+    public init(profileInfoModel: ProfileInfoModel, updateProfileListCells: UpdateProfileListCellsProtocol) {
+        self.profileInfoModel = profileInfoModel
+        self.updateProfileListCells = updateProfileListCells
     }
 }
 
 extension ProfilePresenter: ViewToProfilePresenterProtocol {
-    public func fetchUser() {
-        fetchUserData.fetch { [weak self] (result) in
-            guard self != nil else { return }
-            switch result {
-            case .success(let userData):
-                let data = userData
-                let userDataViewModel = UserDataViewModel(username: data.username,
-                                                          bankBranch: data.bankBranch,
-                                                          bankAccountNumber: data.bankAccountNumber.formatBankAccountNumber(),
-                                                          bankNumber: data.bankNumber,
-                                                          corporateName: data.corporateName)
-                self?.updateProfileView.updateWith(viewModel: userDataViewModel)
-            case .failure:
-                self?.alertView.showMessage(viewModel: AlertViewModel(title: "Error ao carregar dados.", message: "tente novamente em instantes"))
-            }
-        }
+    public func fetchPersonalUserInfo() {
+        let profileInfoViewModel = ProfileInfoViewModel(username: profileInfoModel.userName,
+                                                    bankBranch: profileInfoModel.bankBranch,
+                                                    bankAccountNumber: profileInfoModel.bankAccountNumber.formatBankAccountNumber(),
+                                                    bankNumber: profileInfoModel.bankNumber,
+                                                    corporateName: profileInfoModel.corporateName)
+            
+        let personInfos = ["Meu banco", "Meu número", "Meu email", "Dados pessoais", "Tarifas e taxas", "Meus endereços"]
+        let profileDataViewModels = personInfos.map( { PersonalDataViewModel(infoName: $0, infoValue: "123") })
+                
+        updateProfileListCells?.updateProfileCellsWith(profileListDataSource: profileDataViewModels,
+                                                       personalHeaderDataSource: profileInfoViewModel)
     }
 }

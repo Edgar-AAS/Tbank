@@ -3,8 +3,8 @@ import Domain
 
 public protocol ViewToPresenterCardsProtocol {
     func routeToCardCreationFlow()
-    func routeToCardInformationViewWith(indexPath: IndexPath)
-    func fetchCards()
+    func routeToCardInformationViewWith(section: Int, row: Int)
+    func fetchCardsList()
 }
 
 public protocol CardRoutingLogic {

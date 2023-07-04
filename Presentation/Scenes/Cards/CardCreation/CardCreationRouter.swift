@@ -5,7 +5,9 @@ public class CardCreationRouter {
     weak var cardCreationController: UIViewController?
     public var cardConfigurationFactory: () -> CardConfigurationViewController
     
-    public init(cardCreationController: UIViewController, cardConfigurationFactory: @escaping () -> CardConfigurationViewController) {
+    public init(cardCreationController: UIViewController,
+                cardConfigurationFactory: @escaping () -> CardConfigurationViewController)
+    {
         self.cardCreationController = cardCreationController
         self.cardConfigurationFactory = cardConfigurationFactory
     }

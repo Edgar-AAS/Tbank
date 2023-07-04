@@ -20,7 +20,7 @@ extension Card {
     
     var getCardInformationFormatter: CardInformationFormatter {
         return CardInformationFormatter(
-            name: name,
+            name: name.uppercased(),
             cardFlag: cardFlag,
             cardNumber: cardNumber.formatString(),
             cardExpirationDate: getExpirationDate,

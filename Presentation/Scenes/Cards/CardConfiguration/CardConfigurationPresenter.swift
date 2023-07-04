@@ -8,7 +8,12 @@ public class CardConfigurationPresenter {
     public let loadingView: LoadingView
     public let router: CardConfigurationRouterLogic
     
-    public init(validation: Validation, addDigitalCard: AddCard, alertView: AlertView, loadingView: LoadingView, router: CardConfigurationRouterLogic) {
+    public init(validation: Validation,
+                addDigitalCard: AddCard,
+                alertView: AlertView,
+                loadingView: LoadingView,
+                router: CardConfigurationRouterLogic)
+    {
         self.validation = validation
         self.addDigitalCard = addDigitalCard
         self.alertView = alertView
@@ -21,8 +26,10 @@ public class CardConfigurationPresenter {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: message))
         } else {
             loadingView.isLoading(viewModel: LoadingViewModel(isLoading: true))
+            
             guard let name = cardConfigurationRequest.name else { return }
-            let digitalCard = CardGenerator().createDigitalCardWith(name: name)
+            let digitalCard = CardGenerator().createDigitalCard(with: name)
+            
             addDigitalCard.add(cardModel: digitalCard) { [weak self] (result) in
                 guard self != nil else { return }
                 switch result {
@@ -34,7 +41,9 @@ public class CardConfigurationPresenter {
                 case .failure(let error):
                     switch error {
                     case .unexpected:
-                        self?.alertView.showMessage(viewModel: AlertViewModel(title: "Falha na criação do cartão digital", message: "Tente novamente em instantes."))
+                        self?.loadingView.isLoading(viewModel: LoadingViewModel(isLoading: false))
+                        self?.alertView.showMessage(viewModel: AlertViewModel(title: "Falha na criação do cartão digital",
+                                                                              message: "Tente novamente em instantes."))
                     default: return
                     }
                 }

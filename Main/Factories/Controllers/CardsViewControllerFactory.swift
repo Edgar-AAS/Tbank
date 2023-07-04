@@ -4,10 +4,10 @@ import Presentation
 import Infra
 import Data
 
-func makeCardsViewController(fethUserCards: FetchUserCards) -> CardsViewController {
+func makeCardsViewController(fetchCardList: FetchCardList) -> CardsViewController {
     let viewController = CardsViewController()
     let router = CardsRouter(viewController: viewController, cardCreationFactory: makeCardCreationController, cardInformationFactory: makeCardInformationFactory)
-    let presenter = CardListPresenter(remoteFetchCards: fethUserCards, cardsView: WeakVarProxy(viewController), router: router)
+    let presenter = CardListPresenter(fetchCardList: fetchCardList, cardsView: WeakVarProxy(viewController), router: router)
     viewController.presenter = presenter
     return viewController
 }

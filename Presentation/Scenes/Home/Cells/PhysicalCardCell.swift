@@ -13,7 +13,7 @@ final class PhysicalCardCell: UICollectionViewCell {
         fatalError()
     }
     
-    lazy var myBalanceLabel: UILabel = {
+    private lazy var myBalanceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 22)
         label.text = "Saldo"
@@ -21,39 +21,39 @@ final class PhysicalCardCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var balanceCardLabel: UILabel = {
+    private lazy var balanceCardLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.textColor = Colors.secundaryColor
         return label
     }()
     
-    lazy var cardMarkImage: UIImageView = {
+    private lazy var cardMarkImage: UIImageView = {
         let cardMarkImage = UIImage(named: "icon-mastercard-64x64")
         let imageView = UIImageView(image: cardMarkImage)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    lazy var cardNumberView: UIView = {
+    private lazy var cardNumberView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(hexString: "051E3A")
         return view
     }()
 
-    lazy var cardMarkView: UIView = {
+    private lazy var cardMarkView: UIView = {
         let view = UIView()
         return view
     }()
     
-    lazy var cardNumberLabel: UILabel = {
+    private lazy var cardNumberLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = Colors.offWhiteColor
         return label
     }()
     
-    lazy var cardExpirationLabel: UILabel = {
+    private lazy var cardExpirationLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = Colors.offWhiteColor
@@ -62,14 +62,14 @@ final class PhysicalCardCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        cardNumberView.layer.cornerRadius = cardNumberView.frame.height / 2
-        cardNumberView.clipsToBounds = true
+        cardNumberView.makeCornerRadius()
     }
     
-    func setupCell(with cardModel: CardViewModel) {
-        balanceCardLabel.text = cardModel.balance
-        cardNumberLabel.text = cardModel.cardNumber
-        cardExpirationLabel.text = cardModel.cardExpirationDate
+    func configureCell(with cardModel: Card) {
+        let viewModel = cardModel.getPhysicalFormmated
+        balanceCardLabel.text = viewModel.balance
+        cardNumberLabel.text = viewModel.cardNumber
+        cardExpirationLabel.text = viewModel.expirationDate
     }
 }
 

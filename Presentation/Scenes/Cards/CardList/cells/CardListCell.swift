@@ -19,11 +19,10 @@ class CardListCell: UITableViewCell {
     }
     
     private func configurate() {
-        selectionStyle = .none
         detailTextLabel?.textColor = Colors.secundaryColor
         textLabel?.textColor = .white
         imageView?.image = UIImage(named: "yellowImageCard")
-        backgroundColor = Colors.primaryColor
+        backgroundColor = UIColor(hexString: "0A2647").withAlphaComponent(0.7)
         accessoryType = .disclosureIndicator
     }
 }

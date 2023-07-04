@@ -2,29 +2,36 @@ import Foundation
 import Domain
 
 public class CardListPresenter {
-    private let cardsView: CardsView
+    private let cardsView: UpdateCardListCells
     private let router: CardRoutingLogic
-    private let remoteFetchCards: FetchUserCards
+    private let fetchCardList: FetchCardList
     private var userCards: [Card]?
     private var physicalCards: [Card]?
     private var virtualCards: [Card]?
     
-    public init(remoteFetchCards: FetchUserCards, cardsView: CardsView, router: CardRoutingLogic) { 
-        self.remoteFetchCards = remoteFetchCards
+    public init(fetchCardList: FetchCardList,
+                cardsView: UpdateCardListCells,
+                router: CardRoutingLogic)
+    {
+        self.fetchCardList = fetchCardList
         self.cardsView = cardsView
         self.router = router
     }
 }
 
 extension CardListPresenter: ViewToPresenterCardsProtocol {
-    public func fetchCards() {
-        remoteFetchCards.fetch { [weak self] (result) in
+    public func fetchCardsList() {
+        fetchCardList.fetch { [weak self] (result) in
             guard self != nil else { return }
             switch result {
-            case .success(let userCards):
-                self?.physicalCards = userCards.filter({ $0.isVirtual == false })
-                self?.virtualCards = userCards.filter({ $0.isVirtual == true })
-                self?.cardsView.updateCardsView(cardsModel: userCards)
+            case .success(let cards):
+                self?.physicalCards = cards.filter({ $0.isVirtual == false })
+                self?.virtualCards = cards.filter({ $0.isVirtual == true })
+                
+                if let physicalCards = self?.physicalCards, let virtualCards = self?.virtualCards {
+                    let cardList = CardListSource(physicalCards: physicalCards, virtualCards: virtualCards)
+                    self?.cardsView.updateCardsList(cardListSource: cardList)
+                }
             case .failure: return
             }
         }
@@ -34,12 +41,12 @@ extension CardListPresenter: ViewToPresenterCardsProtocol {
         router.goToCardCreationNavigation()
     }
     
-    public func routeToCardInformationViewWith(indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            guard let virtualCard = virtualCards?[indexPath.row] else { return }
+    public func routeToCardInformationViewWith(section: Int, row: Int) {
+        if section == .zero {
+            guard let virtualCard = virtualCards?[row] else { return }
             router.goToCardInformationScreenWith(userCard: virtualCard)
-        } else if indexPath.section == 1 {
-            guard let physicalCard = physicalCards?[indexPath.row] else { return }
+        } else if section == 1 {
+            guard let physicalCard = physicalCards?[row] else { return }
             router.goToCardInformationScreenWith(userCard: physicalCard)
         }
     }

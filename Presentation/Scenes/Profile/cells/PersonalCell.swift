@@ -1,17 +1,22 @@
 import UIKit
 
-class ProfileCell: UITableViewCell {
-    static let reuseIdentifier = String(describing: ProfileCell.self)
+class PersonalCell: UITableViewCell {
+    static let reuseIdentifier = String(describing: PersonalCell.self)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
-        configurateCell()
+        setupUI()
     }
     
-    private func configurateCell() {
+    private func setupUI() {
         backgroundColor = Colors.primaryColor
         accessoryType = .disclosureIndicator
         textLabel?.textColor = Colors.offWhiteColor
+    }
+    
+    func configureCellWith(viewModel: PersonalDataViewModel) {
+        textLabel?.text = viewModel.infoName
+        detailTextLabel?.text = viewModel.infoValue
     }
     
     required init?(coder: NSCoder) {

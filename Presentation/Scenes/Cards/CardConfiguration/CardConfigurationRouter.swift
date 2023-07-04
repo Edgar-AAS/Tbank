@@ -14,11 +14,6 @@ public class CardConfigurationRouter {
 
 extension CardConfigurationRouter: CardConfigurationRouterLogic {
     public func goToCardSuccessScreen(userCardModel: Card) {
-        if let controller = viewController {
-            DispatchQueue.main.async  { [weak self] in
-                guard let self = self else { return }
-                controller.navigationController?.pushViewController(self.cardSuccessFactory(userCardModel), animated: true)
-            }
-        }
+        viewController?.navigationController?.pushViewController(cardSuccessFactory(userCardModel), animated: true)
     }
 }

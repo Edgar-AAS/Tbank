@@ -14,16 +14,16 @@ public final class RemoteValidateBalance: ValidateBalance {
         httpClient.get(to: url) { [weak self] result in
             guard self != nil else { return }
             switch result {
-            case .success(let data):
-                if let model: UserDataModel = data?.toModel() {
-                    if enteredValue != .zero {
-                        if model.totalBalance >= enteredValue {
-                            completion(.authorized)
-                        } else {
-                            completion(.unauthorized)
-                        }
-                    } else { return }
-                }
+            case .success(let data): break
+//                if let model: UserDataModel = data?.toModel() {
+//                    if enteredValue != .zero {
+//                        if model.totalBalance >= enteredValue {
+//                            completion(.authorized)
+//                        } else {
+//                            completion(.unauthorized)
+//                        }
+//                    } else { return }
+//                }
             case .failure: return
             }
         }

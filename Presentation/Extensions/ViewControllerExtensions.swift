@@ -2,9 +2,16 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    func getDocumentsDirectory() -> URL {
-        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        return url
+    func disableInteractivePopGesture() {
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+    
+    func showNavigationBar() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    func hideNavigationBar() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     func hideKeyboardOnTap() {

@@ -72,6 +72,11 @@ extension UIView {
         }
     }
     
+    func makeCornerRadius() {
+        layer.cornerRadius = frame.height / 2
+        clipsToBounds = true
+    }
+    
     func makeHorizontalStack(with views: [UIView], spacing: CGFloat) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: views)
         stackView.axis = .horizontal

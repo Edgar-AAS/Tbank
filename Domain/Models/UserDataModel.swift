@@ -1,17 +1,26 @@
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let contatcModel = try? JSONDecoder().decode(ContatcModel.self, from: jsonData)
+
 import Foundation
 
-// MARK: - UserDataModel
-public struct UserDataModel: Model {
+
+public typealias UserData = [ContatcModelElement]
+
+// MARK: - ContatcModelElement
+public struct ContatcModelElement: Model {
     public let username: String
     public let totalBalance: Double
     public let balanceIsHidden, isNotifying: Bool
     public let bankBranch, bankAccountNumber, bankNumber, corporateName: String
-    public let cards: [Card]
+    public let adresses: [Adress]
     public let services: [Service]
     public let resources: [Resource]
-    public let adresses: [Adress]
+    public let id: String
+    public let cards: [Card]
 
-    public init(username: String, totalBalance: Double, balanceIsHidden: Bool, isNotifying: Bool, bankBranch: String, bankAccountNumber: String, bankNumber: String, corporateName: String, cards: [Card], services: [Service], resources: [Resource], adresses: [Adress]) {
+    public init(username: String, totalBalance: Double, balanceIsHidden: Bool, isNotifying: Bool, bankBranch: String, bankAccountNumber: String, bankNumber: String, corporateName: String, adresses: [Adress], services: [Service], resources: [Resource], id: String, cards: [Card]) {
         self.username = username
         self.totalBalance = totalBalance
         self.balanceIsHidden = balanceIsHidden
@@ -20,10 +29,11 @@ public struct UserDataModel: Model {
         self.bankAccountNumber = bankAccountNumber
         self.bankNumber = bankNumber
         self.corporateName = corporateName
-        self.cards = cards
+        self.adresses = adresses
         self.services = services
         self.resources = resources
-        self.adresses = adresses
+        self.id = id
+        self.cards = cards
     }
 }
 
@@ -48,15 +58,16 @@ public struct Card: Model {
     public let cardFlag: String
     public let cardTag: Int
     public let cardBrandImageURL, cardNumber, cardExpirationDate, cardFunction: String
-    public let cvc, id, name: String
+    public let cvc, name, id, userID: String
 
     enum CodingKeys: String, CodingKey {
         case isVirtual, balance, cardFlag, cardTag
         case cardBrandImageURL = "cardBrandImageUrl"
-        case cardNumber, cardExpirationDate, cardFunction, cvc, id, name
+        case cardNumber, cardExpirationDate, cardFunction, cvc, name, id
+        case userID = "userId"
     }
 
-    public init(isVirtual: Bool, balance: Double, cardFlag: String, cardTag: Int, cardBrandImageURL: String, cardNumber: String, cardExpirationDate: String, cardFunction: String, cvc: String, id: String, name: String) {
+    public init(isVirtual: Bool, balance: Double, cardFlag: String, cardTag: Int, cardBrandImageURL: String, cardNumber: String, cardExpirationDate: String, cardFunction: String, cvc: String, name: String, id: String, userID: String) {
         self.isVirtual = isVirtual
         self.balance = balance
         self.cardFlag = cardFlag
@@ -66,8 +77,9 @@ public struct Card: Model {
         self.cardExpirationDate = cardExpirationDate
         self.cardFunction = cardFunction
         self.cvc = cvc
-        self.id = id
         self.name = name
+        self.id = id
+        self.userID = userID
     }
 }
 

@@ -24,31 +24,30 @@ public final class CardInformationViewController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        showNavigationBar()
     }
     
     private func configurateView() {
-        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(backButtonTapped))
-        navigationItem.leftBarButtonItem = backButton
-        cardInformationView?.deleteCardButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = NavigationBackButton(target: self, action: #selector(backButtonTapped))
+        cardInformationView?.deleteCardButton.addTarget(self, action: #selector(deleteCardButtonTapped), for: .touchUpInside)
     }
     
     @objc private func backButtonTapped() {
         if let homeController = navigationController?.viewControllers.last(where: { $0 is HomeControllerProtocol }) {
-            if let state = (homeController as? HomeController)?.isOpenFromHome {
-                if state {
+            if let isOpenFromHome = (homeController as? HomeController)?.isOpenFromHome {
+                if isOpenFromHome {
                     (homeController as? HomeController)?.isOpenFromHome = false
                     presenter?.popToHomeController()
                 } else {
-                    presenter?.popToCardController()
+                    presenter?.popToCardListController()
                 }
             }
         }
     }
     
-    @objc private func deleteButtonTapped() {
+    @objc private func deleteCardButtonTapped() {
         guard let card = userCardModel else { return }
-        presenter?.removeCard(at: card.id)
+        presenter?.removeDigitalCard(at: card.id)
     }
 }
 
@@ -60,7 +59,7 @@ extension CardInformationViewController: CardInformationDelegate {
                 if let homeController = navigationController?.viewControllers.last(where: { $0 is HomeControllerProtocol }) {
                     (homeController as? HomeController)?.isNeedUpdateWithoutAnimation = true
                     (homeController as? HomeController)?.isNeedUpdateCard = false
-                    presenter?.popToCardController()
+                    presenter?.popToCardListController()
                 }
             } else {
                 if let homeController = navigationController?.viewControllers.last(where: { $0 is HomeControllerProtocol }) {
@@ -75,5 +74,6 @@ extension CardInformationViewController: CardInformationDelegate {
 extension CardInformationViewController: UpdateCardView {
     public func update(userCardModel: Card) {
         self.userCardModel = userCardModel
+        cardInformationView?.configureUI(with: userCardModel)
     }
 }

@@ -12,8 +12,8 @@ final class PixAreaDescriptionCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var pixAreaDescriptionLabel: UILabel = .descriptionLabel(titleText: "Área Pix",
-                                                                          subtitleText: "\nExperimente a liberdade do PIX: envie e receba pagamentos a qualquer hora, sem taxas!",
+    private lazy var pixAreaDescriptionLabel: UILabel = .descriptionLabel(titleText: Strings.pixAreaTitle,
+                                                                          subtitleText: Strings.pixAreaDescription,
                                                                           titleFontSize: 30,
                                                                           subtitleFontSize: 20,
                                                                           titleColor: Colors.offWhiteColor,

@@ -60,10 +60,15 @@ public class ProfileHeader: UIView {
         return label
     }()
     
-    func setupHeaderData(userData: UserDataViewModel) {
-        userNameLabel.text = userData.username
-        bankBranchAndAccountNumberLabel.attributedText = getBankBranchAndAcconuntNumberAttributedString(title1: "Agência", subtitle1: userData.bankBranch, title2: "Conta", subtitle2: userData.bankAccountNumber)
-        bankNumberAndCorporateNameLabel.attributedText = getbankNumberAndCorporateNameAttributedString(title1: "Banco", subtitle1: userData.bankNumber, subtitle2: userData.corporateName)
+    func configureHeaderWith(viewModel: ProfileInfoViewModel) {
+        userNameLabel.text = viewModel.username
+        bankBranchAndAccountNumberLabel.attributedText = getBankBranchAndAcconuntNumberAttributedString(title1: "Agência",
+                                                                                                        subtitle1: viewModel.bankBranch,
+                                                                                                        title2: "Conta",
+                                                                                                        subtitle2: viewModel.bankAccountNumber)
+        bankNumberAndCorporateNameLabel.attributedText = getbankNumberAndCorporateNameAttributedString(title1: "Banco",
+                                                                                                       subtitle1: viewModel.bankNumber,
+                                                                                                       subtitle2: viewModel.corporateName)
     }
     
     public override func layoutSubviews() {

@@ -1,7 +1,10 @@
 import UIKit
 
 public class CardConfigurationViewController: UIViewController {
-    public var cardConfigurationView: CardConfigurationView?
+    private lazy var cardConfigurationView: CardConfigurationView? = {
+        return view as? CardConfigurationView
+    }()
+    
     public var createDigitalCard: ((CardConfigurationRequest) -> (Void))?
     
     public override func loadView() {
@@ -14,24 +17,24 @@ public class CardConfigurationViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         removeBackButtonTitle()
-        cardConfigurationView?.cardNameTextField.becomeFirstResponder()
+        cardConfigurationView?.showKeyboard()
         hideKeyboardOnTap()
     }
 }
 
 extension CardConfigurationViewController: UITextFieldDelegate {
     public func textFieldDidChangeSelection(_ textField: UITextField) {
-        if textField.text?.count == 0 {
-            cardConfigurationView?.disableButton()
-        } else if textField.text?.count == 1 {
-            if let text = textField.text {
-                if text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                    cardConfigurationView?.disableButton()
-                    cardConfigurationView?.cardNameTextField.layer.borderColor = Colors.offWhiteColor.cgColor
-                } else {
-                    cardConfigurationView?.enableButton()
-                    cardConfigurationView?.cardNameTextField.layer.borderColor = Colors.secundaryColor.cgColor
-                }
+        changeButtonState(from: textField)
+    }
+    
+    private func changeButtonState(from textField: UITextField) {
+        if let text = textField.text {
+            if text.count == .zero {
+                cardConfigurationView?.disableButton()
+            } else if text.count == 1 {
+                cardConfigurationView?.enableButton()
+            } else {
+                return
             }
         }
     }
@@ -39,28 +42,21 @@ extension CardConfigurationViewController: UITextFieldDelegate {
 
 extension CardConfigurationViewController: LoadingView {
     public func isLoading(viewModel: LoadingViewModel) {
-        if viewModel.isLoading {
-            disableScreen()
+        changeViewState(isEnable: !viewModel.isLoading)
+    }
+    
+    private func changeViewState(isEnable: Bool) {
+        let alpha: CGFloat = isEnable ? 1.0 : 0.5
+        view.isUserInteractionEnabled = isEnable ? true : false
+        self.navigationController?.navigationBar.isUserInteractionEnabled = isEnable ? true : false
+        self.navigationController?.navigationBar.alpha = alpha
+        self.view.alpha = alpha
+        
+        if isEnable {
+            self.cardConfigurationView?.stopLoadingAnimate()
         } else {
-            enableScreen()
+            self.cardConfigurationView?.startLoadingAnimate()
         }
-    }
-    
-    private func disableScreen() {
-        self.view.isUserInteractionEnabled = false
-        self.navigationController?.navigationBar.isUserInteractionEnabled = false
-        self.cardConfigurationView?.loadingIndicator.startAnimating()
-        self.cardConfigurationView?.makeDigitalCardButton.alpha = 0.5
-        self.navigationController?.navigationBar.alpha = 0.5
-        self.view.alpha = 0.5
-    }
-    
-    private func enableScreen() {
-        self.view.isUserInteractionEnabled = true
-        self.cardConfigurationView?.loadingIndicator.stopAnimating()
-        self.cardConfigurationView?.makeDigitalCardButton.alpha = 1
-        self.navigationController?.navigationBar.alpha = 1
-        self.view.alpha = 1
     }
 }
 
@@ -72,7 +68,7 @@ extension CardConfigurationViewController: AlertView {
 
 extension CardConfigurationViewController: CardConfigurationViewDelegate {
     public func digitalCardButtonDidTapped() {
-        let cardName = cardConfigurationView?.cardNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let cardName = cardConfigurationView?.getTexFieldWithoutWhiteSpace()
         let configurationRequest = CardConfigurationRequest(name: cardName)
         createDigitalCard?(configurationRequest)
     }

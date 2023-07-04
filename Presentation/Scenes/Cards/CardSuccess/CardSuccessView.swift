@@ -26,13 +26,13 @@ public class CardSuccessView: UIView {
         return view
     }()
     
-    lazy var successCardImageView: UIImageView = {
+    private lazy var successCardImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "inputCard-logo")
         return imageView
     }()
     
-    lazy var successfullyCreatedCardMessageTitleLabel: UILabel = {
+    private lazy var successfullyCreatedCardMessageTitleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -43,7 +43,7 @@ public class CardSuccessView: UIView {
         return label
     }()
     
-    lazy var successfullyCreatedCardMessageDescriptionLabel: UILabel = {
+    private lazy var successfullyCreatedCardMessageDescriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -54,7 +54,7 @@ public class CardSuccessView: UIView {
         return label
     }()
     
-    lazy var cardAcessbutton: UIButton = {
+   private lazy var cardAcessbutton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = Colors.secundaryColor
         button.setTitle("Acessar cartão", for: .normal)

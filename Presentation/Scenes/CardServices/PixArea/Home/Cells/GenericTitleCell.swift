@@ -12,25 +12,25 @@ final class GenericTitleCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var sendTitleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
         label.textColor = Colors.offWhiteColor
         return label
     }()
     
-    func setTitleForCell(text: String) {
-        sendTitleLabel.text = text
+    func setTitleForCell(textType: CellTitleType) {
+        titleLabel.text = textType.rawValue
     }
 }
 
 extension GenericTitleCell: CodeView {
     func buildViewHierarchy() {
-        contentView.addSubview(sendTitleLabel)
+        contentView.addSubview(titleLabel)
     }
     
     func setupConstrains() {
-        sendTitleLabel.fillConstraints(
+        titleLabel.fillConstraints(
             top: contentView.topAnchor,
             leading: contentView.leadingAnchor,
             trailing: contentView.trailingAnchor,

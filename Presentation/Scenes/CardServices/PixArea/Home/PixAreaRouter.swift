@@ -17,7 +17,7 @@ extension PixAreaRouter: PixAreaRoutingLogic {
         case 0:
             viewController?.navigationController?.pushViewController(transferViewControllerFactory(), animated: true)
         default:
-            print("falha")
+            print("Serviço não implementado")
         }
     }
 }

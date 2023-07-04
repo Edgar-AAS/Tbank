@@ -2,22 +2,23 @@ import UIKit
 import Domain
 
 public class CardSuccessViewController: UIViewController {
-    public var cardView: CardSuccessView?
+    private lazy var cardView: CardSuccessView? = {
+        return view as? CardSuccessView
+    }()
+    
     public var presenter: ViewToPresenterCardSuccessProtocol?
     
     public override func loadView() {
         super.loadView()
-        cardView = CardSuccessView(self)
-        view = cardView
+        view = CardSuccessView(self)
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         removeBackButtonTitle()
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        
-        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(backButtonTapped))
-        navigationItem.leftBarButtonItem = backButton
+        disableInteractivePopGesture()
+    
+        navigationItem.leftBarButtonItem = NavigationBackButton(target: self, action: #selector(backButtonTapped))
         
         if let cardViewController = navigationController?.viewControllers.last(where: { $0 is CardsViewProtocol}) {
             (cardViewController as? CardsViewController)?.isNeedUpdate = true

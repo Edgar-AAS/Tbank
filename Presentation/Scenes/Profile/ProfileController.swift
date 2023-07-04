@@ -2,35 +2,27 @@ import UIKit
 import Domain
 
 public final class ProfileController: UITableViewController {
-    public override init(style: UITableView.Style = .grouped) {
-        super.init(style: .grouped)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     public var header: ProfileHeader?
+    
     public var presenter: ViewToProfilePresenterProtocol?
-    public var userDataViewModel: UserDataModel?
+    private var personalDataViewModel: [PersonalDataViewModel] = []
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupTableViewProperties()
-        configurateProfileHeader()
-        presenter?.fetchUser()
+        setupHeader()
+        presenter?.fetchPersonalUserInfo()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        showNavigationBar()
     }
     
-    private func configurateProfileHeader() {
+    private func setupHeader() {
         header = ProfileHeader(self)
         header?.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: HeaderHeights.large)
-        let path = getDocumentsDirectory().appendingPathComponent(FileManagerPaths.userImage).path
-        header?.userPhotoImageView.loadImageWith(path: path)
+        header?.userPhotoImageView.loadImageWith(path: FileManagerPaths.getPathFor(pathType: .userImage))
         tableView.tableHeaderView = header
     }
     
@@ -63,10 +55,13 @@ public final class ProfileController: UITableViewController {
     
     private func setupTableViewProperties() {
         tableView.showsVerticalScrollIndicator = false
-        tableView.register(ProfileCell.self, forCellReuseIdentifier: ProfileCell.reuseIdentifier)
+        tableView.register(PersonalCell.self, forCellReuseIdentifier: PersonalCell.reuseIdentifier)
         tableView.backgroundColor = Colors.primaryColor
     }
-    
+}
+
+//MARK: - UITableViewDataSource
+extension ProfileController {
     public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -76,28 +71,42 @@ public final class ProfileController: UITableViewController {
         }
     }
     
-    let personInfos = ["Meu banco", "Meu número", "Meu email", "Dados pessoais", "Tarifas e taxas", "Meus endereços"]
-    
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCell.reuseIdentifier, for: indexPath) as? ProfileCell
-        cell?.textLabel?.text = personInfos[indexPath.row]
-        
-        return cell ?? UITableViewCell()
+        let cell: UITableViewCell
+        cell = getPersonalDataCell(with: personalDataViewModel, indexPath: indexPath)
+        return cell
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return personInfos.count
+        return personalDataViewModel.count
     }
 }
 
+//MARK: - ProfileController Cells
+extension ProfileController {
+    func getPersonalDataCell(with viewModel: [PersonalDataViewModel], indexPath: IndexPath) -> PersonalCell {
+        let personalCell = tableView.dequeueReusableCell(withIdentifier: PersonalCell.reuseIdentifier, for: indexPath) as! PersonalCell
+        personalCell.configureCellWith(viewModel: viewModel[indexPath.row])
+        return personalCell
+    }
+}
+
+//MARK: - UITableViewDelegate
+extension ProfileController {
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+//MARK: - UIImagePickerControllerDelegate
 extension ProfileController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[.editedImage] as?  UIImage {
             header?.userPhotoImageView.image = editedImage
-            writeImage(image: editedImage, imageName: FileManagerPaths.userImage)
+            writeImage(image: editedImage, imageName: FileManagerPaths.userImageName)
         } else if let originalImage = info[.originalImage] as? UIImage {
             header?.userPhotoImageView.image = originalImage
-            writeImage(image: originalImage, imageName: FileManagerPaths.userImage)
+            writeImage(image: originalImage, imageName: FileManagerPaths.userImageName)
         }
         
         if let homeController = navigationController?.viewControllers.last(where: { $0 is HomeControllerProtocol}) {
@@ -116,25 +125,16 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
     }
 }
 
-//TableViewDelegate
-extension ProfileController {
-    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+//MARK: - Update Profile cells
+extension ProfileController: UpdateProfileListCellsProtocol {
+    public func updateProfileCellsWith(profileListDataSource: [PersonalDataViewModel], personalHeaderDataSource: ProfileInfoViewModel) {
+        self.personalDataViewModel = profileListDataSource
+        self.header?.configureHeaderWith(viewModel: personalHeaderDataSource)
+        tableView.reloadData()
     }
 }
 
-extension ProfileController: UpdateProfileView {
-    public func updateWith(viewModel: UserDataViewModel) {
-        header?.setupHeaderData(userData: viewModel)
-    }
-}
-
-extension ProfileController: AlertView {
-    public func showMessage(viewModel: AlertViewModel) {
-        showAlertController(title: viewModel.title, message: viewModel.message)
-    }
-}
-
+//MARK: - Delegate actions
 extension ProfileController: ProfileHeaderDelegateProtocol {
     public func userPhotoImageDidTapped() {
         self.selectSource()

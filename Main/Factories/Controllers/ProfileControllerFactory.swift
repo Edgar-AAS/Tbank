@@ -4,9 +4,9 @@ import Data
 import Presentation
 import Infra
 
-func makeProfileController(fetchUserData: FetchUserDataResources) -> ProfileController {
-    let controller = ProfileController()
-    let presenter = ProfilePresenter(fetchUserData: fetchUserData, updatePersonTableView: WeakVarProxy(controller), alertView: WeakVarProxy(controller))
+func makeProfileController(profileInfoModel: ProfileInfoModel) -> ProfileController {
+    let controller = ProfileController(style: .grouped)
+    let presenter = ProfilePresenter(profileInfoModel: profileInfoModel, updateProfileListCells: controller)
     controller.presenter = presenter
     return controller
 }

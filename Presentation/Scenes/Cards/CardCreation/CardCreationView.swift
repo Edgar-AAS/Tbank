@@ -17,7 +17,6 @@ class CardCreationView: UIView {
     
     lazy var cardImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "card-logo"))
-        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -28,27 +27,31 @@ class CardCreationView: UIView {
         self.delegate = delegate
     }
     
-    lazy var descriptionVirtualCardLabel: UILabel = .descriptionLabel(titleText: "Simplifique suas compras com um cartão digital!", subtitleText: "\nDescubra os benefícios de um cartão seguro, prático e flexível para suas compras online e offline.", titleFontSize: 30, subtitleFontSize: 20, titleColor: Colors.offWhiteColor, subtitleColor: UIColor(hexString: "#cecece"))
+    private lazy var descriptionVirtualCardLabel: UILabel = .descriptionLabel(titleText: "Simplifique suas compras com um cartão digital!",
+                                                                      subtitleText: "\nDescubra os benefícios de um cartão seguro, prático e flexível para suas compras online e offline.",
+                                                                      titleFontSize: 30,
+                                                                      subtitleFontSize: 20,
+                                                                      titleColor: Colors.offWhiteColor,
+                                                                      subtitleColor: UIColor(hexString: "#cecece"))
     
-    lazy var makeVirtualCardButton: UIButton = {
+    private lazy var makeVirtualCardButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Criar cartão digital", for: .normal)
         button.backgroundColor = Colors.secundaryColor
         button.setTitleColor(Colors.primaryColor, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(makeVirtualCardButtonTapped), for: .touchUpInside)
         return button
     }()
     
-    @objc private func tap() {
+    @objc private func makeVirtualCardButtonTapped() {
         delegate?.cardCreationButtonDidTapped()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        makeVirtualCardButton.layer.cornerRadius = makeVirtualCardButton.frame.size.height / 2
-        makeVirtualCardButton.clipsToBounds = true
+        makeVirtualCardButton.makeCornerRadius()
     }
 }
 

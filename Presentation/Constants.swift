@@ -1,7 +1,6 @@
 import Foundation
 import UIKit
 
-
 enum HeaderHeights {
     static let small: CGFloat = 100
     static let medium: CGFloat = 200
@@ -14,8 +13,18 @@ enum CircularButtonSize {
     static let large: CGFloat = 120
 }
 
-enum FileManagerPaths {
-    static let userImage = "userImage"
+enum PathType: String {
+    case userImage = "userImage"
+}
+
+struct FileManagerPaths {
+    static let userImageName = "userImage"
+
+    static func getPathFor(pathType: PathType) -> String {
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(pathType.rawValue).path
+        return path
+    }
+     
 }
 
 enum Icons {

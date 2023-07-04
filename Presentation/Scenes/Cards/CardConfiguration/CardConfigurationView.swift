@@ -21,7 +21,7 @@ public class CardConfigurationView: UIView {
         self.delegate = delegate
     }
         
-    lazy var makeDigitalCardButton: UIButton = {
+    private lazy var makeDigitalCardButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .gray
         button.setTitle("Criar cartão digital", for: .normal)
@@ -32,8 +32,20 @@ public class CardConfigurationView: UIView {
         return button
     }()
     
-    @objc func cardTapped() {
+    @objc private func cardTapped() {
         delegate?.digitalCardButtonDidTapped()
+    }
+    
+    func showKeyboard() {
+        cardNameTextField.becomeFirstResponder()
+    }
+    
+    func startLoadingAnimate() {
+        loadingIndicator.startAnimating()
+    }
+    
+    func stopLoadingAnimate() {
+        loadingIndicator.stopAnimating()
     }
     
     func disableButton() {
@@ -44,21 +56,25 @@ public class CardConfigurationView: UIView {
     }
     
     func enableButton() {
-        let secundaryColor = Colors.secundaryColor
-        makeDigitalCardButton.backgroundColor = secundaryColor
+        makeDigitalCardButton.backgroundColor = Colors.secundaryColor
         makeDigitalCardButton.isUserInteractionEnabled = true
-        cardNameTextField.tintColor = secundaryColor
-        cardNameTextField.layer.borderColor =  secundaryColor.cgColor
+        cardNameTextField.tintColor = Colors.secundaryColor
+        cardNameTextField.layer.borderColor = Colors.secundaryColor.cgColor
     }
     
-    lazy var digitalCardTitle: UILabel = .descriptionLabel(titleText: "Dê um nome ao seu cartão digital!", subtitleText: "\nEscolha um nome que identifique facilmente o seu uso.", titleFontSize: 30, subtitleFontSize: 20, titleColor: Colors.offWhiteColor, subtitleColor: UIColor(hexString: "#cecece"))
+    func getTexFieldWithoutWhiteSpace() -> String? {
+        let text = cardNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        return text
+    }
     
-    lazy var contentView: UIView = {
-        let view = UIView()
-        return view
-    }()
+    private lazy var digitalCardTitle: UILabel = .descriptionLabel(titleText: "Dê um nome ao seu cartão digital!",
+                                                           subtitleText: "\nEscolha um nome que identifique facilmente o seu uso.",
+                                                           titleFontSize: 30,
+                                                           subtitleFontSize: 20,
+                                                           titleColor: Colors.offWhiteColor,
+                                                           subtitleColor: UIColor(hexString: "#cecece"))
     
-    lazy var cardNameTextField: CustomTextField = .init(placeholderText: "Digite o nome do seu cartão digital")
+    private lazy var cardNameTextField: CustomTextField = .init(placeholderText: "Digite o nome do seu cartão digital")
     
     public func setupCardNameTextFieldDelegateWith(_ delegate: UITextFieldDelegate) {
         cardNameTextField.delegate = delegate
@@ -66,11 +82,10 @@ public class CardConfigurationView: UIView {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        makeDigitalCardButton.layer.cornerRadius = makeDigitalCardButton.frame.size.height / 2
-        makeDigitalCardButton.clipsToBounds = true
+        makeDigitalCardButton.makeCornerRadius()
     }
     
-    lazy var loadingIndicator: UIActivityIndicatorView = {
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
         let loadingView = UIActivityIndicatorView()
         loadingView.hidesWhenStopped = true
         loadingView.style = .large
@@ -98,8 +113,8 @@ extension CardConfigurationView: CodeView {
         
         cardNameTextField.fillConstraints(
             top: digitalCardTitle.bottomAnchor,
-            leading: digitalCardTitle.leadingAnchor,
-            trailing: digitalCardTitle.trailingAnchor,
+            leading: leadingAnchor,
+            trailing: trailingAnchor,
             bottom: nil,
             padding: .init(top: 32, left: 16, bottom: 0, right: 16),
             size: .init(width: 0, height: 44)
@@ -128,6 +143,7 @@ extension CardConfigurationView: CodeView {
     func setupAdditionalConfiguration() {
         backgroundColor = Colors.primaryColor
         cardNameTextField.setupLeftImageView(image: UIImage(systemName: "list.bullet.rectangle")!, with: .gray)
+        cardNameTextField.autocorrectionType = .no
         cardNameTextField.tintColor = .gray
         cardNameTextField.layer.borderColor = UIColor.gray.cgColor
     }

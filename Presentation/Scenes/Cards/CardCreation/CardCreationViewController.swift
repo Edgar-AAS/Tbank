@@ -1,14 +1,15 @@
 import UIKit
 
 public class CardCreationViewController: UIViewController {
-    var cardCreationView: CardCreationView?
-    
+    private lazy var cardCreationView: CardCreationView? = {
+        return view as? CardCreationView
+    }()
+
     public var goToCardConfiguration: (() -> Void)?
     
     public override func loadView() {
         super.loadView()
-        cardCreationView = CardCreationView(self)
-        view = cardCreationView
+        view = CardCreationView(self)
     }
     
     public override func viewDidLoad() {
@@ -18,10 +19,11 @@ public class CardCreationViewController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+        showNavigationBar()
     }
 }
 
+//MARK: - Delegate Actions
 extension CardCreationViewController: CardCreationViewDelegateProtocol {
     func cardCreationButtonDidTapped() {
         goToCardConfiguration?()

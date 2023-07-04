@@ -31,16 +31,8 @@ extension MainQueueDispatchDecorator: Authentication where T: Authentication {
 }
 
 extension MainQueueDispatchDecorator: FetchUserDataResources where T: FetchUserDataResources {
-    public func fetch(completion: @escaping (Result<UserDataModel, DomainError>) -> Void) {
+    public func fetch(completion: @escaping (Result<UserData, DomainError>) -> Void) {
         instance.fetch { [weak self] result  in
-            self?.dispatch { completion(result) }
-        }
-    }
-}
-
-extension MainQueueDispatchDecorator: FetchUserCards where T: FetchUserCards {
-    public func fetch(completion: @escaping (Result<[Card], DomainError>) -> Void) {
-        instance.fetch { [weak self] result in
             self?.dispatch { completion(result) }
         }
     }
@@ -55,8 +47,8 @@ extension MainQueueDispatchDecorator: AddCard where T: AddCard {
 }
 
 extension MainQueueDispatchDecorator: DeleteDigitalCard where T: DeleteDigitalCard {
-    public func deleteCardWith(url: URL, completion: @escaping (Result<Bool, DomainError>) -> Void) {
-        instance.deleteCardWith(url: url, completion: { [weak self] result in
+    public func deleteDigitalCard(with id: String, completion: @escaping (Result<Bool, DomainError>) -> Void) {
+        instance.deleteDigitalCard(with: id, completion: { [weak self ] result in
             self?.dispatch { completion(result) }
         })
     }
@@ -75,6 +67,14 @@ extension MainQueueDispatchDecorator: FetchBalance where T: FetchBalance {
         instance.fetch { [weak self] result in
             self?.dispatch { completion(result) }
         }
+    }
+}
+
+extension MainQueueDispatchDecorator: FetchCardList where T: FetchCardList {
+    public func fetch(completion: @escaping (Result<[Card], DomainError>) -> Void) {
+        instance.fetch(completion: { [weak self] result in
+            self?.dispatch { completion(result) }
+        })
     }
 }
 

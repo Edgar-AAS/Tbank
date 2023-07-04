@@ -1,10 +1,6 @@
 import Foundation
 import UIKit
 
-protocol CardsScreenViewDelegateProtocol: AnyObject {
-    func closeButtonDidTapped()
-}
-
 public class CardsScreenView: UIView{
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -13,13 +9,6 @@ public class CardsScreenView: UIView{
     
     required init?(coder: NSCoder) {
         fatalError()
-    }
-    
-    weak var delegate: CardsScreenViewDelegateProtocol?
-    
-    convenience init(delegate: CardsScreenViewDelegateProtocol?) {
-        self.init(frame: .zero)
-        self.delegate = delegate
     }
     
     lazy var myCardsTitleLabel: UILabel = {
@@ -31,8 +20,7 @@ public class CardsScreenView: UIView{
     }()
     
     lazy var myCardsTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.register(AddVirtualCardCell.self, forCellReuseIdentifier: AddVirtualCardCell.reuseIdentifier)
         tableView.register(CardListCell.self, forCellReuseIdentifier: CardListCell.reuseIdentifier)
         tableView.backgroundColor = Colors.primaryColor
@@ -44,10 +32,6 @@ public class CardsScreenView: UIView{
     func setupTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
         myCardsTableView.delegate = delegate
         myCardsTableView.dataSource = dataSource
-    }
-    
-    @objc func closeButtonTapped() {
-        delegate?.closeButtonDidTapped()
     }
 }
 

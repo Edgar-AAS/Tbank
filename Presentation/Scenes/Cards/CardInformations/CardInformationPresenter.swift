@@ -10,40 +10,40 @@ public class CardInformationPresenter {
     private let deleteCard: DeleteDigitalCard
     private let router: CardInformationRoutingLogic
     public let userCardModel: Card
-    public let delegate: CardInformationDelegate
+    public let delegateView: CardInformationDelegate
     
     public init(userCardModel: Card,
                 deleteCard: DeleteDigitalCard,
                 updateCardView: UpdateCardView,
                 delegate: CardInformationDelegate,
-                router: CardInformationRoutingLogic
-    ) {
+                router: CardInformationRoutingLogic)
+    {
         self.userCardModel = userCardModel
         self.updateCardView = updateCardView
         self.deleteCard = deleteCard
-        self.delegate = delegate
+        self.delegateView = delegate
         self.router = router
     }
 }
 
 extension CardInformationPresenter: ViewToPresenterCardInformationViewProtocol {
-    public func removeCard(at id: String) {
-        if let url = URL(string: "https://63e255d8109336b6cb054df8.mockapi.io/api/v1/cards/" + id) {
-            deleteCard.deleteCardWith(url: url, completion: { [weak self] result in
-                switch result {
-                case .success: print("Cartao digital removido com sucesso.")
-                    self?.delegate.digitalCardDidRemoved(isNeedUpdateView: true)
-                case .failure: print("Falha ao remover cartão. tente novamente em instantes.")
-                }
-            })
-        }
+    public func removeDigitalCard(at id: String) {
+        deleteCard.deleteDigitalCard(with: id, completion: { [weak self] result in
+            guard self != nil else { return }
+            switch result {
+                case .success:
+                    self?.delegateView.digitalCardDidRemoved(isNeedUpdateView: true)
+            case .failure:
+                print("Erro ao remover cartão")
+            }
+        })
     }
     
     public func popToHomeController() {
         router.popToHome()
     }
 
-    public func popToCardController() {
+    public func popToCardListController() {
         router.popToCardController()
     }
     

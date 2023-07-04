@@ -30,13 +30,13 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
         removeBackButtonTitle()
         registerTableViewCells()
         setupTableviewProperties()
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        disableInteractivePopGesture()
         presenter?.fetchUserData()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        hideNavigationBar()
         updateViewIfNeeded()
     }
     
@@ -63,17 +63,12 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
             presenter?.fetchUserData()
             isNeedUpdateWithoutAnimation = false
         case isNeedUpdateProfile:
-//            header?.profileImageView.loadImageWith(path: makeUserImagePath()) -> TALVEZ UMA DELEGATE DO HEADER PARA A CONTROLLE NOTIFICANDO O STATUS
+            reloadHeaderCell()
             isNeedUpdateProfile = false
         default: return
         }
     }
-    
-    private func makeUserImagePath() -> String {
-        let path = getDocumentsDirectory().appendingPathComponent(FileManagerPaths.userImage).path
-        return path
-    }
-    
+        
     private func registerTableViewCells() {
         tableView.register(PersonHeaderCell.self, forCellReuseIdentifier: PersonHeaderCell.reuseIdentifier)
         tableView.register(CardCell.self, forCellReuseIdentifier: CardCell.reuseIdentifier)
@@ -88,6 +83,10 @@ public final class HomeController: UITableViewController, HomeControllerProtocol
         tableView.showsVerticalScrollIndicator = false
         tableView.allowsSelection = false
         tableView.addSubview(refreshControlIndicator)
+    }
+    
+    private func reloadHeaderCell() {
+        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
 }
 
@@ -106,8 +105,8 @@ extension HomeController {
                 cell = getPersonHeaderCell(with: personViewModel, indexPath: indexPath)
             case .balanceCell(let balanceViewModel):
                 cell = getBalanceCell(with: balanceViewModel, indexPath: indexPath)
-            case .cardsCell(let cardViewModels):
-                cell = getCardCell(with: cardViewModels, indexPath: indexPath)
+            case .cardsCell(let cardsModel):
+                cell = getCardCell(with: cardsModel, indexPath: indexPath)
             case .servicesCell(let serviceViewModels):
                 cell = getServicesCell(with: serviceViewModels, indexPath: indexPath)
             case .resourcesCell(let resourceViewModels):
@@ -117,36 +116,42 @@ extension HomeController {
     }
 }
 
+
+//MARK: - Cells Creation
 extension HomeController {
-    func getPersonHeaderCell(with viewModel: PersonHeaderViewModel, indexPath: IndexPath) -> PersonHeaderCell {
-        let personCell = tableView.dequeueReusableCell(withIdentifier: PersonHeaderCell.reuseIdentifier, for: indexPath) as! PersonHeaderCell
-        personCell.profileImageView.loadImageWith(path: makeUserImagePath())
-        personCell.configureCell(with: viewModel)
-        return personCell
+    func getPersonHeaderCell(with viewModel: PersonHeaderViewModel, indexPath: IndexPath) -> UITableViewCell {
+        let personCell = tableView.dequeueReusableCell(withIdentifier: PersonHeaderCell.reuseIdentifier, for: indexPath) as? PersonHeaderCell
+        personCell?.profileImageView.loadImageWith(path: FileManagerPaths.getPathFor(pathType: .userImage))
+        personCell?.configureCell(with: viewModel)
+        personCell?.delegate = self
+        return personCell ?? UITableViewCell()
     }
     
-    func getBalanceCell(with viewModel: BalanceViewModel, indexPath: IndexPath) -> BalanceCell {
-        let balanceCell = tableView.dequeueReusableCell(withIdentifier: BalanceCell.reuseIdentifier, for: indexPath) as! BalanceCell
-        balanceCell.configureCell(with: viewModel)
-        return balanceCell
+    func getBalanceCell(with viewModel: BalanceViewModel, indexPath: IndexPath) -> UITableViewCell {
+        let balanceCell = tableView.dequeueReusableCell(withIdentifier: BalanceCell.reuseIdentifier, for: indexPath) as? BalanceCell
+        balanceCell?.configureCell(with: viewModel)
+        return balanceCell ?? UITableViewCell()
     }
     
-    func getCardCell(with viewModel: [CardViewModel], indexPath: IndexPath) -> CardCell {
-        let cardCell = tableView.dequeueReusableCell(withIdentifier: CardCell.reuseIdentifier, for: indexPath) as! CardCell
-        cardCell.configureCell(with: viewModel)
-        return cardCell
+    func getCardCell(with viewModel: [Card], indexPath: IndexPath) -> UITableViewCell {
+        let cardCell = tableView.dequeueReusableCell(withIdentifier: CardCell.reuseIdentifier, for: indexPath) as? CardCell
+        cardCell?.configureCell(with: viewModel)
+        goToLastItem = cardCell?.goToLastItem
+        cardCell?.delegate = self
+        return cardCell ?? UITableViewCell()
     }
     
-    func getServicesCell(with viewModel: [ServiceViewModel], indexPath: IndexPath) -> ServicesCell {
-        let serviceCell = tableView.dequeueReusableCell(withIdentifier: ServicesCell.reuseIdentifier, for: indexPath) as! ServicesCell
-        serviceCell.configureCell(with: viewModel)
-        return serviceCell
+    func getServicesCell(with viewModel: [ServiceViewModel], indexPath: IndexPath) -> UITableViewCell {
+        let serviceCell = tableView.dequeueReusableCell(withIdentifier: ServicesCell.reuseIdentifier, for: indexPath) as? ServicesCell
+        serviceCell?.configureCell(with: viewModel)
+        serviceCell?.delegate = self
+        return serviceCell ?? UITableViewCell()
     }
     
-    func getResourcesCell(with viewModel: [ResourceViewModel], indexPath: IndexPath) -> ResourcesGridCell {
-        let serviceCell = tableView.dequeueReusableCell(withIdentifier: ResourcesGridCell.reuseIdentifier, for: indexPath) as! ResourcesGridCell
-        serviceCell.configureCell(with: viewModel)
-        return serviceCell
+    func getResourcesCell(with viewModel: [ResourceViewModel], indexPath: IndexPath) -> UITableViewCell {
+        let serviceCell = tableView.dequeueReusableCell(withIdentifier: ResourcesGridCell.reuseIdentifier, for: indexPath) as? ResourcesGridCell
+        serviceCell?.configureCell(with: viewModel)
+        return serviceCell ?? UITableViewCell()
     }
 }
 
@@ -166,7 +171,7 @@ extension HomeController: AlertView {
 
 //MARK: - Delegate actions
 extension HomeController: PersonHeaderDelegateProtocol {
-    public func profileButtonDidTapped() {
+    public func profileImageViewDidTapped() {
         presenter?.routeToProfile()
     }
 }
@@ -178,12 +183,12 @@ extension HomeController: ServicesCellDelegateProtocol {
 }
 
 extension HomeController: CardCellDelegateProtocol {
-    public func cardDidTapped(userCard: Card) {
+    public func cardDidTapped(cardSelected: Card) {
         isOpenFromHome = true
-        presenter?.routeToCardInformationScreen(with: userCard)
+        presenter?.routeToCardInformationScreen(with: cardSelected)
     }
     
     public func addCardButtonDidTapped() {
-        presenter?.routeToCards()
+        presenter?.routeToCardList()
     }
 }

@@ -4,12 +4,6 @@ public enum CurrencySymbols: String {
     case brazilianReal = "R$"
     case americanDollar = "$"
     case euro = "€"
-    case poundSterling = "£"
-    case japaneseYen = "¥"
-    case russianRuble = "₽"
-    case swissFranc = "CHF"
-    case canadianDollar = "CAD"
-    case australianDollar = "AUD"
 }
 
 extension Double {

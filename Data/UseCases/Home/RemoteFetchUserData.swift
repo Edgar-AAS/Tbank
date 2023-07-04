@@ -16,7 +16,7 @@ public class RemoteFetchUserData: FetchUserDataResources {
             switch result {
             case .failure: completion(.failure(.unexpected))
             case .success(let data):
-                if let model: UserDataModel = data?.toModel() {
+                if let model: UserData = data?.toModel() {
                     completion(.success(model))
                 } else {
                     completion(.failure(.unexpected))

@@ -1,4 +1,5 @@
 import Foundation
+import Domain
 
 public struct PersonHeaderViewModel {
     public let username: String
@@ -17,40 +18,6 @@ public struct BalanceViewModel {
     public init(totalBalance: String, balanceIsHidden: Bool) {
         self.totalBalance = totalBalance
         self.balanceIsHidden = balanceIsHidden
-    }
-}
-
-public struct CardViewModel {
-    public let isVirtual: Bool
-    public let balance: String
-    public let cardFlag: String
-    public let cardTag: Int
-    public let cardBrandImageURL, cardNumber, cardExpirationDate, cardFunction: String
-    public let cvc, id, name: String
-    
-    public init(isVirtual: Bool,
-                balance: String,
-                cardFlag: String,
-                cardTag: Int,
-                cardBrandImageURL: String,
-                cardNumber: String,
-                cardExpirationDate: String,
-                cardFunction: String,
-                cvc: String,
-                id: String,
-                name: String)
-    {
-        self.isVirtual = isVirtual
-        self.balance = balance
-        self.cardFlag = cardFlag
-        self.cardTag = cardTag
-        self.cardBrandImageURL = cardBrandImageURL
-        self.cardNumber = cardNumber
-        self.cardExpirationDate = cardExpirationDate
-        self.cardFunction = cardFunction
-        self.cvc = cvc
-        self.id = id
-        self.name = name
     }
 }
 
@@ -80,7 +47,7 @@ public struct ResourceViewModel {
 public enum HomeListCellType {
     case userHeaderCell(PersonHeaderViewModel)
     case balanceCell(BalanceViewModel)
-    case cardsCell([CardViewModel])
+    case cardsCell([Card])
     case servicesCell([ServiceViewModel])
     case resourcesCell([ResourceViewModel])
 }

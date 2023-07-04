@@ -1,14 +1,14 @@
 import Foundation
 import Domain
 
-enum CardFunction: String {
-    case credit = "Crédito"
-    case debit = "Débito"
-    case hybridCard = "Débito e Crédito"
-}
-
 struct CardGenerator {
     private let cardFlag = "Gold"
+    
+    enum CardFunction: String {
+        case credit = "Crédito"
+        case debit = "Débito"
+        case hybridCard = "Débito e Crédito"
+    }
     
     private func createCardNumber() -> String {
         let randomNumbers = (0..<16).map { _ in String(arc4random_uniform(10)) }
@@ -42,7 +42,7 @@ struct CardGenerator {
         return "--/--"
     }
     
-    func createDigitalCardWith(name: String) -> Card {
+    func createDigitalCard(with name: String) -> Card {
         return Card(isVirtual: true,
                         balance: 0.0,
                         cardFlag: cardFlag,
@@ -52,7 +52,7 @@ struct CardGenerator {
                         cardExpirationDate: createCardExpirationDate(),
                         cardFunction: getCardFunction(cardFunction: .hybridCard),
                         cvc: createCVC(),
-                        id: "",
-                        name: name)
+                        name: name, id: "",
+                        userID: "")
     }
 }

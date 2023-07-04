@@ -4,7 +4,7 @@ import Infra
 
 public let cardListFactory: () -> CardsViewController = {
     let httpGetClient = makeNetworkGetClient()
-    let fetchCards = makeRemoteFetchCards(httpClient: httpGetClient)
-    let controller = makeCardsViewController(fethUserCards: fetchCards)
+    let fetchCardList = makeRemoteFetchCard(httpClient: httpGetClient)
+    let controller = makeCardsViewController(fetchCardList: fetchCardList)
     return controller
 }
