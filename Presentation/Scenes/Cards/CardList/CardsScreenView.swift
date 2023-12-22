@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-public class CardsScreenView: UIView{
+public class CardsScreenView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
