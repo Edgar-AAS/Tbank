@@ -14,10 +14,12 @@ public final class RemoteFetchAccountBalance: FetchBalance {
         httpClient.get(to: url) { [weak self] result in
             guard self != nil else { return }
             switch result {
-            case .success(let data): break
-//                if let model: UserDataModel = data?.toModel() {
-//                    completion(model.totalBalance)
-//                }
+            case .success(let data):
+                if let model: [ContatcModelElement] = data?.toModel() {
+                    if let balance = model.first?.totalBalance {
+                        completion(balance)
+                    }
+                }
             case .failure: return
             }
         }
