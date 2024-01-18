@@ -2,7 +2,7 @@
 [![Xcode](https://img.shields.io/badge/Xcode-12.4-brightgreen.svg)](https://developer.apple.com/download/more/)
 
 
-# ProtoBank
+# Tbank
 Aplicativo protótipo de um banco digital que tem por objetivo simular comportamentos e funcionalidades de uma aplicação real.
 
 # Descrição do Projeto
