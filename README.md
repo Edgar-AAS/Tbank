@@ -12,25 +12,25 @@ Este projeto é um aplicativo financeiro que simula o fluxo de criação de um c
 # Layout
 
 <p float="left">
-<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/17977289-597a-48f3-ad7f-fc6cec0b0ae9.png" width="180"/>
-<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/b76314a4-508a-4e42-bad0-2077813e4c07.png" width="180"/>
-<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/5d4de34a-e7b9-4027-82f2-8ead1da697ad.png" width="180"/>
+<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/17977289-597a-48f3-ad7f-fc6cec0b0ae9.png" width="150"/>
+<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/b76314a4-508a-4e42-bad0-2077813e4c07.png" width="150"/>
+<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/5d4de34a-e7b9-4027-82f2-8ead1da697ad.png" width="150"/>
 </p>
 
 <p float="left">
-<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/d1c53869-a3c0-47ed-8c2a-45452c2e8bd8.png" width="180"/>
-<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/4bf34b64-b446-491a-b976-c93564293027.png" width="180"/>
-<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/fff0bc2c-e9c4-4849-900c-bf44a2f27990.png" width="180"/>
-<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/1d579070-eed6-493d-8049-88a005f270af.png" width="180"/>
-<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/d5499460-c3e4-49bd-a242-089a3cc10f38.png" width="180"/>
+<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/d1c53869-a3c0-47ed-8c2a-45452c2e8bd8.png" width="150"/>
+<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/4bf34b64-b446-491a-b976-c93564293027.png" width="150"/>
+<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/fff0bc2c-e9c4-4849-900c-bf44a2f27990.png" width="150"/>
+<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/1d579070-eed6-493d-8049-88a005f270af.png" width="150"/>
+<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/d5499460-c3e4-49bd-a242-089a3cc10f38.png" width="150"/>
 </p>
 
 <p float="left">
-<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/e8c5a802-9646-4d6c-ad27-d85d903000d6.png" width="180"/>
-<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/287a2a89-009a-4f8d-add9-f37555d5007e.png" width="180"/>
-<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/9fa85eb1-73f9-49df-aad9-8190dac09039.png" width="180"/>
-<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/46be6596-ed2e-4a38-99e3-588ae70c0064.png" width="180"/>
-<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/8188ba14-a496-4641-8b14-ac87c6b465c0.png" width="180"/>
+<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/e8c5a802-9646-4d6c-ad27-d85d903000d6.png" width="150"/>
+<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/287a2a89-009a-4f8d-add9-f37555d5007e.png" width="150"/>
+<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/9fa85eb1-73f9-49df-aad9-8190dac09039.png" width="150"/>
+<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/46be6596-ed2e-4a38-99e3-588ae70c0064.png" width="150"/>
+<img src="https://github.com/Edgar-AAS/Tbank/assets/103855076/8188ba14-a496-4641-8b14-ac87c6b465c0.png" width="150"/>
 </p>
 
 # Tecnologias utilizadas
