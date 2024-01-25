@@ -7,13 +7,12 @@ protocol CardsViewProtocol where Self: UIViewController {
 
 public class CardsViewController: UIViewController, CardsViewProtocol {
     var isNeedUpdate: Bool = false
-    
     public var cardView: CardsScreenView?
     public var presenter: ViewToPresenterCardsProtocol?
     
     private var virtualCards = [Card]()
     private var physicalCards = [Card]()
-        
+    
     public override func loadView() {
         super.loadView()
         cardView = CardsScreenView()
@@ -23,14 +22,13 @@ public class CardsViewController: UIViewController, CardsViewProtocol {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        showNavigationBar()
         removeBackButtonTitle()
         presenter?.fetchCardsList()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        showNavigationBar()
-     
         if isNeedUpdate {
             presenter?.fetchCardsList()
             isNeedUpdate = false

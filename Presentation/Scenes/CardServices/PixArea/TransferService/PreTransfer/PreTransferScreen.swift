@@ -171,5 +171,6 @@ extension PreTransferScreen: CodeView {
         verticalStack.setCustomSpacing(0, after: balanceLabel)
         verticalStack.setCustomSpacing(100, after: contactNameLabel)
         verticalStack.setCustomSpacing(20, after: cpfHorizontalStack)
+        backgroundColor = Colors.primaryColor
     }
 }
