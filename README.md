@@ -7,7 +7,7 @@ Aplicativo protótipo de um banco digital que tem por objetivo simular comportam
 
 # Descrição do Projeto
 
-Este projeto é um aplicativo financeiro que simula o fluxo de criação de um cartão digital. O objetivo principal é explorar conceitos de Arquitetura Limpa e desenvolvimento Orientado a Testes (TDD).
+Este projeto é um aplicativo financeiro que simula o fluxo de criação de um cartão digital. O objetivo principal é explorar conceitos de Arquitetura Limpa e Desenvolvimento Orientado a Testes.
 
 # Layout
 
